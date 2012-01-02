@@ -1,0 +1,36 @@
+module test;
+
+models UML;
+
+static def : allClasses : Sequence(UML!Class) =
+	OclAny::allInstances()->union(
+	UML!Class.allInstances());
+
+def : allModuleNames : Set(String) =
+	self.modules.getKeys();
+
+context UML!Class def : umlQualifiedName(sep : String) : String =
+	(let parent : OclAny = self.refImmediateComposite() in
+	if parent.oclIsUndefined() then
+		self.name
+	else
+		parent.umlQualifiedName() + sep + self.name
+	endif)
+	+
+	let slottest : String = 'test' in slottest;
+
+context Sequence(OclAny) def : map(f : Lambda(OclAny):OclAny) : Sequence(OclAny) =
+	self->collect(e | f(e));
+
+context OclAny def : name : String =
+	'<unnamed>';
+
+context String def : name : String =
+	if self.isEmpty() then
+		super.name
+	else
+		self
+	endif;
+	
+context Env static def : main() : Set(String) =
+	env.allModuleNames.debug('module names');

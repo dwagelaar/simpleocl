@@ -6,21 +6,18 @@
  */
 package be.ac.vub.simpleocl.impl;
 
-import be.ac.vub.simpleocl.SimpleoclPackage;
-import be.ac.vub.simpleocl.TupleType;
-import be.ac.vub.simpleocl.TupleTypeAttribute;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import be.ac.vub.simpleocl.SimpleoclPackage;
+import be.ac.vub.simpleocl.TupleType;
+import be.ac.vub.simpleocl.TupleTypeAttribute;
 
 /**
  * <!-- begin-user-doc -->

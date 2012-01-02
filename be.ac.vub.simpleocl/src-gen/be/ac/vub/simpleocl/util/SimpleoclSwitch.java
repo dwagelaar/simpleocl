@@ -6,12 +6,91 @@
  */
 package be.ac.vub.simpleocl.util;
 
-import be.ac.vub.simpleocl.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import be.ac.vub.simpleocl.AddOpCallExp;
+import be.ac.vub.simpleocl.Attribute;
+import be.ac.vub.simpleocl.BagExp;
+import be.ac.vub.simpleocl.BagType;
+import be.ac.vub.simpleocl.BooleanExp;
+import be.ac.vub.simpleocl.BooleanType;
+import be.ac.vub.simpleocl.BraceExp;
+import be.ac.vub.simpleocl.CollectionExp;
+import be.ac.vub.simpleocl.CollectionOperationCall;
+import be.ac.vub.simpleocl.CollectionType;
+import be.ac.vub.simpleocl.EnumLiteralExp;
+import be.ac.vub.simpleocl.EnvExp;
+import be.ac.vub.simpleocl.EnvType;
+import be.ac.vub.simpleocl.EqOpCallExp;
+import be.ac.vub.simpleocl.IfExp;
+import be.ac.vub.simpleocl.Import;
+import be.ac.vub.simpleocl.IntOpCallExp;
+import be.ac.vub.simpleocl.IntegerExp;
+import be.ac.vub.simpleocl.IntegerType;
+import be.ac.vub.simpleocl.IterateExp;
+import be.ac.vub.simpleocl.Iterator;
+import be.ac.vub.simpleocl.IteratorExp;
+import be.ac.vub.simpleocl.LambdaCallExp;
+import be.ac.vub.simpleocl.LambdaType;
+import be.ac.vub.simpleocl.LetExp;
+import be.ac.vub.simpleocl.LocalVariable;
+import be.ac.vub.simpleocl.LocatedElement;
+import be.ac.vub.simpleocl.LoopExp;
+import be.ac.vub.simpleocl.MapElement;
+import be.ac.vub.simpleocl.MapExp;
+import be.ac.vub.simpleocl.MapType;
+import be.ac.vub.simpleocl.Module;
+import be.ac.vub.simpleocl.MulOpCallExp;
+import be.ac.vub.simpleocl.NavigationOrAttributeCall;
+import be.ac.vub.simpleocl.NotOpCallExp;
+import be.ac.vub.simpleocl.NumericExp;
+import be.ac.vub.simpleocl.NumericType;
+import be.ac.vub.simpleocl.OclAnyType;
+import be.ac.vub.simpleocl.OclContextDefinition;
+import be.ac.vub.simpleocl.OclExpression;
+import be.ac.vub.simpleocl.OclFeature;
+import be.ac.vub.simpleocl.OclFeatureDefinition;
+import be.ac.vub.simpleocl.OclInstanceModel;
+import be.ac.vub.simpleocl.OclMetamodel;
+import be.ac.vub.simpleocl.OclModel;
+import be.ac.vub.simpleocl.OclModelElement;
+import be.ac.vub.simpleocl.OclModelElementExp;
+import be.ac.vub.simpleocl.OclType;
+import be.ac.vub.simpleocl.OclUndefinedExp;
+import be.ac.vub.simpleocl.Operation;
+import be.ac.vub.simpleocl.OperationCall;
+import be.ac.vub.simpleocl.OperatorCallExp;
+import be.ac.vub.simpleocl.OrderedSetExp;
+import be.ac.vub.simpleocl.OrderedSetType;
+import be.ac.vub.simpleocl.Parameter;
+import be.ac.vub.simpleocl.Primitive;
+import be.ac.vub.simpleocl.PrimitiveExp;
+import be.ac.vub.simpleocl.PropertyCall;
+import be.ac.vub.simpleocl.PropertyCallExp;
+import be.ac.vub.simpleocl.RealExp;
+import be.ac.vub.simpleocl.RealType;
+import be.ac.vub.simpleocl.RelOpCallExp;
+import be.ac.vub.simpleocl.SelfExp;
+import be.ac.vub.simpleocl.SequenceExp;
+import be.ac.vub.simpleocl.SequenceType;
+import be.ac.vub.simpleocl.SetExp;
+import be.ac.vub.simpleocl.SetType;
+import be.ac.vub.simpleocl.SimpleoclPackage;
+import be.ac.vub.simpleocl.StaticNavigationOrAttributeCall;
+import be.ac.vub.simpleocl.StaticOperationCall;
+import be.ac.vub.simpleocl.StaticPropertyCall;
+import be.ac.vub.simpleocl.StaticPropertyCallExp;
+import be.ac.vub.simpleocl.StringExp;
+import be.ac.vub.simpleocl.StringType;
+import be.ac.vub.simpleocl.SuperExp;
+import be.ac.vub.simpleocl.TupleExp;
+import be.ac.vub.simpleocl.TuplePart;
+import be.ac.vub.simpleocl.TupleType;
+import be.ac.vub.simpleocl.TupleTypeAttribute;
+import be.ac.vub.simpleocl.VariableDeclaration;
+import be.ac.vub.simpleocl.VariableExp;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,10 +6,10 @@
  */
 package be.ac.vub.simpleocl.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import be.ac.vub.simpleocl.SimpleoclPackage;
 import be.ac.vub.simpleocl.SuperExp;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

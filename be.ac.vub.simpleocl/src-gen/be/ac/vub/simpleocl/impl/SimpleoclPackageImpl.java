@@ -6,6 +6,13 @@
  */
 package be.ac.vub.simpleocl.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import be.ac.vub.simpleocl.AddOpCallExp;
 import be.ac.vub.simpleocl.Attribute;
 import be.ac.vub.simpleocl.BagExp;
@@ -88,14 +95,6 @@ import be.ac.vub.simpleocl.TupleType;
 import be.ac.vub.simpleocl.TupleTypeAttribute;
 import be.ac.vub.simpleocl.VariableDeclaration;
 import be.ac.vub.simpleocl.VariableExp;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

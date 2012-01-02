@@ -6,10 +6,9 @@
  */
 package be.ac.vub.simpleocl.tests;
 
+import junit.textui.TestRunner;
 import be.ac.vub.simpleocl.Iterator;
 import be.ac.vub.simpleocl.SimpleoclFactory;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

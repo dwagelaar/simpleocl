@@ -7,9 +7,6 @@
 package be.ac.vub.simpleocl.tests;
 
 import be.ac.vub.simpleocl.OclModel;
-import be.ac.vub.simpleocl.SimpleoclFactory;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,10 +6,10 @@
  */
 package be.ac.vub.simpleocl.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import be.ac.vub.simpleocl.BagType;
 import be.ac.vub.simpleocl.SimpleoclPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

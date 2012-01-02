@@ -6,16 +6,14 @@
  */
 package be.ac.vub.simpleocl.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import be.ac.vub.simpleocl.OclModel;
 import be.ac.vub.simpleocl.OclModelElementExp;
 import be.ac.vub.simpleocl.SimpleoclPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

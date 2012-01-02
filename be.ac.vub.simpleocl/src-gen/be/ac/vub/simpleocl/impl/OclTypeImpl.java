@@ -6,6 +6,13 @@
  */
 package be.ac.vub.simpleocl.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import be.ac.vub.simpleocl.Attribute;
 import be.ac.vub.simpleocl.CollectionType;
 import be.ac.vub.simpleocl.LambdaType;
@@ -18,16 +25,6 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
 import be.ac.vub.simpleocl.StaticPropertyCallExp;
 import be.ac.vub.simpleocl.TupleTypeAttribute;
 import be.ac.vub.simpleocl.VariableDeclaration;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->

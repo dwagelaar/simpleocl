@@ -6,9 +6,8 @@
  */
 package be.ac.vub.simpleocl.tests;
 
-import be.ac.vub.simpleocl.LocatedElement;
-
 import junit.framework.TestCase;
+import be.ac.vub.simpleocl.LocatedElement;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,7 +6,6 @@
  */
 package be.ac.vub.simpleocl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

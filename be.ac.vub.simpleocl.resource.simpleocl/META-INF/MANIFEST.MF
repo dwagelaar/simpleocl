@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EMFText Parser Plugin: simpleocl
+Bundle-Name: EMFText Parser Plugin: SimpleOCL
 Bundle-SymbolicName: be.ac.vub.simpleocl.resource.simpleocl;singleton:=true
-Bundle-Version: 1.0.0
-Bundle-Vendor: Software Technology Group - TU Dresden Germany
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Vrije Universiteit Brussel
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.emf,
  org.eclipse.emf.codegen.ecore,

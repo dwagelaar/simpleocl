@@ -12,7 +12,7 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://www.emftext.org/language/simpleocl"
+            uri="http://soft.vub.ac.be/simpleocl/2011/SimpleOCL"
             class="be.ac.vub.simpleocl.SimpleoclPackage"
             genModel="metamodel/simpleocl.genmodel"/>
    </extension>

@@ -14,7 +14,7 @@ import be.ac.vub.simpleocl.OclModel;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class OclModelTest extends LocatedElementTest {
+public abstract class OclModelTest extends NamedElementTest {
 
 	/**
 	 * Constructs a new Ocl Model test case with the given name.

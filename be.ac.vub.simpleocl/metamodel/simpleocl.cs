@@ -82,7 +82,7 @@ TOKENSTYLES {
 }
 
 RULES {
-	Module ::= "module" (name[]|name['"','"','\\']) ";" (!0 "models" models ("," models)* ";")? (!0 imports*)? (!0 features*)?;
+	Module ::= "module" (name[]|name['"','"','\\']) ";" (!0 "metamodels" metamodels ("," metamodels)* ";")? (!0 imports*)? (!0 features*)?;
 	Import ::= "import" (name[]|name['"','"','\\']) ";";
 	@Foldable
 	OclFeatureDefinition ::= context_? static["static" : ""] "def" ":" feature;

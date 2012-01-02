@@ -520,8 +520,20 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof be.ac.vub.simpleocl.Import) {
+			result = interprete_be_ac_vub_simpleocl_Import((be.ac.vub.simpleocl.Import) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof be.ac.vub.simpleocl.Module) {
 			result = interprete_be_ac_vub_simpleocl_Module((be.ac.vub.simpleocl.Module) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.NamedElement) {
+			result = interprete_be_ac_vub_simpleocl_NamedElement((be.ac.vub.simpleocl.NamedElement) object, context);
 		}
 		if (result != null) {
 			return result;
@@ -539,7 +551,15 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		return null;
 	}
 	
+	public ResultType interprete_be_ac_vub_simpleocl_NamedElement(be.ac.vub.simpleocl.NamedElement object, ContextType context) {
+		return null;
+	}
+	
 	public ResultType interprete_be_ac_vub_simpleocl_Module(be.ac.vub.simpleocl.Module object, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_be_ac_vub_simpleocl_Import(be.ac.vub.simpleocl.Import object, ContextType context) {
 		return null;
 	}
 	

@@ -24,7 +24,7 @@ package be.ac.vub.simpleocl;
  * @model abstract="true"
  * @generated
  */
-public interface OclFeature extends LocatedElement {
+public interface OclFeature extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Definition</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OclFeatureDefinition#getFeature <em>Feature</em>}'.

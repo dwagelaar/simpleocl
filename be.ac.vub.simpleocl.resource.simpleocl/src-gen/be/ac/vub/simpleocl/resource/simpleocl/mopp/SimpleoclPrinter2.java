@@ -113,260 +113,264 @@ public class SimpleoclPrinter2 implements be.ac.vub.simpleocl.resource.simpleocl
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_0, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OclFeatureDefinition) {
+		if (element instanceof be.ac.vub.simpleocl.Import) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_1, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OclContextDefinition) {
+		if (element instanceof be.ac.vub.simpleocl.OclFeatureDefinition) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_2, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OclMetamodel) {
+		if (element instanceof be.ac.vub.simpleocl.OclContextDefinition) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_3, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OclInstanceModel) {
+		if (element instanceof be.ac.vub.simpleocl.OclMetamodel) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_4, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.Attribute) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_6, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.Operation) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_7, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.Parameter) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_8, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OclModelElementExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_9, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.LambdaCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_10, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.VariableExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_11, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SuperExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_12, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SelfExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_13, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.EnvExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_14, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.StringExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_15, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.BooleanExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_16, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.RealExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_17, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IntegerExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_18, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.BagExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_19, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OrderedSetExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_20, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SequenceExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_21, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SetExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_22, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.TupleExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_23, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.TuplePart) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_24, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.MapExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_25, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.MapElement) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_26, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.EnumLiteralExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_27, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OclUndefinedExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_28, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.LetExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_29, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IfExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_30, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.BraceExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_31, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.EqOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_33, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.RelOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_34, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.AddOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_35, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IntOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_36, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.MulOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_37, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.NotOpCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_38, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.StaticPropertyCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_39, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.StaticOperationCall) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_40, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.StaticNavigationOrAttributeCall) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_41, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.NavigationOrAttributeCall) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_44, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IterateExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_45, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IteratorExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_46, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.Iterator) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_47, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.CollectionOperationCall) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_48, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.StringType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_50, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.BooleanType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_51, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.IntegerType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_52, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.RealType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_53, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.BagType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_54, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OrderedSetType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_55, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SequenceType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_56, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.SetType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_57, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OclAnyType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_58, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.TupleType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_59, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.TupleTypeAttribute) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_60, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.OclModelElement) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_61, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.MapType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_62, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.LambdaType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_63, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.EnvType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_64, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.LocalVariable) {
+		if (element instanceof be.ac.vub.simpleocl.OclInstanceModel) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_5, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OperatorCallExp) {
+		if (element instanceof be.ac.vub.simpleocl.Attribute) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_7, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.Operation) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_8, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.Parameter) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_9, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OclModelElementExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_10, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.LambdaCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_11, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.VariableExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_12, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SuperExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_13, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SelfExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_14, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.EnvExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_15, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.StringExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_16, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.BooleanExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_17, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.RealExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_18, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IntegerExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_19, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.BagExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_20, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OrderedSetExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_21, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SequenceExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_22, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SetExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_23, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.TupleExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_24, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.TuplePart) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_25, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.MapExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_26, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.MapElement) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_27, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.EnumLiteralExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_28, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OclUndefinedExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_29, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.LetExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_30, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IfExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_31, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.BraceExp) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_32, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.PropertyCallExp) {
+		if (element instanceof be.ac.vub.simpleocl.EqOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_34, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.RelOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_35, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.AddOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_36, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IntOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_37, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.MulOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_38, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.NotOpCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_39, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.StaticPropertyCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_40, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.StaticOperationCall) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_41, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.StaticNavigationOrAttributeCall) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_42, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OperationCall) {
+		if (element instanceof be.ac.vub.simpleocl.NavigationOrAttributeCall) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_45, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IterateExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_46, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IteratorExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_47, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.Iterator) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_48, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.CollectionOperationCall) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_49, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.StringType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_51, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.BooleanType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_52, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.IntegerType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_53, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.RealType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_54, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.BagType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_55, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OrderedSetType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_56, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SequenceType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_57, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.SetType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_58, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OclAnyType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_59, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.TupleType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_60, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.TupleTypeAttribute) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_61, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OclModelElement) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_62, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.MapType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_63, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.LambdaType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_64, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.EnvType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_65, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.LocalVariable) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_6, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OperatorCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_33, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.PropertyCallExp) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_43, foundFormattingElements);
 			return;
 		}
+		if (element instanceof be.ac.vub.simpleocl.OperationCall) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_44, foundFormattingElements);
+			return;
+		}
 		if (element instanceof be.ac.vub.simpleocl.CollectionType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_49, foundFormattingElements);
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_50, foundFormattingElements);
 			return;
 		}
 		

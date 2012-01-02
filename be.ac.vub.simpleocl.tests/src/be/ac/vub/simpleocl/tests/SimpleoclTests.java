@@ -35,6 +35,7 @@ public class SimpleoclTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new SimpleoclTests("simpleocl Tests");
 		suite.addTestSuite(ModuleTest.class);
+		suite.addTestSuite(ImportTest.class);
 		suite.addTestSuite(VariableExpTest.class);
 		suite.addTestSuite(SuperExpTest.class);
 		suite.addTestSuite(SelfExpTest.class);

@@ -778,8 +778,13 @@ rule OclTypeExp { -- Only used as an expression, not as a type declaration
 	from s : OCL!"OclType" in IN (
 		not s.staticPropertyCall.oclIsUndefined())
 	to cb : EMFTVM!CodeBlock (
-		code <- Sequence{findtype}),
+		code <- Sequence{findtype},
+		lineNumbers <- Sequence{ln}),
 	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd,
 		instructions <- Sequence{findtype}),
 	   findtype : EMFTVM!Findtype (													-- [type]
 	   	modelname <- s.modelName, 

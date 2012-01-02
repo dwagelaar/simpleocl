@@ -17,17 +17,18 @@
         eType="#//Integer" changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
         derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//LocatedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
-        eType="#//OclModel" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//LocatedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
+        eType="#//OclMetamodel" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//OclFeatureDefinition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true" eOpposite="#//Import/module"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Import">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="module" lowerBound="1"
         eType="#//Module" eOpposite="#//Module/imports"/>
   </eClassifiers>
@@ -322,22 +323,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="context_" ordered="false"
         lowerBound="1" eType="#//OclType" containment="true" eOpposite="#//OclType/definitions"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OclFeature" abstract="true" eSuperTypes="#//LocatedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="OclFeature" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" ordered="false"
         eType="#//OclFeatureDefinition" eOpposite="#//OclFeatureDefinition/feature"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eq" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//OclFeature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initExpression" ordered="false"
         lowerBound="1" eType="#//OclExpression" containment="true" eOpposite="#//OclExpression/owningAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" ordered="false" lowerBound="1"
         eType="#//OclType" containment="true" eOpposite="#//OclType/attribute"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//OclFeature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true" eOpposite="#//Parameter/operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" ordered="false"
@@ -345,9 +342,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" ordered="false" lowerBound="1"
         eType="#//OclExpression" containment="true" eOpposite="#//OclExpression/owningOperation"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OclModel" abstract="true" eSuperTypes="#//LocatedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OclModel" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" ordered="false"
         upperBound="-1" eType="#//OclModelElement" eOpposite="#//OclModelElement/model"/>
   </eClassifiers>

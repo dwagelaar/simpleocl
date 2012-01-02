@@ -44,6 +44,7 @@ import be.ac.vub.simpleocl.MapExp;
 import be.ac.vub.simpleocl.MapType;
 import be.ac.vub.simpleocl.Module;
 import be.ac.vub.simpleocl.MulOpCallExp;
+import be.ac.vub.simpleocl.NamedElement;
 import be.ac.vub.simpleocl.NavigationOrAttributeCall;
 import be.ac.vub.simpleocl.NotOpCallExp;
 import be.ac.vub.simpleocl.NumericExp;
@@ -152,6 +153,10 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLocatedElement(LocatedElement object) {
 				return createLocatedElementAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter caseModule(Module object) {
@@ -500,6 +505,20 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLocatedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link be.ac.vub.simpleocl.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see be.ac.vub.simpleocl.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 

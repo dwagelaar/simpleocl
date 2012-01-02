@@ -8,12 +8,10 @@ package be.ac.vub.simpleocl.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -21,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import be.ac.vub.simpleocl.Import;
 import be.ac.vub.simpleocl.Module;
 import be.ac.vub.simpleocl.OclFeatureDefinition;
-import be.ac.vub.simpleocl.OclModel;
+import be.ac.vub.simpleocl.OclMetamodel;
 import be.ac.vub.simpleocl.SimpleoclPackage;
 
 /**
@@ -31,8 +29,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getName <em>Name</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getModels <em>Models</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getImports <em>Imports</em>}</li>
  * </ul>
@@ -40,36 +37,16 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  *
  * @generated
  */
-public class ModuleImpl extends LocatedElementImpl implements Module {
+public class ModuleImpl extends NamedElementImpl implements Module {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getMetamodels()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getModels() <em>Models</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getModels()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<OclModel> models;
+	protected EList<OclMetamodel> metamodels;
 
 	/**
 	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
@@ -115,32 +92,11 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.MODULE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<OclModel> getModels() {
-		if (models == null) {
-			models = new EObjectContainmentEList<OclModel>(OclModel.class, this, SimpleoclPackage.MODULE__MODELS);
+	public EList<OclMetamodel> getMetamodels() {
+		if (metamodels == null) {
+			metamodels = new EObjectContainmentEList<OclMetamodel>(OclMetamodel.class, this, SimpleoclPackage.MODULE__METAMODELS);
 		}
-		return models;
+		return metamodels;
 	}
 
 	/**
@@ -190,8 +146,8 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SimpleoclPackage.MODULE__MODELS:
-				return ((InternalEList<?>)getModels()).basicRemove(otherEnd, msgs);
+			case SimpleoclPackage.MODULE__METAMODELS:
+				return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
 			case SimpleoclPackage.MODULE__FEATURES:
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 			case SimpleoclPackage.MODULE__IMPORTS:
@@ -208,10 +164,8 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimpleoclPackage.MODULE__NAME:
-				return getName();
-			case SimpleoclPackage.MODULE__MODELS:
-				return getModels();
+			case SimpleoclPackage.MODULE__METAMODELS:
+				return getMetamodels();
 			case SimpleoclPackage.MODULE__FEATURES:
 				return getFeatures();
 			case SimpleoclPackage.MODULE__IMPORTS:
@@ -229,12 +183,9 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimpleoclPackage.MODULE__NAME:
-				setName((String)newValue);
-				return;
-			case SimpleoclPackage.MODULE__MODELS:
-				getModels().clear();
-				getModels().addAll((Collection<? extends OclModel>)newValue);
+			case SimpleoclPackage.MODULE__METAMODELS:
+				getMetamodels().clear();
+				getMetamodels().addAll((Collection<? extends OclMetamodel>)newValue);
 				return;
 			case SimpleoclPackage.MODULE__FEATURES:
 				getFeatures().clear();
@@ -256,11 +207,8 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.MODULE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case SimpleoclPackage.MODULE__MODELS:
-				getModels().clear();
+			case SimpleoclPackage.MODULE__METAMODELS:
+				getMetamodels().clear();
 				return;
 			case SimpleoclPackage.MODULE__FEATURES:
 				getFeatures().clear();
@@ -280,32 +228,14 @@ public class ModuleImpl extends LocatedElementImpl implements Module {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.MODULE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case SimpleoclPackage.MODULE__MODELS:
-				return models != null && !models.isEmpty();
+			case SimpleoclPackage.MODULE__METAMODELS:
+				return metamodels != null && !metamodels.isEmpty();
 			case SimpleoclPackage.MODULE__FEATURES:
 				return features != null && !features.isEmpty();
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return imports != null && !imports.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ModuleImpl

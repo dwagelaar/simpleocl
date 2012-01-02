@@ -46,6 +46,7 @@ import be.ac.vub.simpleocl.MapExp;
 import be.ac.vub.simpleocl.MapType;
 import be.ac.vub.simpleocl.Module;
 import be.ac.vub.simpleocl.MulOpCallExp;
+import be.ac.vub.simpleocl.NamedElement;
 import be.ac.vub.simpleocl.NavigationOrAttributeCall;
 import be.ac.vub.simpleocl.NotOpCallExp;
 import be.ac.vub.simpleocl.NumericExp;
@@ -109,6 +110,13 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	private EClass locatedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass namedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -802,6 +810,24 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNamedElement() {
+		return namedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModule() {
 		return moduleEClass;
 	}
@@ -811,17 +837,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModule_Name() {
-		return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getModule_Models() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(1);
+	public EReference getModule_Metamodels() {
+		return (EReference)moduleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -830,7 +847,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getModule_Features() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
+		return (EReference)moduleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -839,7 +856,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getModule_Imports() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(3);
+		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -856,17 +873,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getImport_Name() {
-		return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getImport_Module() {
-		return (EReference)importEClass.getEStructuralFeatures().get(1);
+		return (EReference)importEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2350,17 +2358,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAttribute_Name() {
-		return (EAttribute)attributeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getAttribute_InitExpression() {
-		return (EReference)attributeEClass.getEStructuralFeatures().get(1);
+		return (EReference)attributeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2369,7 +2368,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getAttribute_Type() {
-		return (EReference)attributeEClass.getEStructuralFeatures().get(2);
+		return (EReference)attributeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2386,17 +2385,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperation_Name() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOperation_Parameters() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(1);
+		return (EReference)operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2405,7 +2395,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getOperation_ReturnType() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(2);
+		return (EReference)operationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2414,7 +2404,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getOperation_Body() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(3);
+		return (EReference)operationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2431,17 +2421,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOclModel_Name() {
-		return (EAttribute)oclModelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOclModel_Elements() {
-		return (EReference)oclModelEClass.getEStructuralFeatures().get(1);
+		return (EReference)oclModelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2550,14 +2531,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		createEAttribute(locatedElementEClass, LOCATED_ELEMENT__CHAR_START);
 		createEAttribute(locatedElementEClass, LOCATED_ELEMENT__CHAR_END);
 
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
 		moduleEClass = createEClass(MODULE);
-		createEAttribute(moduleEClass, MODULE__NAME);
-		createEReference(moduleEClass, MODULE__MODELS);
+		createEReference(moduleEClass, MODULE__METAMODELS);
 		createEReference(moduleEClass, MODULE__FEATURES);
 		createEReference(moduleEClass, MODULE__IMPORTS);
 
 		importEClass = createEClass(IMPORT);
-		createEAttribute(importEClass, IMPORT__NAME);
 		createEReference(importEClass, IMPORT__MODULE);
 
 		oclExpressionEClass = createEClass(OCL_EXPRESSION);
@@ -2796,18 +2778,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		createEAttribute(oclFeatureEClass, OCL_FEATURE__EQ);
 
 		attributeEClass = createEClass(ATTRIBUTE);
-		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
 		createEReference(attributeEClass, ATTRIBUTE__INIT_EXPRESSION);
 		createEReference(attributeEClass, ATTRIBUTE__TYPE);
 
 		operationEClass = createEClass(OPERATION);
-		createEAttribute(operationEClass, OPERATION__NAME);
 		createEReference(operationEClass, OPERATION__PARAMETERS);
 		createEReference(operationEClass, OPERATION__RETURN_TYPE);
 		createEReference(operationEClass, OPERATION__BODY);
 
 		oclModelEClass = createEClass(OCL_MODEL);
-		createEAttribute(oclModelEClass, OCL_MODEL__NAME);
 		createEReference(oclModelEClass, OCL_MODEL__ELEMENTS);
 
 		oclMetamodelEClass = createEClass(OCL_METAMODEL);
@@ -2851,7 +2830,9 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		moduleEClass.getESuperTypes().add(this.getLocatedElement());
+		namedElementEClass.getESuperTypes().add(this.getLocatedElement());
+		moduleEClass.getESuperTypes().add(this.getNamedElement());
+		importEClass.getESuperTypes().add(this.getNamedElement());
 		oclExpressionEClass.getESuperTypes().add(this.getLocatedElement());
 		variableExpEClass.getESuperTypes().add(this.getOclExpression());
 		superExpEClass.getESuperTypes().add(this.getOclExpression());
@@ -2923,10 +2904,10 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		envTypeEClass.getESuperTypes().add(this.getOclType());
 		oclFeatureDefinitionEClass.getESuperTypes().add(this.getLocatedElement());
 		oclContextDefinitionEClass.getESuperTypes().add(this.getLocatedElement());
-		oclFeatureEClass.getESuperTypes().add(this.getLocatedElement());
+		oclFeatureEClass.getESuperTypes().add(this.getNamedElement());
 		attributeEClass.getESuperTypes().add(this.getOclFeature());
 		operationEClass.getESuperTypes().add(this.getOclFeature());
-		oclModelEClass.getESuperTypes().add(this.getLocatedElement());
+		oclModelEClass.getESuperTypes().add(this.getNamedElement());
 		oclMetamodelEClass.getESuperTypes().add(this.getOclModel());
 		oclInstanceModelEClass.getESuperTypes().add(this.getOclModel());
 
@@ -2937,14 +2918,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEAttribute(getLocatedElement_CharStart(), this.getInteger(), "charStart", "-1", 1, 1, LocatedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocatedElement_CharEnd(), this.getInteger(), "charEnd", "-1", 1, 1, LocatedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModule_Name(), this.getString(), "name", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_Models(), this.getOclModel(), null, "models", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_Metamodels(), this.getOclMetamodel(), null, "metamodels", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Features(), this.getOclFeatureDefinition(), null, "features", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Imports(), this.getImport(), this.getImport_Module(), "imports", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getImport_Name(), ecorePackage.getEString(), "name", null, 1, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getImport_Module(), this.getModule(), this.getModule_Imports(), "module", null, 1, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oclExpressionEClass, OclExpression.class, "OclExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3183,18 +3165,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEAttribute(getOclFeature_Eq(), this.getString(), "eq", null, 1, 1, OclFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAttribute_Name(), this.getString(), "name", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getAttribute_InitExpression(), this.getOclExpression(), this.getOclExpression_OwningAttribute(), "initExpression", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getAttribute_Type(), this.getOclType(), this.getOclType_Attribute(), "type", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperation_Name(), this.getString(), "name", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOperation_Parameters(), this.getParameter(), this.getParameter_Operation(), "parameters", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_ReturnType(), this.getOclType(), this.getOclType_Operation(), "returnType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOperation_Body(), this.getOclExpression(), this.getOclExpression_OwningOperation(), "body", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(oclModelEClass, OclModel.class, "OclModel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOclModel_Name(), this.getString(), "name", null, 1, 1, OclModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclModel_Elements(), this.getOclModelElement(), this.getOclModelElement_Model(), "elements", null, 0, -1, OclModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(oclMetamodelEClass, OclMetamodel.class, "OclMetamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -17,14 +17,15 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//LocatedElement/charStart"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//LocatedElement/charEnd"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="simpleocl.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//NamedElement/name"/>
+    </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//Module">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//Module/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/models"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/metamodels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/imports"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//Import/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//Import/module"/>
     </genClasses>
     <genClasses image="false" ecoreClass="simpleocl.ecore#//OclExpression">
@@ -234,18 +235,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//OclFeature/eq"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//Attribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//Attribute/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Attribute/initExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Attribute/type"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//Operation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//Operation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Operation/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Operation/returnType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Operation/body"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//OclModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//OclModel/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleocl.ecore#//OclModel/elements"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//OclMetamodel">

@@ -31,7 +31,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  *
  * @generated
  */
-public abstract class OclFeatureImpl extends LocatedElementImpl implements OclFeature {
+public abstract class OclFeatureImpl extends NamedElementImpl implements OclFeature {
 	/**
 	 * The default value of the '{@link #getEq() <em>Eq</em>}' attribute.
 	 * <!-- begin-user-doc -->

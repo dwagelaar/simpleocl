@@ -1,13 +1,13 @@
 module test;
 
-models UML;
+metamodels UML;
 
 static def : allClasses : Sequence(UML!Class) =
 	OclAny::allInstances()->union(
 	UML!Class.allInstances());
 
 def : allModuleNames : Set(String) =
-	self.modules.getKeys();
+	self.modules.getKeys()->map(k | k.toString());
 
 context UML!Class def : umlQualifiedName(sep : String) : String =
 	(let parent : OclAny = self.refImmediateComposite() in
@@ -19,7 +19,7 @@ context UML!Class def : umlQualifiedName(sep : String) : String =
 	+
 	let slottest : String = 'test' in slottest;
 
-context Sequence(OclAny) def : map(f : Lambda(OclAny):OclAny) : Sequence(OclAny) =
+context Collection(OclAny) def : map(f : Lambda(OclAny):OclAny) : Collection(OclAny) =
 	self->collect(e | f(e));
 
 context OclAny def : name : String =

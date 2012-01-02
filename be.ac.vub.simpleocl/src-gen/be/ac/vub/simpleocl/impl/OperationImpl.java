@@ -30,7 +30,6 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link be.ac.vub.simpleocl.impl.OperationImpl#getName <em>Name</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OperationImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OperationImpl#getBody <em>Body</em>}</li>
@@ -40,26 +39,6 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * @generated
  */
 public class OperationImpl extends OclFeatureImpl implements Operation {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -107,27 +86,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 	@Override
 	protected EClass eStaticClass() {
 		return SimpleoclPackage.Literals.OPERATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.OPERATION__NAME, oldName, name));
 	}
 
 	/**
@@ -277,8 +235,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimpleoclPackage.OPERATION__NAME:
-				return getName();
 			case SimpleoclPackage.OPERATION__PARAMETERS:
 				return getParameters();
 			case SimpleoclPackage.OPERATION__RETURN_TYPE:
@@ -298,9 +254,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimpleoclPackage.OPERATION__NAME:
-				setName((String)newValue);
-				return;
 			case SimpleoclPackage.OPERATION__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
@@ -323,9 +276,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.OPERATION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case SimpleoclPackage.OPERATION__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -347,8 +297,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.OPERATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SimpleoclPackage.OPERATION__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case SimpleoclPackage.OPERATION__RETURN_TYPE:
@@ -357,22 +305,6 @@ public class OperationImpl extends OclFeatureImpl implements Operation {
 				return body != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //OperationImpl

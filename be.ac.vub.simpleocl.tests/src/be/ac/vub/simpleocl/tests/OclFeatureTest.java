@@ -14,7 +14,7 @@ import be.ac.vub.simpleocl.OclFeature;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class OclFeatureTest extends LocatedElementTest {
+public abstract class OclFeatureTest extends NamedElementTest {
 
 	/**
 	 * Constructs a new Ocl Feature test case with the given name.

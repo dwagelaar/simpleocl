@@ -6,7 +6,6 @@
  */
 package be.ac.vub.simpleocl.tests;
 
-import junit.framework.TestCase;
 import junit.textui.TestRunner;
 import be.ac.vub.simpleocl.Import;
 import be.ac.vub.simpleocl.SimpleoclFactory;
@@ -17,15 +16,7 @@ import be.ac.vub.simpleocl.SimpleoclFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ImportTest extends TestCase {
-
-	/**
-	 * The fixture for this Import test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Import fixture = null;
+public class ImportTest extends NamedElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -47,23 +38,14 @@ public class ImportTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Import test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Import fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Import test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Import getFixture() {
-		return fixture;
+		return (Import)fixture;
 	}
 
 	/**

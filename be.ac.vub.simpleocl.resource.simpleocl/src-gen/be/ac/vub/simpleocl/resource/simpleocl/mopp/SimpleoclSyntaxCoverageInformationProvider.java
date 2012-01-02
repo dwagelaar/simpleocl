@@ -11,6 +11,7 @@ public class SimpleoclSyntaxCoverageInformationProvider {
 	public org.eclipse.emf.ecore.EClass[] getClassesWithSyntax() {
 		return new org.eclipse.emf.ecore.EClass[] {
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getModule(),
+			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getImport(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getOclFeatureDefinition(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getOclContextDefinition(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getOclMetamodel(),

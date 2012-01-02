@@ -16,7 +16,7 @@ import be.ac.vub.simpleocl.SimpleoclFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModuleTest extends LocatedElementTest {
+public class ModuleTest extends NamedElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->

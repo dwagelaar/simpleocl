@@ -43,6 +43,7 @@ import be.ac.vub.simpleocl.MapExp;
 import be.ac.vub.simpleocl.MapType;
 import be.ac.vub.simpleocl.Module;
 import be.ac.vub.simpleocl.MulOpCallExp;
+import be.ac.vub.simpleocl.NamedElement;
 import be.ac.vub.simpleocl.NavigationOrAttributeCall;
 import be.ac.vub.simpleocl.NotOpCallExp;
 import be.ac.vub.simpleocl.NumericExp;
@@ -155,9 +156,17 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case SimpleoclPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
+				if (result == null) result = caseLocatedElement(namedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case SimpleoclPackage.MODULE: {
 				Module module = (Module)theEObject;
 				T result = caseModule(module);
+				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseLocatedElement(module);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -165,6 +174,8 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 			case SimpleoclPackage.IMPORT: {
 				Import import_ = (Import)theEObject;
 				T result = caseImport(import_);
+				if (result == null) result = caseNamedElement(import_);
+				if (result == null) result = caseLocatedElement(import_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -770,6 +781,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 			case SimpleoclPackage.OCL_FEATURE: {
 				OclFeature oclFeature = (OclFeature)theEObject;
 				T result = caseOclFeature(oclFeature);
+				if (result == null) result = caseNamedElement(oclFeature);
 				if (result == null) result = caseLocatedElement(oclFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -778,6 +790,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				Attribute attribute = (Attribute)theEObject;
 				T result = caseAttribute(attribute);
 				if (result == null) result = caseOclFeature(attribute);
+				if (result == null) result = caseNamedElement(attribute);
 				if (result == null) result = caseLocatedElement(attribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -786,6 +799,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				Operation operation = (Operation)theEObject;
 				T result = caseOperation(operation);
 				if (result == null) result = caseOclFeature(operation);
+				if (result == null) result = caseNamedElement(operation);
 				if (result == null) result = caseLocatedElement(operation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -793,6 +807,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 			case SimpleoclPackage.OCL_MODEL: {
 				OclModel oclModel = (OclModel)theEObject;
 				T result = caseOclModel(oclModel);
+				if (result == null) result = caseNamedElement(oclModel);
 				if (result == null) result = caseLocatedElement(oclModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -801,6 +816,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				OclMetamodel oclMetamodel = (OclMetamodel)theEObject;
 				T result = caseOclMetamodel(oclMetamodel);
 				if (result == null) result = caseOclModel(oclMetamodel);
+				if (result == null) result = caseNamedElement(oclMetamodel);
 				if (result == null) result = caseLocatedElement(oclMetamodel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -809,6 +825,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				OclInstanceModel oclInstanceModel = (OclInstanceModel)theEObject;
 				T result = caseOclInstanceModel(oclInstanceModel);
 				if (result == null) result = caseOclModel(oclInstanceModel);
+				if (result == null) result = caseNamedElement(oclInstanceModel);
 				if (result == null) result = caseLocatedElement(oclInstanceModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -829,6 +846,21 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLocatedElement(LocatedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

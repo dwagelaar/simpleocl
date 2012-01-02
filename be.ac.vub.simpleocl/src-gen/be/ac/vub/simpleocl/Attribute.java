@@ -15,7 +15,6 @@ package be.ac.vub.simpleocl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link be.ac.vub.simpleocl.Attribute#getName <em>Name</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.Attribute#getInitExpression <em>Init Expression</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.Attribute#getType <em>Type</em>}</li>
  * </ul>
@@ -26,32 +25,6 @@ package be.ac.vub.simpleocl;
  * @generated
  */
 public interface Attribute extends OclFeature {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getAttribute_Name()
-	 * @model unique="false" dataType="be.ac.vub.simpleocl.String" required="true" ordered="false"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link be.ac.vub.simpleocl.Attribute#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Init Expression</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OclExpression#getOwningAttribute <em>Owning Attribute</em>}'.

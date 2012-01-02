@@ -1,0 +1,16 @@
+<project name="be.ac.vub.simpleocl.resource.simpleocl/transformations" default="all">
+
+	<eclipse.convertPath property="emftvm.path" resourcepath="org.eclipse.m2m.atl.emftvm.compiler/transformations/"/>
+
+	<target name="copy-emftvm-files">
+		<copy todir=".">
+			<fileset dir="${emftvm.path}">
+				<include name="EMFTVMCopy.emftvm"/>
+				<include name="InlineCodeblocks.emftvm"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="all" depends="copy-emftvm-files"/>
+
+</project>

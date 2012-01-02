@@ -1,0 +1,859 @@
+-- @atlcompiler emftvm
+-- @nsURI EMFTVM=http://www.eclipse.org/m2m/atl/2011/EMFTVM
+-- @path OCL=/be.ac.vub.simpleocl/metamodel/simpleocl.ecore
+-- @path Problem=/be.ac.vub.simpleocl/metamodel/problem.ecore
+-- Transforms SimpleOCL modules into EMFTVM modules
+-- $Id$
+module SimpleOCLtoEMFTVM;
+
+create OUT : EMFTVM, PBS : Problem from IN : OCL;
+
+-- ======================================================================
+-- helpers begin
+-- ======================================================================
+
+helper context String def : lazyOperation : String =
+	if self = '=' then 'equals'
+	else if self = 'indexOf' then 'indexOf2'
+	else if self = 'lastIndexOf' then 'lastIndexOf2'
+	else self endif endif endif;
+
+helper def : SetType : String		= 'Set';
+helper def : BagType : String		= 'Bag';
+helper def : SequenceType : String	= 'Sequence';
+helper def : OrderedSetType : String= 'OrderedSet';
+
+helper context OCL!"OclType" def : typeName : String =
+	'Object'; -- OclType is a direct OclType, which is either a Class or an EClass
+
+helper context OCL!SetType def : typeName : String =
+	thisModule.SetType;
+
+helper context OCL!BagType def : typeName : String =
+	thisModule.BagType;
+
+helper context OCL!SequenceType def : typeName : String =
+	thisModule.SequenceType;
+
+helper context OCL!OrderedSetType def : typeName : String =
+	thisModule.OrderedSetType;
+
+helper context OCL!IntegerType def : typeName : String =
+	'Integer';
+
+helper context OCL!StringType def : typeName : String =
+	'String';
+
+helper context OCL!MapType def : typeName : String =
+	'Map';
+
+helper context OCL!"TupleType" def : typeName : String =
+	'Tuple';
+
+helper context OCL!OclAnyType def : typeName : String =
+	'Object';
+
+helper context OCL!BooleanType def : typeName : String =
+	'Boolean';
+
+helper context OCL!RealType def : typeName : String =
+	'Real';
+
+helper context OCL!OclModelElement def : typeName : String =
+	self.name;
+
+helper context OCL!LambdaType def : typeName : String =
+	'CodeBlock';
+
+helper context OCL!EnvType def : typeName : String =
+	'ExecEnv';
+
+helper context OclAny def : typeName : String =
+	'ExecEnv'; -- null context type
+
+helper context OCL!"OclType" def : modelName : String =
+	'#native';
+
+helper context OCL!OclModelElement def : modelName : String =
+	self.model.name;
+
+helper context OCL!LambdaType def : modelName : String =
+	'EMFTVM';
+
+helper context OCL!EnvType def : modelName : String =
+	'EMFTVM';
+
+helper context OclAny def : modelName : String =
+	'EMFTVM'; -- null context type
+
+helper context OCL!OclFeatureDefinition def : isAttribute : Boolean =
+	self.feature.oclIsKindOf(OCL!Attribute);
+
+helper context OCL!OclFeatureDefinition def : isOperation : Boolean =
+	self.definition.feature.oclIsKindOf(OCL!Operation);
+
+helper context OCL!OclFeatureDefinition def : isStatic : String =
+	self.static;
+
+helper context OCL!OclFeature def : isStatic : String =
+	self.definition.isStatic;
+
+helper context OCL!OclFeatureDefinition def : contextType : OCL!"OclType" =
+	self.context_.contextType;
+
+helper context OCL!OclContextDefinition def : contextType : OCL!"OclType" =
+	self.context_;
+
+helper context OclAny def : contextType : OCL!"OclType" =
+	OclUndefined; -- null context
+
+helper context OCL!OclFeature def : contextType : OCL!"OclType" =
+	self.definition.contextType;
+
+helper context OCL!OclExpression def : hasSelf : Boolean =
+	let a : OCL!Attribute = self.owningAttribute in
+	if a.oclIsUndefined() then
+		let o : OCL!Operation = self.owningOperation in
+		if o.oclIsUndefined() then false else
+			not o.isStatic
+		endif
+	else
+		not a.isStatic
+	endif;
+
+helper context OCL!OclExpression def : selfType : OCL!"OclType" =
+	let a : OCL!Attribute = self.owningAttribute in
+	if a.oclIsUndefined() then
+		let o : OCL!Operation = self.owningOperation in
+		if o.oclIsUndefined() then '' else
+			o.contextType
+		endif
+	else
+		a.contextType
+	endif;
+
+helper context OclAny def : parentFeatureDef : OCL!OclFeatureDefinition =
+	let parent : OclAny = self.refImmediateComposite() in
+	if parent.oclIsKindOf(OCL!OclFeatureDefinition) then parent
+	else if not parent.oclIsUndefined() then parent.parentFeatureDef
+	else self.debug('Self variable not found in')
+	endif endif;
+
+helper context OCL!OclExpression def : parentIterators : Sequence(OCL!Iterator) =
+	if self.loopExp.oclIsUndefined() then Sequence{}
+	else self.loopExp.iterators endif;
+
+helper context OCL!OclExpression def : parentAccumulators : Sequence(OCL!VariableDeclaration) =
+	let loop : OCL!LoopExp = self.loopExp in
+	if loop.oclIsUndefined() then Sequence{}
+	else if loop.oclIsKindOf(OCL!IterateExp) then Sequence{loop.result}
+	else Sequence{} endif endif;
+
+helper context OCL!VariableDeclaration def : isMatchedRuleField : Boolean =
+	false;
+
+helper context OCL!VariableExp def : localVariable() : EMFTVM!LocalVariable =
+	thisModule.resolveTemp(self.referredVariable, 'lv');
+
+helper context OCL!PropertyCall def : source : OCL!LocatedElement =
+	let pce : OCL!PropertyCallExp = self.callExp in
+	let calls : Sequence(OCL!PropertyCall) = pce.calls in
+	if calls->first() = self then
+		pce.source
+	else
+		calls->at(calls->indexOf(self) - 1)
+	endif;
+
+helper context OCL!StaticPropertyCall def : source : OCL!LocatedElement =
+	self.staticCallExp.source;
+
+-- ======================================================================
+-- helpers end
+-- ======================================================================
+
+-- ======================================================================
+-- matched rules begin
+-- ======================================================================
+
+rule Module {
+	from s : OCL!Module in IN
+	to t : EMFTVM!Module (
+		name <- s.name,
+		sourceName <- s.name + '.simpleocl',
+		imports <- s.imports->collect(i | i.name),
+		features <- s.features)
+}
+
+rule ModuleWithoutMain extends Module {
+	from s : OCL!Module in IN (
+		not s.features->exists(f | f.isStatic and f.feature.oclIsKindOf(OCL!Operation) and f.feature.name = 'main'))
+	to t : EMFTVM!Module (
+		features <- s.features->including(main)),
+	   main : EMFTVM!Operation (
+	   	name <- 'main',
+		static <- true,
+		type <- 'Object',
+		typeModel <- '#native',
+		"context" <- 'ExecEnv',
+		contextModel <- 'EMFTVM',
+		body <- cb),
+	   cb : EMFTVM!CodeBlock
+}
+
+-------------- OclFeatureDefinitions -----------------
+
+abstract rule Field {
+	from s : OCL!OclFeatureDefinition in IN (s.isAttribute)
+	using {
+		a : OCL!Attribute = s.feature;
+	}
+	to t : EMFTVM!Field (
+		name <- a.name,
+		type <- a.type.typeName,
+		typeModel <- a.type.modelName,
+		"context" <- s.contextType.typeName,
+		contextModel <- s.contextType.modelName,
+		initialiser <- cb),
+	   cb : EMFTVM!CodeBlock (
+	   	lineNumbers <- Sequence{ln},
+	   	nested <- Sequence{a.initExpression},
+	   	code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd,
+		instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- a.initExpression, argcount <- 0)
+}
+
+rule StaticField extends Field {
+	from s : OCL!OclFeatureDefinition in IN (
+		s.isAttribute and s.isStatic)
+	to t : EMFTVM!Field (
+		static <- true)
+}
+
+rule InstanceField extends Field {
+	from s : OCL!OclFeatureDefinition in IN (
+		s.isAttribute and not s.isStatic)
+	to t : EMFTVM!Field (
+		static <- false),
+	   cb : EMFTVM!CodeBlock (
+	   	localVariables <- Sequence{lv}),
+	   lv : EMFTVM!LocalVariable (
+		name <- 'self',
+		type <- s.contextType.typeName,
+		typeModel <- s.contextType.modelName)
+}
+
+abstract rule Operation {
+	from s : OCL!OclFeatureDefinition in IN (s.feature.oclIsKindOf(OCL!Operation))
+	using {
+		o : OCL!Operation = s.feature;
+	}
+	to t : EMFTVM!Operation (
+		name <- o.name,
+		type <- o.returnType.typeName,
+		typeModel <- o.returnType.modelName,
+		"context" <- s.contextType.typeName,
+		contextModel <- s.contextType.modelName,
+		parameters <- o.parameters,
+		body <- cb),
+	   cb : EMFTVM!CodeBlock (
+	   	lineNumbers <- Sequence{ln},
+	   	nested <- Sequence{o.body},
+		code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd,
+		instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- o.body, argcount <- 0)
+}
+
+rule StaticOperation extends Operation {
+	from s : OCL!OclFeatureDefinition in IN (s.feature.oclIsKindOf(OCL!Operation) and s.isStatic)
+	using {
+		o1 : OCL!Operation = s.feature; -- Do not allow access to inherited 'o' variable!!!
+	}
+	to t : EMFTVM!Operation (
+		static <- true),
+	   cb : EMFTVM!CodeBlock (
+	   	localVariables <- o1.parameters->collect(p|thisModule.resolveTemp(p, 'lv')))
+}
+
+rule InstanceOperation extends Operation {
+	from s : OCL!OclFeatureDefinition in IN (s.feature.oclIsKindOf(OCL!Operation) and not s.isStatic)
+	using {
+		o1 : OCL!Operation = s.feature;
+	}
+	to t : EMFTVM!Operation (
+		static <- false),
+	   cb : EMFTVM!CodeBlock (
+	   	localVariables <- Sequence{lv}->union(o1.parameters->collect(p|thisModule.resolveTemp(p, 'lv')))),
+	   lv : EMFTVM!LocalVariable (
+		name <- 'self',
+		type <- s.contextType.typeName,
+		typeModel <- s.contextType.modelName)
+}
+
+rule Parameter {
+	from s : OCL!Parameter in IN
+	to t : EMFTVM!Parameter (
+		name <- s.varName,
+		type <- s.type.typeName,
+		typeModel <- s.type.modelName),
+	   lv : EMFTVM!LocalVariable (
+	   	name <- s.varName,
+		type <- s.type.typeName,
+		typeModel <- s.type.modelName)
+}
+
+-------------- VariableDeclarations -----------------
+
+rule Iterator {
+	from s : OCL!Iterator in IN
+	to lv : EMFTVM!LocalVariable (
+		name <- s.varName)
+}
+
+rule IteratorWithType extends Iterator {
+	from s : OCL!Iterator in IN (not s.type.oclIsUndefined())
+	to lv : EMFTVM!LocalVariable (
+		type <- s.type.typeName,
+		typeModel <- s.type.modelName) 
+}
+
+rule IterateResult {
+	from s : OCL!LocalVariable in IN (not s.baseExp.oclIsUndefined())
+	to lv : EMFTVM!LocalVariable (
+		name <- s.varName,
+		type <- s.type.typeName,
+		typeModel <- s.type.modelName) 
+}
+
+-------------- OclExpressions -----------------
+
+abstract rule OclExpression {
+	from s : OCL!OclExpression in IN
+	to cb : EMFTVM!CodeBlock (
+		localVariables <- s.parentIterators->union(s.parentAccumulators),
+		lineNumbers <- Sequence{ln}),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd)
+}
+
+rule PropertyCallExp extends OclExpression {
+	from s : OCL!PropertyCallExp in IN (s.oclIsTypeOf(OCL!PropertyCallExp))
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.calls->last()},
+		code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.calls->last(), argcount <- 0)	-- [result]
+}
+
+abstract rule PropertyCall {
+	from s : OCL!PropertyCall in IN
+	to cb : EMFTVM!CodeBlock (
+		lineNumbers <- Sequence{ln}),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd)
+}
+
+rule NavigationOrAttributeCall extends PropertyCall {
+	from s : OCL!NavigationOrAttributeCall in IN (
+		not s.source.oclIsKindOf(OCL!SuperExp))
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source},
+		code <- Sequence{invokeCb, get}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, get}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [result]
+	   get : EMFTVM!Get (fieldname <- s.name)								-- [value]
+}
+
+rule SuperNavigationOrAttributeCall extends PropertyCall {
+	from s : OCL!NavigationOrAttributeCall in IN (
+		s.callExp.source.oclIsKindOf(OCL!SuperExp))
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source},
+		code <- Sequence{invokeCb, get}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, get}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [result]
+	   get : EMFTVM!GetSuper (fieldname <- s.name)							-- [value]
+}
+
+rule OperationCall extends PropertyCall {
+	from s : OCL!OperationCall in IN (
+		s.operationName <> 'oclIsUndefined' and
+		not s.callExp.source.oclIsKindOf(OCL!SuperExp))
+	to cb : EMFTVM!CodeBlock (
+		nested <- s.arguments->reverse()->append(s.source),
+		code <- Sequence{invokeAllCbs, invoke}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeAllCbs, invoke}),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs,				-- [arg] * (argsize + 1)
+	   invoke : EMFTVM!Invoke (
+	   	opname <- s.operationName, 
+		argcount <- s.arguments->size())
+}
+
+rule SuperOperationCall extends PropertyCall {
+	from s : OCL!OperationCall in IN (
+		s.operationName <> 'oclIsUndefined' and
+		s.source.oclIsKindOf(OCL!SuperExp))
+	to cb : EMFTVM!CodeBlock (
+		nested <- s.arguments->reverse()->append(s.source),
+		code <- Sequence{invokeAllCbs, invokeSuper}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeAllCbs, invokeSuper}),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs,				-- [arg] * (argsize + 1)
+	   invokeSuper : EMFTVM!InvokeSuper (
+	   	opname <- s.operationName, 
+		argcount <- s.arguments->size())
+}
+
+rule OclIsUndefinedOperationCall extends PropertyCall {
+	from s : OCL!OperationCall in IN (
+		s.operationName = 'oclIsUndefined')
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source},
+		code <- Sequence{invokeCb, isnull}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, isnull}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source]
+	   isnull : EMFTVM!Isnull												-- [result]
+}
+
+rule CollectionOperationCallExp extends OperationCall {
+	from s : OCL!CollectionOperationCall in IN
+	to cb : EMFTVM!CodeBlock,
+	   invoke : EMFTVM!Invoke (
+	   	opname <- s.operationName.lazyOperation)
+}
+
+rule SuperCollectionOperationCallExp extends SuperOperationCall {
+	from s : OCL!CollectionOperationCall in IN
+	to cb : EMFTVM!CodeBlock,
+	   invokeSuper : EMFTVM!InvokeSuper (
+	   	opname <- s.operationName.lazyOperation)
+}
+
+abstract rule OperatorCallExp extends OclExpression {
+	from s : OCL!OperatorCallExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- (
+			if s.argument.oclIsUndefined() then
+				Sequence{}
+			else
+				Sequence{s.argument}
+			endif)
+			->including(s.source))
+}
+
+rule NotOperatorCall extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName = 'not')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeCb, _not}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, _not}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source]
+	   _not : EMFTVM!Not													-- [result]
+}
+
+rule AndOperatorCallExp extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName = 'and')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeCb, _and}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, _and}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source]
+	   _and : EMFTVM!And (codeBlock <- s.argument)							-- [result]
+}
+
+rule OrOperatorCallExp extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName = 'or')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeCb, _or}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, _or}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source]
+	   _or : EMFTVM!Or (codeBlock <- s.argument)							-- [result]
+}
+
+rule ImpliesOperatorCallExp extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName = 'implies')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeCb, _implies}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, _implies}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source]
+	   _implies : EMFTVM!Implies (codeBlock <- s.argument)					-- [result]
+}
+
+rule XorOperatorCallExp extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName = 'xor')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeCb, invokeCb2, _xor}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, invokeCb2, _xor}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.argument, argcount <- 0),	-- [arg1]
+	   invokeCb2 : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source, arg1]
+	   _xor : EMFTVM!Xor													-- [result]
+}
+
+rule OtherOperatorCallExp extends OperatorCallExp {
+	from s : OCL!OperatorCallExp in IN (
+		s.operationName <> 'not' and
+		s.operationName <> 'and' and
+		s.operationName <> 'or' and
+		s.operationName <> 'implies' and
+		s.operationName <> 'xor')
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{invokeAllCbs, invoke}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeAllCbs, invoke}),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs (argcount <- 0),					-- [arg, source]
+	   invoke : EMFTVM!Invoke (opname <- s.operationName, argcount <- 1)	-- [result]
+}
+
+rule StaticPropertyCallExp extends OclExpression {
+	from s : OCL!StaticPropertyCallExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.staticCall},
+		code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.staticCall, argcount <- 0)	-- [result]
+}
+
+abstract rule StaticPropertyCall {
+	from s : OCL!StaticPropertyCall in IN
+	to cb : EMFTVM!CodeBlock (
+		lineNumbers <- Sequence{ln}),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd)
+}
+
+rule StaticNavigationOrAttributeCallExp extends StaticPropertyCall {
+	from s : OCL!StaticNavigationOrAttributeCall in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source},
+		code <- Sequence{invokeCb, getStatic}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb, getStatic}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [result]
+	   getStatic : EMFTVM!GetStatic (fieldname <- s.name)					-- [value]
+}
+
+rule StaticOperationCall extends StaticPropertyCall {
+	from s : OCL!StaticOperationCall in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- s.arguments->reverse()->append(s.source),
+		code <- Sequence{invokeAllCbs, invokeStatic}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeAllCbs, invokeStatic}),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs,				-- [arg] * (argsize + 1)
+	   invokeStatic : EMFTVM!InvokeStatic (
+	   	opname <- s.operationName, 
+		argcount <- s.arguments->size())
+}
+
+rule LetExp extends OclExpression {
+	from s : OCL!LetExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.variable},
+		code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.variable, argcount <- 0)	-- [result]
+}
+
+rule LetVariable {
+	from s : OCL!LocalVariable in IN (not s.letExp.oclIsUndefined())
+	to cb : EMFTVM!CodeBlock (
+		localVariables <- Sequence{lv},
+		lineNumbers <- Sequence{ln},
+		nested <- Sequence{s.initExpression, s.letExp.in_},
+		code <- Sequence{invokeCb, store, invokeCb2}),
+	   lv : EMFTVM!LocalVariable (
+	   	name <- s.varName,
+		type <- s.type.typeName,
+		typeModel <- s.type.modelName),
+	   ln : EMFTVM!LineNumber (
+	   	startLine <- s.line,
+		startColumn <- s.column,
+		startChar <- s.charStart,
+		endChar <- s.charEnd,
+		instructions <- Sequence{invokeCb, store, invokeCb2}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.initExpression, argcount <- 0),	-- [value]
+	   store : EMFTVM!Store (localVariable <- lv),									-- []
+	   invokeCb2 : EMFTVM!InvokeCb (codeBlock <- s.letExp.in_)						-- [result]
+}
+
+rule VariableExp extends OclExpression {
+	from s : OCL!VariableExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{load}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{load}),
+	   load : EMFTVM!Load (localVariable <- s.localVariable())						-- [var]
+}
+
+rule SelfExp extends OclExpression {
+	from s : OCL!SelfExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{load}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{load}),
+	   load : EMFTVM!Load (
+	   	localVariable <- thisModule.resolveTemp(s.parentFeatureDef, 'lv'))			-- [self]
+}
+
+rule SuperExp extends OclExpression {
+	from s : OCL!SuperExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{load}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{load}),
+	   load : EMFTVM!Load (
+	   	localVariable <- thisModule.resolveTemp(s.parentFeatureDef, 'lv'))			-- [self]
+}
+
+rule EnvExp extends OclExpression {
+	from s : OCL!EnvExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{getenv}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{getenv}),
+	   getenv : EMFTVM!Getenv														-- [env]
+}
+
+rule IteratorExp extends PropertyCall {
+	from s : OCL!IteratorExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source, s.body},
+		code <- Sequence{getbody, invokesource, invoke}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{getbody, invokesource, invoke}),
+	   getbody : EMFTVM!Getcb (codeBlock <- s.body),							-- [cb]
+	   invokesource : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source, cb]
+	   invoke : EMFTVM!Invoke (opname <- s.name, argcount <- 1)					-- [coll]
+}
+
+rule IteratorExp2 extends IteratorExp {
+	from s : OCL!IteratorExp in IN (s.iterators->size() = 2)
+	to cb : EMFTVM!CodeBlock,
+	   invoke : EMFTVM!Invoke (opname <- s.name + '2', argcount <- 1)
+}
+
+rule IterateExp extends PropertyCall {
+	from s : OCL!IterateExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.source, s.result.initExpression, s.body},
+		code <- Sequence{getbody, invokeCb, invokesource, invoke}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{getbody, invokeCb, invokesource, invoke}),
+	   getbody : EMFTVM!Getcb (codeBlock <- s.body),							-- [cb]
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.result.initExpression),		-- [acc, cb]
+	   invokesource : EMFTVM!InvokeCb (codeBlock <- s.source, argcount <- 0),	-- [source, acc, cb]
+	   invoke : EMFTVM!Invoke (opname <- 'iterate', argcount <- 2)				-- [acc]
+}
+
+rule StringExp extends OclExpression {
+	from s : OCL!StringExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Push (value <- s.stringSymbol)			-- [string]
+}
+
+rule IntegerExp extends OclExpression {
+	from s : OCL!IntegerExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Push (value <- s.integerSymbol)		-- [integer]
+}
+
+rule RealExp extends OclExpression {
+	from s : OCL!RealExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Push (value <- s.realSymbol)			-- [real]
+}
+
+rule BooleanTrueExp extends OclExpression {
+	from s : OCL!BooleanExp in IN (s.booleanSymbol)
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Pusht									-- [true]
+}
+
+rule BooleanFalseExp extends OclExpression {
+	from s : OCL!BooleanExp in IN (not s.booleanSymbol)
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Pushf									-- [false]
+}
+
+abstract rule CollectionExp extends OclExpression {
+	from s : OCL!CollectionExp in IN
+	using {
+		invokes : Sequence(EMFTVM!Instruction) = 
+			s.elements->collect(e|thisModule.InvokeIncluding(e));
+	}
+	to cb : EMFTVM!CodeBlock (
+		nested <- s.elements->reverse(), -- elements go on the stack before being appended to the collection
+		code <- Sequence{invokeAllCbs, findtype, new}->union(invokes)),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{invokeAllCbs, findtype, new}->union(invokes)),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs,							-- [e * elementSize]
+	   findtype : EMFTVM!Findtype, -- override							-- [colltype, e * elementSize]
+	   new : EMFTVM!New													-- [coll, e * elementSize]
+}
+
+rule SequenceExp extends CollectionExp {
+	from s : OCL!SequenceExp in IN
+	to cb : EMFTVM!CodeBlock,
+	   findtype : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.SequenceType)
+}
+
+rule SetExp extends CollectionExp {
+	from s : OCL!SetExp in IN
+	to cb : EMFTVM!CodeBlock,
+	   findtype : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.SetType)
+}
+
+rule BagExp extends CollectionExp {
+	from s : OCL!BagExp in IN
+	to cb : EMFTVM!CodeBlock,
+	   findtype : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.BagType)
+}
+
+rule OrderedSetExp extends CollectionExp {
+	from s : OCL!OrderedSetExp in IN
+	to cb : EMFTVM!CodeBlock,
+	   findtype : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.OrderedSetType)
+}
+
+rule OclModelElementExp extends OclExpression {
+	from s : OCL!OclModelElementExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{findtype}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{findtype}),
+	   findtype : EMFTVM!Findtype (													-- [type]
+	   	modelname <- s.model.name, 
+		typename <- s.name)
+}
+
+rule OclTypeExp { -- Only used as an expression, not as a type declaration
+	from s : OCL!"OclType" in IN (
+		not s.staticPropertyCall.oclIsUndefined())
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{findtype}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{findtype}),
+	   findtype : EMFTVM!Findtype (													-- [type]
+	   	modelname <- s.modelName, 
+		typename <- s.typeName)
+}
+
+rule OclUndefinedExp extends OclExpression {
+	from s : OCL!OclUndefinedExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Push -- NULL				-- [null]
+}
+
+rule EnumLiteralExp extends OclExpression {
+	from s : OCL!EnumLiteralExp in IN
+	to cb : EMFTVM!CodeBlock (
+		code <- Sequence{push}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{push}),
+	   push : EMFTVM!Push (enumValue <- s.name)	-- [enumValue]
+}
+
+rule IfExp extends OclExpression {
+	from s : OCL!IfExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.condition, s.thenExpression, s.elseExpression},
+		code <- Sequence{invokeCb, ifte}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{invokeCb, ifte}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.condition, argcount <- 0),		-- [cond]
+	   ifte : EMFTVM!Ifte (thenCb <- s.thenExpression, elseCb <- s.elseExpression)	-- [result]
+}
+
+rule BraceExp extends OclExpression {
+	from s : OCL!BraceExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- Sequence{s.exp},
+		code <- Sequence{invokeCb}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{invokeCb}),
+	   invokeCb : EMFTVM!InvokeCb (codeBlock <- s.exp, argcount <- 0)				-- [exp]
+}
+
+rule LambdaCallExp extends VariableExp {
+	from s : OCL!LambdaCallExp in IN
+	to cb : EMFTVM!CodeBlock (
+		nested <- s.arguments->reverse(),
+		code <- Sequence{invokeAllCbs, load, invokeCb}),
+	   ln : EMFTVM!LineNumber (
+		instructions <- Sequence{invokeAllCbs, load, invokeCb}),
+	   invokeAllCbs : EMFTVM!InvokeAllCbs (argcount <- 0),							-- [args]
+	   load : EMFTVM!Load,															-- [cb, args]
+	   invokeCb : EMFTVM!InvokeCbS (argcount <- s.arguments->size())				-- [result]
+}
+
+-- ======================================================================
+-- matched rules end
+-- ======================================================================
+
+-- ======================================================================
+-- lazy rules begin
+-- ======================================================================
+
+-- TODO Late application of lazy rules prevents the use of OCL's tracing mechanism
+lazy rule InvokeIncluding {
+	from s : OCL!OclExpression
+	to invoke : EMFTVM!Invoke (opname <- 'including', argcount <- 1)
+	do {
+		invoke;
+	}
+}
+
+-- ======================================================================
+-- lazy rules end
+-- ======================================================================

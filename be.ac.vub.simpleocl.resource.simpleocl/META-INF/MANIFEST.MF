@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMFText Parser Plugin: simpleocl
+Bundle-SymbolicName: be.ac.vub.simpleocl.resource.simpleocl;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: Software Technology Group - TU Dresden Germany
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.emf,
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.edit,
+ org.eclipse.emf.validation,
+ org.eclipse.emf.workspace,
+ org.emftext.access;resolution:=optional,
+ org.eclipse.debug.core,
+ org.emftext.commons.antlr3_3_0,
+ be.ac.vub.simpleocl,
+ org.eclipse.m2m.atl.debug.core;visibility:=reexport,
+ org.eclipse.m2m.atl.emftvm;visibility:=reexport,
+ org.eclipse.m2m.atl.common;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: be.ac.vub.simpleocl.resource.simpleocl,
+  be.ac.vub.simpleocl.resource.simpleocl.analysis,
+  be.ac.vub.simpleocl.resource.simpleocl.mopp,
+  be.ac.vub.simpleocl.resource.simpleocl.debug,
+  be.ac.vub.simpleocl.resource.simpleocl.launch,
+  be.ac.vub.simpleocl.resource.simpleocl.grammar,
+  be.ac.vub.simpleocl.resource.simpleocl.util
+Bundle-Activator: be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin

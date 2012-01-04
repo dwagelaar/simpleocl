@@ -847,7 +847,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getModule_Features() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(1);
+		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -856,7 +856,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	public EReference getModule_Imports() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
+		return (EReference)moduleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2536,8 +2536,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 
 		moduleEClass = createEClass(MODULE);
 		createEReference(moduleEClass, MODULE__METAMODELS);
-		createEReference(moduleEClass, MODULE__FEATURES);
 		createEReference(moduleEClass, MODULE__IMPORTS);
+		createEReference(moduleEClass, MODULE__FEATURES);
 
 		importEClass = createEClass(IMPORT);
 		createEReference(importEClass, IMPORT__MODULE);
@@ -2923,8 +2923,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 
 		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModule_Metamodels(), this.getOclMetamodel(), null, "metamodels", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_Features(), this.getOclFeatureDefinition(), null, "features", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Imports(), this.getImport(), this.getImport_Module(), "imports", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModule_Features(), this.getOclFeatureDefinition(), null, "features", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getImport_Module(), this.getModule(), this.getModule_Imports(), "module", null, 1, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

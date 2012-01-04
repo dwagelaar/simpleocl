@@ -30,8 +30,8 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getMetamodels <em>Metamodels</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,16 +49,6 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 	protected EList<OclMetamodel> metamodels;
 
 	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<OclFeatureDefinition> features;
-
-	/**
 	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,6 +57,16 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 	 * @ordered
 	 */
 	protected EList<Import> imports;
+
+	/**
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OclFeatureDefinition> features;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,10 +148,10 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 		switch (featureID) {
 			case SimpleoclPackage.MODULE__METAMODELS:
 				return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
-			case SimpleoclPackage.MODULE__FEATURES:
-				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+			case SimpleoclPackage.MODULE__FEATURES:
+				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -166,10 +166,10 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 		switch (featureID) {
 			case SimpleoclPackage.MODULE__METAMODELS:
 				return getMetamodels();
-			case SimpleoclPackage.MODULE__FEATURES:
-				return getFeatures();
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return getImports();
+			case SimpleoclPackage.MODULE__FEATURES:
+				return getFeatures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,13 +187,13 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 				getMetamodels().clear();
 				getMetamodels().addAll((Collection<? extends OclMetamodel>)newValue);
 				return;
-			case SimpleoclPackage.MODULE__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends OclFeatureDefinition>)newValue);
-				return;
 			case SimpleoclPackage.MODULE__IMPORTS:
 				getImports().clear();
 				getImports().addAll((Collection<? extends Import>)newValue);
+				return;
+			case SimpleoclPackage.MODULE__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends OclFeatureDefinition>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -210,11 +210,11 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 			case SimpleoclPackage.MODULE__METAMODELS:
 				getMetamodels().clear();
 				return;
-			case SimpleoclPackage.MODULE__FEATURES:
-				getFeatures().clear();
-				return;
 			case SimpleoclPackage.MODULE__IMPORTS:
 				getImports().clear();
+				return;
+			case SimpleoclPackage.MODULE__FEATURES:
+				getFeatures().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -230,10 +230,10 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 		switch (featureID) {
 			case SimpleoclPackage.MODULE__METAMODELS:
 				return metamodels != null && !metamodels.isEmpty();
-			case SimpleoclPackage.MODULE__FEATURES:
-				return features != null && !features.isEmpty();
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return imports != null && !imports.isEmpty();
+			case SimpleoclPackage.MODULE__FEATURES:
+				return features != null && !features.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

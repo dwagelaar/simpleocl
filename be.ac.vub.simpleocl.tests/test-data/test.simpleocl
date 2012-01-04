@@ -2,6 +2,8 @@ module test;
 
 metamodels UML;
 
+import OCL;
+
 static def : allClasses : Sequence(UML!Class) =
 	OclAny::allInstances()->union(
 	UML!Class.allInstances());

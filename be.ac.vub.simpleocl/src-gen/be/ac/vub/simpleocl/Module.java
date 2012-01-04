@@ -17,8 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.Module#getMetamodels <em>Metamodels</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.Module#getFeatures <em>Features</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.Module#getImports <em>Imports</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.Module#getFeatures <em>Features</em>}</li>
  * </ul>
  * </p>
  *

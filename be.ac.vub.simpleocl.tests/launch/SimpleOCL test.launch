@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2m.atl.emftvm.launcher.EMFTVMTransformation">
+<booleanAttribute key="Display Timing Data" value="true"/>
+<mapAttribute key="Inout Model Options"/>
+<mapAttribute key="Inout Models"/>
+<mapAttribute key="Inout Models Output Locations"/>
+<mapAttribute key="Input Model Options"/>
+<mapAttribute key="Input Models"/>
+<mapAttribute key="Metamodel Options"/>
+<mapAttribute key="Metamodels">
+<mapEntry key="UML" value="http://www.eclipse.org/uml2/3.0.0/UML"/>
+</mapAttribute>
+<stringAttribute key="Module Name" value="test"/>
+<stringAttribute key="Module Path" value="/be.ac.vub.simpleocl.tests/test-data/"/>
+<mapAttribute key="Output Model Options"/>
+<mapAttribute key="Output Models"/>
+</launchConfiguration>

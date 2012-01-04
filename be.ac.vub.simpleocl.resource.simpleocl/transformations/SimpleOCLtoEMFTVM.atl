@@ -299,6 +299,19 @@ rule InstanceOperation extends Operation {
 		typeModel <- s.contextType.modelName)
 }
 
+rule InstanceOperationWithLambda extends InstanceOperation {
+	from s : OCL!OclFeatureDefinition in IN (
+		s.feature.parameters->size() = 1 and
+		s.feature.parameters->exists(p |
+			let type : OclType = p.type in
+			type.oclIsKindOf(OCL!LambdaType) and type.argumentTypes->size() > 1))
+	using {
+		o2 : OCL!Operation = s.feature;
+	}
+	to t : EMFTVM!Operation (
+		name <- o2.name + s.feature.parameters.first().type.argumentTypes->size().toString())
+}
+
 rule Parameter {
 	from s : OCL!Parameter in IN
 	to t : EMFTVM!Parameter (
@@ -659,10 +672,12 @@ rule IteratorExp extends PropertyCall {
 	   invoke : EMFTVM!Invoke (opname <- s.name, argcount <- 1)					-- [coll]
 }
 
-rule IteratorExp2 extends IteratorExp {
-	from s : OCL!IteratorExp in IN (s.iterators->size() = 2)
+rule IteratorExpMultiple extends IteratorExp {
+	from s : OCL!IteratorExp in IN (s.iterators->size() > 1)
 	to cb : EMFTVM!CodeBlock,
-	   invoke : EMFTVM!Invoke (opname <- s.name + '2', argcount <- 1)
+	   invoke : EMFTVM!Invoke (
+	   	opname <- s.name + s.iterators->size().toString(),
+		argcount <- 1)
 }
 
 rule IterateExp extends PropertyCall {

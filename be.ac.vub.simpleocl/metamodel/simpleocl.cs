@@ -82,12 +82,12 @@ TOKENSTYLES {
 }
 
 RULES {
-	Module ::= "module" (name[]|name['"','"','\\']) ";" (!0 "metamodels" metamodels ("," metamodels)* ";")? (!0 imports*)? (!0 features*)?;
+	Module ::= "module" (name[]|name['"','"','\\']) ";" (!0 metamodels*)? (!0 imports*)? (!0 features*)?;
 	Import ::= "import" (name[]|name['"','"','\\']) ";";
 	@Foldable
 	OclFeatureDefinition ::= context_? static["static" : ""] "def" ":" feature;
 	OclContextDefinition ::= "context" context_;
-	OclMetamodel ::= (name[]|name['"','"','\\']);
+	OclMetamodel ::= "metamodel" (name[]|name['"','"','\\']) (":" uri['\'','\'','\\'])? ";";
 	OclInstanceModel ::= (name[]|name['"','"','\\']) ":" metamodel[];
 	LocalVariable ::= varName[] (":" type)? eq[EQ] initExpression;
 	Attribute ::= (name[]|name['"','"','\\']) ":" type eq[EQ] !1 initExpression ";";

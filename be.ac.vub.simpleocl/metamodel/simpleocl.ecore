@@ -349,6 +349,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="OclMetamodel" eSuperTypes="#//OclModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" ordered="false"
         upperBound="-1" eType="#//OclInstanceModel" eOpposite="#//OclInstanceModel/metamodel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OclInstanceModel" eSuperTypes="#//OclModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" ordered="false"

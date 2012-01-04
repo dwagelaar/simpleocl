@@ -2448,6 +2448,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOclMetamodel_Uri() {
+		return (EAttribute)oclMetamodelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOclInstanceModel() {
 		return oclInstanceModelEClass;
 	}
@@ -2791,6 +2800,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 
 		oclMetamodelEClass = createEClass(OCL_METAMODEL);
 		createEReference(oclMetamodelEClass, OCL_METAMODEL__MODEL);
+		createEAttribute(oclMetamodelEClass, OCL_METAMODEL__URI);
 
 		oclInstanceModelEClass = createEClass(OCL_INSTANCE_MODEL);
 		createEReference(oclInstanceModelEClass, OCL_INSTANCE_MODEL__METAMODEL);
@@ -3178,6 +3188,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 
 		initEClass(oclMetamodelEClass, OclMetamodel.class, "OclMetamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOclMetamodel_Model(), this.getOclInstanceModel(), this.getOclInstanceModel_Metamodel(), "model", null, 0, -1, OclMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getOclMetamodel_Uri(), this.getString(), "uri", null, 0, 1, OclMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oclInstanceModelEClass, OclInstanceModel.class, "OclInstanceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOclInstanceModel_Metamodel(), this.getOclMetamodel(), this.getOclMetamodel_Model(), "metamodel", null, 1, 1, OclInstanceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);

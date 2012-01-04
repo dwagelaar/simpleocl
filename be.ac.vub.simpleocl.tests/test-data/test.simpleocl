@@ -1,6 +1,6 @@
 module test;
 
-metamodels UML;
+metamodel UML : 'http://www.eclipse.org/uml2/3.0.0/UML';
 
 import OCL;
 
@@ -24,15 +24,32 @@ context UML!Class def : umlQualifiedName(sep : String) : String =
 context Collection(OclAny) def : map(f : Lambda(OclAny):OclAny) : Collection(OclAny) =
 	self->collect(e | f(e));
 
-context OclAny def : name : String =
+
+context Collection(OclAny) def : join(f : Lambda(OclAny, OclAny) : OclAny) : OclAny =
+	self->iterate(e; acc : OclAny = OclUndefined |
+		if acc.oclIsUndefined() then
+			e
+		else 
+			f(acc, e)
+		endif
+	);
+
+context OclAny def : name() : String =
 	'<unnamed>';
 
-context String def : name : String =
+context String def : name() : String =
 	if self.isEmpty() then
-		super.name
+		super.name()
 	else
 		self
 	endif;
 	
+context OclAny def : name : String =
+	self.name();
+
+context String def : name : String =
+	super.name;
+	
 context Env static def : main() : Set(String) =
-	env.allModuleNames.debug('module names');
+	(36 + 3.5).toString().debug('arithmetic test') +
+	env.allModuleNames->join(x, y | x + ', ' + y).debug('module names');

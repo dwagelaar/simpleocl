@@ -8,10 +8,12 @@ package be.ac.vub.simpleocl.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -27,6 +29,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclMetamodelImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.OclMetamodelImpl#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +45,25 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 	 * @ordered
 	 */
 	protected EList<OclInstanceModel> model;
+
+	/**
+	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String URI_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected String uri = URI_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,6 +94,27 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 			model = new EObjectWithInverseResolvingEList<OclInstanceModel>(OclInstanceModel.class, this, SimpleoclPackage.OCL_METAMODEL__MODEL, SimpleoclPackage.OCL_INSTANCE_MODEL__METAMODEL);
 		}
 		return model;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getUri() {
+		return uri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUri(String newUri) {
+		String oldUri = uri;
+		uri = newUri;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.OCL_METAMODEL__URI, oldUri, uri));
 	}
 
 	/**
@@ -113,6 +156,8 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 		switch (featureID) {
 			case SimpleoclPackage.OCL_METAMODEL__MODEL:
 				return getModel();
+			case SimpleoclPackage.OCL_METAMODEL__URI:
+				return getUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -130,6 +175,9 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 				getModel().clear();
 				getModel().addAll((Collection<? extends OclInstanceModel>)newValue);
 				return;
+			case SimpleoclPackage.OCL_METAMODEL__URI:
+				setUri((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -145,6 +193,9 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 			case SimpleoclPackage.OCL_METAMODEL__MODEL:
 				getModel().clear();
 				return;
+			case SimpleoclPackage.OCL_METAMODEL__URI:
+				setUri(URI_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -159,8 +210,26 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 		switch (featureID) {
 			case SimpleoclPackage.OCL_METAMODEL__MODEL:
 				return model != null && !model.isEmpty();
+			case SimpleoclPackage.OCL_METAMODEL__URI:
+				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (uri: ");
+		result.append(uri);
+		result.append(')');
+		return result.toString();
 	}
 
 } //OclMetamodelImpl

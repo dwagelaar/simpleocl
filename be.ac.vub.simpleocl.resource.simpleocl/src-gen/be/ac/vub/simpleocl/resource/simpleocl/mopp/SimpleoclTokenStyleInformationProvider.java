@@ -84,9 +84,6 @@ public class SimpleoclTokenStyleInformationProvider {
 		if ("module".equals(tokenName)) {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
-		if ("metamodels".equals(tokenName)) {
-			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
-		}
 		if ("import".equals(tokenName)) {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
@@ -94,6 +91,9 @@ public class SimpleoclTokenStyleInformationProvider {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
 		if ("context".equals(tokenName)) {
+			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
+		}
+		if ("metamodel".equals(tokenName)) {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
 		if ("super".equals(tokenName)) {

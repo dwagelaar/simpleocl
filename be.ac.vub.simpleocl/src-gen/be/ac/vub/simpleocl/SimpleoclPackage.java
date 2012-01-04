@@ -11625,13 +11625,22 @@ public interface SimpleoclPackage extends EPackage {
 	int OCL_METAMODEL__MODEL = OCL_MODEL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_METAMODEL__URI = OCL_MODEL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Ocl Metamodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_METAMODEL_FEATURE_COUNT = OCL_MODEL_FEATURE_COUNT + 1;
+	int OCL_METAMODEL_FEATURE_COUNT = OCL_MODEL_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.OclInstanceModelImpl <em>Ocl Instance Model</em>}' class.
@@ -13731,6 +13740,17 @@ public interface SimpleoclPackage extends EPackage {
 	EReference getOclMetamodel_Model();
 
 	/**
+	 * Returns the meta object for the attribute '{@link be.ac.vub.simpleocl.OclMetamodel#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see be.ac.vub.simpleocl.OclMetamodel#getUri()
+	 * @see #getOclMetamodel()
+	 * @generated
+	 */
+	EAttribute getOclMetamodel_Uri();
+
+	/**
 	 * Returns the meta object for class '{@link be.ac.vub.simpleocl.OclInstanceModel <em>Ocl Instance Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15469,6 +15489,14 @@ public interface SimpleoclPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OCL_METAMODEL__MODEL = eINSTANCE.getOclMetamodel_Model();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OCL_METAMODEL__URI = eINSTANCE.getOclMetamodel_Uri();
 
 		/**
 		 * The meta object literal for the '{@link be.ac.vub.simpleocl.impl.OclInstanceModelImpl <em>Ocl Instance Model</em>}' class.

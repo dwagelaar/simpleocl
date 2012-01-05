@@ -4,7 +4,10 @@
 -- SimpleOCL Well-formedness rules.
 -- $Id$
 module SimpleOCLWFR;
+
 create PBS : Problem from IN : OCL;
+
+uses SimpleOCLLib;
 
 -------------------------------------------------------------------------------
 -- HELPERS --------------------------------------------------------------------
@@ -157,28 +160,6 @@ helper context OCL!VariableDeclaration def: getRootComposite() : OclAny =
 helper context OclAny def: getRootComposite() : OclAny =
 	self;
 
--- These helpers check for value equality of OclTypes.
--- The base case evaluates to "false", and covers the case of
--- comparing to OclUndefined.
-helper context OCL!"OclType" def: equals(o : OclAny) : Boolean =
-	false;
-
-helper context OCL!"OclType" def: equals(o : OCL!"OclType") : Boolean =
-	self.name = o.name and self.oclType() = o.oclType();
-
-helper context OCL!OclModelElement def: equals(o : OCL!OclModelElement) : Boolean =
-	super.equals(o) and
-	self.model.equals(o.model);
-
--- These helpers check for value equality of OclModels.
--- The base case evaluates to "false", and covers the case of
--- comparing to OclUndefined.
-helper context OCL!OclModel def: equals(o : OclAny) : Boolean =
-	false;
-
-helper context OCL!OclModel def: equals(o : OCL!OclModel) : Boolean =
-	self.name = o.name;
-
 -------------------------------------------------------------------------------
 -- RULES ----------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -221,12 +202,12 @@ nodefault rule FeatureSignatureIsUnique {
 					(let ec : OCL!OclContextDefinition = e.context_ in
 					 if not sc.oclIsUndefined() then
 					 	not ec.oclIsUndefined() and
-						sc.context_.equals(ec.context_) and 					
+						sc.context_.sameAs(ec.context_) and 					
 						if sf.oclIsTypeOf(OCL!Operation) and ef.oclIsTypeOf(OCL!Operation) then
 							-- parameter types check
 							sf.parameters.size() = ef.parameters.size() and
 							sf.parameters->forAll(p | 
-								p.type.equals(ef.parameters->at(sf.parameters->indexOf(p)).type))
+								p.type.sameAs(ef.parameters->at(sf.parameters->indexOf(p)).type))
 						else
 							true
 						endif

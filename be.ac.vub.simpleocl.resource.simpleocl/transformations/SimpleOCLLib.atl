@@ -1,0 +1,175 @@
+-- @atlcompiler emftvm
+-- @path OCL=/be.ac.vub.simpleocl/metamodel/simpleocl.ecore
+-- SimpleOCL helper library.
+-- $Id$
+library SimpleOCLLib;
+
+-- These helpers check for value equality (as opposed to object identity equality).
+-- The base case checks meta-type equality, and covers
+-- comparison of different element types, including OclUndefined.
+helper context OclAny def : sameAs(other : OclAny) : Boolean =
+	self.oclType() = other.oclType();
+
+helper context OCL!"OclType" def : sameAs(other : OCL!"OclType") : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!CollectionType def : sameAs(other : OCL!CollectionType) : Boolean =
+	super.sameAs(other) and
+	self.elementType.sameAs(other.elementType);
+
+helper context OCL!OclModelElement def : sameAs(other : OCL!OclModelElement) : Boolean =
+	super.sameAs(other) and
+	self.model.sameAs(other.model);
+
+helper context OCL!OclModel def : sameAs(other : OCL!OclModel) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!OclInstanceModel def : sameAs(other : OCL!OclInstanceModel) : Boolean =
+	super.sameAs(other) and
+	self.metamodel.sameAs(other.metamodel);
+
+helper context OCL!OclModelElementExp def : sameAs(other : OCL!OclModelElementExp) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name and
+	self.model.sameAs(other.model);
+
+helper context OCL!VariableExp def : sameAs(other : OCL!VariableExp) : Boolean =
+	super.sameAs(other) and
+	self.referredVariable = other.referredVariable;
+
+helper context OCL!StringExp def : sameAs(other : OCL!StringExp) : Boolean =
+	super.sameAs(other) and
+	self.stringSymbol = other.stringSymbol;
+
+helper context OCL!BooleanExp def : sameAs(other : OCL!BooleanExp) : Boolean =
+	super.sameAs(other) and
+	self.booleanSymbol = other.booleanSymbol;
+
+helper context OCL!RealExp def : sameAs(other : OCL!RealExp) : Boolean =
+	super.sameAs(other) and
+	self.realSymbol = other.realSymbol;
+
+helper context OCL!IntegerExp def : sameAs(other : OCL!IntegerExp) : Boolean =
+	super.sameAs(other) and
+	self.integerSymbol = other.integerSymbol;
+
+helper context OCL!CollectionExp def : sameAs(other : OCL!CollectionExp) : Boolean =
+	super.sameAs(other) and
+	self.elements->size() = other.elements->size() and
+	self.elements->forAll(e | other.elements->exists(o | e.sameAs(o)));
+
+helper context OCL!OrderedSetExp def : sameAs(other : OCL!OrderedSetExp) : Boolean =
+	super.sameAs(other) and
+	self.elements->size() = other.elements->size() and
+	self.elements->forAll(e | e.sameAs(other.elements->at(self.elements->indexOf(e))));
+
+helper context OCL!SequenceExp def : sameAs(other : OCL!SequenceExp) : Boolean =
+	super.sameAs(other) and
+	self.elements->size() = other.elements->size() and
+	self.elements->forAll(e | e.sameAs(other.elements->at(self.elements->indexOf(e))));
+
+helper context OCL!TupleExp def : sameAs(other : OCL!TupleExp) : Boolean =
+	super.sameAs(other) and
+	self.tuplePart->size() = other.tuplePart->size() and
+	self.tuplePart->forAll(e | other.tuplePart->exists(o | e.sameAs(o)));
+
+helper context OCL!VariableDeclaration def : sameAs(other : OCL!VariableDeclaration) : Boolean =
+	self.oclType() = other.oclType() and
+	self.varName = other.varName and
+	self.type.sameAs(other.type);
+
+helper context OCL!LocalVariable def : sameAs(other : OCL!LocalVariable) : Boolean =
+	super.sameAs(other) and
+	self.initExpression.sameAs(other.initExpression);
+
+helper context OCL!MapExp def : sameAs(other : OCL!MapExp) : Boolean =
+	super.sameAs(other) and
+	self.elements->size() = other.elements->size() and
+	self.elements->forAll(e | other.elements->exists(o | e.sameAs(o)));
+
+helper context OCL!MapElement def : sameAs(other : OCL!MapElement) : Boolean =
+	self.oclType() = other.oclType() and
+	self.key.sameAs(other.key) and
+	self.value.sameAs(other.value);
+
+helper context OCL!EnumLiteralExp def : sameAs(other : OCL!EnumLiteralExp) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!StaticPropertyCallExp def : sameAs(other : OCL!StaticPropertyCallExp) : Boolean =
+	super.sameAs(other) and
+	self.source.sameAs(other.source) and
+	self.staticCall.sameAs(other.staticCall);
+
+helper context OCL!StaticPropertyCall def : sameAs(other : OCL!StaticPropertyCall) : Boolean =
+	self.oclType() = other.oclType();
+
+helper context OCL!StaticNavigationOrAttributeCall def : sameAs(other : OCL!StaticNavigationOrAttributeCall) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!StaticOperationCall def : sameAs(other : OCL!StaticOperationCall) : Boolean =
+	super.sameAs(other) and
+	self.operationName = other.operationName and
+	self.arguments->size() = other.arguments->size() and
+	self.arguments->forAll(e | e.sameAs(other.arguments->at(self.arguments->indexOf(e))));
+
+helper context OCL!PropertyCallExp def : sameAs(other : OCL!PropertyCallExp) : Boolean =
+	super.sameAs(other) and
+	self.source.sameAs(other.source) and
+	self.calls->size() = other.calls->size() and
+	self.calls->forAll(e | e.sameAs(other.calls->at(self.calls->indexOf(e))));
+
+helper context OCL!PropertyCall def : sameAs(other : OCL!PropertyCall) : Boolean =
+	self.oclType() = other.oclType();
+
+helper context OCL!NavigationOrAttributeCall def : sameAs(other : OCL!NavigationOrAttributeCall) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!OperationCall def : sameAs(other : OCL!OperationCall) : Boolean =
+	super.sameAs(other) and
+	self.operationName = other.operationName and
+	self.arguments->size() = other.arguments->size() and
+	self.arguments->forAll(e | e.sameAs(other.arguments->at(self.arguments->indexOf(e))));
+
+helper context OCL!OperatorCallExp def : sameAs(other : OCL!OperatorCallExp) : Boolean =
+	super.sameAs(other) and
+	self.operationName = other.operationName and
+	self.argument.sameAs(other.argument);
+
+helper context OCL!LambdaCallExp def : sameAs(other : OCL!LambdaCallExp) : Boolean =
+	super.sameAs(other) and
+	self.arguments->size() = other.arguments->size() and
+	self.arguments->forAll(e | e.sameAs(other.arguments->at(self.arguments->indexOf(e))));
+
+helper context OCL!BraceExp def : sameAs(other : OCL!BraceExp) : Boolean =
+	super.sameAs(other) and
+	self.exp.sameAs(other.exp);
+
+helper context OCL!LoopExp def : sameAs(other : OCL!LoopExp) : Boolean =
+	super.sameAs(other) and
+	self.iterators->size() = other.iterators->size() and
+	self.iterators->forAll(e | e.sameAs(other.iterators->at(self.iterators->indexOf(e)))) and
+	self.body.sameAs(other.body);
+
+helper context OCL!IterateExp def : sameAs(other : OCL!IterateExp) : Boolean =
+	super.sameAs(other) and
+	self.result.sameAs(other.result);
+
+helper context OCL!IteratorExp def : sameAs(other : OCL!IteratorExp) : Boolean =
+	super.sameAs(other) and
+	self.name = other.name;
+
+helper context OCL!LetExp def : sameAs(other : OCL!LetExp) : Boolean =
+	super.sameAs(other) and
+	self.variable.sameAs(other.variable) and
+	self.in_.sameAs(other.in_);
+
+helper context OCL!IfExp def : sameAs(other : OCL!IfExp) : Boolean =
+	super.sameAs(other) and
+	self.condition.sameAs(other.condition) and
+	self.thenExpression.sameAs(other.thenExpression) and
+	self.elseExpression.sameAs(other.elseExpression);

@@ -312,6 +312,22 @@ rule InstanceOperationWithLambda extends InstanceOperation {
 		name <- o2.name + s.feature.parameters.first().type.argumentTypes->size().toString())
 }
 
+rule InstanceOperationWithInvalidLambda extends InstanceOperation {
+	from s : OCL!OclFeatureDefinition in IN (
+		s.feature.parameters->size() > 1 and
+		s.feature.parameters->exists(p |
+			let type : OclType = p.type in
+			type.oclIsKindOf(OCL!LambdaType)))
+	to t : EMFTVM!Operation,
+	   pb : Problem!Problem (
+		description <- 'Only operations with a single Lambda parameter can be invoked from OCL',
+		severity <- #warning,
+		line <- s.line,
+		column <- s.column,
+		charStart <- s.charStart,
+		charEnd <- s.charEnd)
+}
+
 rule Parameter {
 	from s : OCL!Parameter in IN
 	to t : EMFTVM!Parameter (

@@ -110,12 +110,16 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 		IStatus status = Status.OK_STATUS;
 		final List<EObject> pbs = new ArrayList<EObject>();
 
-		final Model simplegtm = EmftvmFactory.eINSTANCE.createModel();
-		simplegtm.setResource(resource);
+		final Model simpleoclm = EmftvmFactory.eINSTANCE.createModel();
+		simpleoclm.setResource(resource);
 
 		final Resource pr = rs.createResource(URI.createFileURI("problems.xmi"));
 		final Model pbm = EmftvmFactory.eINSTANCE.createModel();
 		pbm.setResource(pr);
+		
+		final Resource pr2 = rs.createResource(URI.createFileURI("problems2.xmi"));
+		final Model pbm2 = EmftvmFactory.eINSTANCE.createModel();
+		pbm2.setResource(pr2);
 		
 		final Resource r = rs.createResource(URI.createFileURI("out.emftvm"), "org.eclipse.m2m.atl.emftvm");
 		final Model emftvmm = EmftvmFactory.eINSTANCE.createModel();
@@ -131,24 +135,34 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 			ExecEnv env = EmftvmFactory.eINSTANCE.createExecEnv();
 			env.getMetaModels().put("OCL", simpleoclmm);
 			env.getMetaModels().put("Problem", pbmm);
-			env.getInputModels().put("IN", simplegtm);
-			env.getOutputModels().put("OUT", emftvmm);
+			env.getInputModels().put("IN", simpleoclm);
 			env.getOutputModels().put("PBS", pbm);
-			env.loadModule(mr, "SimpleOCLtoEMFTVM");
+			env.loadModule(mr, "SimpleOCLWFR");
 			env.run(new TimingData(), null);
 			
 			if (getProblems(pbm, pbs) == 0) {
 				env = EmftvmFactory.eINSTANCE.createExecEnv();
-				env.getInputModels().put("IN", emftvmm);
-				env.getOutputModels().put("OUT", emftvmmi);
-				env.loadModule(mr, "InlineCodeblocks");
+				env.getMetaModels().put("OCL", simpleoclmm);
+				env.getMetaModels().put("Problem", pbmm);
+				env.getInputModels().put("IN", simpleoclm);
+				env.getOutputModels().put("OUT", emftvmm);
+				env.getOutputModels().put("PBS", pbm2);
+				env.loadModule(mr, "SimpleOCLtoEMFTVM");
 				env.run(new TimingData(), null);
 					
-				ri.save(Collections.emptyMap());
-				if (ri.getURI().isPlatformResource()) {
-					final IPath riPath = new Path(ri.getURI().toPlatformString(true));
-					final IFile riFile = ResourcesPlugin.getWorkspace().getRoot().getFile(riPath);
-					riFile.setDerived(true, new SubProgressMonitor(monitor, 0));
+				if (getProblems(pbm2, pbs) == 0) {
+					env = EmftvmFactory.eINSTANCE.createExecEnv();
+					env.getInputModels().put("IN", emftvmm);
+					env.getOutputModels().put("OUT", emftvmmi);
+					env.loadModule(mr, "InlineCodeblocks");
+					env.run(new TimingData(), null);
+						
+					ri.save(Collections.emptyMap());
+					if (ri.getURI().isPlatformResource()) {
+						final IPath riPath = new Path(ri.getURI().toPlatformString(true));
+						final IFile riFile = ResourcesPlugin.getWorkspace().getRoot().getFile(riPath);
+						riFile.setDerived(true, new SubProgressMonitor(monitor, 0));
+					}
 				}
 			}
 
@@ -166,6 +180,7 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 			status = new Status(IStatus.ERROR, SimpleoclPlugin.PLUGIN_ID, 0, e.getMessage(), e);
 		} finally {
 			rs.getResources().remove(pr); // unload
+			rs.getResources().remove(pr2); // unload
 			rs.getResources().remove(r); // unload
 			rs.getResources().remove(ri); // unload
 		}
@@ -203,25 +218,25 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 	 * @return the created diagnostic object
 	 */
 	protected ISimpleoclTextDiagnostic createDiagnostic(final String location, final EObject pb) {
-		EStructuralFeature severityFeature = pb.eClass().getEStructuralFeature("severity");
-		EStructuralFeature descriptionFeature = pb.eClass().getEStructuralFeature("description");
-		EStructuralFeature lineFeature = pb.eClass().getEStructuralFeature("line");
-		EStructuralFeature columnFeature = pb.eClass().getEStructuralFeature("column");
-		EStructuralFeature charStartFeature = pb.eClass().getEStructuralFeature("charStart");
-		EStructuralFeature charEndFeature = pb.eClass().getEStructuralFeature("charEnd");
+		final EStructuralFeature severityFeature = pb.eClass().getEStructuralFeature("severity");
+		final EStructuralFeature descriptionFeature = pb.eClass().getEStructuralFeature("description");
+		final EStructuralFeature lineFeature = pb.eClass().getEStructuralFeature("line");
+		final EStructuralFeature columnFeature = pb.eClass().getEStructuralFeature("column");
+		final EStructuralFeature charStartFeature = pb.eClass().getEStructuralFeature("charStart");
+		final EStructuralFeature charEndFeature = pb.eClass().getEStructuralFeature("charEnd");
 		
 		SimpleoclEProblemSeverity severity = SimpleoclEProblemSeverity.ERROR;
 		if (severityFeature != null && "warning".equals(((EEnumLiteral)pb.eGet(severityFeature)).getName())) {
 			severity = SimpleoclEProblemSeverity.WARNING;
 		}
 		
-		String message = descriptionFeature == null ? "" : (String) pb.eGet(descriptionFeature);
-		int line = lineFeature == null ? -1 : (Integer) pb.eGet(lineFeature);
-		int column = columnFeature == null ? -1 : (Integer) pb.eGet(columnFeature);
-		int charStart = charStartFeature == null ? -1 : (Integer) pb.eGet(charStartFeature);
-		int charEnd = charEndFeature == null ? -1 : (Integer) pb.eGet(charEndFeature);
+		final String message = descriptionFeature == null ? "" : (String) pb.eGet(descriptionFeature);
+		final int line = lineFeature == null ? -1 : (Integer) pb.eGet(lineFeature);
+		final int column = columnFeature == null ? -1 : (Integer) pb.eGet(columnFeature);
+		final int charStart = charStartFeature == null ? -1 : (Integer) pb.eGet(charStartFeature);
+		final int charEnd = charEndFeature == null ? -1 : (Integer) pb.eGet(charEndFeature);
 
-		ISimpleoclProblem problem = new SimpleoclProblem(message, 
+		final ISimpleoclProblem problem = new SimpleoclProblem(message, 
 				SimpleoclEProblemType.BUILDER_ERROR, severity);
 		return new SimpleoclTextDiagnostic(
 				problem, location, line, column, charStart, charEnd);

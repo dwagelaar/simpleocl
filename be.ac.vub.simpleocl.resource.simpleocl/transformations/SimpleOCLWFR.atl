@@ -1,0 +1,414 @@
+-- @atlcompiler emftvm
+-- @path OCL=/be.ac.vub.simpleocl/metamodel/simpleocl.ecore
+-- @path Problem=/be.ac.vub.simpleocl/metamodel/problem.ecore
+-- SimpleOCL Well-formedness rules.
+-- $Id$
+module SimpleOCLWFR;
+create PBS : Problem from IN : OCL;
+
+-------------------------------------------------------------------------------
+-- HELPERS --------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+-- This helper computes the set of existing CollectionType elements within the
+-- input OCL Unit.
+helper def: collectionTypes : Set(OCL!CollectionType) =
+	OCL!CollectionType.allInstances();
+
+-- This helper computes a sequence containing all the Helper elements that are
+-- defined in the input OCL Unit.
+helper def: allHelpers : Sequence(OCL!Helper) =
+	OCL!Helper.allInstances()->asSequence();
+
+-- This helper computes a sequence containing all the LoopExp elements that are
+-- defined in the input OCL Unit.
+helper def: allLoopExps : Sequence(OCL!LoopExp) =
+	OCL!LoopExp.allInstances()->asSequence();
+
+-- This helper computes a sequence containing all the IterateExp elements that
+-- are defined in the input OCL Unit.
+helper def: allIterateExps : Sequence(OCL!IterateExp) =
+	OCL!IterateExp.allInstances()->asSequence();
+
+-- This helper computes a sequence containing the VariableDeclarations that
+-- precede the contextual VariableDeclaration in its namespace.
+-- It computes the container of the contextual VD. If the container
+-- is a LetExp, it returns a Sequence composed of the VD, and the results of
+-- the calls of the getUpD helper on the calculated container.
+-- If the container is an IteratorExp, the helper returns a Sequence composed
+-- of the VD and the results of the call of getUpD on the computed container.
+-- If the container is an IterateExp, the helper a Sequence containing the same
+-- elements that the one computed for an IteratorExp.
+-- Otherwise, the helper returns the only contextual VD as default value.
+helper context OCL!VariableDeclaration
+	def: getDeclarations() : Sequence(OCL!VariableDeclaration) =
+	let container : OclAny = self.refImmediateComposite() in
+	if container.oclIsTypeOf(OCL!LetExp)
+	then
+		Sequence{
+			self,
+			container.getUpD()
+		}->flatten()
+	else
+		if container.oclIsTypeOf(OCL!IteratorExp)
+		then
+			Sequence{
+				self,
+				container.getUpD()
+			}->flatten()
+		else
+			if container.oclIsTypeOf(OCL!IterateExp)
+			then
+				Sequence{
+					self,
+					container.getUpD()
+				}->flatten()
+			else
+				Sequence{
+					self
+				}->flatten()
+			endif
+		endif
+	endif;
+
+-- This helper computes a sequence containing the VariableDeclarations that are
+-- defined higher than the contextual OclExpression in its namespace tree.
+-- The helper first computes the container of the contextual OclExp.
+--  * If the container is a LetExp, the helper returns a sequence composed of
+--    the LetExp variable and the result of its recursive call on the LetExp.
+--  * If the container is an IfExp, the helper returns a sequence composed of
+--    the result of its recursive call on the IfExp.
+--  * If the container is an IteratorExp, if the contextual OclExp is the
+--    source of the IteratorExp then the helper returns the result of its
+--    recursive call on the IteratorExp, else it returns this result with the
+--    "iterators" elements of the IteratorExp.
+--  * If the container is an IterateExp, the helper returns the same sequences
+--    that for an IteratorExp, with the additional "result" element in case the
+--    contextual OclExp is not the source of the IterateExp.
+-- Otherwise, the helper returns an empty sequence as default value.
+helper context OCL!OclExpression
+	def: getUpD() : Sequence(OCL!VariableDeclaration) =
+	let container : OCL!Element = self.refImmediateComposite() in
+	if container.oclIsTypeOf(OCL!LetExp) then
+		Sequence{
+			container.variable,
+			container.getUpD()
+		}->flatten()
+	else if container.oclIsTypeOf(OCL!IfExp) then
+		Sequence{
+			container.getUpD()
+		}->flatten()
+	else if container.oclIsTypeOf(OCL!IteratorExp) then
+		if container.source = self
+		then
+			Sequence{
+				container.getUpD()
+			}->flatten()
+		else
+			Sequence{
+				container.iterators,
+				container.getUpD()
+			}->flatten()
+		endif
+	else if container.oclIsTypeOf(OCL!IterateExp) then
+		if container.source = self
+		then
+			Sequence{
+				container.getUpD()
+			}->flatten()
+		else
+			Sequence{
+				container.iterators,
+				container.result,
+				container.getUpD()
+			}->flatten()
+		endif
+	else Sequence{}
+	endif endif endif endif;
+
+helper context OCL!PropertyCall
+	def: getUpD() : Sequence(OCL!VariableDeclaration) =
+	self.callExp.getUpD();
+
+helper context OCL!StaticPropertyCall
+	def: getUpD() : Sequence(OCL!VariableDeclaration) =
+	self.staticCallExp.getUpD();
+
+-- This helper returns the root composite (container) of the contextual
+-- OclExpression. For this purpose, the helper first computes the immediate
+-- composite of the contextual OclExpression.
+-- If this container is undefined, the helper returns OclUndefined.
+-- Otherwise, if it is a kind of OclExpression, the helper returns the value
+-- provided by its recursive call on the computed container.
+-- Finally, if this container is not an OclExpression, the root composite has
+-- been reached (Binding/InPattern/Operation/Query/Attribute) and is returned.
+helper context OCL!OclExpression def: getRootComposite() : OclAny =
+	self.refImmediateComposite().getRootComposite();
+
+helper context OCL!PropertyCall def: getRootComposite() : OclAny =
+	self.callExp.getRootComposite();
+
+helper context OCL!StaticPropertyCall def: getRootComposite() : OclAny =
+	self.staticCallExp.getRootComposite();
+
+helper context OCL!VariableDeclaration def: getRootComposite() : OclAny =
+	self.refImmediateComposite().getRootComposite();
+
+helper context OclAny def: getRootComposite() : OclAny =
+	self;
+
+-- These helpers check for value equality of OclTypes.
+-- The base case evaluates to "false", and covers the case of
+-- comparing to OclUndefined.
+helper context OCL!"OclType" def: equals(o : OclAny) : Boolean =
+	false;
+
+helper context OCL!"OclType" def: equals(o : OCL!"OclType") : Boolean =
+	self.name = o.name and self.oclType() = o.oclType();
+
+helper context OCL!OclModelElement def: equals(o : OCL!OclModelElement) : Boolean =
+	super.equals(o) and
+	self.model.equals(o.model);
+
+-- These helpers check for value equality of OclModels.
+-- The base case evaluates to "false", and covers the case of
+-- comparing to OclUndefined.
+helper context OCL!OclModel def: equals(o : OclAny) : Boolean =
+	false;
+
+helper context OCL!OclModel def: equals(o : OCL!OclModel) : Boolean =
+	self.name = o.name;
+
+-------------------------------------------------------------------------------
+-- RULES ----------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+-- This rule generates an 'error' Problem when there exists models that have
+-- the same name that the checked model.
+nodefault rule ModelNameIsUnique {
+	from
+		s : OCL!OclModel (
+			OCL!OclModel.allInstances()->exists(e | e.name = s.name and e <> s)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'model \'' + s.name + '\' already defined'
+		)
+}
+
+-- This rule generates an 'error' Problem when there exists features that have
+-- the same signature as the checked feature.
+nodefault rule FeatureSignatureIsUnique {
+	from
+		s : OCL!OclFeatureDefinition (
+			let sf : OCL!OclFeature = s.feature in
+			let sc : OCL!OclContextDefinition = s.context_ in
+			OCL!OclFeatureDefinition.allInstances()
+				->exists(e | e <> s and
+					(let ef : OCL!OclFeature = e.feature in
+					-- name check
+					sf.name = ef.name 
+					and
+					-- feature meta-type check
+					sf.oclType() = ef.oclType()
+					and
+					-- context type check
+					(let ec : OCL!OclContextDefinition = e.context_ in
+					 if not sc.oclIsUndefined() then
+					 	not ec.oclIsUndefined() and
+						sc.context_.equals(ec.context_) and 					
+						if sf.oclIsTypeOf(OCL!Operation) and ef.oclIsTypeOf(OCL!Operation) then
+							-- parameter types check
+							sf.parameters.size() = ef.parameters.size() and
+							sf.parameters->forAll(p | 
+								p.type.equals(ef.parameters->at(sf.parameters->indexOf(p)).type))
+						else
+							true
+						endif
+					else
+						ec.oclIsUndefined()
+					endif))
+				)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'attribute or operation \'' + s.feature.name
+							+ '\' with same signature already defined'
+		)
+}
+
+-- This rule generates an 'error' Problem when accessing "self"
+-- outside a feature.
+nodefault rule NoSelfOutsideFeature {
+	from s : OCL!SelfExp (
+			not s.getRootComposite().oclIsKindOf(OCL!OclFeature)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'Cannot access "self" outside operations or attributes'
+		)
+}
+
+-- This rule generates an 'error' Problem when accessing "self"
+-- from within a static feature.
+nodefault rule NoSelfInStaticFeature {
+	from s : OCL!SelfExp (
+			let rc : OclAny = s.getRootComposite() in
+			rc.oclIsKindOf(OCL!OclFeature) and
+			rc.definition.static
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'Cannot access "self" in static operations or attributes'
+		)
+}
+
+-- This rule generates an 'error' Problem when accessing "super"
+-- outside a feature.
+nodefault rule NoSuperOutsideFeature {
+	from s : OCL!SuperExp (
+			not s.getRootComposite().oclIsKindOf(OCL!OclFeature)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'Cannot access "super" outside operations or attributes'
+		)
+}
+
+-- This rule generates an 'error' Problem when accessing "super"
+-- from within a static feature.
+nodefault rule NoSuperInStaticFeature {
+	from s : OCL!SuperExp (
+			let rc : OclAny = s.getRootComposite() in
+			rc.oclIsKindOf(OCL!OclFeature) and
+			rc.definition.static
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <- 'Cannot access "super" in static operations or attributes'
+		)
+}
+
+-- This rule generates an 'error' Problem for each parameter for which there
+-- exists another parameter of the same name in the operation declaration.
+nodefault rule ParameterNameIsUniqueInOperation {
+	from
+		s : OCL!Parameter (
+			not s.operation.oclIsUndefined() and
+			s.operation.parameters
+				->exists(e | s.varName = e.varName and s <> e)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <-
+				'a parameter named \'' + s.varName
+				+ '\' is already declared in this operation'
+		)
+}
+
+-- This rule generates an 'error' Problem for each Iterator declaration for
+-- which there exists either another Iterator or a result variable declaration
+-- (for Iterate loop only) of the same name within the same loop definition.
+nodefault rule VariableNameIsUniqueInLoop {
+	from
+		s : OCL!Iterator (
+			not s.loopExpr.oclIsUndefined() and
+			(s.loopExpr.iterators
+				->exists(e | s.varName = e.varName and s <> e)
+			or
+			s.loopExpr.oclIsTypeOf(OCL!IterateExp) and
+			s.loopExpr.result.varName = s.varName
+			)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <-
+				'a variable named \'' + s.varName
+				+ '\' is already declared in this loop'
+		)
+}
+
+-- This rule generates an 'error' Problem for each 'result' variable
+-- declaration of an IterateExp for which there exists an Iterator variable of
+-- the same name in the Iterate loop definition.
+nodefault rule ResultNameIsUniqueInIterate {
+	from
+		s : OCL!LocalVariable (
+			not s.baseExp.oclIsUndefined() and
+			s.baseExp.iterators
+				->exists(e | s.varName = e.varName and s <> e)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #error,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <-
+				'a variable named \'' + s.varName
+				+ '\' is already declared in this loop'
+		)
+}
+
+-- This rule generates a 'warning' Problem for each declaration of a variable
+-- for which there exists another variable declaration of the same name in the
+-- same namespace (except multiple instances of an Iterator name in a same loop
+-- which handle 'error' Problems).
+nodefault rule VariableNameIsUniqueInContainer {
+	from
+		s : OCL!VariableDeclaration (
+			s.getDeclarations()->exists(e | s.varName = e.varName and s <> e)
+		)
+	to
+		t : Problem!Problem (
+			severity <- #warning,
+			line <- s.line,
+			column <- s.column,
+			charStart <- s.charStart,
+			charEnd <- s.charEnd,
+			description <-
+				'a variable named \'' + s.varName
+				+ '\' is already declared in this container'
+		)
+}

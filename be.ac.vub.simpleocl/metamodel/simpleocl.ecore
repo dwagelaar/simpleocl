@@ -25,8 +25,12 @@
         eType="#//OclMetamodel" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true" eOpposite="#//Import/module"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//OclFeatureDefinition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//ModuleElement" containment="true" eOpposite="#//ModuleElement/module"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleElement" abstract="true" eSuperTypes="#//LocatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" lowerBound="1"
+        eType="#//Module" eOpposite="#//Module/elements"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="module" lowerBound="1"
@@ -309,7 +313,7 @@
         eType="#//OclType" containment="true" eOpposite="#//OclType/lambdaArgType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnvType" eSuperTypes="#//OclType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OclFeatureDefinition" eSuperTypes="#//LocatedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="OclFeatureDefinition" eSuperTypes="#//ModuleElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" ordered="false"
         lowerBound="1" eType="#//OclFeature" containment="true" eOpposite="#//OclFeature/definition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context_" ordered="false"

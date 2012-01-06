@@ -16,7 +16,7 @@ import be.ac.vub.simpleocl.SimpleoclFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OclFeatureDefinitionTest extends LocatedElementTest {
+public class OclFeatureDefinitionTest extends ModuleElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->

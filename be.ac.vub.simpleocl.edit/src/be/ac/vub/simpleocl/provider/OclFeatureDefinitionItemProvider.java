@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class OclFeatureDefinitionItemProvider
-	extends LocatedElementItemProvider
+	extends ModuleElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

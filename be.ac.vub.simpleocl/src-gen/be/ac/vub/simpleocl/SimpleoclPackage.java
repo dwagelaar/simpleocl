@@ -253,13 +253,13 @@ public interface SimpleoclPackage extends EPackage {
 	int MODULE__IMPORTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__FEATURES = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int MODULE__ELEMENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -271,6 +271,70 @@ public interface SimpleoclPackage extends EPackage {
 	int MODULE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.ModuleElementImpl <em>Module Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see be.ac.vub.simpleocl.impl.ModuleElementImpl
+	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getModuleElement()
+	 * @generated
+	 */
+	int MODULE_ELEMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__LINE = LOCATED_ELEMENT__LINE;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__COLUMN = LOCATED_ELEMENT__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Char Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__CHAR_START = LOCATED_ELEMENT__CHAR_START;
+
+	/**
+	 * The feature id for the '<em><b>Char End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__CHAR_END = LOCATED_ELEMENT__CHAR_END;
+
+	/**
+	 * The feature id for the '<em><b>Module</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__MODULE = LOCATED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Module Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.ImportImpl <em>Import</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -278,7 +342,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getImport()
 	 * @generated
 	 */
-	int IMPORT = 3;
+	int IMPORT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -351,7 +415,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclExpression()
 	 * @generated
 	 */
-	int OCL_EXPRESSION = 4;
+	int OCL_EXPRESSION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -514,7 +578,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getVariableExp()
 	 * @generated
 	 */
-	int VARIABLE_EXP = 5;
+	int VARIABLE_EXP = 6;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -686,7 +750,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSuperExp()
 	 * @generated
 	 */
-	int SUPER_EXP = 6;
+	int SUPER_EXP = 7;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -849,7 +913,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSelfExp()
 	 * @generated
 	 */
-	int SELF_EXP = 7;
+	int SELF_EXP = 8;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1012,7 +1076,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getEnvExp()
 	 * @generated
 	 */
-	int ENV_EXP = 8;
+	int ENV_EXP = 9;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1175,7 +1239,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getPrimitiveExp()
 	 * @generated
 	 */
-	int PRIMITIVE_EXP = 9;
+	int PRIMITIVE_EXP = 10;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1338,7 +1402,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStringExp()
 	 * @generated
 	 */
-	int STRING_EXP = 10;
+	int STRING_EXP = 11;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1510,7 +1574,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBooleanExp()
 	 * @generated
 	 */
-	int BOOLEAN_EXP = 11;
+	int BOOLEAN_EXP = 12;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1682,7 +1746,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getNumericExp()
 	 * @generated
 	 */
-	int NUMERIC_EXP = 12;
+	int NUMERIC_EXP = 13;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1845,7 +1909,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getRealExp()
 	 * @generated
 	 */
-	int REAL_EXP = 13;
+	int REAL_EXP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2017,7 +2081,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIntegerExp()
 	 * @generated
 	 */
-	int INTEGER_EXP = 14;
+	int INTEGER_EXP = 15;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2189,7 +2253,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getCollectionExp()
 	 * @generated
 	 */
-	int COLLECTION_EXP = 15;
+	int COLLECTION_EXP = 16;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2361,7 +2425,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBagExp()
 	 * @generated
 	 */
-	int BAG_EXP = 16;
+	int BAG_EXP = 17;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2533,7 +2597,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOrderedSetExp()
 	 * @generated
 	 */
-	int ORDERED_SET_EXP = 17;
+	int ORDERED_SET_EXP = 18;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2705,7 +2769,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSequenceExp()
 	 * @generated
 	 */
-	int SEQUENCE_EXP = 18;
+	int SEQUENCE_EXP = 19;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2877,7 +2941,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSetExp()
 	 * @generated
 	 */
-	int SET_EXP = 19;
+	int SET_EXP = 20;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3049,7 +3113,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getTupleExp()
 	 * @generated
 	 */
-	int TUPLE_EXP = 20;
+	int TUPLE_EXP = 21;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3221,7 +3285,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getVariableDeclaration()
 	 * @generated
 	 */
-	int VARIABLE_DECLARATION = 49;
+	int VARIABLE_DECLARATION = 50;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3303,7 +3367,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getLocalVariable()
 	 * @generated
 	 */
-	int LOCAL_VARIABLE = 50;
+	int LOCAL_VARIABLE = 51;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3421,7 +3485,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getTuplePart()
 	 * @generated
 	 */
-	int TUPLE_PART = 21;
+	int TUPLE_PART = 22;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3548,7 +3612,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getMapExp()
 	 * @generated
 	 */
-	int MAP_EXP = 22;
+	int MAP_EXP = 23;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3720,7 +3784,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getMapElement()
 	 * @generated
 	 */
-	int MAP_ELEMENT = 23;
+	int MAP_ELEMENT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3802,7 +3866,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getEnumLiteralExp()
 	 * @generated
 	 */
-	int ENUM_LITERAL_EXP = 24;
+	int ENUM_LITERAL_EXP = 25;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3974,7 +4038,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclUndefinedExp()
 	 * @generated
 	 */
-	int OCL_UNDEFINED_EXP = 25;
+	int OCL_UNDEFINED_EXP = 26;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4137,7 +4201,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStaticPropertyCallExp()
 	 * @generated
 	 */
-	int STATIC_PROPERTY_CALL_EXP = 26;
+	int STATIC_PROPERTY_CALL_EXP = 27;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4318,7 +4382,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStaticPropertyCall()
 	 * @generated
 	 */
-	int STATIC_PROPERTY_CALL = 27;
+	int STATIC_PROPERTY_CALL = 28;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4382,7 +4446,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStaticNavigationOrAttributeCall()
 	 * @generated
 	 */
-	int STATIC_NAVIGATION_OR_ATTRIBUTE_CALL = 28;
+	int STATIC_NAVIGATION_OR_ATTRIBUTE_CALL = 29;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4455,7 +4519,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStaticOperationCall()
 	 * @generated
 	 */
-	int STATIC_OPERATION_CALL = 29;
+	int STATIC_OPERATION_CALL = 30;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4537,7 +4601,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getPropertyCallExp()
 	 * @generated
 	 */
-	int PROPERTY_CALL_EXP = 30;
+	int PROPERTY_CALL_EXP = 31;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4718,7 +4782,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getPropertyCall()
 	 * @generated
 	 */
-	int PROPERTY_CALL = 31;
+	int PROPERTY_CALL = 32;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4782,7 +4846,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getNavigationOrAttributeCall()
 	 * @generated
 	 */
-	int NAVIGATION_OR_ATTRIBUTE_CALL = 32;
+	int NAVIGATION_OR_ATTRIBUTE_CALL = 33;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4855,7 +4919,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOperationCall()
 	 * @generated
 	 */
-	int OPERATION_CALL = 33;
+	int OPERATION_CALL = 34;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4937,7 +5001,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOperatorCallExp()
 	 * @generated
 	 */
-	int OPERATOR_CALL_EXP = 34;
+	int OPERATOR_CALL_EXP = 35;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -5136,7 +5200,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getNotOpCallExp()
 	 * @generated
 	 */
-	int NOT_OP_CALL_EXP = 35;
+	int NOT_OP_CALL_EXP = 36;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -5335,7 +5399,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getRelOpCallExp()
 	 * @generated
 	 */
-	int REL_OP_CALL_EXP = 36;
+	int REL_OP_CALL_EXP = 37;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -5534,7 +5598,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getEqOpCallExp()
 	 * @generated
 	 */
-	int EQ_OP_CALL_EXP = 37;
+	int EQ_OP_CALL_EXP = 38;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -5733,7 +5797,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getAddOpCallExp()
 	 * @generated
 	 */
-	int ADD_OP_CALL_EXP = 38;
+	int ADD_OP_CALL_EXP = 39;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -5932,7 +5996,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIntOpCallExp()
 	 * @generated
 	 */
-	int INT_OP_CALL_EXP = 39;
+	int INT_OP_CALL_EXP = 40;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6131,7 +6195,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getMulOpCallExp()
 	 * @generated
 	 */
-	int MUL_OP_CALL_EXP = 40;
+	int MUL_OP_CALL_EXP = 41;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6330,7 +6394,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getLambdaCallExp()
 	 * @generated
 	 */
-	int LAMBDA_CALL_EXP = 41;
+	int LAMBDA_CALL_EXP = 42;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6511,7 +6575,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBraceExp()
 	 * @generated
 	 */
-	int BRACE_EXP = 42;
+	int BRACE_EXP = 43;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6683,7 +6747,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getCollectionOperationCall()
 	 * @generated
 	 */
-	int COLLECTION_OPERATION_CALL = 43;
+	int COLLECTION_OPERATION_CALL = 44;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6765,7 +6829,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getLoopExp()
 	 * @generated
 	 */
-	int LOOP_EXP = 44;
+	int LOOP_EXP = 45;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6847,7 +6911,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIterateExp()
 	 * @generated
 	 */
-	int ITERATE_EXP = 45;
+	int ITERATE_EXP = 46;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -6938,7 +7002,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIteratorExp()
 	 * @generated
 	 */
-	int ITERATOR_EXP = 46;
+	int ITERATOR_EXP = 47;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7029,7 +7093,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getLetExp()
 	 * @generated
 	 */
-	int LET_EXP = 47;
+	int LET_EXP = 48;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7210,7 +7274,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIfExp()
 	 * @generated
 	 */
-	int IF_EXP = 48;
+	int IF_EXP = 49;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7400,7 +7464,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIterator()
 	 * @generated
 	 */
-	int ITERATOR = 51;
+	int ITERATOR = 52;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7491,7 +7555,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 52;
+	int PARAMETER = 53;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7582,7 +7646,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclType()
 	 * @generated
 	 */
-	int OCL_TYPE = 54;
+	int OCL_TYPE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7754,7 +7818,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getCollectionType()
 	 * @generated
 	 */
-	int COLLECTION_TYPE = 53;
+	int COLLECTION_TYPE = 54;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -7935,7 +7999,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclModelElementExp()
 	 * @generated
 	 */
-	int OCL_MODEL_ELEMENT_EXP = 55;
+	int OCL_MODEL_ELEMENT_EXP = 56;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8116,7 +8180,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 56;
+	int PRIMITIVE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8288,7 +8352,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getStringType()
 	 * @generated
 	 */
-	int STRING_TYPE = 57;
+	int STRING_TYPE = 58;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8460,7 +8524,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBooleanType()
 	 * @generated
 	 */
-	int BOOLEAN_TYPE = 58;
+	int BOOLEAN_TYPE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8632,7 +8696,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getNumericType()
 	 * @generated
 	 */
-	int NUMERIC_TYPE = 59;
+	int NUMERIC_TYPE = 60;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8804,7 +8868,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getIntegerType()
 	 * @generated
 	 */
-	int INTEGER_TYPE = 60;
+	int INTEGER_TYPE = 61;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -8976,7 +9040,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getRealType()
 	 * @generated
 	 */
-	int REAL_TYPE = 61;
+	int REAL_TYPE = 62;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -9148,7 +9212,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBagType()
 	 * @generated
 	 */
-	int BAG_TYPE = 62;
+	int BAG_TYPE = 63;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -9329,7 +9393,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOrderedSetType()
 	 * @generated
 	 */
-	int ORDERED_SET_TYPE = 63;
+	int ORDERED_SET_TYPE = 64;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -9510,7 +9574,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSequenceType()
 	 * @generated
 	 */
-	int SEQUENCE_TYPE = 64;
+	int SEQUENCE_TYPE = 65;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -9691,7 +9755,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getSetType()
 	 * @generated
 	 */
-	int SET_TYPE = 65;
+	int SET_TYPE = 66;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -9872,7 +9936,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclAnyType()
 	 * @generated
 	 */
-	int OCL_ANY_TYPE = 66;
+	int OCL_ANY_TYPE = 67;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10044,7 +10108,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getTupleType()
 	 * @generated
 	 */
-	int TUPLE_TYPE = 67;
+	int TUPLE_TYPE = 68;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10225,7 +10289,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getTupleTypeAttribute()
 	 * @generated
 	 */
-	int TUPLE_TYPE_ATTRIBUTE = 68;
+	int TUPLE_TYPE_ATTRIBUTE = 69;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10307,7 +10371,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclModelElement()
 	 * @generated
 	 */
-	int OCL_MODEL_ELEMENT = 69;
+	int OCL_MODEL_ELEMENT = 70;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10488,7 +10552,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getMapType()
 	 * @generated
 	 */
-	int MAP_TYPE = 70;
+	int MAP_TYPE = 71;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10678,7 +10742,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getLambdaType()
 	 * @generated
 	 */
-	int LAMBDA_TYPE = 71;
+	int LAMBDA_TYPE = 72;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -10868,7 +10932,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getEnvType()
 	 * @generated
 	 */
-	int ENV_TYPE = 72;
+	int ENV_TYPE = 73;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11040,7 +11104,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclFeatureDefinition()
 	 * @generated
 	 */
-	int OCL_FEATURE_DEFINITION = 73;
+	int OCL_FEATURE_DEFINITION = 74;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11049,7 +11113,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__LINE = LOCATED_ELEMENT__LINE;
+	int OCL_FEATURE_DEFINITION__LINE = MODULE_ELEMENT__LINE;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
@@ -11058,7 +11122,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__COLUMN = LOCATED_ELEMENT__COLUMN;
+	int OCL_FEATURE_DEFINITION__COLUMN = MODULE_ELEMENT__COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Char Start</b></em>' attribute.
@@ -11067,7 +11131,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__CHAR_START = LOCATED_ELEMENT__CHAR_START;
+	int OCL_FEATURE_DEFINITION__CHAR_START = MODULE_ELEMENT__CHAR_START;
 
 	/**
 	 * The feature id for the '<em><b>Char End</b></em>' attribute.
@@ -11076,7 +11140,16 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__CHAR_END = LOCATED_ELEMENT__CHAR_END;
+	int OCL_FEATURE_DEFINITION__CHAR_END = MODULE_ELEMENT__CHAR_END;
+
+	/**
+	 * The feature id for the '<em><b>Module</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_FEATURE_DEFINITION__MODULE = MODULE_ELEMENT__MODULE;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
@@ -11085,7 +11158,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__FEATURE = LOCATED_ELEMENT_FEATURE_COUNT + 0;
+	int OCL_FEATURE_DEFINITION__FEATURE = MODULE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Context </b></em>' containment reference.
@@ -11094,7 +11167,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__CONTEXT_ = LOCATED_ELEMENT_FEATURE_COUNT + 1;
+	int OCL_FEATURE_DEFINITION__CONTEXT_ = MODULE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Static</b></em>' attribute.
@@ -11103,7 +11176,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION__STATIC = LOCATED_ELEMENT_FEATURE_COUNT + 2;
+	int OCL_FEATURE_DEFINITION__STATIC = MODULE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Ocl Feature Definition</em>' class.
@@ -11112,7 +11185,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FEATURE_DEFINITION_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 3;
+	int OCL_FEATURE_DEFINITION_FEATURE_COUNT = MODULE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.OclContextDefinitionImpl <em>Ocl Context Definition</em>}' class.
@@ -11122,7 +11195,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclContextDefinition()
 	 * @generated
 	 */
-	int OCL_CONTEXT_DEFINITION = 74;
+	int OCL_CONTEXT_DEFINITION = 75;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11195,7 +11268,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclFeature()
 	 * @generated
 	 */
-	int OCL_FEATURE = 75;
+	int OCL_FEATURE = 76;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11277,7 +11350,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 76;
+	int ATTRIBUTE = 77;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11377,7 +11450,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 77;
+	int OPERATION = 78;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11486,7 +11559,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclModel()
 	 * @generated
 	 */
-	int OCL_MODEL = 78;
+	int OCL_MODEL = 79;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11559,7 +11632,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclMetamodel()
 	 * @generated
 	 */
-	int OCL_METAMODEL = 79;
+	int OCL_METAMODEL = 80;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11650,7 +11723,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getOclInstanceModel()
 	 * @generated
 	 */
-	int OCL_INSTANCE_MODEL = 80;
+	int OCL_INSTANCE_MODEL = 81;
 
 	/**
 	 * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -11731,7 +11804,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 81;
+	int BOOLEAN = 82;
 
 	/**
 	 * The meta object id for the '<em>Double</em>' data type.
@@ -11740,7 +11813,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getDouble()
 	 * @generated
 	 */
-	int DOUBLE = 82;
+	int DOUBLE = 83;
 
 	/**
 	 * The meta object id for the '<em>Integer</em>' data type.
@@ -11749,7 +11822,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 83;
+	int INTEGER = 84;
 
 	/**
 	 * The meta object id for the '<em>String</em>' data type.
@@ -11759,7 +11832,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 84;
+	int STRING = 85;
 
 
 	/**
@@ -11859,17 +11932,6 @@ public interface SimpleoclPackage extends EPackage {
 	EReference getModule_Metamodels();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link be.ac.vub.simpleocl.Module#getFeatures <em>Features</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Features</em>'.
-	 * @see be.ac.vub.simpleocl.Module#getFeatures()
-	 * @see #getModule()
-	 * @generated
-	 */
-	EReference getModule_Features();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link be.ac.vub.simpleocl.Module#getImports <em>Imports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11879,6 +11941,38 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModule_Imports();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link be.ac.vub.simpleocl.Module#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see be.ac.vub.simpleocl.Module#getElements()
+	 * @see #getModule()
+	 * @generated
+	 */
+	EReference getModule_Elements();
+
+	/**
+	 * Returns the meta object for class '{@link be.ac.vub.simpleocl.ModuleElement <em>Module Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Module Element</em>'.
+	 * @see be.ac.vub.simpleocl.ModuleElement
+	 * @generated
+	 */
+	EClass getModuleElement();
+
+	/**
+	 * Returns the meta object for the container reference '{@link be.ac.vub.simpleocl.ModuleElement#getModule <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Module</em>'.
+	 * @see be.ac.vub.simpleocl.ModuleElement#getModule()
+	 * @see #getModuleElement()
+	 * @generated
+	 */
+	EReference getModuleElement_Module();
 
 	/**
 	 * Returns the meta object for class '{@link be.ac.vub.simpleocl.Import <em>Import</em>}'.
@@ -13913,20 +14007,38 @@ public interface SimpleoclPackage extends EPackage {
 		EReference MODULE__METAMODELS = eINSTANCE.getModule_Metamodels();
 
 		/**
-		 * The meta object literal for the '<em><b>Features</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODULE__FEATURES = eINSTANCE.getModule_Features();
-
-		/**
 		 * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference MODULE__IMPORTS = eINSTANCE.getModule_Imports();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODULE__ELEMENTS = eINSTANCE.getModule_Elements();
+
+		/**
+		 * The meta object literal for the '{@link be.ac.vub.simpleocl.impl.ModuleElementImpl <em>Module Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see be.ac.vub.simpleocl.impl.ModuleElementImpl
+		 * @see be.ac.vub.simpleocl.impl.SimpleoclPackageImpl#getModuleElement()
+		 * @generated
+		 */
+		EClass MODULE_ELEMENT = eINSTANCE.getModuleElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Module</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODULE_ELEMENT__MODULE = eINSTANCE.getModuleElement_Module();
 
 		/**
 		 * The meta object literal for the '{@link be.ac.vub.simpleocl.impl.ImportImpl <em>Import</em>}' class.

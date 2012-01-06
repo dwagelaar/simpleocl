@@ -23,7 +23,10 @@
     <genClasses ecoreClass="simpleocl.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/metamodels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/features"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//Module/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleocl.ecore#//ModuleElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//ModuleElement/module"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//Import">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//Import/module"/>

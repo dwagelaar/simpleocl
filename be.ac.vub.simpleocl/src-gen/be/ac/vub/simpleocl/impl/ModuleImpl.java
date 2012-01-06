@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import be.ac.vub.simpleocl.Import;
 import be.ac.vub.simpleocl.Module;
-import be.ac.vub.simpleocl.OclFeatureDefinition;
+import be.ac.vub.simpleocl.ModuleElement;
 import be.ac.vub.simpleocl.OclMetamodel;
 import be.ac.vub.simpleocl.SimpleoclPackage;
 
@@ -31,7 +31,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.ModuleImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,14 +59,14 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 	protected EList<Import> imports;
 
 	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OclFeatureDefinition> features;
+	protected EList<ModuleElement> elements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,11 +104,11 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OclFeatureDefinition> getFeatures() {
-		if (features == null) {
-			features = new EObjectContainmentEList<OclFeatureDefinition>(OclFeatureDefinition.class, this, SimpleoclPackage.MODULE__FEATURES);
+	public EList<Import> getImports() {
+		if (imports == null) {
+			imports = new EObjectContainmentWithInverseEList<Import>(Import.class, this, SimpleoclPackage.MODULE__IMPORTS, SimpleoclPackage.IMPORT__MODULE);
 		}
-		return features;
+		return imports;
 	}
 
 	/**
@@ -116,11 +116,11 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Import> getImports() {
-		if (imports == null) {
-			imports = new EObjectContainmentWithInverseEList<Import>(Import.class, this, SimpleoclPackage.MODULE__IMPORTS, SimpleoclPackage.IMPORT__MODULE);
+	public EList<ModuleElement> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentWithInverseEList<ModuleElement>(ModuleElement.class, this, SimpleoclPackage.MODULE__ELEMENTS, SimpleoclPackage.MODULE_ELEMENT__MODULE);
 		}
-		return imports;
+		return elements;
 	}
 
 	/**
@@ -134,6 +134,8 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 		switch (featureID) {
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getImports()).basicAdd(otherEnd, msgs);
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -150,8 +152,8 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 				return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-			case SimpleoclPackage.MODULE__FEATURES:
-				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -168,8 +170,8 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 				return getMetamodels();
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return getImports();
-			case SimpleoclPackage.MODULE__FEATURES:
-				return getFeatures();
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,9 +193,9 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 				getImports().clear();
 				getImports().addAll((Collection<? extends Import>)newValue);
 				return;
-			case SimpleoclPackage.MODULE__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends OclFeatureDefinition>)newValue);
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends ModuleElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,8 +215,8 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 			case SimpleoclPackage.MODULE__IMPORTS:
 				getImports().clear();
 				return;
-			case SimpleoclPackage.MODULE__FEATURES:
-				getFeatures().clear();
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				getElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -232,8 +234,8 @@ public class ModuleImpl extends NamedElementImpl implements Module {
 				return metamodels != null && !metamodels.isEmpty();
 			case SimpleoclPackage.MODULE__IMPORTS:
 				return imports != null && !imports.isEmpty();
-			case SimpleoclPackage.MODULE__FEATURES:
-				return features != null && !features.isEmpty();
+			case SimpleoclPackage.MODULE__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

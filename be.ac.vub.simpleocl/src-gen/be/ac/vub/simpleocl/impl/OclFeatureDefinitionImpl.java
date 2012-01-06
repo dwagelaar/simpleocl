@@ -32,7 +32,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  *
  * @generated
  */
-public class OclFeatureDefinitionImpl extends LocatedElementImpl implements OclFeatureDefinition {
+public class OclFeatureDefinitionImpl extends ModuleElementImpl implements OclFeatureDefinition {
 	/**
 	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' containment reference.
 	 * <!-- begin-user-doc -->

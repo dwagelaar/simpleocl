@@ -526,6 +526,12 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof be.ac.vub.simpleocl.ModuleElement) {
+			result = interprete_be_ac_vub_simpleocl_ModuleElement((be.ac.vub.simpleocl.ModuleElement) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof be.ac.vub.simpleocl.Module) {
 			result = interprete_be_ac_vub_simpleocl_Module((be.ac.vub.simpleocl.Module) object, context);
 		}
@@ -556,6 +562,10 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 	}
 	
 	public ResultType interprete_be_ac_vub_simpleocl_Module(be.ac.vub.simpleocl.Module object, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_be_ac_vub_simpleocl_ModuleElement(be.ac.vub.simpleocl.ModuleElement object, ContextType context) {
 		return null;
 	}
 	

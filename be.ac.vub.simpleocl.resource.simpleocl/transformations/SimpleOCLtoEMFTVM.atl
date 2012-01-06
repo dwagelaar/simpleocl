@@ -181,7 +181,7 @@ rule Module {
 		name <- s.name,
 		sourceName <- s.name + '.simpleocl',
 		imports <- s.imports->collect(i | i.name),
-		features <- s.features)
+		features <- s.elements->select(e | e.oclIsKindOf(OCL!OclFeatureDefinition)))
 }
 
 rule ModuleWithoutMain extends Module {

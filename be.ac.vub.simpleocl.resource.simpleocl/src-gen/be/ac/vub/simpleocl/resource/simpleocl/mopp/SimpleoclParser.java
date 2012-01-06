@@ -83,7 +83,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         }
         public SimpleoclParser(TokenStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[193+1];
+            this.state.ruleMemo = new HashMap[194+1];
              
              
         }
@@ -692,7 +692,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
     // $ANTLR start "parse_be_ac_vub_simpleocl_Module"
-    // Simpleocl.g:584:1: parse_be_ac_vub_simpleocl_Module returns [be.ac.vub.simpleocl.Module element = null] : a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* ) )? ;
+    // Simpleocl.g:584:1: parse_be_ac_vub_simpleocl_Module returns [be.ac.vub.simpleocl.Module element = null] : a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* ) )? ;
     public final be.ac.vub.simpleocl.Module parse_be_ac_vub_simpleocl_Module() throws RecognitionException {
         be.ac.vub.simpleocl.Module element =  null;
         int parse_be_ac_vub_simpleocl_Module_StartIndex = input.index();
@@ -704,15 +704,15 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
         be.ac.vub.simpleocl.Import a5_0 = null;
 
-        be.ac.vub.simpleocl.OclFeatureDefinition a6_0 = null;
+        be.ac.vub.simpleocl.ModuleElement a6_0 = null;
 
 
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return element; }
-            // Simpleocl.g:587:1: (a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* ) )? )
-            // Simpleocl.g:588:2: a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* ) )?
+            // Simpleocl.g:587:1: (a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* ) )? )
+            // Simpleocl.g:588:2: a0= 'module' ( (a1= TEXT ) | (a2= QUOTED_34_34_92 ) ) a3= ';' ( ( ( (a4_0= parse_be_ac_vub_simpleocl_OclMetamodel ) )* ) )? ( ( ( (a5_0= parse_be_ac_vub_simpleocl_Import ) )* ) )? ( ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* ) )?
             {
             a0=(Token)match(input,34,FOLLOW_34_in_parse_be_ac_vub_simpleocl_Module115); if (state.failed) return element;
             if ( state.backtracking==0 ) {
@@ -1161,7 +1161,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
               		addExpectedElement(be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclFollowSetProvider.TERMINAL_8, 9, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclFollowSetProvider.FEATURE_3);
               	
             }
-            // Simpleocl.g:787:2: ( ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* ) )?
+            // Simpleocl.g:787:2: ( ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* ) )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1177,12 +1177,12 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             }
             switch (alt7) {
                 case 1 :
-                    // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* )
+                    // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* )
                     {
-                    // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* )
-                    // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )*
+                    // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* )
+                    // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )*
                     {
-                    // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )*
+                    // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )*
                     loop6:
                     do {
                         int alt6=2;
@@ -1195,13 +1195,13 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition )
+                    	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_ModuleElement )
                     	    {
-                    	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition )
-                    	    // Simpleocl.g:791:6: a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition
+                    	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_ModuleElement )
+                    	    // Simpleocl.g:791:6: a6_0= parse_be_ac_vub_simpleocl_ModuleElement
                     	    {
-                    	    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_parse_be_ac_vub_simpleocl_Module396);
-                    	    a6_0=parse_be_ac_vub_simpleocl_OclFeatureDefinition();
+                    	    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_ModuleElement_in_parse_be_ac_vub_simpleocl_Module396);
+                    	    a6_0=parse_be_ac_vub_simpleocl_ModuleElement();
 
                     	    state._fsp--;
                     	    if (state.failed) return element;
@@ -1217,7 +1217,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     	      						if (a6_0 != null) {
                     	      							if (a6_0 != null) {
                     	      								Object value = a6_0;
-                    	      								addObjectToList(element, be.ac.vub.simpleocl.SimpleoclPackage.MODULE__FEATURES, value);
+                    	      								addObjectToList(element, be.ac.vub.simpleocl.SimpleoclPackage.MODULE__ELEMENTS, value);
                     	      								completedElement(value, true);
                     	      							}
                     	      							collectHiddenTokens(element);
@@ -18062,8 +18062,45 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
     // $ANTLR end "parse_be_ac_vub_simpleocl_StaticPropertyCallExp"
 
 
+    // $ANTLR start "parse_be_ac_vub_simpleocl_ModuleElement"
+    // Simpleocl.g:11360:1: parse_be_ac_vub_simpleocl_ModuleElement returns [be.ac.vub.simpleocl.ModuleElement element = null] : c0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ;
+    public final be.ac.vub.simpleocl.ModuleElement parse_be_ac_vub_simpleocl_ModuleElement() throws RecognitionException {
+        be.ac.vub.simpleocl.ModuleElement element =  null;
+        int parse_be_ac_vub_simpleocl_ModuleElement_StartIndex = input.index();
+        be.ac.vub.simpleocl.OclFeatureDefinition c0 = null;
+
+
+        try {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 69) ) { return element; }
+            // Simpleocl.g:11361:1: (c0= parse_be_ac_vub_simpleocl_OclFeatureDefinition )
+            // Simpleocl.g:11362:1: c0= parse_be_ac_vub_simpleocl_OclFeatureDefinition
+            {
+            pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_parse_be_ac_vub_simpleocl_ModuleElement7844);
+            c0=parse_be_ac_vub_simpleocl_OclFeatureDefinition();
+
+            state._fsp--;
+            if (state.failed) return element;
+            if ( state.backtracking==0 ) {
+               element = c0; /* this is a subclass or primitive expression choice */ 
+            }
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+            if ( state.backtracking>0 ) { memoize(input, 69, parse_be_ac_vub_simpleocl_ModuleElement_StartIndex); }
+        }
+        return element;
+    }
+    // $ANTLR end "parse_be_ac_vub_simpleocl_ModuleElement"
+
+
     // $ANTLR start "parse_be_ac_vub_simpleocl_OclFeature"
-    // Simpleocl.g:11360:1: parse_be_ac_vub_simpleocl_OclFeature returns [be.ac.vub.simpleocl.OclFeature element = null] : (c0= parse_be_ac_vub_simpleocl_Attribute | c1= parse_be_ac_vub_simpleocl_Operation );
+    // Simpleocl.g:11366:1: parse_be_ac_vub_simpleocl_OclFeature returns [be.ac.vub.simpleocl.OclFeature element = null] : (c0= parse_be_ac_vub_simpleocl_Attribute | c1= parse_be_ac_vub_simpleocl_Operation );
     public final be.ac.vub.simpleocl.OclFeature parse_be_ac_vub_simpleocl_OclFeature() throws RecognitionException {
         be.ac.vub.simpleocl.OclFeature element =  null;
         int parse_be_ac_vub_simpleocl_OclFeature_StartIndex = input.index();
@@ -18073,8 +18110,8 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 69) ) { return element; }
-            // Simpleocl.g:11361:1: (c0= parse_be_ac_vub_simpleocl_Attribute | c1= parse_be_ac_vub_simpleocl_Operation )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 70) ) { return element; }
+            // Simpleocl.g:11367:1: (c0= parse_be_ac_vub_simpleocl_Attribute | c1= parse_be_ac_vub_simpleocl_Operation )
             int alt78=2;
             int LA78_0 = input.LA(1);
 
@@ -18121,9 +18158,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             }
             switch (alt78) {
                 case 1 :
-                    // Simpleocl.g:11362:1: c0= parse_be_ac_vub_simpleocl_Attribute
+                    // Simpleocl.g:11368:1: c0= parse_be_ac_vub_simpleocl_Attribute
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_Attribute_in_parse_be_ac_vub_simpleocl_OclFeature7844);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_Attribute_in_parse_be_ac_vub_simpleocl_OclFeature7863);
                     c0=parse_be_ac_vub_simpleocl_Attribute();
 
                     state._fsp--;
@@ -18135,9 +18172,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11363:2: c1= parse_be_ac_vub_simpleocl_Operation
+                    // Simpleocl.g:11369:2: c1= parse_be_ac_vub_simpleocl_Operation
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_Operation_in_parse_be_ac_vub_simpleocl_OclFeature7852);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_Operation_in_parse_be_ac_vub_simpleocl_OclFeature7871);
                     c1=parse_be_ac_vub_simpleocl_Operation();
 
                     state._fsp--;
@@ -18156,7 +18193,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             recover(input,re);
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 69, parse_be_ac_vub_simpleocl_OclFeature_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 70, parse_be_ac_vub_simpleocl_OclFeature_StartIndex); }
         }
         return element;
     }
@@ -18164,7 +18201,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
     // $ANTLR start "parse_be_ac_vub_simpleocl_OclType"
-    // Simpleocl.g:11367:1: parse_be_ac_vub_simpleocl_OclType returns [be.ac.vub.simpleocl.OclType element = null] : (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType );
+    // Simpleocl.g:11373:1: parse_be_ac_vub_simpleocl_OclType returns [be.ac.vub.simpleocl.OclType element = null] : (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType );
     public final be.ac.vub.simpleocl.OclType parse_be_ac_vub_simpleocl_OclType() throws RecognitionException {
         be.ac.vub.simpleocl.OclType element =  null;
         int parse_be_ac_vub_simpleocl_OclType_StartIndex = input.index();
@@ -18200,15 +18237,15 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 70) ) { return element; }
-            // Simpleocl.g:11368:1: (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 71) ) { return element; }
+            // Simpleocl.g:11374:1: (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType )
             int alt79=15;
             alt79 = dfa79.predict(input);
             switch (alt79) {
                 case 1 :
-                    // Simpleocl.g:11369:1: c0= parse_be_ac_vub_simpleocl_CollectionType
+                    // Simpleocl.g:11375:1: c0= parse_be_ac_vub_simpleocl_CollectionType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_parse_be_ac_vub_simpleocl_OclType7871);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_parse_be_ac_vub_simpleocl_OclType7890);
                     c0=parse_be_ac_vub_simpleocl_CollectionType();
 
                     state._fsp--;
@@ -18220,9 +18257,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11370:2: c1= parse_be_ac_vub_simpleocl_StringType
+                    // Simpleocl.g:11376:2: c1= parse_be_ac_vub_simpleocl_StringType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StringType_in_parse_be_ac_vub_simpleocl_OclType7879);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StringType_in_parse_be_ac_vub_simpleocl_OclType7898);
                     c1=parse_be_ac_vub_simpleocl_StringType();
 
                     state._fsp--;
@@ -18234,9 +18271,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 3 :
-                    // Simpleocl.g:11371:2: c2= parse_be_ac_vub_simpleocl_BooleanType
+                    // Simpleocl.g:11377:2: c2= parse_be_ac_vub_simpleocl_BooleanType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BooleanType_in_parse_be_ac_vub_simpleocl_OclType7887);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BooleanType_in_parse_be_ac_vub_simpleocl_OclType7906);
                     c2=parse_be_ac_vub_simpleocl_BooleanType();
 
                     state._fsp--;
@@ -18248,9 +18285,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 4 :
-                    // Simpleocl.g:11372:2: c3= parse_be_ac_vub_simpleocl_IntegerType
+                    // Simpleocl.g:11378:2: c3= parse_be_ac_vub_simpleocl_IntegerType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IntegerType_in_parse_be_ac_vub_simpleocl_OclType7895);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IntegerType_in_parse_be_ac_vub_simpleocl_OclType7914);
                     c3=parse_be_ac_vub_simpleocl_IntegerType();
 
                     state._fsp--;
@@ -18262,9 +18299,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 5 :
-                    // Simpleocl.g:11373:2: c4= parse_be_ac_vub_simpleocl_RealType
+                    // Simpleocl.g:11379:2: c4= parse_be_ac_vub_simpleocl_RealType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_RealType_in_parse_be_ac_vub_simpleocl_OclType7903);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_RealType_in_parse_be_ac_vub_simpleocl_OclType7922);
                     c4=parse_be_ac_vub_simpleocl_RealType();
 
                     state._fsp--;
@@ -18276,9 +18313,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 6 :
-                    // Simpleocl.g:11374:2: c5= parse_be_ac_vub_simpleocl_BagType
+                    // Simpleocl.g:11380:2: c5= parse_be_ac_vub_simpleocl_BagType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_parse_be_ac_vub_simpleocl_OclType7911);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_parse_be_ac_vub_simpleocl_OclType7930);
                     c5=parse_be_ac_vub_simpleocl_BagType();
 
                     state._fsp--;
@@ -18290,9 +18327,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 7 :
-                    // Simpleocl.g:11375:2: c6= parse_be_ac_vub_simpleocl_OrderedSetType
+                    // Simpleocl.g:11381:2: c6= parse_be_ac_vub_simpleocl_OrderedSetType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_parse_be_ac_vub_simpleocl_OclType7919);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_parse_be_ac_vub_simpleocl_OclType7938);
                     c6=parse_be_ac_vub_simpleocl_OrderedSetType();
 
                     state._fsp--;
@@ -18304,9 +18341,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 8 :
-                    // Simpleocl.g:11376:2: c7= parse_be_ac_vub_simpleocl_SequenceType
+                    // Simpleocl.g:11382:2: c7= parse_be_ac_vub_simpleocl_SequenceType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_parse_be_ac_vub_simpleocl_OclType7927);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_parse_be_ac_vub_simpleocl_OclType7946);
                     c7=parse_be_ac_vub_simpleocl_SequenceType();
 
                     state._fsp--;
@@ -18318,9 +18355,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 9 :
-                    // Simpleocl.g:11377:2: c8= parse_be_ac_vub_simpleocl_SetType
+                    // Simpleocl.g:11383:2: c8= parse_be_ac_vub_simpleocl_SetType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_parse_be_ac_vub_simpleocl_OclType7935);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_parse_be_ac_vub_simpleocl_OclType7954);
                     c8=parse_be_ac_vub_simpleocl_SetType();
 
                     state._fsp--;
@@ -18332,9 +18369,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 10 :
-                    // Simpleocl.g:11378:2: c9= parse_be_ac_vub_simpleocl_OclAnyType
+                    // Simpleocl.g:11384:2: c9= parse_be_ac_vub_simpleocl_OclAnyType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclAnyType_in_parse_be_ac_vub_simpleocl_OclType7943);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclAnyType_in_parse_be_ac_vub_simpleocl_OclType7962);
                     c9=parse_be_ac_vub_simpleocl_OclAnyType();
 
                     state._fsp--;
@@ -18346,9 +18383,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 11 :
-                    // Simpleocl.g:11379:2: c10= parse_be_ac_vub_simpleocl_TupleType
+                    // Simpleocl.g:11385:2: c10= parse_be_ac_vub_simpleocl_TupleType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_TupleType_in_parse_be_ac_vub_simpleocl_OclType7951);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_TupleType_in_parse_be_ac_vub_simpleocl_OclType7970);
                     c10=parse_be_ac_vub_simpleocl_TupleType();
 
                     state._fsp--;
@@ -18360,9 +18397,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 12 :
-                    // Simpleocl.g:11380:2: c11= parse_be_ac_vub_simpleocl_OclModelElement
+                    // Simpleocl.g:11386:2: c11= parse_be_ac_vub_simpleocl_OclModelElement
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclModelElement_in_parse_be_ac_vub_simpleocl_OclType7959);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclModelElement_in_parse_be_ac_vub_simpleocl_OclType7978);
                     c11=parse_be_ac_vub_simpleocl_OclModelElement();
 
                     state._fsp--;
@@ -18374,9 +18411,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 13 :
-                    // Simpleocl.g:11381:2: c12= parse_be_ac_vub_simpleocl_MapType
+                    // Simpleocl.g:11387:2: c12= parse_be_ac_vub_simpleocl_MapType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_MapType_in_parse_be_ac_vub_simpleocl_OclType7967);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_MapType_in_parse_be_ac_vub_simpleocl_OclType7986);
                     c12=parse_be_ac_vub_simpleocl_MapType();
 
                     state._fsp--;
@@ -18388,9 +18425,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 14 :
-                    // Simpleocl.g:11382:2: c13= parse_be_ac_vub_simpleocl_LambdaType
+                    // Simpleocl.g:11388:2: c13= parse_be_ac_vub_simpleocl_LambdaType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_LambdaType_in_parse_be_ac_vub_simpleocl_OclType7975);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_LambdaType_in_parse_be_ac_vub_simpleocl_OclType7994);
                     c13=parse_be_ac_vub_simpleocl_LambdaType();
 
                     state._fsp--;
@@ -18402,9 +18439,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 15 :
-                    // Simpleocl.g:11383:2: c14= parse_be_ac_vub_simpleocl_EnvType
+                    // Simpleocl.g:11389:2: c14= parse_be_ac_vub_simpleocl_EnvType
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_EnvType_in_parse_be_ac_vub_simpleocl_OclType7983);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_EnvType_in_parse_be_ac_vub_simpleocl_OclType8002);
                     c14=parse_be_ac_vub_simpleocl_EnvType();
 
                     state._fsp--;
@@ -18423,7 +18460,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             recover(input,re);
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 70, parse_be_ac_vub_simpleocl_OclType_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 71, parse_be_ac_vub_simpleocl_OclType_StartIndex); }
         }
         return element;
     }
@@ -18431,7 +18468,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
     // $ANTLR start "parse_be_ac_vub_simpleocl_OclExpression"
-    // Simpleocl.g:11387:1: parse_be_ac_vub_simpleocl_OclExpression returns [be.ac.vub.simpleocl.OclExpression element = null] : c= parseop_OclExpression_level_1 ;
+    // Simpleocl.g:11393:1: parse_be_ac_vub_simpleocl_OclExpression returns [be.ac.vub.simpleocl.OclExpression element = null] : c= parseop_OclExpression_level_1 ;
     public final be.ac.vub.simpleocl.OclExpression parse_be_ac_vub_simpleocl_OclExpression() throws RecognitionException {
         be.ac.vub.simpleocl.OclExpression element =  null;
         int parse_be_ac_vub_simpleocl_OclExpression_StartIndex = input.index();
@@ -18439,11 +18476,11 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 71) ) { return element; }
-            // Simpleocl.g:11388:1: (c= parseop_OclExpression_level_1 )
-            // Simpleocl.g:11389:1: c= parseop_OclExpression_level_1
+            if ( state.backtracking>0 && alreadyParsedRule(input, 72) ) { return element; }
+            // Simpleocl.g:11394:1: (c= parseop_OclExpression_level_1 )
+            // Simpleocl.g:11395:1: c= parseop_OclExpression_level_1
             {
-            pushFollow(FOLLOW_parseop_OclExpression_level_1_in_parse_be_ac_vub_simpleocl_OclExpression8002);
+            pushFollow(FOLLOW_parseop_OclExpression_level_1_in_parse_be_ac_vub_simpleocl_OclExpression8021);
             c=parseop_OclExpression_level_1();
 
             state._fsp--;
@@ -18460,7 +18497,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             recover(input,re);
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 71, parse_be_ac_vub_simpleocl_OclExpression_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 72, parse_be_ac_vub_simpleocl_OclExpression_StartIndex); }
         }
         return element;
     }
@@ -18468,7 +18505,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
     // $ANTLR start "parse_be_ac_vub_simpleocl_PropertyCall"
-    // Simpleocl.g:11393:1: parse_be_ac_vub_simpleocl_PropertyCall returns [be.ac.vub.simpleocl.PropertyCall element = null] : (c0= parse_be_ac_vub_simpleocl_OperationCall | c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall | c2= parse_be_ac_vub_simpleocl_IterateExp | c3= parse_be_ac_vub_simpleocl_IteratorExp | c4= parse_be_ac_vub_simpleocl_CollectionOperationCall );
+    // Simpleocl.g:11399:1: parse_be_ac_vub_simpleocl_PropertyCall returns [be.ac.vub.simpleocl.PropertyCall element = null] : (c0= parse_be_ac_vub_simpleocl_OperationCall | c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall | c2= parse_be_ac_vub_simpleocl_IterateExp | c3= parse_be_ac_vub_simpleocl_IteratorExp | c4= parse_be_ac_vub_simpleocl_CollectionOperationCall );
     public final be.ac.vub.simpleocl.PropertyCall parse_be_ac_vub_simpleocl_PropertyCall() throws RecognitionException {
         be.ac.vub.simpleocl.PropertyCall element =  null;
         int parse_be_ac_vub_simpleocl_PropertyCall_StartIndex = input.index();
@@ -18484,8 +18521,8 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 72) ) { return element; }
-            // Simpleocl.g:11394:1: (c0= parse_be_ac_vub_simpleocl_OperationCall | c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall | c2= parse_be_ac_vub_simpleocl_IterateExp | c3= parse_be_ac_vub_simpleocl_IteratorExp | c4= parse_be_ac_vub_simpleocl_CollectionOperationCall )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 73) ) { return element; }
+            // Simpleocl.g:11400:1: (c0= parse_be_ac_vub_simpleocl_OperationCall | c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall | c2= parse_be_ac_vub_simpleocl_IterateExp | c3= parse_be_ac_vub_simpleocl_IteratorExp | c4= parse_be_ac_vub_simpleocl_CollectionOperationCall )
             int alt80=5;
             int LA80_0 = input.LA(1);
 
@@ -18538,9 +18575,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             }
             switch (alt80) {
                 case 1 :
-                    // Simpleocl.g:11395:1: c0= parse_be_ac_vub_simpleocl_OperationCall
+                    // Simpleocl.g:11401:1: c0= parse_be_ac_vub_simpleocl_OperationCall
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8021);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8040);
                     c0=parse_be_ac_vub_simpleocl_OperationCall();
 
                     state._fsp--;
@@ -18552,9 +18589,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11396:2: c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall
+                    // Simpleocl.g:11402:2: c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_PropertyCall8029);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_PropertyCall8048);
                     c1=parse_be_ac_vub_simpleocl_NavigationOrAttributeCall();
 
                     state._fsp--;
@@ -18566,9 +18603,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 3 :
-                    // Simpleocl.g:11397:2: c2= parse_be_ac_vub_simpleocl_IterateExp
+                    // Simpleocl.g:11403:2: c2= parse_be_ac_vub_simpleocl_IterateExp
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_parse_be_ac_vub_simpleocl_PropertyCall8037);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_parse_be_ac_vub_simpleocl_PropertyCall8056);
                     c2=parse_be_ac_vub_simpleocl_IterateExp();
 
                     state._fsp--;
@@ -18580,9 +18617,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 4 :
-                    // Simpleocl.g:11398:2: c3= parse_be_ac_vub_simpleocl_IteratorExp
+                    // Simpleocl.g:11404:2: c3= parse_be_ac_vub_simpleocl_IteratorExp
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_parse_be_ac_vub_simpleocl_PropertyCall8045);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_parse_be_ac_vub_simpleocl_PropertyCall8064);
                     c3=parse_be_ac_vub_simpleocl_IteratorExp();
 
                     state._fsp--;
@@ -18594,9 +18631,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 5 :
-                    // Simpleocl.g:11399:2: c4= parse_be_ac_vub_simpleocl_CollectionOperationCall
+                    // Simpleocl.g:11405:2: c4= parse_be_ac_vub_simpleocl_CollectionOperationCall
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionOperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8053);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionOperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8072);
                     c4=parse_be_ac_vub_simpleocl_CollectionOperationCall();
 
                     state._fsp--;
@@ -18615,7 +18652,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             recover(input,re);
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 72, parse_be_ac_vub_simpleocl_PropertyCall_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 73, parse_be_ac_vub_simpleocl_PropertyCall_StartIndex); }
         }
         return element;
     }
@@ -18623,7 +18660,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
     // $ANTLR start "parse_be_ac_vub_simpleocl_StaticPropertyCall"
-    // Simpleocl.g:11403:1: parse_be_ac_vub_simpleocl_StaticPropertyCall returns [be.ac.vub.simpleocl.StaticPropertyCall element = null] : (c0= parse_be_ac_vub_simpleocl_StaticOperationCall | c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall );
+    // Simpleocl.g:11409:1: parse_be_ac_vub_simpleocl_StaticPropertyCall returns [be.ac.vub.simpleocl.StaticPropertyCall element = null] : (c0= parse_be_ac_vub_simpleocl_StaticOperationCall | c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall );
     public final be.ac.vub.simpleocl.StaticPropertyCall parse_be_ac_vub_simpleocl_StaticPropertyCall() throws RecognitionException {
         be.ac.vub.simpleocl.StaticPropertyCall element =  null;
         int parse_be_ac_vub_simpleocl_StaticPropertyCall_StartIndex = input.index();
@@ -18633,8 +18670,8 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 73) ) { return element; }
-            // Simpleocl.g:11404:1: (c0= parse_be_ac_vub_simpleocl_StaticOperationCall | c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall )
+            if ( state.backtracking>0 && alreadyParsedRule(input, 74) ) { return element; }
+            // Simpleocl.g:11410:1: (c0= parse_be_ac_vub_simpleocl_StaticOperationCall | c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall )
             int alt81=2;
             int LA81_0 = input.LA(1);
 
@@ -18692,9 +18729,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             }
             switch (alt81) {
                 case 1 :
-                    // Simpleocl.g:11405:1: c0= parse_be_ac_vub_simpleocl_StaticOperationCall
+                    // Simpleocl.g:11411:1: c0= parse_be_ac_vub_simpleocl_StaticOperationCall
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StaticOperationCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8072);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StaticOperationCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8091);
                     c0=parse_be_ac_vub_simpleocl_StaticOperationCall();
 
                     state._fsp--;
@@ -18706,9 +18743,9 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11406:2: c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall
+                    // Simpleocl.g:11412:2: c1= parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall
                     {
-                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8080);
+                    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8099);
                     c1=parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall();
 
                     state._fsp--;
@@ -18727,7 +18764,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             recover(input,re);
         }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 73, parse_be_ac_vub_simpleocl_StaticPropertyCall_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 74, parse_be_ac_vub_simpleocl_StaticPropertyCall_StartIndex); }
         }
         return element;
     }
@@ -18843,16 +18880,16 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
     // $ANTLR start synpred7_Simpleocl
     public final void synpred7_Simpleocl_fragment() throws RecognitionException {   
-        be.ac.vub.simpleocl.OclFeatureDefinition a6_0 = null;
+        be.ac.vub.simpleocl.ModuleElement a6_0 = null;
 
 
-        // Simpleocl.g:788:3: ( ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* ) )
-        // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* )
+        // Simpleocl.g:788:3: ( ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* ) )
+        // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* )
         {
-        // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )* )
-        // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )*
+        // Simpleocl.g:788:3: ( ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )* )
+        // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )*
         {
-        // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition ) )*
+        // Simpleocl.g:789:4: ( (a6_0= parse_be_ac_vub_simpleocl_ModuleElement ) )*
         loop84:
         do {
             int alt84=2;
@@ -18865,13 +18902,13 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
 
             switch (alt84) {
         	case 1 :
-        	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition )
+        	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_ModuleElement )
         	    {
-        	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition )
-        	    // Simpleocl.g:791:6: a6_0= parse_be_ac_vub_simpleocl_OclFeatureDefinition
+        	    // Simpleocl.g:790:5: (a6_0= parse_be_ac_vub_simpleocl_ModuleElement )
+        	    // Simpleocl.g:791:6: a6_0= parse_be_ac_vub_simpleocl_ModuleElement
         	    {
-        	    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_synpred7_Simpleocl396);
-        	    a6_0=parse_be_ac_vub_simpleocl_OclFeatureDefinition();
+        	    pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_ModuleElement_in_synpred7_Simpleocl396);
+        	    a6_0=parse_be_ac_vub_simpleocl_ModuleElement();
 
         	    state._fsp--;
         	    if (state.failed) return ;
@@ -19690,10 +19727,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.CollectionType c0 = null;
 
 
-        // Simpleocl.g:11369:1: (c0= parse_be_ac_vub_simpleocl_CollectionType )
-        // Simpleocl.g:11369:1: c0= parse_be_ac_vub_simpleocl_CollectionType
+        // Simpleocl.g:11375:1: (c0= parse_be_ac_vub_simpleocl_CollectionType )
+        // Simpleocl.g:11375:1: c0= parse_be_ac_vub_simpleocl_CollectionType
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_synpred102_Simpleocl7871);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_synpred102_Simpleocl7890);
         c0=parse_be_ac_vub_simpleocl_CollectionType();
 
         state._fsp--;
@@ -19708,10 +19745,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.BagType c5 = null;
 
 
-        // Simpleocl.g:11374:2: (c5= parse_be_ac_vub_simpleocl_BagType )
-        // Simpleocl.g:11374:2: c5= parse_be_ac_vub_simpleocl_BagType
+        // Simpleocl.g:11380:2: (c5= parse_be_ac_vub_simpleocl_BagType )
+        // Simpleocl.g:11380:2: c5= parse_be_ac_vub_simpleocl_BagType
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_synpred107_Simpleocl7911);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_synpred107_Simpleocl7930);
         c5=parse_be_ac_vub_simpleocl_BagType();
 
         state._fsp--;
@@ -19726,10 +19763,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.OrderedSetType c6 = null;
 
 
-        // Simpleocl.g:11375:2: (c6= parse_be_ac_vub_simpleocl_OrderedSetType )
-        // Simpleocl.g:11375:2: c6= parse_be_ac_vub_simpleocl_OrderedSetType
+        // Simpleocl.g:11381:2: (c6= parse_be_ac_vub_simpleocl_OrderedSetType )
+        // Simpleocl.g:11381:2: c6= parse_be_ac_vub_simpleocl_OrderedSetType
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_synpred108_Simpleocl7919);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_synpred108_Simpleocl7938);
         c6=parse_be_ac_vub_simpleocl_OrderedSetType();
 
         state._fsp--;
@@ -19744,10 +19781,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.SequenceType c7 = null;
 
 
-        // Simpleocl.g:11376:2: (c7= parse_be_ac_vub_simpleocl_SequenceType )
-        // Simpleocl.g:11376:2: c7= parse_be_ac_vub_simpleocl_SequenceType
+        // Simpleocl.g:11382:2: (c7= parse_be_ac_vub_simpleocl_SequenceType )
+        // Simpleocl.g:11382:2: c7= parse_be_ac_vub_simpleocl_SequenceType
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_synpred109_Simpleocl7927);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_synpred109_Simpleocl7946);
         c7=parse_be_ac_vub_simpleocl_SequenceType();
 
         state._fsp--;
@@ -19762,10 +19799,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.SetType c8 = null;
 
 
-        // Simpleocl.g:11377:2: (c8= parse_be_ac_vub_simpleocl_SetType )
-        // Simpleocl.g:11377:2: c8= parse_be_ac_vub_simpleocl_SetType
+        // Simpleocl.g:11383:2: (c8= parse_be_ac_vub_simpleocl_SetType )
+        // Simpleocl.g:11383:2: c8= parse_be_ac_vub_simpleocl_SetType
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_synpred110_Simpleocl7935);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_synpred110_Simpleocl7954);
         c8=parse_be_ac_vub_simpleocl_SetType();
 
         state._fsp--;
@@ -19780,10 +19817,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.OperationCall c0 = null;
 
 
-        // Simpleocl.g:11395:1: (c0= parse_be_ac_vub_simpleocl_OperationCall )
-        // Simpleocl.g:11395:1: c0= parse_be_ac_vub_simpleocl_OperationCall
+        // Simpleocl.g:11401:1: (c0= parse_be_ac_vub_simpleocl_OperationCall )
+        // Simpleocl.g:11401:1: c0= parse_be_ac_vub_simpleocl_OperationCall
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_synpred116_Simpleocl8021);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_synpred116_Simpleocl8040);
         c0=parse_be_ac_vub_simpleocl_OperationCall();
 
         state._fsp--;
@@ -19798,10 +19835,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.NavigationOrAttributeCall c1 = null;
 
 
-        // Simpleocl.g:11396:2: (c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall )
-        // Simpleocl.g:11396:2: c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall
+        // Simpleocl.g:11402:2: (c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall )
+        // Simpleocl.g:11402:2: c1= parse_be_ac_vub_simpleocl_NavigationOrAttributeCall
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_synpred117_Simpleocl8029);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_synpred117_Simpleocl8048);
         c1=parse_be_ac_vub_simpleocl_NavigationOrAttributeCall();
 
         state._fsp--;
@@ -19816,10 +19853,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.IterateExp c2 = null;
 
 
-        // Simpleocl.g:11397:2: (c2= parse_be_ac_vub_simpleocl_IterateExp )
-        // Simpleocl.g:11397:2: c2= parse_be_ac_vub_simpleocl_IterateExp
+        // Simpleocl.g:11403:2: (c2= parse_be_ac_vub_simpleocl_IterateExp )
+        // Simpleocl.g:11403:2: c2= parse_be_ac_vub_simpleocl_IterateExp
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_synpred118_Simpleocl8037);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_synpred118_Simpleocl8056);
         c2=parse_be_ac_vub_simpleocl_IterateExp();
 
         state._fsp--;
@@ -19834,10 +19871,10 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
         be.ac.vub.simpleocl.IteratorExp c3 = null;
 
 
-        // Simpleocl.g:11398:2: (c3= parse_be_ac_vub_simpleocl_IteratorExp )
-        // Simpleocl.g:11398:2: c3= parse_be_ac_vub_simpleocl_IteratorExp
+        // Simpleocl.g:11404:2: (c3= parse_be_ac_vub_simpleocl_IteratorExp )
+        // Simpleocl.g:11404:2: c3= parse_be_ac_vub_simpleocl_IteratorExp
         {
-        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_synpred119_Simpleocl8045);
+        pushFollow(FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_synpred119_Simpleocl8064);
         c3=parse_be_ac_vub_simpleocl_IteratorExp();
 
         state._fsp--;
@@ -20387,7 +20424,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
             this.transition = DFA79_transition;
         }
         public String getDescription() {
-            return "11367:1: parse_be_ac_vub_simpleocl_OclType returns [be.ac.vub.simpleocl.OclType element = null] : (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType );";
+            return "11373:1: parse_be_ac_vub_simpleocl_OclType returns [be.ac.vub.simpleocl.OclType element = null] : (c0= parse_be_ac_vub_simpleocl_CollectionType | c1= parse_be_ac_vub_simpleocl_StringType | c2= parse_be_ac_vub_simpleocl_BooleanType | c3= parse_be_ac_vub_simpleocl_IntegerType | c4= parse_be_ac_vub_simpleocl_RealType | c5= parse_be_ac_vub_simpleocl_BagType | c6= parse_be_ac_vub_simpleocl_OrderedSetType | c7= parse_be_ac_vub_simpleocl_SequenceType | c8= parse_be_ac_vub_simpleocl_SetType | c9= parse_be_ac_vub_simpleocl_OclAnyType | c10= parse_be_ac_vub_simpleocl_TupleType | c11= parse_be_ac_vub_simpleocl_OclModelElement | c12= parse_be_ac_vub_simpleocl_MapType | c13= parse_be_ac_vub_simpleocl_LambdaType | c14= parse_be_ac_vub_simpleocl_EnvType );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -20471,7 +20508,7 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
     public static final BitSet FOLLOW_35_in_parse_be_ac_vub_simpleocl_Module210 = new BitSet(new long[]{0x0000037000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclMetamodel_in_parse_be_ac_vub_simpleocl_Module246 = new BitSet(new long[]{0x0000037000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Import_in_parse_be_ac_vub_simpleocl_Module321 = new BitSet(new long[]{0x0000017000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_parse_be_ac_vub_simpleocl_Module396 = new BitSet(new long[]{0x0000016000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_ModuleElement_in_parse_be_ac_vub_simpleocl_Module396 = new BitSet(new long[]{0x0000016000000002L});
     public static final BitSet FOLLOW_36_in_parse_be_ac_vub_simpleocl_Import464 = new BitSet(new long[]{0x0000000000000030L});
     public static final BitSet FOLLOW_TEXT_in_parse_be_ac_vub_simpleocl_Import487 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_QUOTED_34_34_92_in_parse_be_ac_vub_simpleocl_Import525 = new BitSet(new long[]{0x0000000800000000L});
@@ -20765,34 +20802,35 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
     public static final BitSet FOLLOW_44_in_parse_be_ac_vub_simpleocl_BraceExp7779 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclType_in_parse_be_ac_vub_simpleocl_StaticPropertyCallExp7807 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StaticPropertyCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCallExp7821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Attribute_in_parse_be_ac_vub_simpleocl_OclFeature7844 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Operation_in_parse_be_ac_vub_simpleocl_OclFeature7852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_parse_be_ac_vub_simpleocl_OclType7871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StringType_in_parse_be_ac_vub_simpleocl_OclType7879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BooleanType_in_parse_be_ac_vub_simpleocl_OclType7887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IntegerType_in_parse_be_ac_vub_simpleocl_OclType7895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_RealType_in_parse_be_ac_vub_simpleocl_OclType7903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_parse_be_ac_vub_simpleocl_OclType7911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_parse_be_ac_vub_simpleocl_OclType7919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_parse_be_ac_vub_simpleocl_OclType7927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_parse_be_ac_vub_simpleocl_OclType7935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclAnyType_in_parse_be_ac_vub_simpleocl_OclType7943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_TupleType_in_parse_be_ac_vub_simpleocl_OclType7951 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclModelElement_in_parse_be_ac_vub_simpleocl_OclType7959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_MapType_in_parse_be_ac_vub_simpleocl_OclType7967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_LambdaType_in_parse_be_ac_vub_simpleocl_OclType7975 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_EnvType_in_parse_be_ac_vub_simpleocl_OclType7983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parseop_OclExpression_level_1_in_parse_be_ac_vub_simpleocl_OclExpression8002 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_PropertyCall8029 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_parse_be_ac_vub_simpleocl_PropertyCall8037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_parse_be_ac_vub_simpleocl_PropertyCall8045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionOperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StaticOperationCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_parse_be_ac_vub_simpleocl_ModuleElement7844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Attribute_in_parse_be_ac_vub_simpleocl_OclFeature7863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Operation_in_parse_be_ac_vub_simpleocl_OclFeature7871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_parse_be_ac_vub_simpleocl_OclType7890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StringType_in_parse_be_ac_vub_simpleocl_OclType7898 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BooleanType_in_parse_be_ac_vub_simpleocl_OclType7906 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IntegerType_in_parse_be_ac_vub_simpleocl_OclType7914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_RealType_in_parse_be_ac_vub_simpleocl_OclType7922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_parse_be_ac_vub_simpleocl_OclType7930 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_parse_be_ac_vub_simpleocl_OclType7938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_parse_be_ac_vub_simpleocl_OclType7946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_parse_be_ac_vub_simpleocl_OclType7954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclAnyType_in_parse_be_ac_vub_simpleocl_OclType7962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_TupleType_in_parse_be_ac_vub_simpleocl_OclType7970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclModelElement_in_parse_be_ac_vub_simpleocl_OclType7978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_MapType_in_parse_be_ac_vub_simpleocl_OclType7986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_LambdaType_in_parse_be_ac_vub_simpleocl_OclType7994 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_EnvType_in_parse_be_ac_vub_simpleocl_OclType8002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parseop_OclExpression_level_1_in_parse_be_ac_vub_simpleocl_OclExpression8021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8040 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_PropertyCall8048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_parse_be_ac_vub_simpleocl_PropertyCall8056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_parse_be_ac_vub_simpleocl_PropertyCall8064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionOperationCall_in_parse_be_ac_vub_simpleocl_PropertyCall8072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StaticOperationCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_StaticNavigationOrAttributeCall_in_parse_be_ac_vub_simpleocl_StaticPropertyCall8099 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclMetamodel_in_synpred3_Simpleocl246 = new BitSet(new long[]{0x0000020000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_Import_in_synpred5_Simpleocl321 = new BitSet(new long[]{0x0000001000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclFeatureDefinition_in_synpred7_Simpleocl396 = new BitSet(new long[]{0x0000016000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_ModuleElement_in_synpred7_Simpleocl396 = new BitSet(new long[]{0x0000016000000002L});
     public static final BitSet FOLLOW_TEXT_in_synpred15_Simpleocl1113 = new BitSet(new long[]{0x0000008000000080L});
     public static final BitSet FOLLOW_39_in_synpred15_Simpleocl1143 = new BitSet(new long[]{0x00000000003FFF10L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OclType_in_synpred15_Simpleocl1169 = new BitSet(new long[]{0x0000000000000080L});
@@ -20826,14 +20864,14 @@ public class SimpleoclParser extends SimpleoclANTLRParserBase {
     public static final BitSet FOLLOW_parseop_OclExpression_level_7_in_synpred59_Simpleocl6068 = new BitSet(new long[]{0x0000000008000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_PropertyCall_in_synpred61_Simpleocl6164 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_PropertyCall_in_synpred62_Simpleocl6164 = new BitSet(new long[]{0x0000C00000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_synpred102_Simpleocl7871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_synpred107_Simpleocl7911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_synpred108_Simpleocl7919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_synpred109_Simpleocl7927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_synpred110_Simpleocl7935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_synpred116_Simpleocl8021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_synpred117_Simpleocl8029 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_synpred118_Simpleocl8037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_synpred119_Simpleocl8045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_CollectionType_in_synpred102_Simpleocl7890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_BagType_in_synpred107_Simpleocl7930 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OrderedSetType_in_synpred108_Simpleocl7938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SequenceType_in_synpred109_Simpleocl7946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_SetType_in_synpred110_Simpleocl7954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_OperationCall_in_synpred116_Simpleocl8040 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_NavigationOrAttributeCall_in_synpred117_Simpleocl8048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IterateExp_in_synpred118_Simpleocl8056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parse_be_ac_vub_simpleocl_IteratorExp_in_synpred119_Simpleocl8064 = new BitSet(new long[]{0x0000000000000002L});
 
 }

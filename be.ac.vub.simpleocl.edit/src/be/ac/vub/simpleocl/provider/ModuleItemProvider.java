@@ -80,7 +80,7 @@ public class ModuleItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SimpleoclPackage.Literals.MODULE__METAMODELS);
 			childrenFeatures.add(SimpleoclPackage.Literals.MODULE__IMPORTS);
-			childrenFeatures.add(SimpleoclPackage.Literals.MODULE__FEATURES);
+			childrenFeatures.add(SimpleoclPackage.Literals.MODULE__ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -137,7 +137,7 @@ public class ModuleItemProvider
 		switch (notification.getFeatureID(Module.class)) {
 			case SimpleoclPackage.MODULE__METAMODELS:
 			case SimpleoclPackage.MODULE__IMPORTS:
-			case SimpleoclPackage.MODULE__FEATURES:
+			case SimpleoclPackage.MODULE__ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -167,7 +167,7 @@ public class ModuleItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SimpleoclPackage.Literals.MODULE__FEATURES,
+				(SimpleoclPackage.Literals.MODULE__ELEMENTS,
 				 SimpleoclFactory.eINSTANCE.createOclFeatureDefinition()));
 	}
 

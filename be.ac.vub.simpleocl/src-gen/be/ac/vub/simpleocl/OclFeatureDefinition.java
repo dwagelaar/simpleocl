@@ -25,7 +25,7 @@ package be.ac.vub.simpleocl;
  * @model
  * @generated
  */
-public interface OclFeatureDefinition extends LocatedElement {
+public interface OclFeatureDefinition extends ModuleElement {
 	/**
 	 * Returns the value of the '<em><b>Feature</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OclFeature#getDefinition <em>Definition</em>}'.

@@ -43,6 +43,7 @@ import be.ac.vub.simpleocl.MapElement;
 import be.ac.vub.simpleocl.MapExp;
 import be.ac.vub.simpleocl.MapType;
 import be.ac.vub.simpleocl.Module;
+import be.ac.vub.simpleocl.ModuleElement;
 import be.ac.vub.simpleocl.MulOpCallExp;
 import be.ac.vub.simpleocl.NamedElement;
 import be.ac.vub.simpleocl.NavigationOrAttributeCall;
@@ -161,6 +162,10 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModule(Module object) {
 				return createModuleAdapter();
+			}
+			@Override
+			public Adapter caseModuleElement(ModuleElement object) {
+				return createModuleElementAdapter();
 			}
 			@Override
 			public Adapter caseImport(Import object) {
@@ -533,6 +538,20 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link be.ac.vub.simpleocl.ModuleElement <em>Module Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see be.ac.vub.simpleocl.ModuleElement
+	 * @generated
+	 */
+	public Adapter createModuleElementAdapter() {
 		return null;
 	}
 

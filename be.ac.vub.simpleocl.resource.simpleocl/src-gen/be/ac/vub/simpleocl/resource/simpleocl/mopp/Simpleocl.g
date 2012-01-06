@@ -788,7 +788,7 @@ parse_be_ac_vub_simpleocl_Module returns [be.ac.vub.simpleocl.Module element = n
 		(
 			(
 				(
-					a6_0 = parse_be_ac_vub_simpleocl_OclFeatureDefinition					{
+					a6_0 = parse_be_ac_vub_simpleocl_ModuleElement					{
 						if (terminateParsing) {
 							throw new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTerminateParsingException();
 						}
@@ -799,7 +799,7 @@ parse_be_ac_vub_simpleocl_Module returns [be.ac.vub.simpleocl.Module element = n
 						if (a6_0 != null) {
 							if (a6_0 != null) {
 								Object value = a6_0;
-								addObjectToList(element, be.ac.vub.simpleocl.SimpleoclPackage.MODULE__FEATURES, value);
+								addObjectToList(element, be.ac.vub.simpleocl.SimpleoclPackage.MODULE__ELEMENTS, value);
 								completedElement(value, true);
 							}
 							collectHiddenTokens(element);
@@ -11354,6 +11354,12 @@ addExpectedElement(be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclFollo
 addExpectedElement(be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclFollowSetProvider.TERMINAL_122, 308);
 addExpectedElement(be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclFollowSetProvider.TERMINAL_123, 308);
 }
+
+;
+
+parse_be_ac_vub_simpleocl_ModuleElement returns [be.ac.vub.simpleocl.ModuleElement element = null]
+:
+c0 = parse_be_ac_vub_simpleocl_OclFeatureDefinition{ element = c0; /* this is a subclass or primitive expression choice */ }
 
 ;
 

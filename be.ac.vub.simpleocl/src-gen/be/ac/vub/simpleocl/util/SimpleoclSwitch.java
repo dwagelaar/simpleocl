@@ -42,6 +42,7 @@ import be.ac.vub.simpleocl.MapElement;
 import be.ac.vub.simpleocl.MapExp;
 import be.ac.vub.simpleocl.MapType;
 import be.ac.vub.simpleocl.Module;
+import be.ac.vub.simpleocl.ModuleElement;
 import be.ac.vub.simpleocl.MulOpCallExp;
 import be.ac.vub.simpleocl.NamedElement;
 import be.ac.vub.simpleocl.NavigationOrAttributeCall;
@@ -168,6 +169,13 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				T result = caseModule(module);
 				if (result == null) result = caseNamedElement(module);
 				if (result == null) result = caseLocatedElement(module);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleoclPackage.MODULE_ELEMENT: {
+				ModuleElement moduleElement = (ModuleElement)theEObject;
+				T result = caseModuleElement(moduleElement);
+				if (result == null) result = caseLocatedElement(moduleElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -767,6 +775,7 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 			case SimpleoclPackage.OCL_FEATURE_DEFINITION: {
 				OclFeatureDefinition oclFeatureDefinition = (OclFeatureDefinition)theEObject;
 				T result = caseOclFeatureDefinition(oclFeatureDefinition);
+				if (result == null) result = caseModuleElement(oclFeatureDefinition);
 				if (result == null) result = caseLocatedElement(oclFeatureDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -876,6 +885,21 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModule(Module object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Module Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Module Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModuleElement(ModuleElement object) {
 		return null;
 	}
 

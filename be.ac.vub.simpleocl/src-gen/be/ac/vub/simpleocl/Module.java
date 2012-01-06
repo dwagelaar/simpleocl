@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.Module#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.Module#getImports <em>Imports</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.Module#getFeatures <em>Features</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.Module#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,22 +44,6 @@ public interface Module extends NamedElement {
 	EList<OclMetamodel> getMetamodels();
 
 	/**
-	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
-	 * The list contents are of type {@link be.ac.vub.simpleocl.OclFeatureDefinition}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Features</em>' containment reference list.
-	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getModule_Features()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<OclFeatureDefinition> getFeatures();
-
-	/**
 	 * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
 	 * The list contents are of type {@link be.ac.vub.simpleocl.Import}.
 	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.Import#getModule <em>Module</em>}'.
@@ -76,5 +60,23 @@ public interface Module extends NamedElement {
 	 * @generated
 	 */
 	EList<Import> getImports();
+
+	/**
+	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link be.ac.vub.simpleocl.ModuleElement}.
+	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.ModuleElement#getModule <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Elements</em>' containment reference list.
+	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getModule_Elements()
+	 * @see be.ac.vub.simpleocl.ModuleElement#getModule
+	 * @model opposite="module" containment="true"
+	 * @generated
+	 */
+	EList<ModuleElement> getElements();
 
 } // Module

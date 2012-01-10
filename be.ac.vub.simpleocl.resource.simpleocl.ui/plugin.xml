@@ -72,43 +72,6 @@
 		</specification>
 	</extension>
 	
-	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="be.ac.vub.simpleocl.resource.simpleocl.ui.launchConfigurationType" id="be.ac.vub.simpleocl.launchImage">
-		</launchConfigurationTypeImage>
-	</extension>
-	
-	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-		<launchConfigurationTabGroup type="be.ac.vub.simpleocl.resource.simpleocl.ui.launchConfigurationType" class="be.ac.vub.simpleocl.resource.simpleocl.ui.launch.SimpleoclLaunchConfigurationTabGroup" id="be.ac.vub.simpleocl.launchConfigurationTabGroup" helpContextId="be.ac.vub.simpleocl.launchConfigHelpContext">
-			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug simpleocl model.">
-			</launchMode>
-			<launchMode mode="run" description="Run simpleocl model.">
-			</launchMode>
-		</launchConfigurationTabGroup>
-	</extension>
-	
-	<extension point="org.eclipse.debug.ui.launchShortcuts">
-		<shortcut label="simpleocl Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="be.ac.vub.simpleocl.launch" modes="run,debug" class="be.ac.vub.simpleocl.resource.simpleocl.ui.launch.SimpleoclLaunchShortcut" description="Launch a simpleocl model" id="be.ac.vub.simpleocl.launchShortcut">
-			<description description="Run simpleocl model" mode="run">
-			</description>
-			<description description="Debug simpleocl model" mode="debug">
-			</description>
-			<contextualLaunch>
-				<enablement>
-					<with variable="selection">
-						<count value="1">
-						</count>
-						<iterate>
-							<test property="be.ac.vub.simpleocl.isLaunchable">
-							</test>
-						</iterate>
-					</with>
-				</enablement>
-			</contextualLaunch>
-			<configurationType id="be.ac.vub.simpleocl.resource.simpleocl.ui.launchConfigurationType">
-			</configurationType>
-		</shortcut>
-	</extension>
-	
 	<extension point="org.eclipse.core.expressions.propertyTesters">
 		<propertyTester id="be.ac.vub.simpleocl.PropertyTester" type="java.lang.Object" namespace="be.ac.vub.simpleocl" properties="isLaunchable" class="be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclPropertyTester">
 		</propertyTester>

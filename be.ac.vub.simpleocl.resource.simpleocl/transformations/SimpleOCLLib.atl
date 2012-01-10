@@ -37,7 +37,7 @@ helper context OCL!OclModelElementExp def : sameAs(other : OCL!OclModelElementEx
 
 helper context OCL!VariableExp def : sameAs(other : OCL!VariableExp) : Boolean =
 	super.sameAs(other) and
-	self.referredVariable = other.referredVariable;
+	self.referredVariable.sameAs(other.referredVariable);
 
 helper context OCL!StringExp def : sameAs(other : OCL!StringExp) : Boolean =
 	super.sameAs(other) and
@@ -173,3 +173,26 @@ helper context OCL!IfExp def : sameAs(other : OCL!IfExp) : Boolean =
 	self.condition.sameAs(other.condition) and
 	self.thenExpression.sameAs(other.thenExpression) and
 	self.elseExpression.sameAs(other.elseExpression);
+
+-- This helper returns the root composite (container) of the contextual
+-- OclExpression. For this purpose, the helper first computes the immediate
+-- composite of the contextual OclExpression.
+-- If this container is undefined, the helper returns OclUndefined.
+-- Otherwise, if it is a kind of OclExpression, the helper returns the value
+-- provided by its recursive call on the computed container.
+-- Finally, if this container is not an OclExpression, the root composite has
+-- been reached (Operation/Attribute/*) and is returned.
+helper context OCL!OclExpression def : rootComposite : OclAny =
+	self.refImmediateComposite().rootComposite;
+
+helper context OCL!PropertyCall def : rootComposite : OclAny =
+	self.callExp.rootComposite;
+
+helper context OCL!StaticPropertyCall def : rootComposite : OclAny =
+	self.staticCallExp.rootComposite;
+
+helper context OCL!VariableDeclaration def : rootComposite : OclAny =
+	self.refImmediateComposite().rootComposite;
+
+helper context OclAny def : rootComposite : OclAny =
+	self;

@@ -137,29 +137,6 @@ helper context OCL!StaticPropertyCall
 	def: getUpD() : Sequence(OCL!VariableDeclaration) =
 	self.staticCallExp.getUpD();
 
--- This helper returns the root composite (container) of the contextual
--- OclExpression. For this purpose, the helper first computes the immediate
--- composite of the contextual OclExpression.
--- If this container is undefined, the helper returns OclUndefined.
--- Otherwise, if it is a kind of OclExpression, the helper returns the value
--- provided by its recursive call on the computed container.
--- Finally, if this container is not an OclExpression, the root composite has
--- been reached (Binding/InPattern/Operation/Query/Attribute) and is returned.
-helper context OCL!OclExpression def: getRootComposite() : OclAny =
-	self.refImmediateComposite().getRootComposite();
-
-helper context OCL!PropertyCall def: getRootComposite() : OclAny =
-	self.callExp.getRootComposite();
-
-helper context OCL!StaticPropertyCall def: getRootComposite() : OclAny =
-	self.staticCallExp.getRootComposite();
-
-helper context OCL!VariableDeclaration def: getRootComposite() : OclAny =
-	self.refImmediateComposite().getRootComposite();
-
-helper context OclAny def: getRootComposite() : OclAny =
-	self;
-
 -------------------------------------------------------------------------------
 -- RULES ----------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -232,7 +209,7 @@ nodefault rule FeatureSignatureIsUnique {
 -- outside a feature.
 nodefault rule NoSelfOutsideFeature {
 	from s : OCL!SelfExp (
-			not s.getRootComposite().oclIsKindOf(OCL!OclFeature)
+			not s.rootComposite.oclIsKindOf(OCL!OclFeature)
 		)
 	to
 		t : Problem!Problem (
@@ -249,7 +226,7 @@ nodefault rule NoSelfOutsideFeature {
 -- from within a static feature.
 nodefault rule NoSelfInStaticFeature {
 	from s : OCL!SelfExp (
-			let rc : OclAny = s.getRootComposite() in
+			let rc : OclAny = s.rootComposite in
 			rc.oclIsKindOf(OCL!OclFeature) and
 			rc.definition.static
 		)
@@ -268,7 +245,7 @@ nodefault rule NoSelfInStaticFeature {
 -- outside a feature.
 nodefault rule NoSuperOutsideFeature {
 	from s : OCL!SuperExp (
-			not s.getRootComposite().oclIsKindOf(OCL!OclFeature)
+			not s.rootComposite.oclIsKindOf(OCL!OclFeature)
 		)
 	to
 		t : Problem!Problem (
@@ -285,7 +262,7 @@ nodefault rule NoSuperOutsideFeature {
 -- from within a static feature.
 nodefault rule NoSuperInStaticFeature {
 	from s : OCL!SuperExp (
-			let rc : OclAny = s.getRootComposite() in
+			let rc : OclAny = s.rootComposite in
 			rc.oclIsKindOf(OCL!OclFeature) and
 			rc.definition.static
 		)

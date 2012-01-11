@@ -85,7 +85,7 @@ rule OclInstanceModel {
 
 -------------- OclFeatureDefinitions -----------------
 
-abstract rule Field {
+rule Field {
 	from s : OCL!OclFeatureDefinition in IN (s.isAttribute)
 	using {
 		a : OCL!Attribute = s.feature;

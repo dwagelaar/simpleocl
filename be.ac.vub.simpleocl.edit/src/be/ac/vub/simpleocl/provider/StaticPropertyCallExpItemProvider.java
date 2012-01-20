@@ -154,6 +154,11 @@ public class StaticPropertyCallExpItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.STATIC_PROPERTY_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.STATIC_PROPERTY_CALL_EXP__SOURCE,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add

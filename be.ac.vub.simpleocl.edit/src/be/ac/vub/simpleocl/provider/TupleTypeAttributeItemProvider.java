@@ -182,6 +182,11 @@ public class TupleTypeAttributeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.TUPLE_TYPE_ATTRIBUTE__TYPE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.TUPLE_TYPE_ATTRIBUTE__TYPE,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add

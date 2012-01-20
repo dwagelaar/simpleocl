@@ -422,6 +422,15 @@ public interface SimpleoclFactory extends EFactory {
 	CollectionType createCollectionType();
 
 	/**
+	 * Returns a new object of class '<em>Ocl Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ocl Type</em>'.
+	 * @generated
+	 */
+	OclType createOclType();
+
+	/**
 	 * Returns a new object of class '<em>Ocl Model Element Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

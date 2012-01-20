@@ -330,27 +330,27 @@ public class SimpleoclPrinter2 implements be.ac.vub.simpleocl.resource.simpleocl
 			return;
 		}
 		if (element instanceof be.ac.vub.simpleocl.TupleType) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_60, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.TupleTypeAttribute) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_61, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.OclModelElement) {
+		if (element instanceof be.ac.vub.simpleocl.TupleTypeAttribute) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_62, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.MapType) {
+		if (element instanceof be.ac.vub.simpleocl.OclModelElement) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_63, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.LambdaType) {
+		if (element instanceof be.ac.vub.simpleocl.MapType) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_64, foundFormattingElements);
 			return;
 		}
-		if (element instanceof be.ac.vub.simpleocl.EnvType) {
+		if (element instanceof be.ac.vub.simpleocl.LambdaType) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_65, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.EnvType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_66, foundFormattingElements);
 			return;
 		}
 		if (element instanceof be.ac.vub.simpleocl.LocalVariable) {
@@ -371,6 +371,10 @@ public class SimpleoclPrinter2 implements be.ac.vub.simpleocl.resource.simpleocl
 		}
 		if (element instanceof be.ac.vub.simpleocl.CollectionType) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_50, foundFormattingElements);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.OclType) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_60, foundFormattingElements);
 			return;
 		}
 		

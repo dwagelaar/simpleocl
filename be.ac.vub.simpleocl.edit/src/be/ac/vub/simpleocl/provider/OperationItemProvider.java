@@ -163,6 +163,11 @@ public class OperationItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.OPERATION__RETURN_TYPE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATION__RETURN_TYPE,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add

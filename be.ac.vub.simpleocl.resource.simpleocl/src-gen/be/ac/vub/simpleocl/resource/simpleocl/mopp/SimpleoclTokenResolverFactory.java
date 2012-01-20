@@ -43,6 +43,7 @@ public class SimpleoclTokenResolverFactory implements be.ac.vub.simpleocl.resour
 		registerTokenResolver("SEQUENCETYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclSEQUENCETYPETokenResolver());
 		registerTokenResolver("SETTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclSETTYPETokenResolver());
 		registerTokenResolver("OCLANYTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclOCLANYTYPETokenResolver());
+		registerTokenResolver("OCLTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclOCLTYPETokenResolver());
 		registerTokenResolver("TUPLETYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclTUPLETYPETokenResolver());
 		registerTokenResolver("MAPTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclMAPTYPETokenResolver());
 		registerTokenResolver("LAMBDATYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclLAMBDATYPETokenResolver());

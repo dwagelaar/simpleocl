@@ -78,6 +78,7 @@ public class SimpleoclTests extends TestSuite {
 		suite.addTestSuite(IteratorTest.class);
 		suite.addTestSuite(ParameterTest.class);
 		suite.addTestSuite(CollectionTypeTest.class);
+		suite.addTestSuite(OclTypeTest.class);
 		suite.addTestSuite(OclModelElementExpTest.class);
 		suite.addTestSuite(StringTypeTest.class);
 		suite.addTestSuite(BooleanTypeTest.class);

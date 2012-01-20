@@ -51,7 +51,7 @@ import be.ac.vub.simpleocl.VariableDeclaration;
  *
  * @generated
  */
-public abstract class OclTypeImpl extends LocatedElementImpl implements OclType {
+public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

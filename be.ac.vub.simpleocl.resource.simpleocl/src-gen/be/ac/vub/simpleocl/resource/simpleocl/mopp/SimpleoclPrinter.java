@@ -315,6 +315,10 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			print_be_ac_vub_simpleocl_CollectionType((be.ac.vub.simpleocl.CollectionType) element, globaltab, out);
 			return;
 		}
+		if (element instanceof be.ac.vub.simpleocl.OclType) {
+			print_be_ac_vub_simpleocl_OclType((be.ac.vub.simpleocl.OclType) element, globaltab, out);
+			return;
+		}
 		
 		addWarningToResource("The printer can not handle " + element.eClass().getName() + " elements", element);
 	}
@@ -5380,6 +5384,57 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenResolver resolver = tokenResolverFactory.createTokenResolver("OCLANYTYPE");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_ANY_TYPE__NAME), element));
+				out.print(" ");
+			}
+			printCountingMap.put("name", count - 1);
+		}
+	}
+	
+	
+	public void print_be_ac_vub_simpleocl_OclType(be.ac.vub.simpleocl.OclType element, String outertab, java.io.PrintWriter out) {
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__DEFINITIONS));
+		printCountingMap.put("definitions", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__OCL_EXPRESSION));
+		printCountingMap.put("oclExpression", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__OPERATION));
+		printCountingMap.put("operation", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__MAP_TYPE2));
+		printCountingMap.put("mapType2", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__ATTRIBUTE));
+		printCountingMap.put("attribute", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__MAP_TYPE));
+		printCountingMap.put("mapType", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__COLLECTION_TYPES));
+		printCountingMap.put("collectionTypes", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__TUPLE_TYPE_ATTRIBUTE));
+		printCountingMap.put("tupleTypeAttribute", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__VARIABLE_DECLARATION));
+		printCountingMap.put("variableDeclaration", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__LAMBDA_RETURN_TYPE));
+		printCountingMap.put("lambdaReturnType", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__LAMBDA_ARG_TYPE));
+		printCountingMap.put("lambdaArgType", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__STATIC_PROPERTY_CALL));
+		printCountingMap.put("staticPropertyCall", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (PlaceholderUsingSpecifiedToken)
+		count = printCountingMap.get("name");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__NAME));
+			if (o != null) {
+				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenResolver resolver = tokenResolverFactory.createTokenResolver("OCLTYPE");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_TYPE__NAME), element));
 				out.print(" ");
 			}
 			printCountingMap.put("name", count - 1);

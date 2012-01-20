@@ -156,6 +156,11 @@ public class MapTypeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.MAP_TYPE__VALUE_TYPE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.MAP_TYPE__VALUE_TYPE,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add
@@ -227,6 +232,11 @@ public class MapTypeItemProvider
 			(createChildParameter
 				(SimpleoclPackage.Literals.MAP_TYPE__VALUE_TYPE,
 				 SimpleoclFactory.eINSTANCE.createEnvType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.MAP_TYPE__KEY_TYPE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
 
 		newChildDescriptors.add
 			(createChildParameter

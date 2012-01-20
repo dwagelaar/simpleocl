@@ -156,6 +156,11 @@ public class LambdaTypeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.LAMBDA_TYPE__RETURN_TYPE,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.LAMBDA_TYPE__RETURN_TYPE,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add
@@ -227,6 +232,11 @@ public class LambdaTypeItemProvider
 			(createChildParameter
 				(SimpleoclPackage.Literals.LAMBDA_TYPE__RETURN_TYPE,
 				 SimpleoclFactory.eINSTANCE.createEnvType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.LAMBDA_TYPE__ARGUMENT_TYPES,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
 
 		newChildDescriptors.add
 			(createChildParameter

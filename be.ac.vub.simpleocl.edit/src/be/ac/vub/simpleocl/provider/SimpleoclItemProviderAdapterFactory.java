@@ -1088,6 +1088,29 @@ public class SimpleoclItemProviderAdapterFactory extends SimpleoclAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link be.ac.vub.simpleocl.OclType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OclTypeItemProvider oclTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link be.ac.vub.simpleocl.OclType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOclTypeAdapter() {
+		if (oclTypeItemProvider == null) {
+			oclTypeItemProvider = new OclTypeItemProvider(this);
+		}
+
+		return oclTypeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link be.ac.vub.simpleocl.OclModelElementExp} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1736,6 +1759,7 @@ public class SimpleoclItemProviderAdapterFactory extends SimpleoclAdapterFactory
 		if (iteratorItemProvider != null) iteratorItemProvider.dispose();
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
 		if (collectionTypeItemProvider != null) collectionTypeItemProvider.dispose();
+		if (oclTypeItemProvider != null) oclTypeItemProvider.dispose();
 		if (oclModelElementExpItemProvider != null) oclModelElementExpItemProvider.dispose();
 		if (stringTypeItemProvider != null) stringTypeItemProvider.dispose();
 		if (booleanTypeItemProvider != null) booleanTypeItemProvider.dispose();

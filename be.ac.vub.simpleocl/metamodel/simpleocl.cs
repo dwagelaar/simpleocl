@@ -45,6 +45,7 @@ TOKENS {
 	DEFINE SEQUENCETYPE $'Sequence'$;
 	DEFINE SETTYPE $'Set'$;
 	DEFINE OCLANYTYPE $'OclAny'$;
+	DEFINE OCLTYPE $'OclType'$;
 	DEFINE TUPLETYPE $'Tuple'$;
 	DEFINE MAPTYPE $'Map'$;
 	DEFINE LAMBDATYPE $'Lambda'$;
@@ -72,6 +73,7 @@ TOKENSTYLES {
 	"SEQUENCETYPE" COLOR #00C000;
 	"SETTYPE" COLOR #00C000;
 	"OCLANYTYPE" COLOR #00C000;
+	"OCLTYPE" COLOR #00C000;
 	"TUPLETYPE" COLOR #00C000;
 	"MAPTYPE" COLOR #00C000;
 	"LAMBDATYPE" COLOR #00C000;
@@ -208,6 +210,7 @@ RULES {
 	SequenceType ::= name[SEQUENCETYPE] "(" elementType ")";
 	SetType ::= name[SETTYPE] "(" elementType ")";
 	OclAnyType ::= name[OCLANYTYPE];
+	OclType ::= name[OCLTYPE];
 	TupleType ::= name[TUPLETYPE] "(" (attributes ("," attributes)*)? ")";
 	TupleTypeAttribute ::= (name[]|name['"','"','\\']) ":" type;
 	OclModelElement ::= model[] "!" (name[]|name['"','"','\\']);

@@ -152,6 +152,11 @@ public class OclContextDefinitionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimpleoclPackage.Literals.OCL_CONTEXT_DEFINITION__CONTEXT_,
+				 SimpleoclFactory.eINSTANCE.createOclType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OCL_CONTEXT_DEFINITION__CONTEXT_,
 				 SimpleoclFactory.eINSTANCE.createCollectionType()));
 
 		newChildDescriptors.add

@@ -52,6 +52,7 @@ import be.ac.vub.simpleocl.OclInstanceModel;
 import be.ac.vub.simpleocl.OclMetamodel;
 import be.ac.vub.simpleocl.OclModelElement;
 import be.ac.vub.simpleocl.OclModelElementExp;
+import be.ac.vub.simpleocl.OclType;
 import be.ac.vub.simpleocl.OclUndefinedExp;
 import be.ac.vub.simpleocl.Operation;
 import be.ac.vub.simpleocl.OperationCall;
@@ -170,6 +171,7 @@ public class SimpleoclFactoryImpl extends EFactoryImpl implements SimpleoclFacto
 			case SimpleoclPackage.ITERATOR: return createIterator();
 			case SimpleoclPackage.PARAMETER: return createParameter();
 			case SimpleoclPackage.COLLECTION_TYPE: return createCollectionType();
+			case SimpleoclPackage.OCL_TYPE: return createOclType();
 			case SimpleoclPackage.OCL_MODEL_ELEMENT_EXP: return createOclModelElementExp();
 			case SimpleoclPackage.STRING_TYPE: return createStringType();
 			case SimpleoclPackage.BOOLEAN_TYPE: return createBooleanType();
@@ -677,6 +679,16 @@ public class SimpleoclFactoryImpl extends EFactoryImpl implements SimpleoclFacto
 	public CollectionType createCollectionType() {
 		CollectionTypeImpl collectionType = new CollectionTypeImpl();
 		return collectionType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OclType createOclType() {
+		OclTypeImpl oclType = new OclTypeImpl();
+		return oclType;
 	}
 
 	/**

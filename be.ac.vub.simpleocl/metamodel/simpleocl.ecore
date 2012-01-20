@@ -240,7 +240,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" ordered="false"
         lowerBound="1" eType="#//OclType" containment="true" eOpposite="#//OclType/collectionTypes"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OclType" abstract="true" eSuperTypes="#//LocatedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="OclType" eSuperTypes="#//LocatedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
         lowerBound="1" eType="#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" ordered="false"

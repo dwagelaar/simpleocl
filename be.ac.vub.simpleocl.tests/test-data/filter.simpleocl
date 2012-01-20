@@ -1,0 +1,4 @@
+module filter;
+
+context Collection(OclAny) def : filter(type : OclType) : Collection(OclAny) =
+	self->select(e | e.oclIsKindOf(type));

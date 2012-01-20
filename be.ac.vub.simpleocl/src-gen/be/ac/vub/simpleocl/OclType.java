@@ -32,7 +32,7 @@ package be.ac.vub.simpleocl;
  * </p>
  *
  * @see be.ac.vub.simpleocl.SimpleoclPackage#getOclType()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface OclType extends LocatedElement {

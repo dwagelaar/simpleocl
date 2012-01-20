@@ -60,6 +60,9 @@ public class SimpleoclTokenStyleInformationProvider {
 		if ("OCLANYTYPE".equals(tokenName)) {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x00, 0xC0, 0x00}, null, false, false, false, false);
 		}
+		if ("OCLTYPE".equals(tokenName)) {
+			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x00, 0xC0, 0x00}, null, false, false, false, false);
+		}
 		if ("TUPLETYPE".equals(tokenName)) {
 			return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyle(new int[] {0x00, 0xC0, 0x00}, null, false, false, false, false);
 		}

@@ -220,7 +220,7 @@ abstract rule OclExpression {
 }
 
 rule PropertyCallExp extends OclExpression {
-	from s : OCL!PropertyCallExp in IN (s.oclIsTypeOf(OCL!PropertyCallExp))
+	from s : OCL!PropertyCallExp in IN
 	to cb : EMFTVM!CodeBlock (
 		nested <- Sequence{s.calls->last()},
 		code <- Sequence{invokeCb}),

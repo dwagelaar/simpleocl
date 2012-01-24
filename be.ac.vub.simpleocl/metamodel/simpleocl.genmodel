@@ -44,6 +44,7 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/owningOperation"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/ifExp1"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/owningAttribute"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/appliedOperator"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//VariableExp">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleocl.ecore#//VariableExp/referredVariable"/>
@@ -121,6 +122,7 @@
     <genClasses ecoreClass="simpleocl.ecore#//OperatorCallExp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//OperatorCallExp/argument"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//OperatorCallExp/operationName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//OperatorCallExp/source"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//NotOpCallExp"/>
     <genClasses ecoreClass="simpleocl.ecore#//RelOpCallExp"/>

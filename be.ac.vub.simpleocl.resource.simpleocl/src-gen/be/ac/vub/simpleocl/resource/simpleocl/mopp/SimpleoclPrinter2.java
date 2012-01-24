@@ -273,6 +273,10 @@ public class SimpleoclPrinter2 implements be.ac.vub.simpleocl.resource.simpleocl
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_42, foundFormattingElements);
 			return;
 		}
+		if (element instanceof be.ac.vub.simpleocl.PropertyCallExp) {
+			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_43, foundFormattingElements);
+			return;
+		}
 		if (element instanceof be.ac.vub.simpleocl.NavigationOrAttributeCall) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_45, foundFormattingElements);
 			return;
@@ -359,10 +363,6 @@ public class SimpleoclPrinter2 implements be.ac.vub.simpleocl.resource.simpleocl
 		}
 		if (element instanceof be.ac.vub.simpleocl.OperatorCallExp) {
 			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_33, foundFormattingElements);
-			return;
-		}
-		if (element instanceof be.ac.vub.simpleocl.PropertyCallExp) {
-			printInternal(element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.SIMPLEOCL_43, foundFormattingElements);
 			return;
 		}
 		if (element instanceof be.ac.vub.simpleocl.OperationCall) {

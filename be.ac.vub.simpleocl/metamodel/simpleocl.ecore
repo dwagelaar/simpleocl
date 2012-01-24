@@ -61,6 +61,8 @@
         eType="#//IfExp" eOpposite="#//IfExp/condition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningAttribute" ordered="false"
         eType="#//Attribute" eOpposite="#//Attribute/initExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOperator" ordered="false"
+        eType="#//OperatorCallExp" eOpposite="#//OperatorCallExp/source"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VariableExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="referredVariable" ordered="false"
@@ -161,11 +163,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" ordered="false"
         unique="false" lowerBound="1" eType="#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OperatorCallExp" eSuperTypes="#//PropertyCallExp">
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorCallExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//OclExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" ordered="false"
         unique="false" lowerBound="1" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
+        lowerBound="1" eType="#//OclExpression" containment="true" eOpposite="#//OclExpression/appliedOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotOpCallExp" eSuperTypes="#//OperatorCallExp"/>
   <eClassifiers xsi:type="ecore:EClass" name="RelOpCallExp" eSuperTypes="#//OperatorCallExp"/>

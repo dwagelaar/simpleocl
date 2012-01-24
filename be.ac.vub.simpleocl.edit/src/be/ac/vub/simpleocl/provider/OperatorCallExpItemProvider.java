@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class OperatorCallExpItemProvider
-	extends PropertyCallExpItemProvider
+	extends OclExpressionItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -104,6 +104,7 @@ public class OperatorCallExpItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT);
+			childrenFeatures.add(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE);
 		}
 		return childrenFeatures;
 	}
@@ -162,6 +163,7 @@ public class OperatorCallExpItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SimpleoclPackage.OPERATOR_CALL_EXP__ARGUMENT:
+			case SimpleoclPackage.OPERATOR_CALL_EXP__SOURCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -328,6 +330,156 @@ public class OperatorCallExpItemProvider
 			(createChildParameter
 				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT,
 				 SimpleoclFactory.eINSTANCE.createOclModelElementExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createVariableExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createSuperExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createSelfExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createEnvExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createStringExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createBooleanExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createRealExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createIntegerExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createBagExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createOrderedSetExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createSequenceExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createSetExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createTupleExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createMapExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createEnumLiteralExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createOclUndefinedExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createStaticPropertyCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createPropertyCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createOperatorCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createNotOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createRelOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createEqOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createAddOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createIntOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createMulOpCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createLambdaCallExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createBraceExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createLetExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createIfExp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE,
+				 SimpleoclFactory.eINSTANCE.createOclModelElementExp()));
 	}
 
 	/**
@@ -342,8 +494,8 @@ public class OperatorCallExpItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == SimpleoclPackage.Literals.PROPERTY_CALL_EXP__SOURCE ||
-			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT;
+			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT ||
+			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE;
 
 		if (qualify) {
 			return getString

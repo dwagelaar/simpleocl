@@ -17,6 +17,7 @@ package be.ac.vub.simpleocl;
  * <ul>
  *   <li>{@link be.ac.vub.simpleocl.OperatorCallExp#getArgument <em>Argument</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OperatorCallExp#getOperationName <em>Operation Name</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.OperatorCallExp#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,7 +25,7 @@ package be.ac.vub.simpleocl;
  * @model
  * @generated
  */
-public interface OperatorCallExp extends PropertyCallExp {
+public interface OperatorCallExp extends OclExpression {
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -76,5 +77,33 @@ public interface OperatorCallExp extends PropertyCallExp {
 	 * @generated
 	 */
 	void setOperationName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Source</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OclExpression#getAppliedOperator <em>Applied Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source</em>' containment reference.
+	 * @see #setSource(OclExpression)
+	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getOperatorCallExp_Source()
+	 * @see be.ac.vub.simpleocl.OclExpression#getAppliedOperator
+	 * @model opposite="appliedOperator" containment="true" required="true" ordered="false"
+	 * @generated
+	 */
+	OclExpression getSource();
+
+	/**
+	 * Sets the value of the '{@link be.ac.vub.simpleocl.OperatorCallExp#getSource <em>Source</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source</em>' containment reference.
+	 * @see #getSource()
+	 * @generated
+	 */
+	void setSource(OclExpression value);
 
 } // OperatorCallExp

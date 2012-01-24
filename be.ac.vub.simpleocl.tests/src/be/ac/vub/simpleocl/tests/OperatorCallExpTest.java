@@ -16,7 +16,7 @@ import be.ac.vub.simpleocl.SimpleoclFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OperatorCallExpTest extends PropertyCallExpTest {
+public class OperatorCallExpTest extends OclExpressionTest {
 
 	/**
 	 * <!-- begin-user-doc -->

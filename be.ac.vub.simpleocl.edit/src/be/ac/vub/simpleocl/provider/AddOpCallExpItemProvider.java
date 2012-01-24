@@ -124,8 +124,8 @@ public class AddOpCallExpItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == SimpleoclPackage.Literals.PROPERTY_CALL_EXP__SOURCE ||
-			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT;
+			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__ARGUMENT ||
+			childFeature == SimpleoclPackage.Literals.OPERATOR_CALL_EXP__SOURCE;
 
 		if (qualify) {
 			return getString

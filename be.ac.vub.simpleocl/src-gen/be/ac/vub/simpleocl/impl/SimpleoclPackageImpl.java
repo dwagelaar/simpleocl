@@ -1025,6 +1025,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOclExpression_AppliedOperator() {
+		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVariableExp() {
 		return variableExpEClass;
 	}
@@ -1531,6 +1540,15 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 */
 	public EAttribute getOperatorCallExp_OperationName() {
 		return (EAttribute)operatorCallExpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorCallExp_Source() {
+		return (EReference)operatorCallExpEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2593,6 +2611,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__OWNING_OPERATION);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__IF_EXP1);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__OWNING_ATTRIBUTE);
+		createEReference(oclExpressionEClass, OCL_EXPRESSION__APPLIED_OPERATOR);
 
 		variableExpEClass = createEClass(VARIABLE_EXP);
 		createEReference(variableExpEClass, VARIABLE_EXP__REFERRED_VARIABLE);
@@ -2680,6 +2699,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		operatorCallExpEClass = createEClass(OPERATOR_CALL_EXP);
 		createEReference(operatorCallExpEClass, OPERATOR_CALL_EXP__ARGUMENT);
 		createEAttribute(operatorCallExpEClass, OPERATOR_CALL_EXP__OPERATION_NAME);
+		createEReference(operatorCallExpEClass, OPERATOR_CALL_EXP__SOURCE);
 
 		notOpCallExpEClass = createEClass(NOT_OP_CALL_EXP);
 
@@ -2903,7 +2923,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		propertyCallEClass.getESuperTypes().add(this.getLocatedElement());
 		navigationOrAttributeCallEClass.getESuperTypes().add(this.getPropertyCall());
 		operationCallEClass.getESuperTypes().add(this.getPropertyCall());
-		operatorCallExpEClass.getESuperTypes().add(this.getPropertyCallExp());
+		operatorCallExpEClass.getESuperTypes().add(this.getOclExpression());
 		notOpCallExpEClass.getESuperTypes().add(this.getOperatorCallExp());
 		relOpCallExpEClass.getESuperTypes().add(this.getOperatorCallExp());
 		eqOpCallExpEClass.getESuperTypes().add(this.getOperatorCallExp());
@@ -2985,6 +3005,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEReference(getOclExpression_OwningOperation(), this.getOperation(), this.getOperation_Body(), "owningOperation", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_IfExp1(), this.getIfExp(), this.getIfExp_Condition(), "ifExp1", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_OwningAttribute(), this.getAttribute(), this.getAttribute_InitExpression(), "owningAttribute", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getOclExpression_AppliedOperator(), this.getOperatorCallExp(), this.getOperatorCallExp_Source(), "appliedOperator", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(variableExpEClass, VariableExp.class, "VariableExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableExp_ReferredVariable(), this.getVariableDeclaration(), this.getVariableDeclaration_VariableExp(), "referredVariable", null, 1, 1, VariableExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3072,6 +3093,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEClass(operatorCallExpEClass, OperatorCallExp.class, "OperatorCallExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperatorCallExp_Argument(), this.getOclExpression(), null, "argument", null, 0, 1, OperatorCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperatorCallExp_OperationName(), this.getString(), "operationName", null, 1, 1, OperatorCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getOperatorCallExp_Source(), this.getOclExpression(), this.getOclExpression_AppliedOperator(), "source", null, 1, 1, OperatorCallExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(notOpCallExpEClass, NotOpCallExp.class, "NotOpCallExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

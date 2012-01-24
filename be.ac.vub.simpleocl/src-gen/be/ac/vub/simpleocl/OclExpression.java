@@ -27,6 +27,7 @@ package be.ac.vub.simpleocl;
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getOwningOperation <em>Owning Operation</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getIfExp1 <em>If Exp1</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getOwningAttribute <em>Owning Attribute</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.OclExpression#getAppliedOperator <em>Applied Operator</em>}</li>
  * </ul>
  * </p>
  *
@@ -370,5 +371,33 @@ public interface OclExpression extends LocatedElement {
 	 * @generated
 	 */
 	void setOwningAttribute(Attribute value);
+
+	/**
+	 * Returns the value of the '<em><b>Applied Operator</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OperatorCallExp#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Applied Operator</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Applied Operator</em>' container reference.
+	 * @see #setAppliedOperator(OperatorCallExp)
+	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getOclExpression_AppliedOperator()
+	 * @see be.ac.vub.simpleocl.OperatorCallExp#getSource
+	 * @model opposite="source" transient="false" ordered="false"
+	 * @generated
+	 */
+	OperatorCallExp getAppliedOperator();
+
+	/**
+	 * Sets the value of the '{@link be.ac.vub.simpleocl.OclExpression#getAppliedOperator <em>Applied Operator</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Applied Operator</em>' container reference.
+	 * @see #getAppliedOperator()
+	 * @generated
+	 */
+	void setAppliedOperator(OperatorCallExp value);
 
 } // OclExpression

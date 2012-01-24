@@ -438,7 +438,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 			case SimpleoclPackage.OPERATOR_CALL_EXP: {
 				OperatorCallExp operatorCallExp = (OperatorCallExp)theEObject;
 				T result = caseOperatorCallExp(operatorCallExp);
-				if (result == null) result = casePropertyCallExp(operatorCallExp);
 				if (result == null) result = caseOclExpression(operatorCallExp);
 				if (result == null) result = caseLocatedElement(operatorCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -448,7 +447,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				NotOpCallExp notOpCallExp = (NotOpCallExp)theEObject;
 				T result = caseNotOpCallExp(notOpCallExp);
 				if (result == null) result = caseOperatorCallExp(notOpCallExp);
-				if (result == null) result = casePropertyCallExp(notOpCallExp);
 				if (result == null) result = caseOclExpression(notOpCallExp);
 				if (result == null) result = caseLocatedElement(notOpCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -458,7 +456,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				RelOpCallExp relOpCallExp = (RelOpCallExp)theEObject;
 				T result = caseRelOpCallExp(relOpCallExp);
 				if (result == null) result = caseOperatorCallExp(relOpCallExp);
-				if (result == null) result = casePropertyCallExp(relOpCallExp);
 				if (result == null) result = caseOclExpression(relOpCallExp);
 				if (result == null) result = caseLocatedElement(relOpCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -468,7 +465,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				EqOpCallExp eqOpCallExp = (EqOpCallExp)theEObject;
 				T result = caseEqOpCallExp(eqOpCallExp);
 				if (result == null) result = caseOperatorCallExp(eqOpCallExp);
-				if (result == null) result = casePropertyCallExp(eqOpCallExp);
 				if (result == null) result = caseOclExpression(eqOpCallExp);
 				if (result == null) result = caseLocatedElement(eqOpCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -478,7 +474,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				AddOpCallExp addOpCallExp = (AddOpCallExp)theEObject;
 				T result = caseAddOpCallExp(addOpCallExp);
 				if (result == null) result = caseOperatorCallExp(addOpCallExp);
-				if (result == null) result = casePropertyCallExp(addOpCallExp);
 				if (result == null) result = caseOclExpression(addOpCallExp);
 				if (result == null) result = caseLocatedElement(addOpCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -488,7 +483,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				IntOpCallExp intOpCallExp = (IntOpCallExp)theEObject;
 				T result = caseIntOpCallExp(intOpCallExp);
 				if (result == null) result = caseOperatorCallExp(intOpCallExp);
-				if (result == null) result = casePropertyCallExp(intOpCallExp);
 				if (result == null) result = caseOclExpression(intOpCallExp);
 				if (result == null) result = caseLocatedElement(intOpCallExp);
 				if (result == null) result = defaultCase(theEObject);
@@ -498,7 +492,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				MulOpCallExp mulOpCallExp = (MulOpCallExp)theEObject;
 				T result = caseMulOpCallExp(mulOpCallExp);
 				if (result == null) result = caseOperatorCallExp(mulOpCallExp);
-				if (result == null) result = casePropertyCallExp(mulOpCallExp);
 				if (result == null) result = caseOclExpression(mulOpCallExp);
 				if (result == null) result = caseLocatedElement(mulOpCallExp);
 				if (result == null) result = defaultCase(theEObject);

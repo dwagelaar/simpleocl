@@ -23,6 +23,7 @@ import be.ac.vub.simpleocl.OclExpression;
 import be.ac.vub.simpleocl.OclType;
 import be.ac.vub.simpleocl.Operation;
 import be.ac.vub.simpleocl.OperationCall;
+import be.ac.vub.simpleocl.OperatorCallExp;
 import be.ac.vub.simpleocl.PropertyCallExp;
 import be.ac.vub.simpleocl.SimpleoclPackage;
 
@@ -45,6 +46,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getOwningOperation <em>Owning Operation</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getIfExp1 <em>If Exp1</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getOwningAttribute <em>Owning Attribute</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getAppliedOperator <em>Applied Operator</em>}</li>
  * </ul>
  * </p>
  *
@@ -579,6 +581,47 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OperatorCallExp getAppliedOperator() {
+		if (eContainerFeatureID() != SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR) return null;
+		return (OperatorCallExp)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAppliedOperator(OperatorCallExp newAppliedOperator, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newAppliedOperator, SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAppliedOperator(OperatorCallExp newAppliedOperator) {
+		if (newAppliedOperator != eInternalContainer() || (eContainerFeatureID() != SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR && newAppliedOperator != null)) {
+			if (EcoreUtil.isAncestor(this, newAppliedOperator))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newAppliedOperator != null)
+				msgs = ((InternalEObject)newAppliedOperator).eInverseAdd(this, SimpleoclPackage.OPERATOR_CALL_EXP__SOURCE, OperatorCallExp.class, msgs);
+			msgs = basicSetAppliedOperator(newAppliedOperator, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR, newAppliedOperator, newAppliedOperator));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -630,6 +673,10 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetOwningAttribute((Attribute)otherEnd, msgs);
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetAppliedOperator((OperatorCallExp)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -666,6 +713,8 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return basicSetIfExp1(null, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				return basicSetOwningAttribute(null, msgs);
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				return basicSetAppliedOperator(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -700,6 +749,8 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.IF_EXP__CONDITION, IfExp.class, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.ATTRIBUTE__INIT_EXPRESSION, Attribute.class, msgs);
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.OPERATOR_CALL_EXP__SOURCE, OperatorCallExp.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -736,6 +787,8 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return getIfExp1();
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				return getOwningAttribute();
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				return getAppliedOperator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -783,6 +836,9 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return;
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				setOwningAttribute((Attribute)newValue);
+				return;
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				setAppliedOperator((OperatorCallExp)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -832,6 +888,9 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				setOwningAttribute((Attribute)null);
 				return;
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				setAppliedOperator((OperatorCallExp)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -868,6 +927,8 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return getIfExp1() != null;
 			case SimpleoclPackage.OCL_EXPRESSION__OWNING_ATTRIBUTE:
 				return getOwningAttribute() != null;
+			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_OPERATOR:
+				return getAppliedOperator() != null;
 		}
 		return super.eIsSet(featureID);
 	}

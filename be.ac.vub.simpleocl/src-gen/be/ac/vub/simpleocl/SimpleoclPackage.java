@@ -562,13 +562,22 @@ public interface SimpleoclPackage extends EPackage {
 	int OCL_EXPRESSION__OWNING_ATTRIBUTE = LOCATED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_EXPRESSION__APPLIED_OPERATOR = LOCATED_ELEMENT_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Ocl Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_EXPRESSION_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 12;
+	int OCL_EXPRESSION_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.VariableExpImpl <em>Variable Exp</em>}' class.
@@ -723,6 +732,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int VARIABLE_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Referred Variable</b></em>' reference.
@@ -897,6 +915,15 @@ public interface SimpleoclPackage extends EPackage {
 	int SUPER_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPER_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The number of structural features of the '<em>Super Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1058,6 +1085,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int SELF_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELF_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The number of structural features of the '<em>Self Exp</em>' class.
@@ -1223,6 +1259,15 @@ public interface SimpleoclPackage extends EPackage {
 	int ENV_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENV_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The number of structural features of the '<em>Env Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1386,6 +1431,15 @@ public interface SimpleoclPackage extends EPackage {
 	int PRIMITIVE_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The number of structural features of the '<em>Primitive Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1547,6 +1601,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_EXP__OWNING_ATTRIBUTE = PRIMITIVE_EXP__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_EXP__APPLIED_OPERATOR = PRIMITIVE_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>String Symbol</b></em>' attribute.
@@ -1721,6 +1784,15 @@ public interface SimpleoclPackage extends EPackage {
 	int BOOLEAN_EXP__OWNING_ATTRIBUTE = PRIMITIVE_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_EXP__APPLIED_OPERATOR = PRIMITIVE_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Boolean Symbol</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1893,6 +1965,15 @@ public interface SimpleoclPackage extends EPackage {
 	int NUMERIC_EXP__OWNING_ATTRIBUTE = PRIMITIVE_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_EXP__APPLIED_OPERATOR = PRIMITIVE_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The number of structural features of the '<em>Numeric Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2054,6 +2135,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int REAL_EXP__OWNING_ATTRIBUTE = NUMERIC_EXP__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REAL_EXP__APPLIED_OPERATOR = NUMERIC_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Real Symbol</b></em>' attribute.
@@ -2228,6 +2318,15 @@ public interface SimpleoclPackage extends EPackage {
 	int INTEGER_EXP__OWNING_ATTRIBUTE = NUMERIC_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_EXP__APPLIED_OPERATOR = NUMERIC_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Integer Symbol</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2398,6 +2497,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int COLLECTION_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2572,6 +2680,15 @@ public interface SimpleoclPackage extends EPackage {
 	int BAG_EXP__OWNING_ATTRIBUTE = COLLECTION_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BAG_EXP__APPLIED_OPERATOR = COLLECTION_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2742,6 +2859,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORDERED_SET_EXP__OWNING_ATTRIBUTE = COLLECTION_EXP__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERED_SET_EXP__APPLIED_OPERATOR = COLLECTION_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2916,6 +3042,15 @@ public interface SimpleoclPackage extends EPackage {
 	int SEQUENCE_EXP__OWNING_ATTRIBUTE = COLLECTION_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_EXP__APPLIED_OPERATOR = COLLECTION_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3088,6 +3223,15 @@ public interface SimpleoclPackage extends EPackage {
 	int SET_EXP__OWNING_ATTRIBUTE = COLLECTION_EXP__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_EXP__APPLIED_OPERATOR = COLLECTION_EXP__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3258,6 +3402,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int TUPLE_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TUPLE_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Tuple Part</b></em>' containment reference list.
@@ -3759,6 +3912,15 @@ public interface SimpleoclPackage extends EPackage {
 	int MAP_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4013,6 +4175,15 @@ public interface SimpleoclPackage extends EPackage {
 	int ENUM_LITERAL_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUM_LITERAL_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4185,6 +4356,15 @@ public interface SimpleoclPackage extends EPackage {
 	int OCL_UNDEFINED_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_UNDEFINED_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The number of structural features of the '<em>Ocl Undefined Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4346,6 +4526,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATIC_PROPERTY_CALL_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_PROPERTY_CALL_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' containment reference.
@@ -4748,6 +4937,15 @@ public interface SimpleoclPackage extends EPackage {
 	int PROPERTY_CALL_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_CALL_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5010,7 +5208,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__LINE = PROPERTY_CALL_EXP__LINE;
+	int OPERATOR_CALL_EXP__LINE = OCL_EXPRESSION__LINE;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
@@ -5019,7 +5217,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__COLUMN = PROPERTY_CALL_EXP__COLUMN;
+	int OPERATOR_CALL_EXP__COLUMN = OCL_EXPRESSION__COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Char Start</b></em>' attribute.
@@ -5028,7 +5226,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__CHAR_START = PROPERTY_CALL_EXP__CHAR_START;
+	int OPERATOR_CALL_EXP__CHAR_START = OCL_EXPRESSION__CHAR_START;
 
 	/**
 	 * The feature id for the '<em><b>Char End</b></em>' attribute.
@@ -5037,7 +5235,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__CHAR_END = PROPERTY_CALL_EXP__CHAR_END;
+	int OPERATOR_CALL_EXP__CHAR_END = OCL_EXPRESSION__CHAR_END;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5046,7 +5244,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__TYPE = PROPERTY_CALL_EXP__TYPE;
+	int OPERATOR_CALL_EXP__TYPE = OCL_EXPRESSION__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>If Exp3</b></em>' container reference.
@@ -5055,7 +5253,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__IF_EXP3 = PROPERTY_CALL_EXP__IF_EXP3;
+	int OPERATOR_CALL_EXP__IF_EXP3 = OCL_EXPRESSION__IF_EXP3;
 
 	/**
 	 * The feature id for the '<em><b>Applied Property</b></em>' container reference.
@@ -5064,7 +5262,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__APPLIED_PROPERTY = PROPERTY_CALL_EXP__APPLIED_PROPERTY;
+	int OPERATOR_CALL_EXP__APPLIED_PROPERTY = OCL_EXPRESSION__APPLIED_PROPERTY;
 
 	/**
 	 * The feature id for the '<em><b>Collection</b></em>' container reference.
@@ -5073,7 +5271,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__COLLECTION = PROPERTY_CALL_EXP__COLLECTION;
+	int OPERATOR_CALL_EXP__COLLECTION = OCL_EXPRESSION__COLLECTION;
 
 	/**
 	 * The feature id for the '<em><b>Let Exp</b></em>' container reference.
@@ -5082,7 +5280,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__LET_EXP = PROPERTY_CALL_EXP__LET_EXP;
+	int OPERATOR_CALL_EXP__LET_EXP = OCL_EXPRESSION__LET_EXP;
 
 	/**
 	 * The feature id for the '<em><b>Loop Exp</b></em>' container reference.
@@ -5091,7 +5289,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__LOOP_EXP = PROPERTY_CALL_EXP__LOOP_EXP;
+	int OPERATOR_CALL_EXP__LOOP_EXP = OCL_EXPRESSION__LOOP_EXP;
 
 	/**
 	 * The feature id for the '<em><b>Parent Operation</b></em>' container reference.
@@ -5100,7 +5298,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__PARENT_OPERATION = PROPERTY_CALL_EXP__PARENT_OPERATION;
+	int OPERATOR_CALL_EXP__PARENT_OPERATION = OCL_EXPRESSION__PARENT_OPERATION;
 
 	/**
 	 * The feature id for the '<em><b>Initialized Variable</b></em>' container reference.
@@ -5109,7 +5307,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__INITIALIZED_VARIABLE = PROPERTY_CALL_EXP__INITIALIZED_VARIABLE;
+	int OPERATOR_CALL_EXP__INITIALIZED_VARIABLE = OCL_EXPRESSION__INITIALIZED_VARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>If Exp2</b></em>' container reference.
@@ -5118,7 +5316,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__IF_EXP2 = PROPERTY_CALL_EXP__IF_EXP2;
+	int OPERATOR_CALL_EXP__IF_EXP2 = OCL_EXPRESSION__IF_EXP2;
 
 	/**
 	 * The feature id for the '<em><b>Owning Operation</b></em>' container reference.
@@ -5127,7 +5325,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__OWNING_OPERATION = PROPERTY_CALL_EXP__OWNING_OPERATION;
+	int OPERATOR_CALL_EXP__OWNING_OPERATION = OCL_EXPRESSION__OWNING_OPERATION;
 
 	/**
 	 * The feature id for the '<em><b>If Exp1</b></em>' container reference.
@@ -5136,7 +5334,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__IF_EXP1 = PROPERTY_CALL_EXP__IF_EXP1;
+	int OPERATOR_CALL_EXP__IF_EXP1 = OCL_EXPRESSION__IF_EXP1;
 
 	/**
 	 * The feature id for the '<em><b>Owning Attribute</b></em>' container reference.
@@ -5145,25 +5343,16 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__OWNING_ATTRIBUTE = PROPERTY_CALL_EXP__OWNING_ATTRIBUTE;
+	int OPERATOR_CALL_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__CALLS = PROPERTY_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR_CALL_EXP__SOURCE = PROPERTY_CALL_EXP__SOURCE;
+	int OPERATOR_CALL_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -5172,7 +5361,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__ARGUMENT = PROPERTY_CALL_EXP_FEATURE_COUNT + 0;
+	int OPERATOR_CALL_EXP__ARGUMENT = OCL_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operation Name</b></em>' attribute.
@@ -5181,7 +5370,16 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP__OPERATION_NAME = PROPERTY_CALL_EXP_FEATURE_COUNT + 1;
+	int OPERATOR_CALL_EXP__OPERATION_NAME = OCL_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_CALL_EXP__SOURCE = OCL_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Operator Call Exp</em>' class.
@@ -5190,7 +5388,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_CALL_EXP_FEATURE_COUNT = PROPERTY_CALL_EXP_FEATURE_COUNT + 2;
+	int OPERATOR_CALL_EXP_FEATURE_COUNT = OCL_EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link be.ac.vub.simpleocl.impl.NotOpCallExpImpl <em>Not Op Call Exp</em>}' class.
@@ -5347,22 +5545,13 @@ public interface SimpleoclPackage extends EPackage {
 	int NOT_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOT_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOT_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int NOT_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -5381,6 +5570,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOT_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Not Op Call Exp</em>' class.
@@ -5546,22 +5744,13 @@ public interface SimpleoclPackage extends EPackage {
 	int REL_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REL_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REL_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int REL_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -5580,6 +5769,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int REL_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REL_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Rel Op Call Exp</em>' class.
@@ -5745,22 +5943,13 @@ public interface SimpleoclPackage extends EPackage {
 	int EQ_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EQ_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQ_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int EQ_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -5779,6 +5968,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int EQ_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Eq Op Call Exp</em>' class.
@@ -5944,22 +6142,13 @@ public interface SimpleoclPackage extends EPackage {
 	int ADD_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADD_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADD_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int ADD_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -5978,6 +6167,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADD_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Add Op Call Exp</em>' class.
@@ -6143,22 +6341,13 @@ public interface SimpleoclPackage extends EPackage {
 	int INT_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INT_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INT_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int INT_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -6177,6 +6366,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int INT_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Int Op Call Exp</em>' class.
@@ -6342,22 +6540,13 @@ public interface SimpleoclPackage extends EPackage {
 	int MUL_OP_CALL_EXP__OWNING_ATTRIBUTE = OPERATOR_CALL_EXP__OWNING_ATTRIBUTE;
 
 	/**
-	 * The feature id for the '<em><b>Calls</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MUL_OP_CALL_EXP__CALLS = OPERATOR_CALL_EXP__CALLS;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MUL_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
+	int MUL_OP_CALL_EXP__APPLIED_OPERATOR = OPERATOR_CALL_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -6376,6 +6565,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int MUL_OP_CALL_EXP__OPERATION_NAME = OPERATOR_CALL_EXP__OPERATION_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUL_OP_CALL_EXP__SOURCE = OPERATOR_CALL_EXP__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Mul Op Call Exp</em>' class.
@@ -6539,6 +6737,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int LAMBDA_CALL_EXP__OWNING_ATTRIBUTE = VARIABLE_EXP__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAMBDA_CALL_EXP__APPLIED_OPERATOR = VARIABLE_EXP__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Referred Variable</b></em>' reference.
@@ -6720,6 +6927,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int BRACE_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRACE_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Exp</b></em>' containment reference.
@@ -7240,6 +7456,15 @@ public interface SimpleoclPackage extends EPackage {
 	int LET_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
 
 	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
+
+	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7419,6 +7644,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int IF_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Then Expression</b></em>' containment reference.
@@ -8144,6 +8378,15 @@ public interface SimpleoclPackage extends EPackage {
 	 * @ordered
 	 */
 	int OCL_MODEL_ELEMENT_EXP__OWNING_ATTRIBUTE = OCL_EXPRESSION__OWNING_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Applied Operator</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_MODEL_ELEMENT_EXP__APPLIED_OPERATOR = OCL_EXPRESSION__APPLIED_OPERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
@@ -12138,6 +12381,17 @@ public interface SimpleoclPackage extends EPackage {
 	EReference getOclExpression_OwningAttribute();
 
 	/**
+	 * Returns the meta object for the container reference '{@link be.ac.vub.simpleocl.OclExpression#getAppliedOperator <em>Applied Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Applied Operator</em>'.
+	 * @see be.ac.vub.simpleocl.OclExpression#getAppliedOperator()
+	 * @see #getOclExpression()
+	 * @generated
+	 */
+	EReference getOclExpression_AppliedOperator();
+
+	/**
 	 * Returns the meta object for class '{@link be.ac.vub.simpleocl.VariableExp <em>Variable Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12733,6 +12987,17 @@ public interface SimpleoclPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOperatorCallExp_OperationName();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link be.ac.vub.simpleocl.OperatorCallExp#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Source</em>'.
+	 * @see be.ac.vub.simpleocl.OperatorCallExp#getSource()
+	 * @see #getOperatorCallExp()
+	 * @generated
+	 */
+	EReference getOperatorCallExp_Source();
 
 	/**
 	 * Returns the meta object for class '{@link be.ac.vub.simpleocl.NotOpCallExp <em>Not Op Call Exp</em>}'.
@@ -14165,6 +14430,14 @@ public interface SimpleoclPackage extends EPackage {
 		EReference OCL_EXPRESSION__OWNING_ATTRIBUTE = eINSTANCE.getOclExpression_OwningAttribute();
 
 		/**
+		 * The meta object literal for the '<em><b>Applied Operator</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OCL_EXPRESSION__APPLIED_OPERATOR = eINSTANCE.getOclExpression_AppliedOperator();
+
+		/**
 		 * The meta object literal for the '{@link be.ac.vub.simpleocl.impl.VariableExpImpl <em>Variable Exp</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14679,6 +14952,14 @@ public interface SimpleoclPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATOR_CALL_EXP__OPERATION_NAME = eINSTANCE.getOperatorCallExp_OperationName();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_CALL_EXP__SOURCE = eINSTANCE.getOperatorCallExp_Source();
 
 		/**
 		 * The meta object literal for the '{@link be.ac.vub.simpleocl.impl.NotOpCallExpImpl <em>Not Op Call Exp</em>}' class.

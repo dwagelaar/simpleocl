@@ -1,0 +1,13 @@
+module join;
+
+context Collection(OclAny) def : join(f : Lambda(OclAny, OclAny) : OclAny) : OclAny =
+	self->iterate(e; acc : OclAny = OclUndefined |
+		if acc.oclIsUndefined() then
+			e
+		else 
+			f(acc, e)
+		endif
+	);
+
+context Env static def : main() : Set(String) =
+	env.modules.getKeys()->join(x, y | x + ', ' + y).debug('module names');

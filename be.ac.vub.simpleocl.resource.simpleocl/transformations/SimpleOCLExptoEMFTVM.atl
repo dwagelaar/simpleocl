@@ -37,6 +37,9 @@ helper def : SetType : String		= 'Set';
 helper def : BagType : String		= 'Bag';
 helper def : SequenceType : String	= 'Sequence';
 helper def : OrderedSetType : String= 'OrderedSet';
+helper def : MapType : String		= 'Map';
+helper def : TupleType_ : String	= 'Tuple';
+helper def : MapImplType : String	= 'java.util.HashMap';
 
 helper context OCL!"OclType" def : typeName : String =
 	'Object'; -- OclType is a direct OclType, which is either a Class or an EClass
@@ -614,6 +617,47 @@ rule OrderedSetExp extends CollectionExp {
 	   findtype : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.OrderedSetType)
 }
 
+rule MapExp extends OclExpression {
+	from s : OCL!MapExp in IN
+	using {
+		revElements : Sequence(OCL!MapElement) = s.elements->reverse();
+		puts : Sequence(EMFTVM!Instruction) = 
+			revElements->collect(e|thisModule.MapElement(e))->flatten();
+	}
+	to cb : EMFTVM!CodeBlock (
+		nested <- revElements->collect(e | Sequence{e.value, e.key})->flatten(),
+		code <- Sequence{findtype, new}->union(puts)),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{findtype, new}->union(puts)),
+	   findtype : EMFTVM!Findtype (										-- [MapImplType]
+		modelname <- '#native',
+		typename <- thisModule.MapImplType),
+	   new : EMFTVM!New													-- [map]
+}
+
+rule TupleExp extends OclExpression {
+	from s : OCL!TupleExp in IN
+	using {
+		revElements : Sequence(OCL!TuplePart) = s.tuplePart->reverse();
+		puts : Sequence(EMFTVM!Instruction) = 
+			revElements->collect(e|thisModule.TuplePart(e))->flatten();
+	}
+	to cb : EMFTVM!CodeBlock (
+		nested <- revElements->collect(e | e.initExpression),
+		code <- Sequence{findtype, new}->union(puts)->append(findttype)->append(invokeFromMap)),
+	   ln : EMFTVM!LineNumber (
+	   	instructions <- Sequence{findtype, new}->union(puts)->append(findttype)->append(invokeFromMap)),
+	   findtype : EMFTVM!Findtype (										-- [MapImplType]
+		modelname <- '#native',
+		typename <- thisModule.MapImplType),
+	   new : EMFTVM!New,												-- [map]
+	   findttype : EMFTVM!Findtype (									-- [TupleType, map]
+		modelname <- '#native',
+		typename <- thisModule.TupleType_),
+	   invokeFromMap : EMFTVM!InvokeStatic (							-- [tuple]
+	   	opname <- 'fromMap', argcount <- 1)
+}
+
 rule OclModelElementExp extends OclExpression {
 	from s : OCL!OclModelElementExp in IN
 	to cb : EMFTVM!CodeBlock (
@@ -1147,6 +1191,47 @@ rule OrderedSetExp2 extends CollectionExp2 {
 	   findtype2 : EMFTVM!Findtype (modelname <- '#native', typename <- thisModule.OrderedSetType)
 }
 
+rule MapExp2 extends OclExpression2 {
+	from s : OCL!MapExp in IN
+	using {
+		revElements2 : Sequence(OCL!MapElement) = s.elements->reverse();
+		puts2 : Sequence(EMFTVM!Instruction) = 
+			revElements2->collect(e|thisModule.MapElement(e))->flatten();
+	}
+	to cb2 : EMFTVM!CodeBlock (
+		nested <- revElements2->collect(e | Sequence{e.value, e.key})->flatten(),
+		code <- Sequence{findtype2, new2}->union(puts2)),
+	   ln2 : EMFTVM!LineNumber (
+	   	instructions <- Sequence{findtype2, new2}->union(puts2)),
+	   findtype2 : EMFTVM!Findtype (									-- [MapImplType]
+		modelname <- '#native',
+		typename <- thisModule.MapImplType),
+	   new2 : EMFTVM!New												-- [map]
+}
+
+rule TupleExp2 extends OclExpression2 {
+	from s : OCL!TupleExp in IN
+	using {
+		revElements2 : Sequence(OCL!TuplePart) = s.tuplePart->reverse();
+		puts2 : Sequence(EMFTVM!Instruction) = 
+			revElements2->collect(e|thisModule.TuplePart(e))->flatten();
+	}
+	to cb2 : EMFTVM!CodeBlock (
+		nested <- revElements2->collect(e | e.initExpression),
+		code <- Sequence{findtype2, new2}->union(puts2)->append(findttype2)->append(invokeFromMap2)),
+	   ln2 : EMFTVM!LineNumber (
+	   	instructions <- Sequence{findtype2, new2}->union(puts2)->append(findttype2)->append(invokeFromMap2)),
+	   findtype2 : EMFTVM!Findtype (										-- [MapImplType]
+		modelname <- '#native',
+		typename <- thisModule.MapImplType),
+	   new2 : EMFTVM!New,												-- [map]
+	   findttype2 : EMFTVM!Findtype (									-- [TupleType, map]
+		modelname <- '#native',
+		typename <- thisModule.TupleType_),
+	   invokeFromMap2 : EMFTVM!InvokeStatic (							-- [tuple]
+	   	opname <- 'fromMap', argcount <- 1)
+}
+
 rule OclModelElementExp2 extends OclExpression2 {
 	from s : OCL!OclModelElementExp in IN
 	to cb2 : EMFTVM!CodeBlock (
@@ -1459,6 +1544,18 @@ rule OrderedSetExpBoth {
 	to cb : EMFTVM!CodeBlock
 }
 
+-- @extends MapExp, MapExp2
+rule MapExpBoth {
+	from s : OCL!MapExp in IN
+	to cb : EMFTVM!CodeBlock
+}
+
+-- @extends TupleExp, TupleExp2
+rule TupleExpBoth {
+	from s : OCL!TupleExp in IN
+	to cb : EMFTVM!CodeBlock
+}
+
 -- @extends OclModelElementExp, OclModelElementExp2
 rule OclModelElementExpBoth {
 	from s : OCL!OclModelElementExp in IN
@@ -1515,6 +1612,32 @@ lazy rule InvokeIncluding {
 	to invoke : EMFTVM!Invoke (opname <- 'including', argcount <- 1)
 	do {
 		invoke;
+	}
+}
+
+lazy rule MapElement {
+	from s : OCL!MapElement
+	to dup : EMFTVM!Dup,															-- [map, map]
+	   invokeValue : EMFTVM!InvokeCb (codeBlock <- s.value, argcount <- 0),			-- [value, map, map]
+	   invokeKey : EMFTVM!InvokeCb (codeBlock <- s.key, argcount <- 0),				-- [key, value, map, map]
+	   swap : EMFTVM!SwapX1,														-- [map, key, value, map]
+	   invoke : EMFTVM!Invoke (opname <- 'put', argcount <- 2),						-- [value, map]
+	   pop : EMFTVM!Pop																-- [map]
+	do {
+		Sequence{dup, invokeValue, invokeKey, swap, invoke, pop};
+	}
+}
+
+lazy rule TuplePart {
+	from s : OCL!TuplePart
+	to dup : EMFTVM!Dup,															-- [map, map]
+	   invokeValue : EMFTVM!InvokeCb (codeBlock <- s.initExpression, argcount <- 0),-- [value, map, map]
+	   pushKey : EMFTVM!Push (value <- s.varName),									-- [key, value, map, map]
+	   swap : EMFTVM!SwapX1,														-- [map, key, value, map]
+	   invoke : EMFTVM!Invoke (opname <- 'put', argcount <- 2),						-- [value, map]
+	   pop : EMFTVM!Pop																-- [map]
+	do {
+		Sequence{dup, invokeValue, pushKey, swap, invoke, pop};
 	}
 }
 

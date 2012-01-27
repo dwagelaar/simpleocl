@@ -1,0 +1,14 @@
+module lazytest;
+
+context Integer def : run() : Sequence(Integer) =
+	if self <= 0 then
+		Sequence{0}
+	else
+		(self - 1).run()->append(self)
+	endif;
+
+context Integer def : expensive() : Integer =
+	(self * self).debug('expensive');
+
+context Env static def : main() : Set(String) =
+	(100).run()->collect(x | x.expensive())->last();

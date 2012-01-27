@@ -49,7 +49,22 @@ context OclAny def : name : String =
 
 context String def : name : String =
 	super.name;
+
+static def : map : Map(OclAny, OclAny) =
+	Map{
+		(1, 'one'),
+		(2, 'two'),
+		(3, 'three')
+	};
+
+static def : tuple : Tuple(a : String, b : String) =
+	Tuple{
+		a = 'one',
+		b = 'two'
+	};
 	
 context Env static def : main() : Set(String) =
 	(36 + 3.5).toString().debug('arithmetic test') +
-	env.allModuleNames->join(x, y | x + ', ' + y).debug('module names');
+	env.allModuleNames->join(x, y | x + ', ' + y).debug('module names') +
+	Env::map.debug('map').toString() +
+	Env::tuple.debug('tuple').toString();

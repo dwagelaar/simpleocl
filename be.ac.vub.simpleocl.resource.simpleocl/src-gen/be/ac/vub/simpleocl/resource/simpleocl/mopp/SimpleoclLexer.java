@@ -7,7 +7,6 @@ import org.antlr.runtime3_3_0.*;
 
 public class SimpleoclLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__35=35;
     public static final int T__36=36;
     public static final int T__37=37;
     public static final int T__38=38;
@@ -39,6 +38,7 @@ public class SimpleoclLexer extends Lexer {
     public static final int T__64=64;
     public static final int T__65=65;
     public static final int T__66=66;
+    public static final int T__67=67;
     public static final int TEXT=4;
     public static final int QUOTED_34_34_92=5;
     public static final int QUOTED_39_39_92=6;
@@ -55,21 +55,22 @@ public class SimpleoclLexer extends Lexer {
     public static final int OCLANYTYPE=17;
     public static final int OCLTYPE=18;
     public static final int TUPLETYPE=19;
-    public static final int MAPTYPE=20;
-    public static final int LAMBDATYPE=21;
-    public static final int ENVTYPE=22;
-    public static final int BOOLOP=23;
-    public static final int NEQ=24;
-    public static final int RELOP=25;
-    public static final int ADDOP=26;
-    public static final int INTOP=27;
-    public static final int MULOP=28;
-    public static final int NOTOP=29;
-    public static final int FLOAT=30;
-    public static final int INTEGER=31;
-    public static final int COMMENT=32;
-    public static final int LINEBREAK=33;
-    public static final int WHITESPACE=34;
+    public static final int TUPLE=20;
+    public static final int MAPTYPE=21;
+    public static final int LAMBDATYPE=22;
+    public static final int ENVTYPE=23;
+    public static final int BOOLOP=24;
+    public static final int NEQ=25;
+    public static final int RELOP=26;
+    public static final int ADDOP=27;
+    public static final int INTOP=28;
+    public static final int MULOP=29;
+    public static final int NOTOP=30;
+    public static final int FLOAT=31;
+    public static final int INTEGER=32;
+    public static final int COMMENT=33;
+    public static final int LINEBREAK=34;
+    public static final int WHITESPACE=35;
 
     	public java.util.List<org.antlr.runtime3_3_0.RecognitionException> lexerExceptions  = new java.util.ArrayList<org.antlr.runtime3_3_0.RecognitionException>();
     	public java.util.List<Integer> lexerExceptionsPosition = new java.util.ArrayList<Integer>();
@@ -93,36 +94,16 @@ public class SimpleoclLexer extends Lexer {
     }
     public String getGrammarFileName() { return "Simpleocl.g"; }
 
-    // $ANTLR start "T__35"
-    public final void mT__35() throws RecognitionException {
+    // $ANTLR start "T__36"
+    public final void mT__36() throws RecognitionException {
         try {
-            int _type = T__35;
+            int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // Simpleocl.g:16:7: ( 'module' )
             // Simpleocl.g:16:9: 'module'
             {
             match("module"); 
 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__35"
-
-    // $ANTLR start "T__36"
-    public final void mT__36() throws RecognitionException {
-        try {
-            int _type = T__36;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:17:7: ( ';' )
-            // Simpleocl.g:17:9: ';'
-            {
-            match(';'); 
 
             }
 
@@ -139,11 +120,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:18:7: ( 'import' )
-            // Simpleocl.g:18:9: 'import'
+            // Simpleocl.g:17:7: ( ';' )
+            // Simpleocl.g:17:9: ';'
             {
-            match("import"); 
-
+            match(';'); 
 
             }
 
@@ -160,10 +140,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:19:7: ( 'static' )
-            // Simpleocl.g:19:9: 'static'
+            // Simpleocl.g:18:7: ( 'import' )
+            // Simpleocl.g:18:9: 'import'
             {
-            match("static"); 
+            match("import"); 
 
 
             }
@@ -181,10 +161,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:20:7: ( 'def' )
-            // Simpleocl.g:20:9: 'def'
+            // Simpleocl.g:19:7: ( 'static' )
+            // Simpleocl.g:19:9: 'static'
             {
-            match("def"); 
+            match("static"); 
 
 
             }
@@ -202,10 +182,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:21:7: ( ':' )
-            // Simpleocl.g:21:9: ':'
+            // Simpleocl.g:20:7: ( 'def' )
+            // Simpleocl.g:20:9: 'def'
             {
-            match(':'); 
+            match("def"); 
+
 
             }
 
@@ -222,11 +203,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:22:7: ( 'context' )
-            // Simpleocl.g:22:9: 'context'
+            // Simpleocl.g:21:7: ( ':' )
+            // Simpleocl.g:21:9: ':'
             {
-            match("context"); 
-
+            match(':'); 
 
             }
 
@@ -243,10 +223,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:23:7: ( 'metamodel' )
-            // Simpleocl.g:23:9: 'metamodel'
+            // Simpleocl.g:22:7: ( 'context' )
+            // Simpleocl.g:22:9: 'context'
             {
-            match("metamodel"); 
+            match("context"); 
 
 
             }
@@ -264,10 +244,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:24:7: ( '(' )
-            // Simpleocl.g:24:9: '('
+            // Simpleocl.g:23:7: ( 'metamodel' )
+            // Simpleocl.g:23:9: 'metamodel'
             {
-            match('('); 
+            match("metamodel"); 
+
 
             }
 
@@ -284,10 +265,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:25:7: ( ',' )
-            // Simpleocl.g:25:9: ','
+            // Simpleocl.g:24:7: ( '(' )
+            // Simpleocl.g:24:9: '('
             {
-            match(','); 
+            match('('); 
 
             }
 
@@ -304,10 +285,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:26:7: ( ')' )
-            // Simpleocl.g:26:9: ')'
+            // Simpleocl.g:25:7: ( ',' )
+            // Simpleocl.g:25:9: ','
             {
-            match(')'); 
+            match(','); 
 
             }
 
@@ -324,11 +305,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:27:7: ( '::' )
-            // Simpleocl.g:27:9: '::'
+            // Simpleocl.g:26:7: ( ')' )
+            // Simpleocl.g:26:9: ')'
             {
-            match("::"); 
-
+            match(')'); 
 
             }
 
@@ -345,10 +325,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:28:7: ( '.' )
-            // Simpleocl.g:28:9: '.'
+            // Simpleocl.g:27:7: ( '::' )
+            // Simpleocl.g:27:9: '::'
             {
-            match('.'); 
+            match("::"); 
+
 
             }
 
@@ -365,11 +346,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:29:7: ( '->' )
-            // Simpleocl.g:29:9: '->'
+            // Simpleocl.g:28:7: ( '.' )
+            // Simpleocl.g:28:9: '.'
             {
-            match("->"); 
-
+            match('.'); 
 
             }
 
@@ -386,10 +366,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:30:7: ( 'iterate' )
-            // Simpleocl.g:30:9: 'iterate'
+            // Simpleocl.g:29:7: ( '->' )
+            // Simpleocl.g:29:9: '->'
             {
-            match("iterate"); 
+            match("->"); 
 
 
             }
@@ -407,10 +387,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:31:7: ( '|' )
-            // Simpleocl.g:31:9: '|'
+            // Simpleocl.g:30:7: ( 'iterate' )
+            // Simpleocl.g:30:9: 'iterate'
             {
-            match('|'); 
+            match("iterate"); 
+
 
             }
 
@@ -427,10 +408,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:32:7: ( '!' )
-            // Simpleocl.g:32:9: '!'
+            // Simpleocl.g:31:7: ( '|' )
+            // Simpleocl.g:31:9: '|'
             {
-            match('!'); 
+            match('|'); 
 
             }
 
@@ -447,11 +428,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:33:7: ( 'super' )
-            // Simpleocl.g:33:9: 'super'
+            // Simpleocl.g:32:7: ( '!' )
+            // Simpleocl.g:32:9: '!'
             {
-            match("super"); 
-
+            match('!'); 
 
             }
 
@@ -468,10 +448,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:34:7: ( 'self' )
-            // Simpleocl.g:34:9: 'self'
+            // Simpleocl.g:33:7: ( 'super' )
+            // Simpleocl.g:33:9: 'super'
             {
-            match("self"); 
+            match("super"); 
 
 
             }
@@ -489,10 +469,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:35:7: ( 'env' )
-            // Simpleocl.g:35:9: 'env'
+            // Simpleocl.g:34:7: ( 'self' )
+            // Simpleocl.g:34:9: 'self'
             {
-            match("env"); 
+            match("self"); 
 
 
             }
@@ -510,10 +490,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:36:7: ( 'true' )
-            // Simpleocl.g:36:9: 'true'
+            // Simpleocl.g:35:7: ( 'env' )
+            // Simpleocl.g:35:9: 'env'
             {
-            match("true"); 
+            match("env"); 
 
 
             }
@@ -531,10 +511,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:37:7: ( 'false' )
-            // Simpleocl.g:37:9: 'false'
+            // Simpleocl.g:36:7: ( 'true' )
+            // Simpleocl.g:36:9: 'true'
             {
-            match("false"); 
+            match("true"); 
 
 
             }
@@ -552,10 +532,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:38:7: ( '{' )
-            // Simpleocl.g:38:9: '{'
+            // Simpleocl.g:37:7: ( 'false' )
+            // Simpleocl.g:37:9: 'false'
             {
-            match('{'); 
+            match("false"); 
+
 
             }
 
@@ -572,10 +553,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:39:7: ( '}' )
-            // Simpleocl.g:39:9: '}'
+            // Simpleocl.g:38:7: ( '{' )
+            // Simpleocl.g:38:9: '{'
             {
-            match('}'); 
+            match('{'); 
 
             }
 
@@ -592,10 +573,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:40:7: ( '#' )
-            // Simpleocl.g:40:9: '#'
+            // Simpleocl.g:39:7: ( '}' )
+            // Simpleocl.g:39:9: '}'
             {
-            match('#'); 
+            match('}'); 
 
             }
 
@@ -612,11 +593,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:41:7: ( 'OclUndefined' )
-            // Simpleocl.g:41:9: 'OclUndefined'
+            // Simpleocl.g:40:7: ( '#' )
+            // Simpleocl.g:40:9: '#'
             {
-            match("OclUndefined"); 
-
+            match('#'); 
 
             }
 
@@ -633,10 +613,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:42:7: ( 'let' )
-            // Simpleocl.g:42:9: 'let'
+            // Simpleocl.g:41:7: ( 'OclUndefined' )
+            // Simpleocl.g:41:9: 'OclUndefined'
             {
-            match("let"); 
+            match("OclUndefined"); 
 
 
             }
@@ -654,10 +634,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:43:7: ( 'in' )
-            // Simpleocl.g:43:9: 'in'
+            // Simpleocl.g:42:7: ( 'let' )
+            // Simpleocl.g:42:9: 'let'
             {
-            match("in"); 
+            match("let"); 
 
 
             }
@@ -675,10 +655,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:44:7: ( 'if' )
-            // Simpleocl.g:44:9: 'if'
+            // Simpleocl.g:43:7: ( 'in' )
+            // Simpleocl.g:43:9: 'in'
             {
-            match("if"); 
+            match("in"); 
 
 
             }
@@ -696,10 +676,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:45:7: ( 'then' )
-            // Simpleocl.g:45:9: 'then'
+            // Simpleocl.g:44:7: ( 'if' )
+            // Simpleocl.g:44:9: 'if'
             {
-            match("then"); 
+            match("if"); 
 
 
             }
@@ -717,10 +697,10 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:46:7: ( 'else' )
-            // Simpleocl.g:46:9: 'else'
+            // Simpleocl.g:45:7: ( 'then' )
+            // Simpleocl.g:45:9: 'then'
             {
-            match("else"); 
+            match("then"); 
 
 
             }
@@ -738,6 +718,27 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Simpleocl.g:46:7: ( 'else' )
+            // Simpleocl.g:46:9: 'else'
+            {
+            match("else"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__66"
+
+    // $ANTLR start "T__67"
+    public final void mT__67() throws RecognitionException {
+        try {
+            int _type = T__67;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // Simpleocl.g:47:7: ( 'endif' )
             // Simpleocl.g:47:9: 'endif'
             {
@@ -752,18 +753,18 @@ public class SimpleoclLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__66"
+    // $ANTLR end "T__67"
 
     // $ANTLR start "NOTOP"
     public final void mNOTOP() throws RecognitionException {
         try {
             int _type = NOTOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11536:6: ( ( 'not' ) )
-            // Simpleocl.g:11537:1: ( 'not' )
+            // Simpleocl.g:11636:6: ( ( 'not' ) )
+            // Simpleocl.g:11637:1: ( 'not' )
             {
-            // Simpleocl.g:11537:1: ( 'not' )
-            // Simpleocl.g:11537:2: 'not'
+            // Simpleocl.g:11637:1: ( 'not' )
+            // Simpleocl.g:11637:2: 'not'
             {
             match("not"); 
 
@@ -786,13 +787,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = BOOLOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11539:7: ( ( ( 'and' | 'or' | 'xor' | 'implies' ) ) )
-            // Simpleocl.g:11540:1: ( ( 'and' | 'or' | 'xor' | 'implies' ) )
+            // Simpleocl.g:11639:7: ( ( ( 'and' | 'or' | 'xor' | 'implies' ) ) )
+            // Simpleocl.g:11640:1: ( ( 'and' | 'or' | 'xor' | 'implies' ) )
             {
-            // Simpleocl.g:11540:1: ( ( 'and' | 'or' | 'xor' | 'implies' ) )
-            // Simpleocl.g:11540:2: ( 'and' | 'or' | 'xor' | 'implies' )
+            // Simpleocl.g:11640:1: ( ( 'and' | 'or' | 'xor' | 'implies' ) )
+            // Simpleocl.g:11640:2: ( 'and' | 'or' | 'xor' | 'implies' )
             {
-            // Simpleocl.g:11540:2: ( 'and' | 'or' | 'xor' | 'implies' )
+            // Simpleocl.g:11640:2: ( 'and' | 'or' | 'xor' | 'implies' )
             int alt1=4;
             switch ( input.LA(1) ) {
             case 'a':
@@ -824,7 +825,7 @@ public class SimpleoclLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // Simpleocl.g:11540:3: 'and'
+                    // Simpleocl.g:11640:3: 'and'
                     {
                     match("and"); 
 
@@ -832,7 +833,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11540:9: 'or'
+                    // Simpleocl.g:11640:9: 'or'
                     {
                     match("or"); 
 
@@ -840,7 +841,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // Simpleocl.g:11540:14: 'xor'
+                    // Simpleocl.g:11640:14: 'xor'
                     {
                     match("xor"); 
 
@@ -848,7 +849,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // Simpleocl.g:11540:20: 'implies'
+                    // Simpleocl.g:11640:20: 'implies'
                     {
                     match("implies"); 
 
@@ -877,13 +878,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = INTOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11542:6: ( ( ( 'div' | 'mod' ) ) )
-            // Simpleocl.g:11543:1: ( ( 'div' | 'mod' ) )
+            // Simpleocl.g:11642:6: ( ( ( 'div' | 'mod' ) ) )
+            // Simpleocl.g:11643:1: ( ( 'div' | 'mod' ) )
             {
-            // Simpleocl.g:11543:1: ( ( 'div' | 'mod' ) )
-            // Simpleocl.g:11543:2: ( 'div' | 'mod' )
+            // Simpleocl.g:11643:1: ( ( 'div' | 'mod' ) )
+            // Simpleocl.g:11643:2: ( 'div' | 'mod' )
             {
-            // Simpleocl.g:11543:2: ( 'div' | 'mod' )
+            // Simpleocl.g:11643:2: ( 'div' | 'mod' )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -901,7 +902,7 @@ public class SimpleoclLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // Simpleocl.g:11543:3: 'div'
+                    // Simpleocl.g:11643:3: 'div'
                     {
                     match("div"); 
 
@@ -909,7 +910,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11543:9: 'mod'
+                    // Simpleocl.g:11643:9: 'mod'
                     {
                     match("mod"); 
 
@@ -938,13 +939,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = RELOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11545:6: ( ( ( '>' | '<' | '>=' | '<=' ) ) )
-            // Simpleocl.g:11546:1: ( ( '>' | '<' | '>=' | '<=' ) )
+            // Simpleocl.g:11645:6: ( ( ( '>' | '<' | '>=' | '<=' ) ) )
+            // Simpleocl.g:11646:1: ( ( '>' | '<' | '>=' | '<=' ) )
             {
-            // Simpleocl.g:11546:1: ( ( '>' | '<' | '>=' | '<=' ) )
-            // Simpleocl.g:11546:2: ( '>' | '<' | '>=' | '<=' )
+            // Simpleocl.g:11646:1: ( ( '>' | '<' | '>=' | '<=' ) )
+            // Simpleocl.g:11646:2: ( '>' | '<' | '>=' | '<=' )
             {
-            // Simpleocl.g:11546:2: ( '>' | '<' | '>=' | '<=' )
+            // Simpleocl.g:11646:2: ( '>' | '<' | '>=' | '<=' )
             int alt3=4;
             int LA3_0 = input.LA(1);
 
@@ -974,21 +975,21 @@ public class SimpleoclLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // Simpleocl.g:11546:3: '>'
+                    // Simpleocl.g:11646:3: '>'
                     {
                     match('>'); 
 
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11546:7: '<'
+                    // Simpleocl.g:11646:7: '<'
                     {
                     match('<'); 
 
                     }
                     break;
                 case 3 :
-                    // Simpleocl.g:11546:11: '>='
+                    // Simpleocl.g:11646:11: '>='
                     {
                     match(">="); 
 
@@ -996,7 +997,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // Simpleocl.g:11546:16: '<='
+                    // Simpleocl.g:11646:16: '<='
                     {
                     match("<="); 
 
@@ -1025,11 +1026,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11548:3: ( ( '=' ) )
-            // Simpleocl.g:11549:1: ( '=' )
+            // Simpleocl.g:11648:3: ( ( '=' ) )
+            // Simpleocl.g:11649:1: ( '=' )
             {
-            // Simpleocl.g:11549:1: ( '=' )
-            // Simpleocl.g:11549:2: '='
+            // Simpleocl.g:11649:1: ( '=' )
+            // Simpleocl.g:11649:2: '='
             {
             match('='); 
 
@@ -1051,11 +1052,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11551:4: ( ( '<>' ) )
-            // Simpleocl.g:11552:1: ( '<>' )
+            // Simpleocl.g:11651:4: ( ( '<>' ) )
+            // Simpleocl.g:11652:1: ( '<>' )
             {
-            // Simpleocl.g:11552:1: ( '<>' )
-            // Simpleocl.g:11552:2: '<>'
+            // Simpleocl.g:11652:1: ( '<>' )
+            // Simpleocl.g:11652:2: '<>'
             {
             match("<>"); 
 
@@ -1078,11 +1079,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = ADDOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11554:6: ( ( ( '-' | '+' ) ) )
-            // Simpleocl.g:11555:1: ( ( '-' | '+' ) )
+            // Simpleocl.g:11654:6: ( ( ( '-' | '+' ) ) )
+            // Simpleocl.g:11655:1: ( ( '-' | '+' ) )
             {
-            // Simpleocl.g:11555:1: ( ( '-' | '+' ) )
-            // Simpleocl.g:11555:2: ( '-' | '+' )
+            // Simpleocl.g:11655:1: ( ( '-' | '+' ) )
+            // Simpleocl.g:11655:2: ( '-' | '+' )
             {
             if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                 input.consume();
@@ -1112,11 +1113,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = MULOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11557:6: ( ( ( '*' | '/' ) ) )
-            // Simpleocl.g:11558:1: ( ( '*' | '/' ) )
+            // Simpleocl.g:11657:6: ( ( ( '*' | '/' ) ) )
+            // Simpleocl.g:11658:1: ( ( '*' | '/' ) )
             {
-            // Simpleocl.g:11558:1: ( ( '*' | '/' ) )
-            // Simpleocl.g:11558:2: ( '*' | '/' )
+            // Simpleocl.g:11658:1: ( ( '*' | '/' ) )
+            // Simpleocl.g:11658:2: ( '*' | '/' )
             {
             if ( input.LA(1)=='*'||input.LA(1)=='/' ) {
                 input.consume();
@@ -1146,15 +1147,15 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11560:8: ( ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
-            // Simpleocl.g:11561:1: ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Simpleocl.g:11660:8: ( ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
+            // Simpleocl.g:11661:1: ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
             {
-            // Simpleocl.g:11561:1: ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
-            // Simpleocl.g:11561:2: '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Simpleocl.g:11661:1: ( '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Simpleocl.g:11661:2: '--' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             {
             match("--"); 
 
-            // Simpleocl.g:11561:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Simpleocl.g:11661:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             loop4:
             do {
                 int alt4=2;
@@ -1167,7 +1168,7 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // Simpleocl.g:11561:7: ~ ( '\\n' | '\\r' | '\\uffff' )
+            	    // Simpleocl.g:11661:7: ~ ( '\\n' | '\\r' | '\\uffff' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -1207,13 +1208,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11564:6: ( ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ ) )
-            // Simpleocl.g:11565:1: ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ )
+            // Simpleocl.g:11664:6: ( ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ ) )
+            // Simpleocl.g:11665:1: ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ )
             {
-            // Simpleocl.g:11565:1: ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ )
-            // Simpleocl.g:11565:2: ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+
+            // Simpleocl.g:11665:1: ( ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+ )
+            // Simpleocl.g:11665:2: ( '-' )? ( ( '0' .. '9' ) )+ '.' ( ( '0' .. '9' ) )+
             {
-            // Simpleocl.g:11565:2: ( '-' )?
+            // Simpleocl.g:11665:2: ( '-' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1222,7 +1223,7 @@ public class SimpleoclLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // Simpleocl.g:11565:2: '-'
+                    // Simpleocl.g:11665:2: '-'
                     {
                     match('-'); 
 
@@ -1231,7 +1232,7 @@ public class SimpleoclLexer extends Lexer {
 
             }
 
-            // Simpleocl.g:11565:6: ( ( '0' .. '9' ) )+
+            // Simpleocl.g:11665:6: ( ( '0' .. '9' ) )+
             int cnt6=0;
             loop6:
             do {
@@ -1245,10 +1246,10 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // Simpleocl.g:11565:7: ( '0' .. '9' )
+            	    // Simpleocl.g:11665:7: ( '0' .. '9' )
             	    {
-            	    // Simpleocl.g:11565:7: ( '0' .. '9' )
-            	    // Simpleocl.g:11565:8: '0' .. '9'
+            	    // Simpleocl.g:11665:7: ( '0' .. '9' )
+            	    // Simpleocl.g:11665:8: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1268,7 +1269,7 @@ public class SimpleoclLexer extends Lexer {
             } while (true);
 
             match('.'); 
-            // Simpleocl.g:11565:22: ( ( '0' .. '9' ) )+
+            // Simpleocl.g:11665:22: ( ( '0' .. '9' ) )+
             int cnt7=0;
             loop7:
             do {
@@ -1282,10 +1283,10 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // Simpleocl.g:11565:23: ( '0' .. '9' )
+            	    // Simpleocl.g:11665:23: ( '0' .. '9' )
             	    {
-            	    // Simpleocl.g:11565:23: ( '0' .. '9' )
-            	    // Simpleocl.g:11565:24: '0' .. '9'
+            	    // Simpleocl.g:11665:23: ( '0' .. '9' )
+            	    // Simpleocl.g:11665:24: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1323,13 +1324,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11567:8: ( ( ( '-' )? ( ( '0' .. '9' ) )+ ) )
-            // Simpleocl.g:11568:1: ( ( '-' )? ( ( '0' .. '9' ) )+ )
+            // Simpleocl.g:11667:8: ( ( ( '-' )? ( ( '0' .. '9' ) )+ ) )
+            // Simpleocl.g:11668:1: ( ( '-' )? ( ( '0' .. '9' ) )+ )
             {
-            // Simpleocl.g:11568:1: ( ( '-' )? ( ( '0' .. '9' ) )+ )
-            // Simpleocl.g:11568:2: ( '-' )? ( ( '0' .. '9' ) )+
+            // Simpleocl.g:11668:1: ( ( '-' )? ( ( '0' .. '9' ) )+ )
+            // Simpleocl.g:11668:2: ( '-' )? ( ( '0' .. '9' ) )+
             {
-            // Simpleocl.g:11568:2: ( '-' )?
+            // Simpleocl.g:11668:2: ( '-' )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1338,7 +1339,7 @@ public class SimpleoclLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // Simpleocl.g:11568:2: '-'
+                    // Simpleocl.g:11668:2: '-'
                     {
                     match('-'); 
 
@@ -1347,7 +1348,7 @@ public class SimpleoclLexer extends Lexer {
 
             }
 
-            // Simpleocl.g:11568:6: ( ( '0' .. '9' ) )+
+            // Simpleocl.g:11668:6: ( ( '0' .. '9' ) )+
             int cnt9=0;
             loop9:
             do {
@@ -1361,10 +1362,10 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // Simpleocl.g:11568:7: ( '0' .. '9' )
+            	    // Simpleocl.g:11668:7: ( '0' .. '9' )
             	    {
-            	    // Simpleocl.g:11568:7: ( '0' .. '9' )
-            	    // Simpleocl.g:11568:8: '0' .. '9'
+            	    // Simpleocl.g:11668:7: ( '0' .. '9' )
+            	    // Simpleocl.g:11668:8: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1402,11 +1403,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = STRINGTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11570:11: ( ( 'String' ) )
-            // Simpleocl.g:11571:1: ( 'String' )
+            // Simpleocl.g:11670:11: ( ( 'String' ) )
+            // Simpleocl.g:11671:1: ( 'String' )
             {
-            // Simpleocl.g:11571:1: ( 'String' )
-            // Simpleocl.g:11571:2: 'String'
+            // Simpleocl.g:11671:1: ( 'String' )
+            // Simpleocl.g:11671:2: 'String'
             {
             match("String"); 
 
@@ -1429,11 +1430,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = BOOLEANTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11573:12: ( ( 'Boolean' ) )
-            // Simpleocl.g:11574:1: ( 'Boolean' )
+            // Simpleocl.g:11673:12: ( ( 'Boolean' ) )
+            // Simpleocl.g:11674:1: ( 'Boolean' )
             {
-            // Simpleocl.g:11574:1: ( 'Boolean' )
-            // Simpleocl.g:11574:2: 'Boolean'
+            // Simpleocl.g:11674:1: ( 'Boolean' )
+            // Simpleocl.g:11674:2: 'Boolean'
             {
             match("Boolean"); 
 
@@ -1456,11 +1457,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = INTEGERTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11576:12: ( ( 'Integer' ) )
-            // Simpleocl.g:11577:1: ( 'Integer' )
+            // Simpleocl.g:11676:12: ( ( 'Integer' ) )
+            // Simpleocl.g:11677:1: ( 'Integer' )
             {
-            // Simpleocl.g:11577:1: ( 'Integer' )
-            // Simpleocl.g:11577:2: 'Integer'
+            // Simpleocl.g:11677:1: ( 'Integer' )
+            // Simpleocl.g:11677:2: 'Integer'
             {
             match("Integer"); 
 
@@ -1483,11 +1484,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = REALTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11579:9: ( ( 'Real' ) )
-            // Simpleocl.g:11580:1: ( 'Real' )
+            // Simpleocl.g:11679:9: ( ( 'Real' ) )
+            // Simpleocl.g:11680:1: ( 'Real' )
             {
-            // Simpleocl.g:11580:1: ( 'Real' )
-            // Simpleocl.g:11580:2: 'Real'
+            // Simpleocl.g:11680:1: ( 'Real' )
+            // Simpleocl.g:11680:2: 'Real'
             {
             match("Real"); 
 
@@ -1510,11 +1511,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = COLLECTIONTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11582:15: ( ( 'Collection' ) )
-            // Simpleocl.g:11583:1: ( 'Collection' )
+            // Simpleocl.g:11682:15: ( ( 'Collection' ) )
+            // Simpleocl.g:11683:1: ( 'Collection' )
             {
-            // Simpleocl.g:11583:1: ( 'Collection' )
-            // Simpleocl.g:11583:2: 'Collection'
+            // Simpleocl.g:11683:1: ( 'Collection' )
+            // Simpleocl.g:11683:2: 'Collection'
             {
             match("Collection"); 
 
@@ -1537,8 +1538,8 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = BAGTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11585:8: ( 'Bag' )
-            // Simpleocl.g:11586:1: 'Bag'
+            // Simpleocl.g:11685:8: ( 'Bag' )
+            // Simpleocl.g:11686:1: 'Bag'
             {
             match("Bag"); 
 
@@ -1558,8 +1559,8 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = ORDEREDSETTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11587:15: ( 'OrderedSet' )
-            // Simpleocl.g:11588:1: 'OrderedSet'
+            // Simpleocl.g:11687:15: ( 'OrderedSet' )
+            // Simpleocl.g:11688:1: 'OrderedSet'
             {
             match("OrderedSet"); 
 
@@ -1579,8 +1580,8 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = SEQUENCETYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11589:13: ( 'Sequence' )
-            // Simpleocl.g:11590:1: 'Sequence'
+            // Simpleocl.g:11689:13: ( 'Sequence' )
+            // Simpleocl.g:11690:1: 'Sequence'
             {
             match("Sequence"); 
 
@@ -1600,8 +1601,8 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = SETTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11591:8: ( 'Set' )
-            // Simpleocl.g:11592:1: 'Set'
+            // Simpleocl.g:11691:8: ( 'Set' )
+            // Simpleocl.g:11692:1: 'Set'
             {
             match("Set"); 
 
@@ -1621,11 +1622,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = OCLANYTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11593:11: ( ( 'OclAny' ) )
-            // Simpleocl.g:11594:1: ( 'OclAny' )
+            // Simpleocl.g:11693:11: ( ( 'OclAny' ) )
+            // Simpleocl.g:11694:1: ( 'OclAny' )
             {
-            // Simpleocl.g:11594:1: ( 'OclAny' )
-            // Simpleocl.g:11594:2: 'OclAny'
+            // Simpleocl.g:11694:1: ( 'OclAny' )
+            // Simpleocl.g:11694:2: 'OclAny'
             {
             match("OclAny"); 
 
@@ -1648,11 +1649,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = OCLTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11596:8: ( ( 'OclType' ) )
-            // Simpleocl.g:11597:1: ( 'OclType' )
+            // Simpleocl.g:11696:8: ( ( 'OclType' ) )
+            // Simpleocl.g:11697:1: ( 'OclType' )
             {
-            // Simpleocl.g:11597:1: ( 'OclType' )
-            // Simpleocl.g:11597:2: 'OclType'
+            // Simpleocl.g:11697:1: ( 'OclType' )
+            // Simpleocl.g:11697:2: 'OclType'
             {
             match("OclType"); 
 
@@ -1675,10 +1676,16 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = TUPLETYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11599:10: ( 'Tuple' )
-            // Simpleocl.g:11600:1: 'Tuple'
+            // Simpleocl.g:11699:10: ( ( 'TupleType' ) )
+            // Simpleocl.g:11700:1: ( 'TupleType' )
             {
-            match("Tuple"); 
+            // Simpleocl.g:11700:1: ( 'TupleType' )
+            // Simpleocl.g:11700:2: 'TupleType'
+            {
+            match("TupleType"); 
+
+
+            }
 
 
             }
@@ -1691,13 +1698,34 @@ public class SimpleoclLexer extends Lexer {
     }
     // $ANTLR end "TUPLETYPE"
 
+    // $ANTLR start "TUPLE"
+    public final void mTUPLE() throws RecognitionException {
+        try {
+            int _type = TUPLE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Simpleocl.g:11702:6: ( 'Tuple' )
+            // Simpleocl.g:11703:1: 'Tuple'
+            {
+            match("Tuple"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "TUPLE"
+
     // $ANTLR start "MAPTYPE"
     public final void mMAPTYPE() throws RecognitionException {
         try {
             int _type = MAPTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11601:8: ( 'Map' )
-            // Simpleocl.g:11602:1: 'Map'
+            // Simpleocl.g:11704:8: ( 'Map' )
+            // Simpleocl.g:11705:1: 'Map'
             {
             match("Map"); 
 
@@ -1717,11 +1745,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = LAMBDATYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11603:11: ( ( 'Lambda' ) )
-            // Simpleocl.g:11604:1: ( 'Lambda' )
+            // Simpleocl.g:11706:11: ( ( 'Lambda' ) )
+            // Simpleocl.g:11707:1: ( 'Lambda' )
             {
-            // Simpleocl.g:11604:1: ( 'Lambda' )
-            // Simpleocl.g:11604:2: 'Lambda'
+            // Simpleocl.g:11707:1: ( 'Lambda' )
+            // Simpleocl.g:11707:2: 'Lambda'
             {
             match("Lambda"); 
 
@@ -1744,11 +1772,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = ENVTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11606:8: ( ( 'Env' ) )
-            // Simpleocl.g:11607:1: ( 'Env' )
+            // Simpleocl.g:11709:8: ( ( 'Env' ) )
+            // Simpleocl.g:11710:1: ( 'Env' )
             {
-            // Simpleocl.g:11607:1: ( 'Env' )
-            // Simpleocl.g:11607:2: 'Env'
+            // Simpleocl.g:11710:1: ( 'Env' )
+            // Simpleocl.g:11710:2: 'Env'
             {
             match("Env"); 
 
@@ -1771,11 +1799,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11609:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* ) )
-            // Simpleocl.g:11610:1: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* )
+            // Simpleocl.g:11712:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* ) )
+            // Simpleocl.g:11713:1: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* )
             {
-            // Simpleocl.g:11610:1: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* )
-            // Simpleocl.g:11610:2: ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )*
+            // Simpleocl.g:11713:1: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )* )
+            // Simpleocl.g:11713:2: ( 'A' .. 'Z' | 'a' .. 'z' ) ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1786,7 +1814,7 @@ public class SimpleoclLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // Simpleocl.g:11610:21: ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )*
+            // Simpleocl.g:11713:21: ( ( 'A' .. 'Z' | 'a' .. 'z' ) | ( '0' .. '9' ) | '_' )*
             loop10:
             do {
                 int alt10=4;
@@ -1871,7 +1899,7 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // Simpleocl.g:11610:22: ( 'A' .. 'Z' | 'a' .. 'z' )
+            	    // Simpleocl.g:11713:22: ( 'A' .. 'Z' | 'a' .. 'z' )
             	    {
             	    if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1886,10 +1914,10 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Simpleocl.g:11610:42: ( '0' .. '9' )
+            	    // Simpleocl.g:11713:42: ( '0' .. '9' )
             	    {
-            	    // Simpleocl.g:11610:42: ( '0' .. '9' )
-            	    // Simpleocl.g:11610:43: '0' .. '9'
+            	    // Simpleocl.g:11713:42: ( '0' .. '9' )
+            	    // Simpleocl.g:11713:43: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1899,7 +1927,7 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // Simpleocl.g:11610:53: '_'
+            	    // Simpleocl.g:11713:53: '_'
             	    {
             	    match('_'); 
 
@@ -1930,13 +1958,13 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11612:10: ( ( ( '\\r\\n' | '\\'r' | '\\n' ) ) )
-            // Simpleocl.g:11613:1: ( ( '\\r\\n' | '\\'r' | '\\n' ) )
+            // Simpleocl.g:11715:10: ( ( ( '\\r\\n' | '\\'r' | '\\n' ) ) )
+            // Simpleocl.g:11716:1: ( ( '\\r\\n' | '\\'r' | '\\n' ) )
             {
-            // Simpleocl.g:11613:1: ( ( '\\r\\n' | '\\'r' | '\\n' ) )
-            // Simpleocl.g:11613:2: ( '\\r\\n' | '\\'r' | '\\n' )
+            // Simpleocl.g:11716:1: ( ( '\\r\\n' | '\\'r' | '\\n' ) )
+            // Simpleocl.g:11716:2: ( '\\r\\n' | '\\'r' | '\\n' )
             {
-            // Simpleocl.g:11613:2: ( '\\r\\n' | '\\'r' | '\\n' )
+            // Simpleocl.g:11716:2: ( '\\r\\n' | '\\'r' | '\\n' )
             int alt11=3;
             switch ( input.LA(1) ) {
             case '\r':
@@ -1963,7 +1991,7 @@ public class SimpleoclLexer extends Lexer {
 
             switch (alt11) {
                 case 1 :
-                    // Simpleocl.g:11613:3: '\\r\\n'
+                    // Simpleocl.g:11716:3: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -1971,7 +1999,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Simpleocl.g:11613:10: '\\'r'
+                    // Simpleocl.g:11716:10: '\\'r'
                     {
                     match("'r"); 
 
@@ -1979,7 +2007,7 @@ public class SimpleoclLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // Simpleocl.g:11613:16: '\\n'
+                    // Simpleocl.g:11716:16: '\\n'
                     {
                     match('\n'); 
 
@@ -2008,11 +2036,11 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11616:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
-            // Simpleocl.g:11617:1: ( ( ' ' | '\\t' | '\\f' ) )
+            // Simpleocl.g:11719:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
+            // Simpleocl.g:11720:1: ( ( ' ' | '\\t' | '\\f' ) )
             {
-            // Simpleocl.g:11617:1: ( ( ' ' | '\\t' | '\\f' ) )
-            // Simpleocl.g:11617:2: ( ' ' | '\\t' | '\\f' )
+            // Simpleocl.g:11720:1: ( ( ' ' | '\\t' | '\\f' ) )
+            // Simpleocl.g:11720:2: ( ' ' | '\\t' | '\\f' )
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
                 input.consume();
@@ -2043,20 +2071,20 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = QUOTED_34_34_92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11620:16: ( ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) ) )
-            // Simpleocl.g:11621:1: ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) )
+            // Simpleocl.g:11723:16: ( ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) ) )
+            // Simpleocl.g:11724:1: ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) )
             {
-            // Simpleocl.g:11621:1: ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) )
-            // Simpleocl.g:11621:2: ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' )
+            // Simpleocl.g:11724:1: ( ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' ) )
+            // Simpleocl.g:11724:2: ( '\"' ) ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )* ( '\"' )
             {
-            // Simpleocl.g:11621:2: ( '\"' )
-            // Simpleocl.g:11621:3: '\"'
+            // Simpleocl.g:11724:2: ( '\"' )
+            // Simpleocl.g:11724:3: '\"'
             {
             match('\"'); 
 
             }
 
-            // Simpleocl.g:11621:7: ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )*
+            // Simpleocl.g:11724:7: ( ( '\\\\' '\"' ) | ( '\\\\' '\\\\' ) | ~ ( '\"' | '\\\\' ) )*
             loop12:
             do {
                 int alt12=4;
@@ -2081,10 +2109,10 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // Simpleocl.g:11621:8: ( '\\\\' '\"' )
+            	    // Simpleocl.g:11724:8: ( '\\\\' '\"' )
             	    {
-            	    // Simpleocl.g:11621:8: ( '\\\\' '\"' )
-            	    // Simpleocl.g:11621:9: '\\\\' '\"'
+            	    // Simpleocl.g:11724:8: ( '\\\\' '\"' )
+            	    // Simpleocl.g:11724:9: '\\\\' '\"'
             	    {
             	    match('\\'); 
             	    match('\"'); 
@@ -2095,10 +2123,10 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Simpleocl.g:11621:18: ( '\\\\' '\\\\' )
+            	    // Simpleocl.g:11724:18: ( '\\\\' '\\\\' )
             	    {
-            	    // Simpleocl.g:11621:18: ( '\\\\' '\\\\' )
-            	    // Simpleocl.g:11621:19: '\\\\' '\\\\'
+            	    // Simpleocl.g:11724:18: ( '\\\\' '\\\\' )
+            	    // Simpleocl.g:11724:19: '\\\\' '\\\\'
             	    {
             	    match('\\'); 
             	    match('\\'); 
@@ -2109,7 +2137,7 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // Simpleocl.g:11621:29: ~ ( '\"' | '\\\\' )
+            	    // Simpleocl.g:11724:29: ~ ( '\"' | '\\\\' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2129,8 +2157,8 @@ public class SimpleoclLexer extends Lexer {
                 }
             } while (true);
 
-            // Simpleocl.g:11621:42: ( '\"' )
-            // Simpleocl.g:11621:43: '\"'
+            // Simpleocl.g:11724:42: ( '\"' )
+            // Simpleocl.g:11724:43: '\"'
             {
             match('\"'); 
 
@@ -2155,20 +2183,20 @@ public class SimpleoclLexer extends Lexer {
         try {
             int _type = QUOTED_39_39_92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Simpleocl.g:11623:16: ( ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) ) )
-            // Simpleocl.g:11624:1: ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) )
+            // Simpleocl.g:11726:16: ( ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) ) )
+            // Simpleocl.g:11727:1: ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) )
             {
-            // Simpleocl.g:11624:1: ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) )
-            // Simpleocl.g:11624:2: ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' )
+            // Simpleocl.g:11727:1: ( ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' ) )
+            // Simpleocl.g:11727:2: ( '\\'' ) ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )* ( '\\'' )
             {
-            // Simpleocl.g:11624:2: ( '\\'' )
-            // Simpleocl.g:11624:3: '\\''
+            // Simpleocl.g:11727:2: ( '\\'' )
+            // Simpleocl.g:11727:3: '\\''
             {
             match('\''); 
 
             }
 
-            // Simpleocl.g:11624:8: ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )*
+            // Simpleocl.g:11727:8: ( ( '\\\\' '\\'' ) | ( '\\\\' '\\\\' ) | ~ ( '\\'' | '\\\\' ) )*
             loop13:
             do {
                 int alt13=4;
@@ -2193,10 +2221,10 @@ public class SimpleoclLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // Simpleocl.g:11624:9: ( '\\\\' '\\'' )
+            	    // Simpleocl.g:11727:9: ( '\\\\' '\\'' )
             	    {
-            	    // Simpleocl.g:11624:9: ( '\\\\' '\\'' )
-            	    // Simpleocl.g:11624:10: '\\\\' '\\''
+            	    // Simpleocl.g:11727:9: ( '\\\\' '\\'' )
+            	    // Simpleocl.g:11727:10: '\\\\' '\\''
             	    {
             	    match('\\'); 
             	    match('\''); 
@@ -2207,10 +2235,10 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Simpleocl.g:11624:20: ( '\\\\' '\\\\' )
+            	    // Simpleocl.g:11727:20: ( '\\\\' '\\\\' )
             	    {
-            	    // Simpleocl.g:11624:20: ( '\\\\' '\\\\' )
-            	    // Simpleocl.g:11624:21: '\\\\' '\\\\'
+            	    // Simpleocl.g:11727:20: ( '\\\\' '\\\\' )
+            	    // Simpleocl.g:11727:21: '\\\\' '\\\\'
             	    {
             	    match('\\'); 
             	    match('\\'); 
@@ -2221,7 +2249,7 @@ public class SimpleoclLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // Simpleocl.g:11624:31: ~ ( '\\'' | '\\\\' )
+            	    // Simpleocl.g:11727:31: ~ ( '\\'' | '\\\\' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2241,8 +2269,8 @@ public class SimpleoclLexer extends Lexer {
                 }
             } while (true);
 
-            // Simpleocl.g:11624:45: ( '\\'' )
-            // Simpleocl.g:11624:46: '\\''
+            // Simpleocl.g:11727:45: ( '\\'' )
+            // Simpleocl.g:11727:46: '\\''
             {
             match('\''); 
 
@@ -2263,231 +2291,231 @@ public class SimpleoclLexer extends Lexer {
     // $ANTLR end "QUOTED_39_39_92"
 
     public void mTokens() throws RecognitionException {
-        // Simpleocl.g:1:8: ( T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | NOTOP | BOOLOP | INTOP | RELOP | EQ | NEQ | ADDOP | MULOP | COMMENT | FLOAT | INTEGER | STRINGTYPE | BOOLEANTYPE | INTEGERTYPE | REALTYPE | COLLECTIONTYPE | BAGTYPE | ORDEREDSETTYPE | SEQUENCETYPE | SETTYPE | OCLANYTYPE | OCLTYPE | TUPLETYPE | MAPTYPE | LAMBDATYPE | ENVTYPE | TEXT | LINEBREAK | WHITESPACE | QUOTED_34_34_92 | QUOTED_39_39_92 )
-        int alt14=63;
+        // Simpleocl.g:1:8: ( T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | NOTOP | BOOLOP | INTOP | RELOP | EQ | NEQ | ADDOP | MULOP | COMMENT | FLOAT | INTEGER | STRINGTYPE | BOOLEANTYPE | INTEGERTYPE | REALTYPE | COLLECTIONTYPE | BAGTYPE | ORDEREDSETTYPE | SEQUENCETYPE | SETTYPE | OCLANYTYPE | OCLTYPE | TUPLETYPE | TUPLE | MAPTYPE | LAMBDATYPE | ENVTYPE | TEXT | LINEBREAK | WHITESPACE | QUOTED_34_34_92 | QUOTED_39_39_92 )
+        int alt14=64;
         alt14 = dfa14.predict(input);
         switch (alt14) {
             case 1 :
-                // Simpleocl.g:1:10: T__35
-                {
-                mT__35(); 
-
-                }
-                break;
-            case 2 :
-                // Simpleocl.g:1:16: T__36
+                // Simpleocl.g:1:10: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
-            case 3 :
-                // Simpleocl.g:1:22: T__37
+            case 2 :
+                // Simpleocl.g:1:16: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
-            case 4 :
-                // Simpleocl.g:1:28: T__38
+            case 3 :
+                // Simpleocl.g:1:22: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
-            case 5 :
-                // Simpleocl.g:1:34: T__39
+            case 4 :
+                // Simpleocl.g:1:28: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
-            case 6 :
-                // Simpleocl.g:1:40: T__40
+            case 5 :
+                // Simpleocl.g:1:34: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
-            case 7 :
-                // Simpleocl.g:1:46: T__41
+            case 6 :
+                // Simpleocl.g:1:40: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
-            case 8 :
-                // Simpleocl.g:1:52: T__42
+            case 7 :
+                // Simpleocl.g:1:46: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
-            case 9 :
-                // Simpleocl.g:1:58: T__43
+            case 8 :
+                // Simpleocl.g:1:52: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
-            case 10 :
-                // Simpleocl.g:1:64: T__44
+            case 9 :
+                // Simpleocl.g:1:58: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
-            case 11 :
-                // Simpleocl.g:1:70: T__45
+            case 10 :
+                // Simpleocl.g:1:64: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
-            case 12 :
-                // Simpleocl.g:1:76: T__46
+            case 11 :
+                // Simpleocl.g:1:70: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
-            case 13 :
-                // Simpleocl.g:1:82: T__47
+            case 12 :
+                // Simpleocl.g:1:76: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
-            case 14 :
-                // Simpleocl.g:1:88: T__48
+            case 13 :
+                // Simpleocl.g:1:82: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
-            case 15 :
-                // Simpleocl.g:1:94: T__49
+            case 14 :
+                // Simpleocl.g:1:88: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
-            case 16 :
-                // Simpleocl.g:1:100: T__50
+            case 15 :
+                // Simpleocl.g:1:94: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
-            case 17 :
-                // Simpleocl.g:1:106: T__51
+            case 16 :
+                // Simpleocl.g:1:100: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
-            case 18 :
-                // Simpleocl.g:1:112: T__52
+            case 17 :
+                // Simpleocl.g:1:106: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
-            case 19 :
-                // Simpleocl.g:1:118: T__53
+            case 18 :
+                // Simpleocl.g:1:112: T__53
                 {
                 mT__53(); 
 
                 }
                 break;
-            case 20 :
-                // Simpleocl.g:1:124: T__54
+            case 19 :
+                // Simpleocl.g:1:118: T__54
                 {
                 mT__54(); 
 
                 }
                 break;
-            case 21 :
-                // Simpleocl.g:1:130: T__55
+            case 20 :
+                // Simpleocl.g:1:124: T__55
                 {
                 mT__55(); 
 
                 }
                 break;
-            case 22 :
-                // Simpleocl.g:1:136: T__56
+            case 21 :
+                // Simpleocl.g:1:130: T__56
                 {
                 mT__56(); 
 
                 }
                 break;
-            case 23 :
-                // Simpleocl.g:1:142: T__57
+            case 22 :
+                // Simpleocl.g:1:136: T__57
                 {
                 mT__57(); 
 
                 }
                 break;
-            case 24 :
-                // Simpleocl.g:1:148: T__58
+            case 23 :
+                // Simpleocl.g:1:142: T__58
                 {
                 mT__58(); 
 
                 }
                 break;
-            case 25 :
-                // Simpleocl.g:1:154: T__59
+            case 24 :
+                // Simpleocl.g:1:148: T__59
                 {
                 mT__59(); 
 
                 }
                 break;
-            case 26 :
-                // Simpleocl.g:1:160: T__60
+            case 25 :
+                // Simpleocl.g:1:154: T__60
                 {
                 mT__60(); 
 
                 }
                 break;
-            case 27 :
-                // Simpleocl.g:1:166: T__61
+            case 26 :
+                // Simpleocl.g:1:160: T__61
                 {
                 mT__61(); 
 
                 }
                 break;
-            case 28 :
-                // Simpleocl.g:1:172: T__62
+            case 27 :
+                // Simpleocl.g:1:166: T__62
                 {
                 mT__62(); 
 
                 }
                 break;
-            case 29 :
-                // Simpleocl.g:1:178: T__63
+            case 28 :
+                // Simpleocl.g:1:172: T__63
                 {
                 mT__63(); 
 
                 }
                 break;
-            case 30 :
-                // Simpleocl.g:1:184: T__64
+            case 29 :
+                // Simpleocl.g:1:178: T__64
                 {
                 mT__64(); 
 
                 }
                 break;
-            case 31 :
-                // Simpleocl.g:1:190: T__65
+            case 30 :
+                // Simpleocl.g:1:184: T__65
                 {
                 mT__65(); 
 
                 }
                 break;
-            case 32 :
-                // Simpleocl.g:1:196: T__66
+            case 31 :
+                // Simpleocl.g:1:190: T__66
                 {
                 mT__66(); 
+
+                }
+                break;
+            case 32 :
+                // Simpleocl.g:1:196: T__67
+                {
+                mT__67(); 
 
                 }
                 break;
@@ -2653,56 +2681,63 @@ public class SimpleoclLexer extends Lexer {
                 }
                 break;
             case 56 :
-                // Simpleocl.g:1:400: MAPTYPE
+                // Simpleocl.g:1:400: TUPLE
+                {
+                mTUPLE(); 
+
+                }
+                break;
+            case 57 :
+                // Simpleocl.g:1:406: MAPTYPE
                 {
                 mMAPTYPE(); 
 
                 }
                 break;
-            case 57 :
-                // Simpleocl.g:1:408: LAMBDATYPE
+            case 58 :
+                // Simpleocl.g:1:414: LAMBDATYPE
                 {
                 mLAMBDATYPE(); 
 
                 }
                 break;
-            case 58 :
-                // Simpleocl.g:1:419: ENVTYPE
+            case 59 :
+                // Simpleocl.g:1:425: ENVTYPE
                 {
                 mENVTYPE(); 
 
                 }
                 break;
-            case 59 :
-                // Simpleocl.g:1:427: TEXT
+            case 60 :
+                // Simpleocl.g:1:433: TEXT
                 {
                 mTEXT(); 
 
                 }
                 break;
-            case 60 :
-                // Simpleocl.g:1:432: LINEBREAK
+            case 61 :
+                // Simpleocl.g:1:438: LINEBREAK
                 {
                 mLINEBREAK(); 
 
                 }
                 break;
-            case 61 :
-                // Simpleocl.g:1:442: WHITESPACE
+            case 62 :
+                // Simpleocl.g:1:448: WHITESPACE
                 {
                 mWHITESPACE(); 
 
                 }
                 break;
-            case 62 :
-                // Simpleocl.g:1:453: QUOTED_34_34_92
+            case 63 :
+                // Simpleocl.g:1:459: QUOTED_34_34_92
                 {
                 mQUOTED_34_34_92(); 
 
                 }
                 break;
-            case 63 :
-                // Simpleocl.g:1:469: QUOTED_39_39_92
+            case 64 :
+                // Simpleocl.g:1:475: QUOTED_39_39_92
                 {
                 mQUOTED_39_39_92(); 
 
@@ -2724,15 +2759,15 @@ public class SimpleoclLexer extends Lexer {
         "\4\52\1\u00a0\1\52\1\u00a2\1\52\1\uffff\6\52\1\u00aa\1\uffff\1\52"+
         "\1\uffff\1\52\1\u00ad\1\u00ae\1\u00af\5\52\2\uffff\2\52\1\uffff"+
         "\1\52\1\uffff\1\52\1\u00b9\2\52\1\uffff\1\52\1\uffff\6\52\1\u00c3"+
-        "\1\uffff\1\52\1\u00c5\3\uffff\1\u00c6\10\52\1\uffff\1\52\1\u00d0"+
-        "\1\52\1\u00d2\1\52\1\u00d4\2\52\1\u00d7\1\uffff\1\52\2\uffff\1\52"+
-        "\1\u00da\2\52\1\u00dd\4\52\1\uffff\1\u00e2\1\uffff\1\52\1\uffff"+
-        "\1\162\1\u00e4\1\uffff\1\u00e5\1\52\1\uffff\1\u00e7\1\52\1\uffff"+
-        "\1\52\1\u00ea\1\u00eb\1\52\1\uffff\1\52\2\uffff\1\52\1\uffff\1\52"+
-        "\1\u00f0\2\uffff\1\52\1\u00f2\2\52\1\uffff\1\52\1\uffff\1\52\1\u00f7"+
-        "\1\u00f8\1\52\2\uffff\1\u00fa\1\uffff";
+        "\1\uffff\1\52\1\u00c5\3\uffff\1\u00c6\10\52\1\uffff\1\52\1\u00d1"+
+        "\1\52\1\u00d3\1\52\1\u00d5\2\52\1\u00d8\1\uffff\1\52\2\uffff\1\52"+
+        "\1\u00db\2\52\1\u00de\5\52\1\uffff\1\u00e4\1\uffff\1\52\1\uffff"+
+        "\1\162\1\u00e6\1\uffff\1\u00e7\1\52\1\uffff\1\u00e9\1\52\1\uffff"+
+        "\1\52\1\u00ec\1\u00ed\2\52\1\uffff\1\52\2\uffff\1\52\1\uffff\1\52"+
+        "\1\u00f3\2\uffff\2\52\1\u00f6\2\52\1\uffff\1\52\1\u00fa\1\uffff"+
+        "\1\52\1\u00fc\1\u00fd\1\uffff\1\52\2\uffff\1\u00ff\1\uffff";
     static final String DFA14_eofS =
-        "\u00fb\uffff";
+        "\u0100\uffff";
     static final String DFA14_minS =
         "\1\11\1\145\1\uffff\1\146\2\145\1\72\1\157\4\uffff\1\55\2\uffff"+
         "\1\154\1\150\1\141\3\uffff\1\143\1\145\1\157\1\156\1\162\1\157\1"+
@@ -2750,11 +2785,11 @@ public class SimpleoclLexer extends Lexer {
         "\1\143\1\60\1\uffff\1\170\1\60\3\uffff\1\60\1\144\1\171\1\160\1"+
         "\145\1\147\1\156\1\141\1\145\1\uffff\1\143\1\60\1\141\1\60\1\144"+
         "\1\60\1\163\1\145\1\60\1\uffff\1\164\2\uffff\1\145\1\60\1\145\1"+
-        "\144\1\60\1\143\1\156\1\162\1\164\1\uffff\1\60\1\uffff\1\145\1\uffff"+
-        "\2\60\1\uffff\1\60\1\146\1\uffff\1\60\1\123\1\uffff\1\145\2\60\1"+
-        "\151\1\uffff\1\154\2\uffff\1\151\1\uffff\1\145\1\60\2\uffff\1\157"+
-        "\1\60\1\156\1\164\1\uffff\1\156\1\uffff\1\145\2\60\1\144\2\uffff"+
-        "\1\60\1\uffff";
+        "\144\1\60\1\143\1\156\1\162\1\164\1\171\1\uffff\1\60\1\uffff\1\145"+
+        "\1\uffff\2\60\1\uffff\1\60\1\146\1\uffff\1\60\1\123\1\uffff\1\145"+
+        "\2\60\1\151\1\160\1\uffff\1\154\2\uffff\1\151\1\uffff\1\145\1\60"+
+        "\2\uffff\1\157\1\145\1\60\1\156\1\164\1\uffff\1\156\1\60\1\uffff"+
+        "\1\145\2\60\1\uffff\1\144\2\uffff\1\60\1\uffff";
     static final String DFA14_maxS =
         "\1\175\1\157\1\uffff\1\164\1\165\1\151\1\72\1\157\4\uffff\1\76\2"+
         "\uffff\1\156\1\162\1\141\3\uffff\1\162\1\145\1\157\1\156\1\162\1"+
@@ -2772,24 +2807,26 @@ public class SimpleoclLexer extends Lexer {
         "\1\164\1\145\1\164\1\143\1\172\1\uffff\1\170\1\172\3\uffff\1\172"+
         "\1\144\1\171\1\160\1\145\1\147\1\156\1\141\1\145\1\uffff\1\143\1"+
         "\172\1\141\1\172\1\144\1\172\1\163\1\145\1\172\1\uffff\1\164\2\uffff"+
-        "\1\145\1\172\1\145\1\144\1\172\1\143\1\156\1\162\1\164\1\uffff\1"+
-        "\172\1\uffff\1\145\1\uffff\2\172\1\uffff\1\172\1\146\1\uffff\1\172"+
-        "\1\123\1\uffff\1\145\2\172\1\151\1\uffff\1\154\2\uffff\1\151\1\uffff"+
-        "\1\145\1\172\2\uffff\1\157\1\172\1\156\1\164\1\uffff\1\156\1\uffff"+
-        "\1\145\2\172\1\144\2\uffff\1\172\1\uffff";
+        "\1\145\1\172\1\145\1\144\1\172\1\143\1\156\1\162\1\164\1\171\1\uffff"+
+        "\1\172\1\uffff\1\145\1\uffff\2\172\1\uffff\1\172\1\146\1\uffff\1"+
+        "\172\1\123\1\uffff\1\145\2\172\1\151\1\160\1\uffff\1\154\2\uffff"+
+        "\1\151\1\uffff\1\145\1\172\2\uffff\1\157\1\145\1\172\1\156\1\164"+
+        "\1\uffff\1\156\1\172\1\uffff\1\145\2\172\1\uffff\1\144\2\uffff\1"+
+        "\172\1\uffff";
     static final String DFA14_acceptS =
         "\2\uffff\1\2\5\uffff\1\11\1\12\1\13\1\15\1\uffff\1\20\1\21\3\uffff"+
-        "\1\27\1\30\1\31\6\uffff\1\44\1\uffff\1\45\1\47\1\50\12\uffff\1\73"+
-        "\1\74\1\uffff\1\75\1\76\13\uffff\1\14\1\6\1\uffff\1\16\1\51\14\uffff"+
-        "\1\46\1\52\1\53\14\uffff\1\77\4\uffff\1\34\1\35\21\uffff\1\42\16"+
+        "\1\27\1\30\1\31\6\uffff\1\44\1\uffff\1\45\1\47\1\50\12\uffff\1\74"+
+        "\1\75\1\uffff\1\76\1\77\13\uffff\1\14\1\6\1\uffff\1\16\1\51\14\uffff"+
+        "\1\46\1\52\1\53\14\uffff\1\100\4\uffff\1\34\1\35\21\uffff\1\42\16"+
         "\uffff\1\43\7\uffff\1\5\1\uffff\1\24\11\uffff\1\33\1\41\2\uffff"+
-        "\1\64\1\uffff\1\61\4\uffff\1\70\1\uffff\1\72\7\uffff\1\23\2\uffff"+
-        "\1\37\1\25\1\36\11\uffff\1\57\11\uffff\1\22\1\uffff\1\40\1\26\11"+
-        "\uffff\1\67\1\uffff\1\1\1\uffff\1\3\2\uffff\1\4\2\uffff\1\65\2\uffff"+
-        "\1\54\4\uffff\1\71\1\uffff\1\17\1\7\1\uffff\1\66\2\uffff\1\55\1"+
-        "\56\4\uffff\1\63\1\uffff\1\10\4\uffff\1\62\1\60\1\uffff\1\32";
+        "\1\64\1\uffff\1\61\4\uffff\1\71\1\uffff\1\73\7\uffff\1\23\2\uffff"+
+        "\1\37\1\25\1\36\11\uffff\1\57\11\uffff\1\22\1\uffff\1\40\1\26\12"+
+        "\uffff\1\70\1\uffff\1\1\1\uffff\1\3\2\uffff\1\4\2\uffff\1\65\2\uffff"+
+        "\1\54\5\uffff\1\72\1\uffff\1\17\1\7\1\uffff\1\66\2\uffff\1\55\1"+
+        "\56\5\uffff\1\63\2\uffff\1\10\3\uffff\1\67\1\uffff\1\62\1\60\1\uffff"+
+        "\1\32";
     static final String DFA14_specialS =
-        "\54\uffff\1\1\54\uffff\1\0\u00a1\uffff}>";
+        "\54\uffff\1\0\54\uffff\1\1\u00a6\uffff}>";
     static final String[] DFA14_transitionS = {
             "\1\55\1\53\1\uffff\1\55\1\53\22\uffff\1\55\1\16\1\56\1\24\3"+
             "\uffff\1\54\1\10\1\12\1\37\1\36\1\11\1\14\1\13\1\37\12\40\1"+
@@ -2983,66 +3020,71 @@ public class SimpleoclLexer extends Lexer {
             "\1\u00ce",
             "",
             "\1\u00cf",
+            "\12\52\7\uffff\23\52\1\u00d0\6\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00d2",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00d1",
+            "\1\u00d4",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00d3",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00d5",
             "\1\u00d6",
+            "\1\u00d7",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "",
-            "\1\u00d8",
-            "",
             "",
             "\1\u00d9",
+            "",
+            "",
+            "\1\u00da",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00db",
             "\1\u00dc",
+            "\1\u00dd",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00de",
             "\1\u00df",
             "\1\u00e0",
             "\1\u00e1",
-            "",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "",
+            "\1\u00e2",
             "\1\u00e3",
             "",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\1\u00e5",
             "",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00e6",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u00e8",
             "",
-            "\1\u00e9",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00ea",
+            "",
+            "\1\u00eb",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00ec",
-            "",
-            "\1\u00ed",
-            "",
-            "",
             "\1\u00ee",
-            "",
             "\1\u00ef",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\1\u00f0",
             "",
             "",
             "\1\u00f1",
+            "",
+            "\1\u00f2",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\u00f3",
+            "",
+            "",
             "\1\u00f4",
-            "",
             "\1\u00f5",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00f7",
+            "\1\u00f8",
             "",
-            "\1\u00f6",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u00f9",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\1\u00fb",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\1\u00fe",
             "",
             "",
             "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
@@ -3079,29 +3121,29 @@ public class SimpleoclLexer extends Lexer {
             this.transition = DFA14_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | NOTOP | BOOLOP | INTOP | RELOP | EQ | NEQ | ADDOP | MULOP | COMMENT | FLOAT | INTEGER | STRINGTYPE | BOOLEANTYPE | INTEGERTYPE | REALTYPE | COLLECTIONTYPE | BAGTYPE | ORDEREDSETTYPE | SEQUENCETYPE | SETTYPE | OCLANYTYPE | OCLTYPE | TUPLETYPE | MAPTYPE | LAMBDATYPE | ENVTYPE | TEXT | LINEBREAK | WHITESPACE | QUOTED_34_34_92 | QUOTED_39_39_92 );";
+            return "1:1: Tokens : ( T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | NOTOP | BOOLOP | INTOP | RELOP | EQ | NEQ | ADDOP | MULOP | COMMENT | FLOAT | INTEGER | STRINGTYPE | BOOLEANTYPE | INTEGERTYPE | REALTYPE | COLLECTIONTYPE | BAGTYPE | ORDEREDSETTYPE | SEQUENCETYPE | SETTYPE | OCLANYTYPE | OCLTYPE | TUPLETYPE | TUPLE | MAPTYPE | LAMBDATYPE | ENVTYPE | TEXT | LINEBREAK | WHITESPACE | QUOTED_34_34_92 | QUOTED_39_39_92 );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA14_89 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_89>='\u0000' && LA14_89<='\uFFFF')) ) {s = 90;}
-
-                        else s = 43;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA14_44 = input.LA(1);
 
                         s = -1;
                         if ( (LA14_44=='r') ) {s = 89;}
 
                         else if ( ((LA14_44>='\u0000' && LA14_44<='q')||(LA14_44>='s' && LA14_44<='\uFFFF')) ) {s = 90;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA14_89 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_89>='\u0000' && LA14_89<='\uFFFF')) ) {s = 90;}
+
+                        else s = 43;
 
                         if ( s>=0 ) return s;
                         break;

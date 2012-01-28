@@ -45,6 +45,7 @@ public class SimpleoclTokenResolverFactory implements be.ac.vub.simpleocl.resour
 		registerTokenResolver("OCLANYTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclOCLANYTYPETokenResolver());
 		registerTokenResolver("OCLTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclOCLTYPETokenResolver());
 		registerTokenResolver("TUPLETYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclTUPLETYPETokenResolver());
+		registerTokenResolver("TUPLE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclTUPLETokenResolver());
 		registerTokenResolver("MAPTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclMAPTYPETokenResolver());
 		registerTokenResolver("LAMBDATYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclLAMBDATYPETokenResolver());
 		registerTokenResolver("ENVTYPE", new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclENVTYPETokenResolver());

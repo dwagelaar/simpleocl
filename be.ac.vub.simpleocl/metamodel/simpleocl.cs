@@ -46,7 +46,8 @@ TOKENS {
 	DEFINE SETTYPE $'Set'$;
 	DEFINE OCLANYTYPE $'OclAny'$;
 	DEFINE OCLTYPE $'OclType'$;
-	DEFINE TUPLETYPE $'Tuple'$;
+	DEFINE TUPLETYPE $'TupleType'$;
+	DEFINE TUPLE $'Tuple'$;
 	DEFINE MAPTYPE $'Map'$;
 	DEFINE LAMBDATYPE $'Lambda'$;
 	DEFINE ENVTYPE $'Env'$;
@@ -74,6 +75,7 @@ TOKENSTYLES {
 	"SETTYPE" COLOR #00C000;
 	"OCLANYTYPE" COLOR #00C000;
 	"OCLTYPE" COLOR #00C000;
+	"TUPLE" COLOR #00C000;
 	"TUPLETYPE" COLOR #00C000;
 	"MAPTYPE" COLOR #00C000;
 	"LAMBDATYPE" COLOR #00C000;
@@ -211,7 +213,7 @@ RULES {
 	SetType ::= name[SETTYPE] "(" elementType ")";
 	OclAnyType ::= name[OCLANYTYPE];
 	OclType ::= name[OCLTYPE];
-	TupleType ::= name[TUPLETYPE] "(" (attributes ("," attributes)*)? ")";
+	TupleType ::= (name[TUPLETYPE]|name[TUPLE]) "(" (attributes ("," attributes)*)? ")";
 	TupleTypeAttribute ::= (name[]|name['"','"','\\']) ":" type;
 	OclModelElement ::= model[] "!" (name[]|name['"','"','\\']);
 	MapType ::= name[MAPTYPE] "(" keyType "," valueType ")";

@@ -63,6 +63,12 @@ static def : tuple : Tuple(a : String, b : String) =
 		b = 'two'
 	};
 	
+static def : tupleType : TupleType(a : String, b : String) =
+	Tuple{
+		a = 'one',
+		b = 'two'
+	};
+	
 context Env static def : main() : Set(String) =
 	(36 + 3.5).toString().debug('arithmetic test') +
 	env.allModuleNames->join(x, y | x + ', ' + y).debug('module names') +

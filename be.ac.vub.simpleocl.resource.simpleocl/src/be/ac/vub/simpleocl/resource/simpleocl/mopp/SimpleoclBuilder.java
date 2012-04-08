@@ -42,7 +42,6 @@ import org.eclipse.m2m.atl.emftvm.Metamodel;
 import org.eclipse.m2m.atl.emftvm.Model;
 import org.eclipse.m2m.atl.emftvm.util.DefaultModuleResolver;
 import org.eclipse.m2m.atl.emftvm.util.ModuleResolver;
-import org.eclipse.m2m.atl.emftvm.util.TimingData;
 
 import be.ac.vub.simpleocl.SimpleoclPackage;
 import be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem;
@@ -133,29 +132,29 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 		try {
 
 			ExecEnv env = EmftvmFactory.eINSTANCE.createExecEnv();
-			env.getMetaModels().put("OCL", simpleoclmm);
-			env.getMetaModels().put("Problem", pbmm);
-			env.getInputModels().put("IN", simpleoclm);
-			env.getOutputModels().put("PBS", pbm);
+			env.registerMetaModel("OCL", simpleoclmm);
+			env.registerMetaModel("Problem", pbmm);
+			env.registerInputModel("IN", simpleoclm);
+			env.registerOutputModel("PBS", pbm);
 			env.loadModule(mr, "SimpleOCLWFR");
-			env.run(new TimingData(), null);
+			env.run(null);
 			
 			if (getProblems(pbm, pbs) == 0) {
 				env = EmftvmFactory.eINSTANCE.createExecEnv();
-				env.getMetaModels().put("OCL", simpleoclmm);
-				env.getMetaModels().put("Problem", pbmm);
-				env.getInputModels().put("IN", simpleoclm);
-				env.getOutputModels().put("OUT", emftvmm);
-				env.getOutputModels().put("PBS", pbm2);
+				env.registerMetaModel("OCL", simpleoclmm);
+				env.registerMetaModel("Problem", pbmm);
+				env.registerInputModel("IN", simpleoclm);
+				env.registerOutputModel("OUT", emftvmm);
+				env.registerOutputModel("PBS", pbm2);
 				env.loadModule(mr, "SimpleOCLtoEMFTVM");
-				env.run(new TimingData(), null);
+				env.run(null);
 					
 				if (getProblems(pbm2, pbs) == 0) {
 					env = EmftvmFactory.eINSTANCE.createExecEnv();
-					env.getInputModels().put("IN", emftvmm);
-					env.getOutputModels().put("OUT", emftvmmi);
+					env.registerInputModel("IN", emftvmm);
+					env.registerOutputModel("OUT", emftvmmi);
 					env.loadModule(mr, "InlineCodeblocks");
-					env.run(new TimingData(), null);
+					env.run(null);
 						
 					ri.save(Collections.emptyMap());
 					if (ri.getURI().isPlatformResource()) {

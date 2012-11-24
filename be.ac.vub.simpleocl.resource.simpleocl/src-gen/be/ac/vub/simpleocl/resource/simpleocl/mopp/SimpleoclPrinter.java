@@ -19,6 +19,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 	private be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource resource;
 	
 	private java.util.Map<?, ?> options;
+	private String encoding = System.getProperty("file.encoding");
 	
 	public SimpleoclPrinter(java.io.OutputStream outputStream, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource resource) {
 		super();
@@ -344,6 +345,16 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		return options;
 	}
 	
+	public void setEncoding(String encoding) {
+		if (encoding != null) {
+			this.encoding = encoding;
+		}
+	}
+	
+	public String getEncoding() {
+		return encoding;
+	}
+	
 	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource getResource() {
 		return resource;
 	}
@@ -352,8 +363,8 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 	 * Calls {@link #doPrint(EObject, PrintWriter, String)} and writes the result to
 	 * the underlying output stream.
 	 */
-	public void print(org.eclipse.emf.ecore.EObject element) {
-		java.io.PrintWriter out = new java.io.PrintWriter(new java.io.BufferedOutputStream(outputStream));
+	public void print(org.eclipse.emf.ecore.EObject element) throws java.io.IOException {
+		java.io.PrintWriter out = new java.io.PrintWriter(new java.io.OutputStreamWriter(new java.io.BufferedOutputStream(outputStream), encoding));
 		doPrint(element, out, "");
 		out.flush();
 		out.close();
@@ -5775,27 +5786,58 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL));
 		printCountingMap.put("model", temp == null ? 0 : 1);
 		// print collected hidden tokens
-		int count;
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("model");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL));
-			if (o != null) {
-				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getOclModelElementModelReferenceResolver().deResolve((be.ac.vub.simpleocl.OclModel) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL)), element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL), element));
-				out.print(" ");
-			}
-			printCountingMap.put("model", count - 1);
-		}
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		print_be_ac_vub_simpleocl_OclModelElement_0(element, localtab, out, printCountingMap);
 		// DEFINITION PART BEGINS (CsString)
 		out.print("!");
 		out.print(" ");
 		// DEFINITION PART BEGINS (CompoundDefinition)
-		print_be_ac_vub_simpleocl_OclModelElement_0(element, localtab, out, printCountingMap);
+		print_be_ac_vub_simpleocl_OclModelElement_1(element, localtab, out, printCountingMap);
 	}
 	
 	public void print_be_ac_vub_simpleocl_OclModelElement_0(be.ac.vub.simpleocl.OclModelElement element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
+		int count;
+		int alt = -1;
+		alt = 0;
+		int matches = 		matchCount(printCountingMap, java.util.Arrays.asList(		"model"		));
+		int tempMatchCount;
+		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"model"		));
+		if (tempMatchCount > matches) {
+			alt = 1;
+			matches = tempMatchCount;
+		}
+		switch(alt) {
+			case 1:			{
+				// DEFINITION PART BEGINS (PlaceholderInQuotes)
+				count = printCountingMap.get("model");
+				if (count > 0) {
+					Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL));
+					if (o != null) {
+						be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34_92");
+						resolver.setOptions(getOptions());
+						out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getOclModelElementModelReferenceResolver().deResolve((be.ac.vub.simpleocl.OclModel) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL)), element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL), element));
+						out.print(" ");
+					}
+					printCountingMap.put("model", count - 1);
+				}
+			}
+			break;
+			default:			// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+			count = printCountingMap.get("model");
+			if (count > 0) {
+				Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL));
+				if (o != null) {
+					be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
+					resolver.setOptions(getOptions());
+					out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getOclModelElementModelReferenceResolver().deResolve((be.ac.vub.simpleocl.OclModel) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL)), element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT__MODEL), element));
+					out.print(" ");
+				}
+				printCountingMap.put("model", count - 1);
+			}
+		}
+	}
+	
+	public void print_be_ac_vub_simpleocl_OclModelElement_1(be.ac.vub.simpleocl.OclModelElement element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
 		int count;
 		int alt = -1;
 		alt = 0;

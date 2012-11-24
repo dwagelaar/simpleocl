@@ -11,8 +11,6 @@ package be.ac.vub.simpleocl.resource.simpleocl.ui;
  */
 public class SimpleoclPreferenceInitializer extends org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer {
 	
-	private final static be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclAntlrTokenHelper tokenHelper = new be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclAntlrTokenHelper();
-	
 	public void initializeDefaultPreferences() {
 		
 		initializeDefaultSyntaxHighlighting();
@@ -48,21 +46,14 @@ public class SimpleoclPreferenceInitializer extends org.eclipse.core.runtime.pre
 		store.setDefault(languageId + be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclPreferenceConstants.EDITOR_BRACKETS_SUFFIX, bracketSet.getBracketString());
 	}
 	
-	private void initializeDefaultSyntaxHighlighting(org.eclipse.jface.preference.IPreferenceStore store, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclMetaInformation metaInformation) {
+	private void initializeDefaultSyntaxHighlighting(org.eclipse.jface.preference.IPreferenceStore store, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation metaInformation) {
 		String languageId = metaInformation.getSyntaxName();
-		String[] tokenNames = metaInformation.getTokenNames();
+		String[] tokenNames = metaInformation.getSyntaxHighlightableTokenNames();
 		if (tokenNames == null) {
 			return;
 		}
 		for (int i = 0; i < tokenNames.length; i++) {
-			if (!tokenHelper.canBeUsedForSyntaxHighlighting(i)) {
-				continue;
-			}
-			
-			String tokenName = tokenHelper.getTokenName(tokenNames, i);
-			if (tokenName == null) {
-				continue;
-			}
+			String tokenName = tokenNames[i];
 			be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenStyle style = metaInformation.getDefaultTokenStyle(tokenName);
 			if (style != null) {
 				String color = getColorString(style.getColorAsRGB());

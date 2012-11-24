@@ -36,4 +36,16 @@ public class SimpleoclExpectedEnumerationTerminal extends be.ac.vub.simpleocl.re
 	public be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclEnumerationTerminal getEnumerationTerminal() {
 		return this.enumerationTerminal;
 	}
+	
+	/**
+	 * Returns the expected enumeration terminal.
+	 */
+	public be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclSyntaxElement getSymtaxElement() {
+		return enumerationTerminal;
+	}
+	
+	public String toString() {
+		return "EnumTerminal \"" + getEnumerationTerminal() + "\"";
+	}
+	
 }

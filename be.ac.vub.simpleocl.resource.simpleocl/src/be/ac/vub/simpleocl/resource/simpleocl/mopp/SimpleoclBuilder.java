@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -51,10 +52,11 @@ import be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType;
 
 /**
  * Compiles SimpleOCL files to EMFTVM
+ * 
  * @author <a href="mailto:dennis.wagelaar@vub.ac.be">Dennis Wagelaar</a>
  */
 public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclBuilder {
-	
+
 	protected static final String PBMM_URI = "http://soft.vub.ac.be/simpleocl/2011/Problem";
 
 	protected final ResourceSet rs = new ResourceSetImpl();
@@ -64,6 +66,7 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 
 	/**
 	 * Creates a new {@link SimpleoclBuilder}.
+	 * 
 	 * @throws CoreException
 	 */
 	public SimpleoclBuilder() throws CoreException {
@@ -73,14 +76,14 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 		if (pack != null) {
 			pbmm.setResource(pack.eResource());
 		} else {
-			throw new CoreException(new Status(
-					Status.ERROR, SimpleoclPlugin.PLUGIN_ID, 
-					String.format("Cannot find Problem metamodel (%s)", PBMM_URI)));
+			throw new CoreException(new Status(Status.ERROR, SimpleoclPlugin.PLUGIN_ID, String.format("Cannot find Problem metamodel (%s)",
+					PBMM_URI)));
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclBuilder#isBuildingNeeded(org.eclipse.emf.common.util.URI)
 	 */
 	public boolean isBuildingNeeded(final URI uri) {
@@ -98,7 +101,9 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 
 	/*
 	 * (non-Javadoc)
-	 * @see be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclBuilder#build(be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclResource, org.eclipse.core.runtime.IProgressMonitor)
+	 * 
+	 * @see be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclBuilder#build(be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclResource,
+	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public IStatus build(final SimpleoclResource resource, final IProgressMonitor monitor) {
 		// Check for parsing errors
@@ -115,20 +120,20 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 		final Resource pr = rs.createResource(URI.createFileURI("problems.xmi"));
 		final Model pbm = EmftvmFactory.eINSTANCE.createModel();
 		pbm.setResource(pr);
-		
+
 		final Resource pr2 = rs.createResource(URI.createFileURI("problems2.xmi"));
 		final Model pbm2 = EmftvmFactory.eINSTANCE.createModel();
 		pbm2.setResource(pr2);
-		
+
 		final Resource r = rs.createResource(URI.createFileURI("out.emftvm"), "org.eclipse.m2m.atl.emftvm");
 		final Model emftvmm = EmftvmFactory.eINSTANCE.createModel();
 		emftvmm.setResource(r);
-		
+
 		final URI riURI = resource.getURI().trimFileExtension().appendFileExtension("emftvm");
 		final Resource ri = rs.createResource(riURI, "org.eclipse.m2m.atl.emftvm");
 		final Model emftvmmi = EmftvmFactory.eINSTANCE.createModel();
 		emftvmmi.setResource(ri);
-		
+
 		try {
 
 			ExecEnv env = EmftvmFactory.eINSTANCE.createExecEnv();
@@ -138,7 +143,7 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 			env.registerOutputModel("PBS", pbm);
 			env.loadModule(mr, "SimpleOCLWFR");
 			env.run(null);
-			
+
 			if (getProblems(pbm, pbs) == 0) {
 				env = EmftvmFactory.eINSTANCE.createExecEnv();
 				env.registerMetaModel("OCL", simpleoclmm);
@@ -148,14 +153,14 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 				env.registerOutputModel("PBS", pbm2);
 				env.loadModule(mr, "SimpleOCLtoEMFTVM");
 				env.run(null);
-					
+
 				if (getProblems(pbm2, pbs) == 0) {
 					env = EmftvmFactory.eINSTANCE.createExecEnv();
 					env.registerInputModel("IN", emftvmm);
 					env.registerOutputModel("OUT", emftvmmi);
 					env.loadModule(mr, "InlineCodeblocks");
 					env.run(null);
-						
+
 					ri.save(Collections.emptyMap());
 					if (ri.getURI().isPlatformResource()) {
 						final IPath riPath = new Path(ri.getURI().toPlatformString(true));
@@ -168,7 +173,7 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 			final String location = resource.getURI().toString();
 			for (EObject pb : pbs) {
 				ISimpleoclTextDiagnostic diag = createDiagnostic(location, pb);
-				SimpleoclMarkerHelper.mark(resource, diag);
+				resource.mark(diag);
 			}
 
 		} catch (CoreException e) {
@@ -186,22 +191,24 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 
 		return status;
 	}
-	
+
 	/**
 	 * Retrieves problem elements from <code>problems</code>.
-	 * @param problems the problems model
-	 * @param pbElements the collection of problem elements to augment
+	 * 
+	 * @param problems
+	 *            the problems model
+	 * @param pbElements
+	 *            the collection of problem elements to augment
 	 * @return the number of error problems
 	 */
 	protected int getProblems(final Model problems, final Collection<EObject> pbElements) {
-		final Collection<EObject> pbs = (Collection<EObject>) problems.allInstancesOf(
-				(EClass) pbmm.findType("Problem")); //$NON-NLS-1$
+		final Collection<EObject> pbs = (Collection<EObject>) problems.allInstancesOf((EClass) pbmm.findType("Problem")); //$NON-NLS-1$
 
 		int nbErrors = 0;
 		if (pbs != null) {
 			for (EObject pb : pbs) {
 				EStructuralFeature severityFeature = pb.eClass().getEStructuralFeature("severity"); //$NON-NLS-1$
-				if (severityFeature != null && "error".equals(((EEnumLiteral)pb.eGet(severityFeature)).getName())) { //$NON-NLS-1$
+				if (severityFeature != null && "error".equals(((EEnumLiteral) pb.eGet(severityFeature)).getName())) { //$NON-NLS-1$
 					nbErrors++;
 				}
 			}
@@ -210,10 +217,12 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 
 		return nbErrors;
 	}
-	
+
 	/**
 	 * Creates a diagnostic object for <code>pb</code>.
-	 * @param pb a problem element from the problem model
+	 * 
+	 * @param pb
+	 *            a problem element from the problem model
 	 * @return the created diagnostic object
 	 */
 	protected ISimpleoclTextDiagnostic createDiagnostic(final String location, final EObject pb) {
@@ -223,22 +232,38 @@ public class SimpleoclBuilder implements be.ac.vub.simpleocl.resource.simpleocl.
 		final EStructuralFeature columnFeature = pb.eClass().getEStructuralFeature("column");
 		final EStructuralFeature charStartFeature = pb.eClass().getEStructuralFeature("charStart");
 		final EStructuralFeature charEndFeature = pb.eClass().getEStructuralFeature("charEnd");
-		
+
 		SimpleoclEProblemSeverity severity = SimpleoclEProblemSeverity.ERROR;
-		if (severityFeature != null && "warning".equals(((EEnumLiteral)pb.eGet(severityFeature)).getName())) {
+		if (severityFeature != null && "warning".equals(((EEnumLiteral) pb.eGet(severityFeature)).getName())) {
 			severity = SimpleoclEProblemSeverity.WARNING;
 		}
-		
+
 		final String message = descriptionFeature == null ? "" : (String) pb.eGet(descriptionFeature);
 		final int line = lineFeature == null ? -1 : (Integer) pb.eGet(lineFeature);
 		final int column = columnFeature == null ? -1 : (Integer) pb.eGet(columnFeature);
 		final int charStart = charStartFeature == null ? -1 : (Integer) pb.eGet(charStartFeature);
 		final int charEnd = charEndFeature == null ? -1 : (Integer) pb.eGet(charEndFeature);
 
-		final ISimpleoclProblem problem = new SimpleoclProblem(message, 
-				SimpleoclEProblemType.BUILDER_ERROR, severity);
-		return new SimpleoclTextDiagnostic(
-				problem, location, line, column, charStart, charEnd);
+		final ISimpleoclProblem problem = new SimpleoclProblem(message, SimpleoclEProblemType.BUILDER_ERROR, severity);
+		return new SimpleoclTextDiagnostic(problem, location, line, column, charStart, charEnd);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public IStatus handleDeletion(URI uri, IProgressMonitor monitor) {
+		final URI emftvmURI = uri.trimFileExtension().appendFileExtension("emftvm");
+		if (emftvmURI.isPlatformResource()) {
+			final IResource wsRes = ResourcesPlugin.getWorkspace().getRoot().findMember(emftvmURI.toPlatformString(true));
+			assert wsRes instanceof IFile;
+			try {
+				wsRes.delete(true, monitor);
+			} catch (CoreException e) {
+				SimpleoclPlugin.getDefault().getLog().log(e.getStatus());
+			}
+		}
+		return org.eclipse.core.runtime.Status.OK_STATUS;
 	}
 
 }

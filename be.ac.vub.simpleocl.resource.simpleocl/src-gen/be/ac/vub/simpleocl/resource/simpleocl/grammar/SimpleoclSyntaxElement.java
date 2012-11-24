@@ -26,9 +26,21 @@ public abstract class SimpleoclSyntaxElement {
 		}
 	}
 	
+	/**
+	 * Sets the parent of this syntax element. This method must be invoked at most
+	 * once.
+	 */
 	public void setParent(SimpleoclSyntaxElement parent) {
 		assert this.parent == null;
 		this.parent = parent;
+	}
+	
+	/**
+	 * Returns the parent of this syntax element. This parent is determined by the
+	 * containment hierarchy in the CS model.
+	 */
+	public SimpleoclSyntaxElement getParent() {
+		return parent;
 	}
 	
 	public SimpleoclSyntaxElement[] getChildren() {

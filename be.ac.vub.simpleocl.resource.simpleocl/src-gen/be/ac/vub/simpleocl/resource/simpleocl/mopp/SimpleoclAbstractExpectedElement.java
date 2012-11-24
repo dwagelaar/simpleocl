@@ -13,7 +13,8 @@ package be.ac.vub.simpleocl.resource.simpleocl.mopp;
 public abstract class SimpleoclAbstractExpectedElement implements be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement {
 	
 	private org.eclipse.emf.ecore.EClass ruleMetaclass;
-	private java.util.Set<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, org.eclipse.emf.ecore.EStructuralFeature[]>> followers = new java.util.LinkedHashSet<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, org.eclipse.emf.ecore.EStructuralFeature[]>>();
+	
+	private java.util.Set<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclContainedFeature[]>> followers = new java.util.LinkedHashSet<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclContainedFeature[]>>();
 	
 	public SimpleoclAbstractExpectedElement(org.eclipse.emf.ecore.EClass ruleMetaclass) {
 		super();
@@ -24,11 +25,11 @@ public abstract class SimpleoclAbstractExpectedElement implements be.ac.vub.simp
 		return ruleMetaclass;
 	}
 	
-	public void addFollower(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement follower, org.eclipse.emf.ecore.EStructuralFeature[] path) {
-		followers.add(new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, org.eclipse.emf.ecore.EStructuralFeature[]>(follower, path));
+	public void addFollower(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement follower, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclContainedFeature[] path) {
+		followers.add(new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclContainedFeature[]>(follower, path));
 	}
 	
-	public java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, org.eclipse.emf.ecore.EStructuralFeature[]>> getFollowers() {
+	public java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclPair<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclExpectedElement, be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclContainedFeature[]>> getFollowers() {
 		return followers;
 	}
 	

@@ -35,10 +35,22 @@ public class SimpleoclMarkerHelper {
 	 */
 	private final static MarkerCommandQueue COMMAND_QUEUE = new MarkerCommandQueue();
 	
+	public static class MutexRule implements org.eclipse.core.runtime.jobs.ISchedulingRule {
+		
+		public boolean isConflicting(org.eclipse.core.runtime.jobs.ISchedulingRule rule) {
+			return rule == this;
+		}
+		
+		public boolean contains(org.eclipse.core.runtime.jobs.ISchedulingRule rule) {
+			return rule == this;
+		}
+	}
+	
 	private static class MarkerCommandQueue {
 		
 		private java.util.List<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>> commands = new java.util.ArrayList<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>>();
-		private final Object jobLock = new Object();
+		
+		private MutexRule schedulingRule = new MutexRule();
 		
 		public void addCommand(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object> command) {
 			synchronized(commands) {
@@ -51,22 +63,26 @@ public class SimpleoclMarkerHelper {
 		}
 		
 		private void scheduleRunCommandsJob() {
-			new org.eclipse.core.runtime.jobs.Job("updating markers") {
+			org.eclipse.core.runtime.jobs.Job job = new org.eclipse.core.runtime.jobs.Job("updating markers") {
 				@Override				
 				protected org.eclipse.core.runtime.IStatus run(org.eclipse.core.runtime.IProgressMonitor monitor) {
-					synchronized(jobLock) {
-						java.util.List<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>> commandsToProcess = new java.util.ArrayList<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>>();
-						synchronized(commands) {
-							commandsToProcess.addAll(commands);
-							commands.clear();
-						}
-						for (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object> command : commandsToProcess) {
-							command.execute(null);
-						}
-					}
+					runCommands();
 					return org.eclipse.core.runtime.Status.OK_STATUS;
 				}
-			}.schedule();
+			};
+			job.setRule(schedulingRule);
+			job.schedule();
+		}
+		
+		public void runCommands() {
+			java.util.List<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>> commandsToProcess = new java.util.ArrayList<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>>();
+			synchronized(commands) {
+				commandsToProcess.addAll(commands);
+				commands.clear();
+			}
+			for (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object> command : commandsToProcess) {
+				command.execute(null);
+			}
 		}
 		
 	}
@@ -80,7 +96,7 @@ public class SimpleoclMarkerHelper {
 	 * @param resource The resource that is the file to mark.
 	 * @param diagnostic The diagnostic with information for the marker.
 	 */
-	public static void mark(org.eclipse.emf.ecore.resource.Resource resource, final be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic diagnostic) {
+	public void mark(org.eclipse.emf.ecore.resource.Resource resource, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic diagnostic) {
 		final org.eclipse.core.resources.IFile file = getFile(resource);
 		if (file == null) {
 			return;
@@ -88,7 +104,7 @@ public class SimpleoclMarkerHelper {
 		createMarkerFromDiagnostic(file, diagnostic);
 	}
 	
-	private static void createMarkerFromDiagnostic(final org.eclipse.core.resources.IFile file, final be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic diagnostic) {
+	protected void createMarkerFromDiagnostic(final org.eclipse.core.resources.IFile file, final be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic diagnostic) {
 		final be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem problem = diagnostic.getProblem();
 		be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType problemType = problem.getType();
 		final String markerID = getMarkerID(problemType);
@@ -146,7 +162,7 @@ public class SimpleoclMarkerHelper {
 	 * 
 	 * @param resource The resource where to delete markers from
 	 */
-	public static void unmark(org.eclipse.emf.ecore.resource.Resource resource) {
+	public void unmark(org.eclipse.emf.ecore.resource.Resource resource) {
 		for (be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType nextType : be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.values()) {
 			unmark(resource, nextType);
 		}
@@ -161,7 +177,7 @@ public class SimpleoclMarkerHelper {
 	 * @param resource The resource where to delete markers from
 	 * @param problemType The type of problem to remove
 	 */
-	public static void unmark(org.eclipse.emf.ecore.resource.Resource resource, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType problemType) {
+	public void unmark(org.eclipse.emf.ecore.resource.Resource resource, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType problemType) {
 		final org.eclipse.core.resources.IFile file = getFile(resource);
 		if (file == null) {
 			return;
@@ -188,7 +204,7 @@ public class SimpleoclMarkerHelper {
 	 * @param resource The resource where to delete markers from
 	 * @param causingObject The cause of the problems to remove
 	 */
-	public static void unmark(org.eclipse.emf.ecore.resource.Resource resource, final org.eclipse.emf.ecore.EObject causingObject) {
+	public void unmark(org.eclipse.emf.ecore.resource.Resource resource, final org.eclipse.emf.ecore.EObject causingObject) {
 		final org.eclipse.core.resources.IFile file = getFile(resource);
 		if (file == null) {
 			return;
@@ -219,7 +235,7 @@ public class SimpleoclMarkerHelper {
 	 * Returns the ID of the marker type that is used to indicate problems of the
 	 * given type.
 	 */
-	private static String getMarkerID(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType problemType) {
+	public String getMarkerID(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType problemType) {
 		String markerID = MARKER_TYPE;
 		String typeID = problemType.getID();
 		if (!"".equals(typeID)) {
@@ -233,7 +249,7 @@ public class SimpleoclMarkerHelper {
 	 * running, the resource is not a platform resource, or the resource cannot be
 	 * found in the workspace, this method returns <code>null</code>.
 	 */
-	private static org.eclipse.core.resources.IFile getFile(org.eclipse.emf.ecore.resource.Resource resource) {
+	protected org.eclipse.core.resources.IFile getFile(org.eclipse.emf.ecore.resource.Resource resource) {
 		if (resource == null || !org.eclipse.core.runtime.Platform.isRunning()) {
 			return null;
 		}
@@ -248,7 +264,7 @@ public class SimpleoclMarkerHelper {
 	/**
 	 * Returns an URI that identifies the given object.
 	 */
-	private static String getObjectURI(org.eclipse.emf.ecore.EObject object) {
+	protected String getObjectURI(org.eclipse.emf.ecore.EObject object) {
 		if (object == null) {
 			return null;
 		}
@@ -262,13 +278,70 @@ public class SimpleoclMarkerHelper {
 		return eResource.getURI().toString() + "#" + eResource.getURIFragment(object);
 	}
 	
-	private static void handleException(org.eclipse.core.runtime.CoreException ce) {
+	protected void handleException(org.eclipse.core.runtime.CoreException ce) {
 		if (ce.getMessage().matches("Marker.*not found.")) {
 			// ignore
 		}else if (ce.getMessage().matches("Resource.*does not exist.")) {
 			// ignore
 		} else {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Error while removing markers from resource:", ce);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Error while removing markers from resource:", ce);
 		}
 	}
+	
+	/**
+	 * Removes all markers of the given type from the given resource. Markers are
+	 * created and removed asynchronously. Thus, they may not appear when calls to
+	 * this method return. But, the order of marker additions and removals is
+	 * preserved.
+	 * 
+	 * @param resource The resource where to delete markers from
+	 * @param markerId The id of the marker type to remove
+	 */
+	public void removeAllMarkers(final org.eclipse.core.resources.IResource resource, final String markerId) {
+		if (resource == null) {
+			return;
+		}
+		COMMAND_QUEUE.addCommand(new be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>() {
+			public boolean execute(Object context) {
+				try {
+					resource.deleteMarkers(markerId, false, org.eclipse.core.resources.IResource.DEPTH_ZERO);
+				} catch (org.eclipse.core.runtime.CoreException ce) {
+					handleException(ce);
+				}
+				return true;
+			}
+		});
+	}
+	
+	public void createMarker(final org.eclipse.core.resources.IResource resource, final String markerId, final java.util.Map<String, Object> markerAttributes) {
+		if (resource == null) {
+			return;
+		}
+		
+		COMMAND_QUEUE.addCommand(new be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<Object>() {
+			public boolean execute(Object context) {
+				try {
+					org.eclipse.core.resources.IMarker marker = resource.createMarker(markerId);
+					for (String key : markerAttributes.keySet()) {
+						marker.setAttribute(key, markerAttributes.get(key));
+					}
+					return true;
+				} catch (org.eclipse.core.runtime.CoreException e) {
+					be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Can't create marker.", e);
+					return false;
+				}
+			}
+		});
+	}
+	
+	public void beginDeferMarkerUpdates() {
+	}
+	
+	public void endDeferMarkerUpdates() {
+	}
+	
+	public void runCommands() {
+		COMMAND_QUEUE.runCommands();
+	}
+	
 }

@@ -37,7 +37,7 @@ public abstract class SimpleoclContextDependentURIFragment<ContainerType extends
 		return result != null;
 	}
 	
-	public synchronized be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<ReferenceType> resolve() {
+	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<ReferenceType> resolve() {
 		if (resolving) {
 			return null;
 		}
@@ -77,7 +77,7 @@ public abstract class SimpleoclContextDependentURIFragment<ContainerType extends
 			} else if (list != null) {
 				addResultToList(mapping, proxy, list);
 			} else {
-				be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError(container.eClass().getName() + "." + reference.getName() + " has multiplicity 1 but was resolved to multiple elements", null);
+				new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError(container.eClass().getName() + "." + reference.getName() + " has multiplicity 1 but was resolved to multiple elements", null);
 			}
 		}
 	}

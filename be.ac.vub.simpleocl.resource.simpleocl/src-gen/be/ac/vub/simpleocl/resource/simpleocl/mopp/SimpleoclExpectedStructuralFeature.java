@@ -23,6 +23,13 @@ public class SimpleoclExpectedStructuralFeature extends be.ac.vub.simpleocl.reso
 		return placeholder.getFeature();
 	}
 	
+	/**
+	 * Returns the expected placeholder.
+	 */
+	public be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclSyntaxElement getSymtaxElement() {
+		return placeholder;
+	}
+	
 	public String getTokenName() {
 		return placeholder.getTokenName();
 	}
@@ -41,4 +48,9 @@ public class SimpleoclExpectedStructuralFeature extends be.ac.vub.simpleocl.reso
 		}
 		return false;
 	}
+	@Override	
+	public int hashCode() {
+		return getFeature().hashCode();
+	}
+	
 }

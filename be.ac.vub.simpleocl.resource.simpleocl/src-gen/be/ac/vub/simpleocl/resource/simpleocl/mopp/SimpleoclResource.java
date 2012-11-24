@@ -129,6 +129,8 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	private be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclLocationMap locationMap;
 	private int proxyCounter = 0;
 	private be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextParser parser;
+	private be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclLayoutUtil layoutUtil = new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclLayoutUtil();
+	private be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper markerHelper;
 	private java.util.Map<String, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclContextDependentURIFragment<? extends org.eclipse.emf.ecore.EObject>> internalURIFragmentMap = new java.util.LinkedHashMap<String, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclContextDependentURIFragment<? extends org.eclipse.emf.ecore.EObject>>();
 	private java.util.Map<String, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclQuickFix> quickFixMap = new java.util.LinkedHashMap<String, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclQuickFix>();
 	private java.util.Map<?, ?> loadOptions;
@@ -140,9 +142,19 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	private be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessor runningPostProcessor;
 	
 	/**
-	 * A flag to indicate whether reloading of the resource shall be cancelled.
+	 * A flag (and lock) to indicate whether reloading of the resource shall be
+	 * cancelled.
 	 */
-	private boolean terminateReload = false;
+	private Boolean terminateReload = false;
+	private Object terminateReloadLock = new Object();
+	private Object loadingLock = new Object();
+	private boolean delayNotifications = false;
+	private java.util.List<org.eclipse.emf.common.notify.Notification> delayedNotifications = new java.util.ArrayList<org.eclipse.emf.common.notify.Notification>();
+	private java.io.InputStream latestReloadInputStream = null;
+	private java.util.Map<?, ?> latestReloadOptions = null;
+	private be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclInterruptibleEcoreResolver interruptibleResolver;
+	
+	protected be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation metaInformation = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
 	
 	public SimpleoclResource() {
 		super();
@@ -155,85 +167,180 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	}
 	
 	protected void doLoad(java.io.InputStream inputStream, java.util.Map<?,?> options) throws java.io.IOException {
-		this.loadOptions = options;
-		this.terminateReload = false;
-		String encoding = null;
-		java.io.InputStream actualInputStream = inputStream;
-		Object inputStreamPreProcessorProvider = null;
-		if (options != null) {
-			inputStreamPreProcessorProvider = options.get(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.INPUT_STREAM_PREPROCESSOR_PROVIDER);
-		}
-		if (inputStreamPreProcessorProvider != null) {
-			if (inputStreamPreProcessorProvider instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider) {
-				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider provider = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider) inputStreamPreProcessorProvider;
-				be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclInputStreamProcessor processor = provider.getInputStreamProcessor(inputStream);
-				actualInputStream = processor;
-				encoding = processor.getOutputEncoding();
+		synchronized (loadingLock) {
+			if (processTerminationRequested()) {
+				return;
 			}
-		}
-		
-		parser = getMetaInformation().createParser(actualInputStream, encoding);
-		parser.setOptions(options);
-		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolverSwitch referenceResolverSwitch = getReferenceResolverSwitch();
-		referenceResolverSwitch.setOptions(options);
-		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclParseResult result = parser.parse();
-		clearState();
-		getContentsInternal().clear();
-		org.eclipse.emf.ecore.EObject root = null;
-		if (result != null) {
-			root = result.getRoot();
-			if (root != null) {
-				getContentsInternal().add(root);
+			this.loadOptions = options;
+			delayNotifications = true;
+			resetLocationMap();
+			String encoding = getEncoding(options);
+			java.io.InputStream actualInputStream = inputStream;
+			Object inputStreamPreProcessorProvider = null;
+			if (options != null) {
+				inputStreamPreProcessorProvider = options.get(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.INPUT_STREAM_PREPROCESSOR_PROVIDER);
 			}
-			java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource>> commands = result.getPostParseCommands();
-			if (commands != null) {
-				for (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource>  command : commands) {
-					command.execute(this);
+			if (inputStreamPreProcessorProvider != null) {
+				if (inputStreamPreProcessorProvider instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider) {
+					be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider provider = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclInputStreamProcessorProvider) inputStreamPreProcessorProvider;
+					be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclInputStreamProcessor processor = provider.getInputStreamProcessor(inputStream);
+					actualInputStream = processor;
 				}
 			}
-		}
-		getReferenceResolverSwitch().setOptions(options);
-		if (getErrors().isEmpty()) {
-			runPostProcessors(options);
-			if (root != null) {
-				runValidators(root);
+			
+			parser = getMetaInformation().createParser(actualInputStream, encoding);
+			parser.setOptions(options);
+			be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolverSwitch referenceResolverSwitch = getReferenceResolverSwitch();
+			referenceResolverSwitch.setOptions(options);
+			be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclParseResult result = parser.parse();
+			// dispose parser, we don't need it anymore
+			parser = null;
+			
+			if (processTerminationRequested()) {
+				// do nothing if reload was already restarted
+				return;
 			}
+			
+			clearState();
+			getContentsInternal().clear();
+			org.eclipse.emf.ecore.EObject root = null;
+			if (result != null) {
+				root = result.getRoot();
+				if (root != null) {
+					if (isLayoutInformationRecordingEnabled()) {
+						layoutUtil.transferAllLayoutInformationToModel(root);
+					}
+					if (processTerminationRequested()) {
+						// the next reload will add new content
+						return;
+					}
+					getContentsInternal().add(root);
+				}
+				java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource>> commands = result.getPostParseCommands();
+				if (commands != null) {
+					for (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource>  command : commands) {
+						command.execute(this);
+					}
+				}
+			}
+			getReferenceResolverSwitch().setOptions(options);
+			if (getErrors().isEmpty()) {
+				if (!runPostProcessors(options)) {
+					return;
+				}
+				if (root != null) {
+					runValidators(root);
+				}
+			}
+			notifyDelayed();
 		}
 	}
 	
+	protected boolean processTerminationRequested() {
+		if (terminateReload) {
+			delayNotifications = false;
+			delayedNotifications.clear();
+			return true;
+		}
+		return false;
+	}
+	protected void notifyDelayed() {
+		delayNotifications = false;
+		for (org.eclipse.emf.common.notify.Notification delayedNotification : delayedNotifications) {
+			super.eNotify(delayedNotification);
+		}
+		delayedNotifications.clear();
+	}
+	public void eNotify(org.eclipse.emf.common.notify.Notification notification) {
+		if (delayNotifications) {
+			delayedNotifications.add(notification);
+		} else {
+			super.eNotify(notification);
+		}
+	}
+	/**
+	 * Reloads the contents of this resource from the given stream.
+	 */
 	public void reload(java.io.InputStream inputStream, java.util.Map<?,?> options) throws java.io.IOException {
-		try {
-			isLoaded = false;
-			java.util.Map<Object, Object> loadOptions = addDefaultLoadOptions(options);
-			doLoad(inputStream, loadOptions);
-			org.eclipse.emf.ecore.util.EcoreUtil.resolveAll(this.getResourceSet());
-		} catch (be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTerminateParsingException tpe) {
-			// do nothing - the resource is left unchanged if this exception is thrown
+		synchronized (terminateReloadLock) {
+			latestReloadInputStream = inputStream;
+			latestReloadOptions = options;
+			if (terminateReload == true) {
+				// //reload already requested
+			}
+			terminateReload = true;
 		}
-		isLoaded = true;
+		cancelReload();
+		synchronized (loadingLock) {
+			synchronized (terminateReloadLock) {
+				terminateReload = false;
+			}
+			isLoaded = false;
+			java.util.Map<Object, Object> loadOptions = addDefaultLoadOptions(latestReloadOptions);
+			try {
+				doLoad(latestReloadInputStream, loadOptions);
+			} catch (be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTerminateParsingException tpe) {
+				// do nothing - the resource is left unchanged if this exception is thrown
+			}
+			resolveAfterParsing();
+			isLoaded = true;
+		}
 	}
 	
-	public void cancelReload() {
+	/**
+	 * Cancels reloading this resource. The running parser and post processors are
+	 * terminated.
+	 */
+	protected void cancelReload() {
+		// Cancel parser
 		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextParser parserCopy = parser;
-		parserCopy.terminate();
-		this.terminateReload = true;
+		if (parserCopy != null) {
+			parserCopy.terminate();
+		}
+		// Cancel post processor(s)
 		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessor runningPostProcessorCopy = runningPostProcessor;
 		if (runningPostProcessorCopy != null) {
 			runningPostProcessorCopy.terminate();
+		}
+		// Cancel reference resolving
+		be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclInterruptibleEcoreResolver interruptibleResolverCopy = interruptibleResolver;
+		if (interruptibleResolverCopy != null) {
+			interruptibleResolverCopy.terminate();
 		}
 	}
 	
 	protected void doSave(java.io.OutputStream outputStream, java.util.Map<?,?> options) throws java.io.IOException {
 		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextPrinter printer = getMetaInformation().createPrinter(outputStream, this);
 		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolverSwitch referenceResolverSwitch = getReferenceResolverSwitch();
+		printer.setEncoding(getEncoding(options));
 		referenceResolverSwitch.setOptions(options);
 		for (org.eclipse.emf.ecore.EObject root : getContentsInternal()) {
+			if (isLayoutInformationRecordingEnabled()) {
+				layoutUtil.transferAllLayoutInformationFromModel(root);
+			}
 			printer.print(root);
+			if (isLayoutInformationRecordingEnabled()) {
+				layoutUtil.transferAllLayoutInformationToModel(root);
+			}
 		}
 	}
 	
 	protected String getSyntaxName() {
 		return "simpleocl";
+	}
+	
+	public String getEncoding(java.util.Map<?, ?> options) {
+		String encoding = null;
+		if (new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().isEclipsePlatformAvailable()) {
+			encoding = new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclEclipseProxy().getPlatformResourceEncoding(uri);
+		}
+		if (options != null) {
+			Object encodingOption = options.get(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.OPTION_ENCODING);
+			if (encodingOption != null) {
+				encoding = encodingOption.toString();
+			}
+		}
+		return encoding;
 	}
 	
 	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolverSwitch getReferenceResolverSwitch() {
@@ -247,8 +354,15 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
 	}
 	
+	/**
+	 * Clears the location map by replacing it with a new instance.
+	 */
 	protected void resetLocationMap() {
-		locationMap = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLocationMap();
+		if (isLocationMapEnabled()) {
+			locationMap = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLocationMap();
+		} else {
+			locationMap = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclDevNullLocationMap();
+		}
 	}
 	
 	public void addURIFragment(String internalURIFragment, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclContextDependentURIFragment<? extends org.eclipse.emf.ecore.EObject> uriFragment) {
@@ -273,8 +387,8 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 				result = uriFragment.resolve();
 			} catch (Exception e) {
 				String message = "An expection occured while resolving the proxy for: "+ id + ". (" + e.toString() + ")";
-				addProblem(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclProblem(message, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNRESOLVED_REFERENCE, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity.ERROR),uriFragment.getProxy());
-				be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError(message, e);
+				addProblem(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclProblem(message, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNRESOLVED_REFERENCE, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity.ERROR), uriFragment.getProxy());
+				new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError(message, e);
 			}
 			if (result == null) {
 				// the resolving did call itself
@@ -312,7 +426,7 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		}
 	}
 	
-	private org.eclipse.emf.ecore.EObject getResultElement(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclContextDependentURIFragment<? extends org.eclipse.emf.ecore.EObject> uriFragment, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceMapping<? extends org.eclipse.emf.ecore.EObject> mapping, org.eclipse.emf.ecore.EObject proxy, final String errorMessage) {
+	protected org.eclipse.emf.ecore.EObject getResultElement(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclContextDependentURIFragment<? extends org.eclipse.emf.ecore.EObject> uriFragment, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceMapping<? extends org.eclipse.emf.ecore.EObject> mapping, org.eclipse.emf.ecore.EObject proxy, final String errorMessage) {
 		if (mapping instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclURIMapping<?>) {
 			org.eclipse.emf.common.util.URI uri = ((be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclURIMapping<? extends org.eclipse.emf.ecore.EObject>)mapping).getTargetIdentifier();
 			if (uri != null) {
@@ -354,19 +468,19 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		}
 	}
 	
-	private void removeDiagnostics(org.eclipse.emf.ecore.EObject cause, java.util.List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> diagnostics) {
+	protected void removeDiagnostics(org.eclipse.emf.ecore.EObject cause, java.util.List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> diagnostics) {
 		// remove all errors/warnings from this resource
 		for (org.eclipse.emf.ecore.resource.Resource.Diagnostic errorCand : new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.resource.Resource.Diagnostic>(diagnostics)) {
 			if (errorCand instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic) {
 				if (((be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic) errorCand).wasCausedBy(cause)) {
 					diagnostics.remove(errorCand);
-					be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.unmark(this, cause);
+					unmark(cause);
 				}
 			}
 		}
 	}
 	
-	private void attachResolveError(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<?> result, org.eclipse.emf.ecore.EObject proxy) {
+	protected void attachResolveError(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<?> result, org.eclipse.emf.ecore.EObject proxy) {
 		// attach errors to this resource
 		assert result != null;
 		final String errorMessage = result.getErrorMessage();
@@ -377,7 +491,7 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		}
 	}
 	
-	private void attachResolveWarnings(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<? extends org.eclipse.emf.ecore.EObject> result, org.eclipse.emf.ecore.EObject proxy) {
+	protected void attachResolveWarnings(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<? extends org.eclipse.emf.ecore.EObject> result, org.eclipse.emf.ecore.EObject proxy) {
 		assert result != null;
 		assert result.wasResolved();
 		if (result.wasResolved()) {
@@ -401,15 +515,18 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		loadOptions = null;
 	}
 	
-	protected void runPostProcessors(java.util.Map<?, ?> loadOptions) {
-		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.unmark(this, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.ANALYSIS_PROBLEM);
-		if (terminateReload) {
-			return;
+	/**
+	 * Runs all post processors to process this resource.
+	 */
+	protected boolean runPostProcessors(java.util.Map<?, ?> loadOptions) {
+		unmark(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.ANALYSIS_PROBLEM);
+		if (processTerminationRequested()) {
+			return false;
 		}
 		// first, run the generated post processor
 		runPostProcessor(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclResourcePostProcessor());
 		if (loadOptions == null) {
-			return;
+			return true;
 		}
 		// then, run post processors that are registered via the load options extension
 		// point
@@ -420,8 +537,8 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 			} else if (resourcePostProcessorProvider instanceof java.util.Collection<?>) {
 				java.util.Collection<?> resourcePostProcessorProviderCollection = (java.util.Collection<?>) resourcePostProcessorProvider;
 				for (Object processorProvider : resourcePostProcessorProviderCollection) {
-					if (terminateReload) {
-						return;
+					if (processTerminationRequested()) {
+						return false;
 					}
 					if (processorProvider instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessorProvider) {
 						be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessorProvider csProcessorProvider = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessorProvider) processorProvider;
@@ -431,14 +548,18 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 				}
 			}
 		}
+		return true;
 	}
 	
+	/**
+	 * Runs the given post processor to process this resource.
+	 */
 	protected void runPostProcessor(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourcePostProcessor postProcessor) {
 		try {
 			this.runningPostProcessor = postProcessor;
 			postProcessor.process(this);
 		} catch (Exception e) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while running a post-processor.", e);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Exception while running a post-processor.", e);
 		}
 		this.runningPostProcessor = null;
 	}
@@ -446,7 +567,13 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	public void load(java.util.Map<?, ?> options) throws java.io.IOException {
 		java.util.Map<Object, Object> loadOptions = addDefaultLoadOptions(options);
 		super.load(loadOptions);
-		org.eclipse.emf.ecore.util.EcoreUtil.resolveAll(this.getResourceSet());
+		resolveAfterParsing();
+	}
+	
+	protected void resolveAfterParsing() {
+		interruptibleResolver = new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclInterruptibleEcoreResolver();
+		interruptibleResolver.resolveAll(this);
+		interruptibleResolver = null;
 	}
 	
 	public void setURI(org.eclipse.emf.common.util.URI uri) {
@@ -456,6 +583,10 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		super.setURI(uri);
 	}
 	
+	/**
+	 * Returns the location map that contains information about the position of the
+	 * contents of this resource in the original textual representation.
+	 */
 	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclLocationMap getLocationMap() {
 		return locationMap;
 	}
@@ -463,9 +594,18 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	public void addProblem(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem problem, org.eclipse.emf.ecore.EObject element) {
 		ElementBasedTextDiagnostic diagnostic = new ElementBasedTextDiagnostic(locationMap, getURI(), problem, element);
 		getDiagnostics(problem.getSeverity()).add(diagnostic);
-		if (isMarkerCreationEnabled()) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.mark(this, diagnostic);
-		}
+		mark(diagnostic);
+		addQuickFixesToQuickFixMap(problem);
+	}
+	
+	public void addProblem(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem problem, int column, int line, int charStart, int charEnd) {
+		PositionBasedTextDiagnostic diagnostic = new PositionBasedTextDiagnostic(getURI(), problem, column, line, charStart, charEnd);
+		getDiagnostics(problem.getSeverity()).add(diagnostic);
+		mark(diagnostic);
+		addQuickFixesToQuickFixMap(problem);
+	}
+	
+	protected void addQuickFixesToQuickFixMap(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem problem) {
 		java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclQuickFix> quickFixes = problem.getQuickFixes();
 		if (quickFixes != null) {
 			for (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclQuickFix quickFix : quickFixes) {
@@ -473,14 +613,6 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 					quickFixMap.put(quickFix.getContextAsString(), quickFix);
 				}
 			}
-		}
-	}
-	
-	public void addProblem(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclProblem problem, int column, int line, int charStart, int charEnd) {
-		PositionBasedTextDiagnostic diagnostic = new PositionBasedTextDiagnostic(getURI(), problem, column, line, charStart, charEnd);
-		getDiagnostics(problem.getSeverity()).add(diagnostic);
-		if (isMarkerCreationEnabled()) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.mark(this, diagnostic);
 		}
 	}
 	
@@ -502,7 +634,7 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		addProblem(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclProblem(message, type, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity.WARNING), cause);
 	}
 	
-	private java.util.List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> getDiagnostics(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity severity) {
+	protected java.util.List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> getDiagnostics(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity severity) {
 		if (severity == be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity.ERROR) {
 			return getErrors();
 		} else {
@@ -512,59 +644,14 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	
 	protected java.util.Map<Object, Object> addDefaultLoadOptions(java.util.Map<?, ?> loadOptions) {
 		java.util.Map<Object, Object> loadOptionsCopy = be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclMapUtil.copySafelyToObjectToObjectMap(loadOptions);
-		if (org.eclipse.core.runtime.Platform.isRunning()) {
-			// find default load option providers
-			org.eclipse.core.runtime.IExtensionRegistry extensionRegistry = org.eclipse.core.runtime.Platform.getExtensionRegistry();
-			org.eclipse.core.runtime.IConfigurationElement configurationElements[] = extensionRegistry.getConfigurationElementsFor(be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.EP_DEFAULT_LOAD_OPTIONS_ID);
-			for (org.eclipse.core.runtime.IConfigurationElement element : configurationElements) {
-				try {
-					be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptionProvider provider = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptionProvider) element.createExecutableExtension("class");
-					final java.util.Map<?, ?> options = provider.getOptions();
-					final java.util.Collection<?> keys = options.keySet();
-					for (Object key : keys) {
-						addLoadOption(loadOptionsCopy, key, options.get(key));
-					}
-				} catch (org.eclipse.core.runtime.CoreException ce) {
-					be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while getting default options.", ce);
-				}
-			}
+		// first add static option provider
+		loadOptionsCopy.putAll(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclOptionProvider().getOptions());
+		
+		// second, add dynamic option providers that are registered via extension
+		if (new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().isEclipsePlatformAvailable()) {
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclEclipseProxy().getDefaultLoadOptionProviderExtensions(loadOptionsCopy);
 		}
 		return loadOptionsCopy;
-	}
-	
-	/**
-	 * Adds a new key,value pair to the list of options. If there is already an option
-	 * with the same key, the two values are collected in a list.
-	 */
-	private void addLoadOption(java.util.Map<Object, Object> options,Object key, Object value) {
-		// check if there is already an option set
-		if (options.containsKey(key)) {
-			Object currentValue = options.get(key);
-			if (currentValue instanceof java.util.List<?>) {
-				// if the current value is a list, we add the new value to this list
-				java.util.List<?> currentValueAsList = (java.util.List<?>) currentValue;
-				java.util.List<Object> currentValueAsObjectList = be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclListUtil.copySafelyToObjectList(currentValueAsList);
-				if (value instanceof java.util.Collection<?>) {
-					currentValueAsObjectList.addAll((java.util.Collection<?>) value);
-				} else {
-					currentValueAsObjectList.add(value);
-				}
-				options.put(key, currentValueAsObjectList);
-			} else {
-				// if the current value is not a list, we create a fresh list and add both the old
-				// (current) and the new value to this list
-				java.util.List<Object> newValueList = new java.util.ArrayList<Object>();
-				newValueList.add(currentValue);
-				if (value instanceof java.util.Collection<?>) {
-					newValueList.addAll((java.util.Collection<?>) value);
-				} else {
-					newValueList.add(value);
-				}
-				options.put(key, newValueList);
-			}
-		} else {
-			options.put(key, value);
-		}
 	}
 	
 	/**
@@ -577,11 +664,9 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		internalURIFragmentMap.clear();
 		getErrors().clear();
 		getWarnings().clear();
-		if (isMarkerCreationEnabled()) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.unmark(this, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNKNOWN);
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.unmark(this, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.SYNTAX_ERROR);
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper.unmark(this, be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNRESOLVED_REFERENCE);
-		}
+		unmark(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNKNOWN);
+		unmark(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.SYNTAX_ERROR);
+		unmark(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.UNRESOLVED_REFERENCE);
 		proxyCounter = 0;
 		resolverSwitch = null;
 	}
@@ -593,81 +678,89 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 	 * interfere when changing the list.
 	 */
 	public org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> getContents() {
+		if (terminateReload) {
+			// the contents' state is currently unclear
+			return new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject>();
+		}
 		return new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclCopiedEObjectInternalEList((org.eclipse.emf.ecore.util.InternalEList<org.eclipse.emf.ecore.EObject>) super.getContents());
 	}
 	
 	/**
-	 * Returns the raw contents of this resource.
+	 * Returns the raw contents of this resource. In contrast to getContents(), this
+	 * methods does not return a copy of the content list, but the original list.
 	 */
 	public org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.EObject> getContentsInternal() {
+		if (terminateReload) {
+			// the contents' state is currently unclear
+			return new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject>();
+		}
 		return super.getContents();
 	}
 	
+	/**
+	 * Returns all warnings that are associated with this resource.
+	 */
 	public org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.resource.Resource.Diagnostic> getWarnings() {
+		if (terminateReload) {
+			// the contents' state is currently unclear
+			return new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.resource.Resource.Diagnostic>();
+		}
 		return new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclCopiedEList<org.eclipse.emf.ecore.resource.Resource.Diagnostic>(super.getWarnings());
 	}
 	
+	/**
+	 * Returns all errors that are associated with this resource.
+	 */
 	public org.eclipse.emf.common.util.EList<org.eclipse.emf.ecore.resource.Resource.Diagnostic> getErrors() {
+		if (terminateReload) {
+			// the contents' state is currently unclear
+			return new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.resource.Resource.Diagnostic>();
+		}
 		return new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclCopiedEList<org.eclipse.emf.ecore.resource.Resource.Diagnostic>(super.getErrors());
 	}
 	
-	@SuppressWarnings("restriction")	
-	private void runValidators(org.eclipse.emf.ecore.EObject root) {
-		// checking constraints provided by EMF validator classes was disabled
+	protected void runValidators(org.eclipse.emf.ecore.EObject root) {
+		// checking constraints provided by EMF validator classes was disabled by option
+		// 'disableEValidators'.
 		
-		// check EMF validation constraints
-		// EMF validation does not work if OSGi is not running
-		// The EMF validation framework code throws a NPE if the validation plug-in is not
-		// loaded. This is a bug, which is fixed in the Helios release. Nonetheless, we
-		// need to catch the exception here.
-		if (org.eclipse.core.runtime.Platform.isRunning()) {
-			// The EMF validation framework code throws a NPE if the validation plug-in is not
-			// loaded. This is a workaround for bug 322079.
-			if (org.eclipse.emf.validation.internal.EMFModelValidationPlugin.getPlugin() != null) {
-				try {
-					org.eclipse.emf.validation.service.ModelValidationService service = org.eclipse.emf.validation.service.ModelValidationService.getInstance();
-					org.eclipse.emf.validation.service.IBatchValidator validator = service.<org.eclipse.emf.ecore.EObject, org.eclipse.emf.validation.service.IBatchValidator>newValidator(org.eclipse.emf.validation.model.EvaluationMode.BATCH);
-					validator.setIncludeLiveConstraints(true);
-					org.eclipse.core.runtime.IStatus status = validator.validate(root);
-					addStatus(status, root);
-				} catch (Throwable t) {
-					be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while checking contraints provided by EMF validator classes.", t);
-				}
-			}
-		}
-	}
-	
-	private void addStatus(org.eclipse.core.runtime.IStatus status, org.eclipse.emf.ecore.EObject root) {
-		java.util.List<org.eclipse.emf.ecore.EObject> causes = new java.util.ArrayList<org.eclipse.emf.ecore.EObject>();
-		causes.add(root);
-		if (status instanceof org.eclipse.emf.validation.model.ConstraintStatus) {
-			org.eclipse.emf.validation.model.ConstraintStatus constraintStatus = (org.eclipse.emf.validation.model.ConstraintStatus) status;
-			java.util.Set<org.eclipse.emf.ecore.EObject> resultLocus = constraintStatus.getResultLocus();
-			causes.clear();
-			causes.addAll(resultLocus);
-		}
-		boolean hasChildren = status.getChildren() != null && status.getChildren().length > 0;
-		// Ignore composite status objects that have children. The actual status
-		// information is then contained in the child objects.
-		if (!status.isMultiStatus() || !hasChildren) {
-			if (status.getSeverity() == org.eclipse.core.runtime.IStatus.ERROR) {
-				for (org.eclipse.emf.ecore.EObject cause : causes) {
-					addError(status.getMessage(), be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.ANALYSIS_PROBLEM, cause);
-				}
-			}
-			if (status.getSeverity() == org.eclipse.core.runtime.IStatus.WARNING) {
-				for (org.eclipse.emf.ecore.EObject cause : causes) {
-					addWarning(status.getMessage(), be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType.ANALYSIS_PROBLEM, cause);
-				}
-			}
-		}
-		for (org.eclipse.core.runtime.IStatus child : status.getChildren()) {
-			addStatus(child, root);
+		if (new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().isEclipsePlatformAvailable()) {
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclEclipseProxy().checkEMFValidationConstraints(this, root);
 		}
 	}
 	
 	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclQuickFix getQuickFix(String quickFixContext) {
 		return quickFixMap.get(quickFixContext);
+	}
+	
+	protected void mark(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic diagnostic) {
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper markerHelper = getMarkerHelper();
+		if (markerHelper != null) {
+			markerHelper.mark(this, diagnostic);
+		}
+	}
+	
+	protected void unmark(org.eclipse.emf.ecore.EObject cause) {
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper markerHelper = getMarkerHelper();
+		if (markerHelper != null) {
+			markerHelper.unmark(this, cause);
+		}
+	}
+	
+	protected void unmark(be.ac.vub.simpleocl.resource.simpleocl.SimpleoclEProblemType analysisProblem) {
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper markerHelper = getMarkerHelper();
+		if (markerHelper != null) {
+			markerHelper.unmark(this, analysisProblem);
+		}
+	}
+	
+	protected be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper getMarkerHelper() {
+		if (isMarkerCreationEnabled() && new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().isEclipsePlatformAvailable()) {
+			if (markerHelper == null) {
+				markerHelper = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMarkerHelper();
+			}
+			return markerHelper;
+		}
+		return null;
 	}
 	
 	public boolean isMarkerCreationEnabled() {
@@ -676,4 +769,19 @@ public class SimpleoclResource extends org.eclipse.emf.ecore.resource.impl.Resou
 		}
 		return !loadOptions.containsKey(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.DISABLE_CREATING_MARKERS_FOR_PROBLEMS);
 	}
+	
+	protected boolean isLocationMapEnabled() {
+		if (loadOptions == null) {
+			return true;
+		}
+		return !loadOptions.containsKey(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.DISABLE_LOCATION_MAP);
+	}
+	
+	protected boolean isLayoutInformationRecordingEnabled() {
+		if (loadOptions == null) {
+			return true;
+		}
+		return !loadOptions.containsKey(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.DISABLE_LAYOUT_INFORMATION_RECORDING);
+	}
+	
 }

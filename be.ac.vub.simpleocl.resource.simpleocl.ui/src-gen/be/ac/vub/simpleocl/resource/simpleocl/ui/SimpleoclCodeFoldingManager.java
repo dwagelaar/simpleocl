@@ -319,6 +319,7 @@ public class SimpleoclCodeFoldingManager {
 			encryptMsg = md.digest(text.getBytes());
 		} catch (java.security.NoSuchAlgorithmException e) {
 			be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclUIPlugin.logError("NoSuchAlgorithmException while creating MD5 checksum.", e);
+			return "";
 		}
 		String swap = "";
 		String byteStr = "";

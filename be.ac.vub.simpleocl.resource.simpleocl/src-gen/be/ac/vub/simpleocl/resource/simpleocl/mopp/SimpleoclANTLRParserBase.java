@@ -6,17 +6,17 @@
  */
 package be.ac.vub.simpleocl.resource.simpleocl.mopp;
 
-public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Parser implements be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextParser {
+public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_4_0.Parser implements be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextParser {
 	
 	/**
-	 * the index of the last token that was handled by retrieveLayoutInformation()
+	 * The index of the last token that was handled by retrieveLayoutInformation().
 	 */
 	private int lastPosition2;
 	
 	/**
-	 * a collection to store all anonymous tokens
+	 * A collection to store all anonymous tokens.
 	 */
-	protected java.util.List<org.antlr.runtime3_3_0.CommonToken> anonymousTokens = new java.util.ArrayList<org.antlr.runtime3_3_0.CommonToken>();
+	protected java.util.List<org.antlr.runtime3_4_0.CommonToken> anonymousTokens = new java.util.ArrayList<org.antlr.runtime3_4_0.CommonToken>();
 	
 	/**
 	 * A collection that is filled with commands to be executed after parsing. This
@@ -25,7 +25,26 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 	 */
 	protected java.util.Collection<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclCommand<be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource>> postParseCommands;
 	
+	/**
+	 * A copy of the options that were used to load the text resource. This map is
+	 * filled when the parser is created.
+	 */
 	private java.util.Map<?, ?> options;
+	
+	/**
+	 * A flag that indicates whether this parser runs in a special mode where the
+	 * location map is not filled. If this flag is set to true, copying localization
+	 * information for elements is not performed. This improves time and memory
+	 * consumption.
+	 */
+	protected boolean disableLocationMap = false;
+	
+	/**
+	 * A flag that indicates whether this parser runs in a special mode where layout
+	 * information is not recorded. If this flag is set to true, no layout information
+	 * adapters are created. This improves time and memory consumption.
+	 */
+	protected boolean disableLayoutRecording = false;
 	
 	/**
 	 * A flag to indicate that the parser should stop parsing as soon as possible. The
@@ -43,16 +62,18 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 	 */
 	private be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenResolveResult tokenResolveResult = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenResolveResult();
 	
-	public SimpleoclANTLRParserBase(org.antlr.runtime3_3_0.TokenStream input) {
+	protected be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation metaInformation = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
+	
+	public SimpleoclANTLRParserBase(org.antlr.runtime3_4_0.TokenStream input) {
 		super(input);
 	}
 	
-	public SimpleoclANTLRParserBase(org.antlr.runtime3_3_0.TokenStream input, org.antlr.runtime3_3_0.RecognizerSharedState state) {
+	public SimpleoclANTLRParserBase(org.antlr.runtime3_4_0.TokenStream input, org.antlr.runtime3_4_0.RecognizerSharedState state) {
 		super(input, state);
 	}
 	
 	protected void retrieveLayoutInformation(org.eclipse.emf.ecore.EObject element, be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclSyntaxElement syntaxElement, Object object, boolean ignoreTokensAfterLastVisibleToken) {
-		if (element == null) {
+		if (disableLayoutRecording || element == null) {
 			return;
 		}
 		// null must be accepted, since the layout information that is found at the end of
@@ -67,10 +88,10 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 			return;
 		}
 		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLayoutInformationAdapter layoutInformationAdapter = getLayoutInformationAdapter(element);
-		for (org.antlr.runtime3_3_0.CommonToken anonymousToken : anonymousTokens) {
-			layoutInformationAdapter.addLayoutInformation(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLayoutInformation(syntaxElement, object, anonymousToken.getStartIndex(), anonymousToken.getText(), null));
+		StringBuilder anonymousText = new StringBuilder();
+		for (org.antlr.runtime3_4_0.CommonToken anonymousToken : anonymousTokens) {
+			anonymousText.append(anonymousToken.getText());
 		}
-		anonymousTokens.clear();
 		int currentPos = getTokenStream().index();
 		if (currentPos == 0) {
 			return;
@@ -78,7 +99,7 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 		int endPos = currentPos - 1;
 		if (ignoreTokensAfterLastVisibleToken) {
 			for (; endPos >= this.lastPosition2; endPos--) {
-				org.antlr.runtime3_3_0.Token token = getTokenStream().get(endPos);
+				org.antlr.runtime3_4_0.Token token = getTokenStream().get(endPos);
 				int _channel = token.getChannel();
 				if (_channel != 99) {
 					break;
@@ -86,12 +107,16 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 			}
 		}
 		StringBuilder hiddenTokenText = new StringBuilder();
+		hiddenTokenText.append(anonymousText);
 		StringBuilder visibleTokenText = new StringBuilder();
-		org.antlr.runtime3_3_0.CommonToken firstToken = null;
+		org.antlr.runtime3_4_0.CommonToken firstToken = null;
 		for (int pos = this.lastPosition2; pos <= endPos; pos++) {
-			org.antlr.runtime3_3_0.Token token = getTokenStream().get(pos);
+			org.antlr.runtime3_4_0.Token token = getTokenStream().get(pos);
 			if (firstToken == null) {
-				firstToken = (org.antlr.runtime3_3_0.CommonToken) token;
+				firstToken = (org.antlr.runtime3_4_0.CommonToken) token;
+			}
+			if (anonymousTokens.contains(token)) {
+				continue;
 			}
 			int _channel = token.getChannel();
 			if (_channel == 99) {
@@ -106,6 +131,7 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 		}
 		layoutInformationAdapter.addLayoutInformation(new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLayoutInformation(syntaxElement, object, offset, hiddenTokenText.toString(), visibleTokenText.toString()));
 		this.lastPosition2 = (endPos < 0 ? 0 : endPos + 1);
+		anonymousTokens.clear();
 	}
 	
 	protected be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclLayoutInformationAdapter getLayoutInformationAdapter(org.eclipse.emf.ecore.EObject element) {
@@ -141,7 +167,7 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 	
 	protected String formatTokenName(int tokenType)  {
 		String tokenName = "<unknown>";
-		if (tokenType < 0 || tokenType == org.antlr.runtime3_3_0.Token.EOF) {
+		if (tokenType < 0) {
 			tokenName = "EOF";
 		} else {
 			if (tokenType < 0) {
@@ -159,6 +185,15 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 	
 	public void setOptions(java.util.Map<?,?> options) {
 		this.options = options;
+		if (this.options == null) {
+			return;
+		}
+		if (this.options.containsKey(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.DISABLE_LOCATION_MAP)) {
+			this.disableLocationMap = true;
+		}
+		if (this.options.containsKey(be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclOptions.DISABLE_LAYOUT_INFORMATION_RECORDING)) {
+			this.disableLayoutRecording = true;
+		}
 	}
 	
 	/**
@@ -244,12 +279,10 @@ public abstract class SimpleoclANTLRParserBase extends org.antlr.runtime3_3_0.Pa
 		return tokenResolveResult;
 	}
 	
-	public be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation getMetaInformation() {
-		return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
-	}
-	
 	protected be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclReferenceResolverSwitch getReferenceResolverSwitch() {
-		return (be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclReferenceResolverSwitch) getMetaInformation().getReferenceResolverSwitch();
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclReferenceResolverSwitch resolverSwitch = (be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclReferenceResolverSwitch) metaInformation.getReferenceResolverSwitch();
+		resolverSwitch.setOptions(options);
+		return resolverSwitch;
 	}
 	
 }

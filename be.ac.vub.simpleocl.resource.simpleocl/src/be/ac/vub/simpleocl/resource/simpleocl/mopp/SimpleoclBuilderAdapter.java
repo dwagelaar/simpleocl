@@ -99,7 +99,7 @@ public class SimpleoclBuilderAdapter extends org.eclipse.core.resources.Incremen
 			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
 			if (builder.isBuildingNeeded(uri)) {
 				final SimpleoclResource customResource = (SimpleoclResource) new ResourceSetImpl().getResource(uri, true);
-				SimpleoclMarkerHelper.unmark(customResource, SimpleoclEProblemType.BUILDER_ERROR);
+				customResource.unmark(SimpleoclEProblemType.BUILDER_ERROR);
 				final IStatus status = builder.build(customResource, monitor);
 				if (!status.isOK()) {
 					SimpleoclPlugin.getDefault().getLog().log(status);

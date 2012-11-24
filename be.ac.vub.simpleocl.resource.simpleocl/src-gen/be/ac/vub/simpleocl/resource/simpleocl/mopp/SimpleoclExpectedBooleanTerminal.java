@@ -23,6 +23,13 @@ public class SimpleoclExpectedBooleanTerminal extends be.ac.vub.simpleocl.resour
 		return booleanTerminal;
 	}
 	
+	/**
+	 * Returns the expected boolean terminal.
+	 */
+	public be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclSyntaxElement getSymtaxElement() {
+		return booleanTerminal;
+	}
+	
 	private org.eclipse.emf.ecore.EStructuralFeature getFeature() {
 		return booleanTerminal.getFeature();
 	}
@@ -36,6 +43,11 @@ public class SimpleoclExpectedBooleanTerminal extends be.ac.vub.simpleocl.resour
 			return getFeature().equals(((SimpleoclExpectedBooleanTerminal) o).getFeature());
 		}
 		return false;
+	}
+	
+	@Override	
+	public int hashCode() {
+		return getFeature().hashCode();
 	}
 	
 	public java.util.Set<String> getTokenNames() {

@@ -8,6 +8,14 @@ package be.ac.vub.simpleocl.resource.simpleocl.ui;
 
 /**
  * A text editor for 'simpleocl' models.
+ * <p>
+ * This editor has id
+ * <code>be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclEditor</code>
+ * The editor's context menu has id
+ * <code>be.ac.vub.simpleocl.resource.simpleocl.EditorContext</code>.
+ * The editor's ruler context menu has id
+ * <code>be.ac.vub.simpleocl.resource.simpleocl.EditorRuler</code>.
+ * </p>
  */
 public class SimpleoclEditor extends org.eclipse.ui.editors.text.TextEditor implements org.eclipse.emf.edit.domain.IEditingDomainProvider, org.eclipse.jface.viewers.ISelectionProvider, org.eclipse.jface.viewers.ISelectionChangedListener, org.eclipse.emf.common.ui.viewer.IViewerProvider, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclResourceProvider, be.ac.vub.simpleocl.resource.simpleocl.ui.ISimpleoclBracketHandlerProvider, be.ac.vub.simpleocl.resource.simpleocl.ui.ISimpleoclAnnotationModelProvider {
 	
@@ -29,7 +37,7 @@ public class SimpleoclEditor extends org.eclipse.ui.editors.text.TextEditor impl
 	
 	public SimpleoclEditor() {
 		super();
-		setSourceViewerConfiguration(new be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclEditorConfiguration(this, this, this, colorManager));
+		setSourceViewerConfiguration(new be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclSourceViewerConfiguration(this, this, this, colorManager));
 		initializeEditingDomain();
 		org.eclipse.core.resources.ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, org.eclipse.core.resources.IResourceChangeEvent.POST_CHANGE);
 		addSelectionChangedListener(this);
@@ -174,6 +182,7 @@ public class SimpleoclEditor extends org.eclipse.ui.editors.text.TextEditor impl
 	
 	public void dispose() {
 		colorManager.dispose();
+		org.eclipse.core.resources.ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 		super.dispose();
 	}
 	
@@ -436,8 +445,8 @@ public class SimpleoclEditor extends org.eclipse.ui.editors.text.TextEditor impl
 						continue;
 					}
 					
-					int annotationLayer = annotationAccess.getLayer(annotation);
 					if (annotationAccess != null) {
+						int annotationLayer = annotationAccess.getLayer(annotation);
 						if (annotationLayer < layer) {
 							continue;
 						}
@@ -490,7 +499,14 @@ public class SimpleoclEditor extends org.eclipse.ui.editors.text.TextEditor impl
 			Object object = structuredSelection.getFirstElement();
 			if (object instanceof org.eclipse.emf.ecore.EObject) {
 				org.eclipse.emf.ecore.EObject element = (org.eclipse.emf.ecore.EObject) object;
-				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource textResource = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource) element.eResource();
+				org.eclipse.emf.ecore.resource.Resource resource = element.eResource();
+				if (resource == null) {
+					return false;
+				}
+				if (!(resource instanceof be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource)) {
+					return false;
+				}
+				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource textResource = (be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource) resource;
 				be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclLocationMap locationMap = textResource.getLocationMap();
 				int destination = locationMap.getCharStart(element);
 				if (destination < 0) {

@@ -70,14 +70,14 @@
          unpack="false"/>
 
    <plugin
-         id="org.emftext.commons.antlr3_3_0"
+         id="be.ac.vub.simpleocl.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="be.ac.vub.simpleocl.edit"
+         id="org.emftext.commons.antlr3_4_0"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -49,7 +49,7 @@ public class SimpleoclMetaInformation implements be.ac.vub.simpleocl.resource.si
 	}
 	
 	public String[] getTokenNames() {
-		return new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclParser(null).getTokenNames();
+		return be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclParser.tokenNames;
 	}
 	
 	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTokenStyle getDefaultTokenStyle(String tokenName) {
@@ -98,6 +98,29 @@ public class SimpleoclMetaInformation implements be.ac.vub.simpleocl.resource.si
 	
 	public String getLaunchConfigurationType() {
 		return "be.ac.vub.simpleocl.resource.simpleocl.ui.launchConfigurationType";
+	}
+	
+	public be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclNameProvider createNameProvider() {
+		return new be.ac.vub.simpleocl.resource.simpleocl.analysis.SimpleoclDefaultNameProvider();
+	}
+	
+	public String[] getSyntaxHighlightableTokenNames() {
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclAntlrTokenHelper tokenHelper = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclAntlrTokenHelper();
+		java.util.List<String> highlightableTokens = new java.util.ArrayList<String>();
+		String[] parserTokenNames = getTokenNames();
+		for (int i = 0; i < parserTokenNames.length; i++) {
+			// If ANTLR is used we need to normalize the token names
+			if (!tokenHelper.canBeUsedForSyntaxHighlighting(i)) {
+				continue;
+			}
+			String tokenName = tokenHelper.getTokenName(parserTokenNames, i);
+			if (tokenName == null) {
+				continue;
+			}
+			highlightableTokens.add(tokenName);
+		}
+		highlightableTokens.add(be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclTokenStyleInformationProvider.TASK_ITEM_TOKEN_NAME);
+		return highlightableTokens.toArray(new String[highlightableTokens.size()]);
 	}
 	
 }

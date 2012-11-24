@@ -23,6 +23,13 @@ public class SimpleoclExpectedCsString extends be.ac.vub.simpleocl.resource.simp
 		return keyword.getValue();
 	}
 	
+	/**
+	 * Returns the expected keyword.
+	 */
+	public be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclSyntaxElement getSymtaxElement() {
+		return keyword;
+	}
+	
 	public java.util.Set<String> getTokenNames() {
 		return java.util.Collections.singleton("'" + getValue() + "'");
 	}
@@ -36,6 +43,11 @@ public class SimpleoclExpectedCsString extends be.ac.vub.simpleocl.resource.simp
 			return getValue().equals(((SimpleoclExpectedCsString) o).getValue());
 		}
 		return false;
+	}
+	
+	@Override	
+	public int hashCode() {
+		return getValue().hashCode();
 	}
 	
 }

@@ -215,7 +215,7 @@ RULES {
 	OclType ::= name[OCLTYPE];
 	TupleType ::= (name[TUPLETYPE]|name[TUPLE]) "(" (attributes ("," attributes)*)? ")";
 	TupleTypeAttribute ::= (name[]|name['"','"','\\']) ":" type;
-	OclModelElement ::= model[] "!" (name[]|name['"','"','\\']);
+	OclModelElement ::= (model[]|model['"','"','\\']) "!" (name[]|name['"','"','\\']);
 	MapType ::= name[MAPTYPE] "(" keyType "," valueType ")";
 	LambdaType ::= name[LAMBDATYPE] "(" (argumentTypes ("," argumentTypes)*)? ")" ":" returnType;
 	EnvType ::= name[ENVTYPE];

@@ -18,6 +18,9 @@ public class SimpleoclCompletionProcessor implements org.eclipse.jface.text.cont
 	
 	public org.eclipse.jface.text.contentassist.ICompletionProposal[] computeCompletionProposals(org.eclipse.jface.text.ITextViewer viewer, int offset) {
 		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclTextResource textResource = resourceProvider.getResource();
+		if (textResource == null) {
+			return new org.eclipse.jface.text.contentassist.ICompletionProposal[0];
+		}
 		String content = viewer.getDocument().get();
 		be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclCodeCompletionHelper helper = new be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclCodeCompletionHelper();
 		be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclCompletionProposal[] computedProposals = helper.computeCompletionProposals(textResource, content, offset);

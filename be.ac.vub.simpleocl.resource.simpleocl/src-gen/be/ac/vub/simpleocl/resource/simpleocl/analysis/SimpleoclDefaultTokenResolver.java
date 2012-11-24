@@ -135,7 +135,7 @@ public class SimpleoclDefaultTokenResolver implements be.ac.vub.simpleocl.resour
 	
 	public String deResolve(Object value, org.eclipse.emf.ecore.EStructuralFeature feature, org.eclipse.emf.ecore.EObject container, String prefix, String suffix, String escapeCharacter) {
 		// Step 1: convert Java object to text
-		String result = null;
+		String result = "";
 		if (value != null) {
 			result = value.toString();
 		}
@@ -157,7 +157,7 @@ public class SimpleoclDefaultTokenResolver implements be.ac.vub.simpleocl.resour
 		}
 		
 		// Step 3: escape keywords if required
-		if (escapeKeywords) {
+		if (escapeKeywords && result != null) {
 			// Escape keywords if required
 			for (String keyword : be.ac.vub.simpleocl.resource.simpleocl.grammar.SimpleoclGrammarInformationProvider.INSTANCE.getKeywords()) {
 				if (result.endsWith(keyword)) {

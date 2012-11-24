@@ -88,7 +88,7 @@ public class SimpleoclHighlighting implements org.eclipse.jface.viewers.ISelecti
 		}
 		
 		public void parsingCompleted(org.eclipse.emf.ecore.resource.Resource resource) {
-			display.syncExec(new Runnable() {
+			display.asyncExec(new Runnable() {
 				
 				public void run() {
 					refreshHighlighting();
@@ -184,7 +184,7 @@ public class SimpleoclHighlighting implements org.eclipse.jface.viewers.ISelecti
 	}
 	
 	public void setEObjectSelection() {
-		display.syncExec(new Runnable() {
+		display.asyncExec(new Runnable() {
 			public void run() {
 				org.eclipse.emf.ecore.EObject selectedEObject = occurrence.getEObjectAtCurrentPosition();
 				if (selectedEObject != null) {

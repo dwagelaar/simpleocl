@@ -25,8 +25,9 @@ public interface ISimpleoclReferenceResolver<ContainerType extends org.eclipse.e
 	 * @param reference The reference that points to the target of the reference.
 	 * @param position The index of the reference (if it has an upper bound greater
 	 * than 1).
-	 * @param resolveFuzzy return objects that do not match exactly
-	 * @param result an object that can be sued to store the result of the resolve
+	 * @param resolveFuzzy If true, the resolver must return all objects, even the
+	 * ones that do not match the identifier
+	 * @param result an object that can be used to store the result of the resolve
 	 * operation.
 	 */
 	public void resolve(String identifier, ContainerType container, org.eclipse.emf.ecore.EReference reference, int position, boolean resolveFuzzy, be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclReferenceResolveResult<ReferenceType> result);

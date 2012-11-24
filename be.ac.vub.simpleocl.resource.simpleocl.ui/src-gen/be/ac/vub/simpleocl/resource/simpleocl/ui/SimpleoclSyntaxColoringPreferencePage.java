@@ -12,30 +12,21 @@ package be.ac.vub.simpleocl.resource.simpleocl.ui;
  */
 public class SimpleoclSyntaxColoringPreferencePage extends org.eclipse.jface.preference.PreferencePage implements org.eclipse.ui.IWorkbenchPreferencePage {
 	
-	private final static be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclAntlrTokenHelper tokenHelper = new be.ac.vub.simpleocl.resource.simpleocl.ui.SimpleoclAntlrTokenHelper();
 	private final static java.util.Map<String, java.util.List<HighlightingColorListItem>> content = new java.util.LinkedHashMap<String, java.util.List<HighlightingColorListItem>>();
 	private final static java.util.Collection<IChangedPreference> changedPreferences = new java.util.ArrayList<IChangedPreference>();
 	
 	public SimpleoclSyntaxColoringPreferencePage() {
 		super();
 		
-		be.ac.vub.simpleocl.resource.simpleocl.ISimpleoclMetaInformation syntaxPlugin = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
+		be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation metaInformation = new be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclMetaInformation();
 		
-		String languageId = syntaxPlugin.getSyntaxName();
+		String languageId = metaInformation.getSyntaxName();
 		
 		java.util.List<HighlightingColorListItem> terminals = new java.util.ArrayList<HighlightingColorListItem>();
-		String[] tokenNames = syntaxPlugin.getTokenNames();
+		String[] tokenNames = metaInformation.getSyntaxHighlightableTokenNames();
 		
 		for (int i = 0; i < tokenNames.length; i++) {
-			if (!tokenHelper.canBeUsedForSyntaxHighlighting(i)) {
-				continue;
-			}
-			
-			String tokenName = tokenHelper.getTokenName(tokenNames, i);
-			if (tokenName == null) {
-				continue;
-			}
-			HighlightingColorListItem item = new HighlightingColorListItem(languageId, tokenName);
+			HighlightingColorListItem item = new HighlightingColorListItem(languageId, tokenNames[i]);
 			terminals.add(item);
 		}
 		java.util.Collections.sort(terminals);

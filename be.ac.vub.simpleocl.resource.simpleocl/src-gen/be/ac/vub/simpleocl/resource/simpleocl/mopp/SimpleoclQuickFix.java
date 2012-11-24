@@ -45,7 +45,7 @@ public abstract class SimpleoclQuickFix implements be.ac.vub.simpleocl.resource.
 			getResource().save(output, null);
 			return output.toString();
 		} catch (java.io.IOException e) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while applying quick fix", e);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Exception while applying quick fix", e);
 		}
 		return null;
 	}

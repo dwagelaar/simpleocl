@@ -37,7 +37,8 @@ public class SimpleoclUnicodeConverter extends be.ac.vub.simpleocl.resource.simp
 	 * Reads one character from the stream. Escaped unicode characters are converted
 	 * to UTF-8 byte sequences (i.e., up to four bytes).
 	 */
-	@Override	public int read() throws java.io.IOException {
+	@Override	
+	public int read() throws java.io.IOException {
 		if (!stackIsEmpty()) {
 			int result = pop();
 			return result;
@@ -116,7 +117,7 @@ public class SimpleoclUnicodeConverter extends be.ac.vub.simpleocl.resource.simp
 					encodePush(next);
 				}
 			} else {
-				return encodePushAndReturn(read);
+				return read;
 			}
 		}
 		// do not encode negative numbers, because they signal EOF

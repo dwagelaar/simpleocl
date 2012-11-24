@@ -43,7 +43,7 @@ public class SimpleoclNewFileContentProvider {
 		try {
 			printer.print(root);
 		} catch (java.io.IOException e) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while generating example content.", e);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Exception while generating example content.", e);
 		}
 		return buffer.toString();
 	}

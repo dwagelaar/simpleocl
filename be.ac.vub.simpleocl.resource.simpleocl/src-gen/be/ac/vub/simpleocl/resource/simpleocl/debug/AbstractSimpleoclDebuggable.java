@@ -28,7 +28,7 @@ public abstract class AbstractSimpleoclDebuggable {
 			// starting event server socket done (connection established).
 			outputStream = new java.io.PrintStream(accept.getOutputStream());
 		} catch (Exception e) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Can't create socket connection while launching.", e);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Can't create socket connection while launching.", e);
 		}
 	}
 	
@@ -36,7 +36,7 @@ public abstract class AbstractSimpleoclDebuggable {
 		try {
 			server.close();
 		} catch (java.io.IOException e) {
-			be.ac.vub.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin.logError("Exception while closing socket.", e);
+			new be.ac.vub.simpleocl.resource.simpleocl.util.SimpleoclRuntimeUtil().logError("Exception while closing socket.", e);
 		}
 	}
 	

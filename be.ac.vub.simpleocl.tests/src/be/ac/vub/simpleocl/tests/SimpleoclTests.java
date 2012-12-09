@@ -44,6 +44,8 @@ public class SimpleoclTests extends TestSuite {
 		suite.addTestSuite(BooleanExpTest.class);
 		suite.addTestSuite(RealExpTest.class);
 		suite.addTestSuite(IntegerExpTest.class);
+		suite.addTestSuite(CollectionRangeTest.class);
+		suite.addTestSuite(CollectionItemTest.class);
 		suite.addTestSuite(BagExpTest.class);
 		suite.addTestSuite(OrderedSetExpTest.class);
 		suite.addTestSuite(SequenceExpTest.class);

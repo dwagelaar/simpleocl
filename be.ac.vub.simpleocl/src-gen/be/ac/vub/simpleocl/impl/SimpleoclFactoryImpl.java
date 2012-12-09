@@ -20,7 +20,9 @@ import be.ac.vub.simpleocl.BagType;
 import be.ac.vub.simpleocl.BooleanExp;
 import be.ac.vub.simpleocl.BooleanType;
 import be.ac.vub.simpleocl.BraceExp;
+import be.ac.vub.simpleocl.CollectionItem;
 import be.ac.vub.simpleocl.CollectionOperationCall;
+import be.ac.vub.simpleocl.CollectionRange;
 import be.ac.vub.simpleocl.CollectionType;
 import be.ac.vub.simpleocl.EnumLiteralExp;
 import be.ac.vub.simpleocl.EnvExp;
@@ -137,6 +139,8 @@ public class SimpleoclFactoryImpl extends EFactoryImpl implements SimpleoclFacto
 			case SimpleoclPackage.BOOLEAN_EXP: return createBooleanExp();
 			case SimpleoclPackage.REAL_EXP: return createRealExp();
 			case SimpleoclPackage.INTEGER_EXP: return createIntegerExp();
+			case SimpleoclPackage.COLLECTION_RANGE: return createCollectionRange();
+			case SimpleoclPackage.COLLECTION_ITEM: return createCollectionItem();
 			case SimpleoclPackage.BAG_EXP: return createBagExp();
 			case SimpleoclPackage.ORDERED_SET_EXP: return createOrderedSetExp();
 			case SimpleoclPackage.SEQUENCE_EXP: return createSequenceExp();
@@ -339,6 +343,26 @@ public class SimpleoclFactoryImpl extends EFactoryImpl implements SimpleoclFacto
 	public IntegerExp createIntegerExp() {
 		IntegerExpImpl integerExp = new IntegerExpImpl();
 		return integerExp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionRange createCollectionRange() {
+		CollectionRangeImpl collectionRange = new CollectionRangeImpl();
+		return collectionRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionItem createCollectionItem() {
+		CollectionItemImpl collectionItem = new CollectionItemImpl();
+		return collectionItem;
 	}
 
 	/**

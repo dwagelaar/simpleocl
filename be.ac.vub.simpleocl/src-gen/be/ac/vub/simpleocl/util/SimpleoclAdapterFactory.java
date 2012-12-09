@@ -19,7 +19,10 @@ import be.ac.vub.simpleocl.BooleanExp;
 import be.ac.vub.simpleocl.BooleanType;
 import be.ac.vub.simpleocl.BraceExp;
 import be.ac.vub.simpleocl.CollectionExp;
+import be.ac.vub.simpleocl.CollectionItem;
 import be.ac.vub.simpleocl.CollectionOperationCall;
+import be.ac.vub.simpleocl.CollectionPart;
+import be.ac.vub.simpleocl.CollectionRange;
 import be.ac.vub.simpleocl.CollectionType;
 import be.ac.vub.simpleocl.EnumLiteralExp;
 import be.ac.vub.simpleocl.EnvExp;
@@ -218,6 +221,18 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCollectionExp(CollectionExp object) {
 				return createCollectionExpAdapter();
+			}
+			@Override
+			public Adapter caseCollectionPart(CollectionPart object) {
+				return createCollectionPartAdapter();
+			}
+			@Override
+			public Adapter caseCollectionRange(CollectionRange object) {
+				return createCollectionRangeAdapter();
+			}
+			@Override
+			public Adapter caseCollectionItem(CollectionItem object) {
+				return createCollectionItemAdapter();
 			}
 			@Override
 			public Adapter caseBagExp(BagExp object) {
@@ -734,6 +749,48 @@ public class SimpleoclAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCollectionExpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link be.ac.vub.simpleocl.CollectionPart <em>Collection Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see be.ac.vub.simpleocl.CollectionPart
+	 * @generated
+	 */
+	public Adapter createCollectionPartAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link be.ac.vub.simpleocl.CollectionRange <em>Collection Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see be.ac.vub.simpleocl.CollectionRange
+	 * @generated
+	 */
+	public Adapter createCollectionRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link be.ac.vub.simpleocl.CollectionItem <em>Collection Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see be.ac.vub.simpleocl.CollectionItem
+	 * @generated
+	 */
+	public Adapter createCollectionItemAdapter() {
 		return null;
 	}
 

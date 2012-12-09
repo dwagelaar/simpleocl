@@ -7,18 +7,12 @@
 package be.ac.vub.simpleocl.provider;
 
 
-import be.ac.vub.simpleocl.CollectionExp;
-import be.ac.vub.simpleocl.SimpleoclFactory;
-import be.ac.vub.simpleocl.SimpleoclPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -26,6 +20,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import be.ac.vub.simpleocl.CollectionExp;
+import be.ac.vub.simpleocl.SimpleoclFactory;
+import be.ac.vub.simpleocl.SimpleoclPackage;
 
 /**
  * This is the item provider adapter for a {@link be.ac.vub.simpleocl.CollectionExp} object.
@@ -78,7 +76,7 @@ public class CollectionExpItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS);
+			childrenFeatures.add(SimpleoclPackage.Literals.COLLECTION_EXP__PARTS);
 		}
 		return childrenFeatures;
 	}
@@ -120,7 +118,7 @@ public class CollectionExpItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CollectionExp.class)) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -140,153 +138,13 @@ public class CollectionExpItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createVariableExp()));
+				(SimpleoclPackage.Literals.COLLECTION_EXP__PARTS,
+				 SimpleoclFactory.eINSTANCE.createCollectionRange()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createSuperExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createSelfExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createEnvExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createStringExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createBooleanExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createRealExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createIntegerExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createBagExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createOrderedSetExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createSequenceExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createSetExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createTupleExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createMapExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createEnumLiteralExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createOclUndefinedExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createStaticPropertyCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createPropertyCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createOperatorCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createNotOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createRelOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createEqOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createAddOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createIntOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createMulOpCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createLambdaCallExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createBraceExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createLetExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createIfExp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SimpleoclPackage.Literals.COLLECTION_EXP__ELEMENTS,
-				 SimpleoclFactory.eINSTANCE.createOclModelElementExp()));
+				(SimpleoclPackage.Literals.COLLECTION_EXP__PARTS,
+				 SimpleoclFactory.eINSTANCE.createCollectionItem()));
 	}
 
 }

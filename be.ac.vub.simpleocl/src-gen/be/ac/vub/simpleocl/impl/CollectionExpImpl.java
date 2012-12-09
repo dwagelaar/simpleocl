@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import be.ac.vub.simpleocl.CollectionExp;
-import be.ac.vub.simpleocl.OclExpression;
+import be.ac.vub.simpleocl.CollectionPart;
 import be.ac.vub.simpleocl.SimpleoclPackage;
 
 /**
@@ -26,7 +26,7 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link be.ac.vub.simpleocl.impl.CollectionExpImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.impl.CollectionExpImpl#getParts <em>Parts</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,15 +34,14 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  */
 public abstract class CollectionExpImpl extends OclExpressionImpl implements CollectionExp {
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElements()
+	 * @see #getParts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OclExpression> elements;
-
+	protected EList<CollectionPart> parts;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,11 +66,11 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OclExpression> getElements() {
-		if (elements == null) {
-			elements = new EObjectContainmentWithInverseEList<OclExpression>(OclExpression.class, this, SimpleoclPackage.COLLECTION_EXP__ELEMENTS, SimpleoclPackage.OCL_EXPRESSION__COLLECTION);
+	public EList<CollectionPart> getParts() {
+		if (parts == null) {
+			parts = new EObjectContainmentWithInverseEList<CollectionPart>(CollectionPart.class, this, SimpleoclPackage.COLLECTION_EXP__PARTS, SimpleoclPackage.COLLECTION_PART__COLLECTION);
 		}
-		return elements;
+		return parts;
 	}
 
 	/**
@@ -83,8 +82,8 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd, msgs);
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParts()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -97,8 +96,8 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -111,8 +110,8 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				return getElements();
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				return getParts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,9 +125,9 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends OclExpression>)newValue);
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				getParts().clear();
+				getParts().addAll((Collection<? extends CollectionPart>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,8 +141,8 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				getElements().clear();
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				getParts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -157,8 +156,8 @@ public abstract class CollectionExpImpl extends OclExpressionImpl implements Col
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimpleoclPackage.COLLECTION_EXP__ELEMENTS:
-				return elements != null && !elements.isEmpty();
+			case SimpleoclPackage.COLLECTION_EXP__PARTS:
+				return parts != null && !parts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

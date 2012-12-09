@@ -116,6 +116,24 @@ public interface SimpleoclFactory extends EFactory {
 	IntegerExp createIntegerExp();
 
 	/**
+	 * Returns a new object of class '<em>Collection Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Range</em>'.
+	 * @generated
+	 */
+	CollectionRange createCollectionRange();
+
+	/**
+	 * Returns a new object of class '<em>Collection Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Item</em>'.
+	 * @generated
+	 */
+	CollectionItem createCollectionItem();
+
+	/**
 	 * Returns a new object of class '<em>Bag Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

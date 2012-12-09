@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import be.ac.vub.simpleocl.Attribute;
-import be.ac.vub.simpleocl.CollectionExp;
 import be.ac.vub.simpleocl.IfExp;
 import be.ac.vub.simpleocl.LetExp;
 import be.ac.vub.simpleocl.LocalVariable;
@@ -37,7 +36,6 @@ import be.ac.vub.simpleocl.SimpleoclPackage;
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getType <em>Type</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getIfExp3 <em>If Exp3</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getAppliedProperty <em>Applied Property</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getCollection <em>Collection</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getLetExp <em>Let Exp</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getLoopExp <em>Loop Exp</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.impl.OclExpressionImpl#getParentOperation <em>Parent Operation</em>}</li>
@@ -205,47 +203,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY, newAppliedProperty, newAppliedProperty));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CollectionExp getCollection() {
-		if (eContainerFeatureID() != SimpleoclPackage.OCL_EXPRESSION__COLLECTION) return null;
-		return (CollectionExp)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCollection(CollectionExp newCollection, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newCollection, SimpleoclPackage.OCL_EXPRESSION__COLLECTION, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCollection(CollectionExp newCollection) {
-		if (newCollection != eInternalContainer() || (eContainerFeatureID() != SimpleoclPackage.OCL_EXPRESSION__COLLECTION && newCollection != null)) {
-			if (EcoreUtil.isAncestor(this, newCollection))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newCollection != null)
-				msgs = ((InternalEObject)newCollection).eInverseAdd(this, SimpleoclPackage.COLLECTION_EXP__ELEMENTS, CollectionExp.class, msgs);
-			msgs = basicSetCollection(newCollection, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimpleoclPackage.OCL_EXPRESSION__COLLECTION, newCollection, newCollection));
 	}
 
 	/**
@@ -637,10 +594,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetAppliedProperty((PropertyCallExp)otherEnd, msgs);
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetCollection((CollectionExp)otherEnd, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -695,8 +648,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return basicSetIfExp3(null, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				return basicSetAppliedProperty(null, msgs);
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				return basicSetCollection(null, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				return basicSetLetExp(null, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__LOOP_EXP:
@@ -731,8 +682,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.IF_EXP__ELSE_EXPRESSION, IfExp.class, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.PROPERTY_CALL_EXP__SOURCE, PropertyCallExp.class, msgs);
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.COLLECTION_EXP__ELEMENTS, CollectionExp.class, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				return eInternalContainer().eInverseRemove(this, SimpleoclPackage.LET_EXP__IN_, LetExp.class, msgs);
 			case SimpleoclPackage.OCL_EXPRESSION__LOOP_EXP:
@@ -769,8 +718,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return getIfExp3();
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				return getAppliedProperty();
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				return getCollection();
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				return getLetExp();
 			case SimpleoclPackage.OCL_EXPRESSION__LOOP_EXP:
@@ -809,9 +756,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return;
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				setAppliedProperty((PropertyCallExp)newValue);
-				return;
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				setCollection((CollectionExp)newValue);
 				return;
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				setLetExp((LetExp)newValue);
@@ -861,9 +805,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				setAppliedProperty((PropertyCallExp)null);
 				return;
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				setCollection((CollectionExp)null);
-				return;
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				setLetExp((LetExp)null);
 				return;
@@ -909,8 +850,6 @@ public abstract class OclExpressionImpl extends LocatedElementImpl implements Oc
 				return getIfExp3() != null;
 			case SimpleoclPackage.OCL_EXPRESSION__APPLIED_PROPERTY:
 				return getAppliedProperty() != null;
-			case SimpleoclPackage.OCL_EXPRESSION__COLLECTION:
-				return getCollection() != null;
 			case SimpleoclPackage.OCL_EXPRESSION__LET_EXP:
 				return getLetExp() != null;
 			case SimpleoclPackage.OCL_EXPRESSION__LOOP_EXP:

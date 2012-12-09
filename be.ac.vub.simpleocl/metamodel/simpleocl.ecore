@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simpleocl"
-    nsURI="http://soft.vub.ac.be/simpleocl/2011/SimpleOCL" nsPrefix="simpleocl">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simpleocl" nsURI="http://soft.vub.ac.be/simpleocl/2011/SimpleOCL"
+    nsPrefix="simpleocl">
   <eClassifiers xsi:type="ecore:EClass" name="LocatedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="line" lowerBound="1" eType="#//Integer"
         changeable="false" volatile="true" transient="true" defaultValueLiteral="-1"
@@ -43,8 +42,6 @@
         eType="#//IfExp" eOpposite="#//IfExp/elseExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="appliedProperty" ordered="false"
         eType="#//PropertyCallExp" eOpposite="#//PropertyCallExp/source"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" ordered="false"
-        eType="#//CollectionExp" eOpposite="#//CollectionExp/elements"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="letExp" ordered="false"
         eType="#//LetExp" eOpposite="#//LetExp/in_"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="loopExp" ordered="false"
@@ -90,8 +87,22 @@
         unique="false" lowerBound="1" eType="#//Integer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CollectionExp" abstract="true" eSuperTypes="#//OclExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//OclExpression" containment="true" eOpposite="#//OclExpression/collection"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
+        eType="#//CollectionPart" containment="true" eOpposite="#//CollectionPart/collection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionPart" abstract="true" eSuperTypes="#//LocatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" ordered="false"
+        eType="#//CollectionExp" eOpposite="#//CollectionExp/parts"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionRange" eSuperTypes="#//CollectionPart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="first" lowerBound="1" eType="#//OclExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="last" lowerBound="1" eType="#//OclExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionItem" eSuperTypes="#//CollectionPart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" eType="#//OclExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BagExp" eSuperTypes="#//CollectionExp"/>
   <eClassifiers xsi:type="ecore:EClass" name="OrderedSetExp" eSuperTypes="#//CollectionExp"/>

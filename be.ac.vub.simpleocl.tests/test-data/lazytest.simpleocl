@@ -11,4 +11,4 @@ context Integer def : expensive() : Integer =
 	(self * self).debug('expensive');
 
 context Env static def : main() : Set(String) =
-	(100).run()->collect(x | x.expensive())->last();
+	Sequence{0, 1 .. 4000000, 100}->collect(x | x.expensive())->last();

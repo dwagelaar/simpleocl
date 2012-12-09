@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link be.ac.vub.simpleocl.CollectionExp#getElements <em>Elements</em>}</li>
+ *   <li>{@link be.ac.vub.simpleocl.CollectionExp#getParts <em>Parts</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,21 +26,21 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CollectionExp extends OclExpression {
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link be.ac.vub.simpleocl.OclExpression}.
-	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.OclExpression#getCollection <em>Collection</em>}'.
+	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
+	 * The list contents are of type {@link be.ac.vub.simpleocl.CollectionPart}.
+	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.CollectionPart#getCollection <em>Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Parts</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getCollectionExp_Elements()
-	 * @see be.ac.vub.simpleocl.OclExpression#getCollection
+	 * @return the value of the '<em>Parts</em>' containment reference list.
+	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getCollectionExp_Parts()
+	 * @see be.ac.vub.simpleocl.CollectionPart#getCollection
 	 * @model opposite="collection" containment="true"
 	 * @generated
 	 */
-	EList<OclExpression> getElements();
+	EList<CollectionPart> getParts();
 
 } // CollectionExp

@@ -6,9 +6,10 @@
  */
 package be.ac.vub.simpleocl.util;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
 import be.ac.vub.simpleocl.AddOpCallExp;
 import be.ac.vub.simpleocl.Attribute;
@@ -18,7 +19,10 @@ import be.ac.vub.simpleocl.BooleanExp;
 import be.ac.vub.simpleocl.BooleanType;
 import be.ac.vub.simpleocl.BraceExp;
 import be.ac.vub.simpleocl.CollectionExp;
+import be.ac.vub.simpleocl.CollectionItem;
 import be.ac.vub.simpleocl.CollectionOperationCall;
+import be.ac.vub.simpleocl.CollectionPart;
+import be.ac.vub.simpleocl.CollectionRange;
 import be.ac.vub.simpleocl.CollectionType;
 import be.ac.vub.simpleocl.EnumLiteralExp;
 import be.ac.vub.simpleocl.EnvExp;
@@ -107,7 +111,7 @@ import be.ac.vub.simpleocl.VariableExp;
  * @see be.ac.vub.simpleocl.SimpleoclPackage
  * @generated
  */
-public class SimpleoclSwitch<T> extends Switch<T> {
+public class SimpleoclSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -129,16 +133,14 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
+	public T doSwitch(EObject theEObject) {
+		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
 	/**
@@ -148,7 +150,26 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
+		if (theEClass.eContainer() == modelPackage) {
+			return doSwitch(theEClass.getClassifierID(), theEObject);
+		}
+		else {
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
+		}
+	}
+
+	/**
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SimpleoclPackage.LOCATED_ELEMENT: {
@@ -286,6 +307,29 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 				T result = caseCollectionExp(collectionExp);
 				if (result == null) result = caseOclExpression(collectionExp);
 				if (result == null) result = caseLocatedElement(collectionExp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleoclPackage.COLLECTION_PART: {
+				CollectionPart collectionPart = (CollectionPart)theEObject;
+				T result = caseCollectionPart(collectionPart);
+				if (result == null) result = caseLocatedElement(collectionPart);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleoclPackage.COLLECTION_RANGE: {
+				CollectionRange collectionRange = (CollectionRange)theEObject;
+				T result = caseCollectionRange(collectionRange);
+				if (result == null) result = caseCollectionPart(collectionRange);
+				if (result == null) result = caseLocatedElement(collectionRange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleoclPackage.COLLECTION_ITEM: {
+				CollectionItem collectionItem = (CollectionItem)theEObject;
+				T result = caseCollectionItem(collectionItem);
+				if (result == null) result = caseCollectionPart(collectionItem);
+				if (result == null) result = caseLocatedElement(collectionItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1088,6 +1132,51 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCollectionExp(CollectionExp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Part</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionPart(CollectionPart object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Range</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionRange(CollectionRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionItem(CollectionItem object) {
 		return null;
 	}
 
@@ -2077,7 +2166,6 @@ public class SimpleoclSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

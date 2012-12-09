@@ -6,15 +6,12 @@
  */
 package be.ac.vub.simpleocl.provider;
 
-import be.ac.vub.simpleocl.util.SimpleoclAdapterFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -26,6 +23,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import be.ac.vub.simpleocl.util.SimpleoclAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -303,6 +302,52 @@ public class SimpleoclItemProviderAdapterFactory extends SimpleoclAdapterFactory
 		}
 
 		return integerExpItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link be.ac.vub.simpleocl.CollectionRange} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CollectionRangeItemProvider collectionRangeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link be.ac.vub.simpleocl.CollectionRange}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCollectionRangeAdapter() {
+		if (collectionRangeItemProvider == null) {
+			collectionRangeItemProvider = new CollectionRangeItemProvider(this);
+		}
+
+		return collectionRangeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link be.ac.vub.simpleocl.CollectionItem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CollectionItemItemProvider collectionItemItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link be.ac.vub.simpleocl.CollectionItem}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCollectionItemAdapter() {
+		if (collectionItemItemProvider == null) {
+			collectionItemItemProvider = new CollectionItemItemProvider(this);
+		}
+
+		return collectionItemItemProvider;
 	}
 
 	/**
@@ -1725,6 +1770,8 @@ public class SimpleoclItemProviderAdapterFactory extends SimpleoclAdapterFactory
 		if (booleanExpItemProvider != null) booleanExpItemProvider.dispose();
 		if (realExpItemProvider != null) realExpItemProvider.dispose();
 		if (integerExpItemProvider != null) integerExpItemProvider.dispose();
+		if (collectionRangeItemProvider != null) collectionRangeItemProvider.dispose();
+		if (collectionItemItemProvider != null) collectionItemItemProvider.dispose();
 		if (bagExpItemProvider != null) bagExpItemProvider.dispose();
 		if (orderedSetExpItemProvider != null) orderedSetExpItemProvider.dispose();
 		if (sequenceExpItemProvider != null) sequenceExpItemProvider.dispose();

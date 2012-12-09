@@ -127,18 +127,21 @@ RULES {
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
 	IntegerExp ::= integerSymbol[INTEGER];
+	
+	CollectionRange ::= first ".." last;
+	CollectionItem ::= item;
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
-	BagExp ::= "Bag" "{" (elements ("," elements)*)? "}";
+	BagExp ::= "Bag" "{" (parts ("," parts)*)? "}";
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
-	OrderedSetExp ::= "OrderedSet" "{" (elements ("," elements)*)? "}";
+	OrderedSetExp ::= "OrderedSet" "{" (parts ("," parts)*)? "}";
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
-	SequenceExp ::= "Sequence" "{" (elements ("," elements)*)? "}";
+	SequenceExp ::= "Sequence" "{" (parts ("," parts)*)? "}";
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
-	SetExp ::= "Set" "{" (elements ("," elements)*)? "}";
+	SetExp ::= "Set" "{" (parts ("," parts)*)? "}";
 
 	@Operator(type="primitive", weight="20", superclass="OclExpression")
 	TupleExp ::= "Tuple" "{" (tuplePart ("," tuplePart)*)? "}";

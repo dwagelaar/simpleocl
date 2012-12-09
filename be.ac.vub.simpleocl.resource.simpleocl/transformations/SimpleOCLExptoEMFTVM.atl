@@ -581,10 +581,20 @@ abstract rule CollectionExp extends OclExpression {
 	from s : OCL!CollectionExp in IN
 	using {
 		invokes : Sequence(EMFTVM!Instruction) = 
-			s.elements->collect(e|thisModule.CollectionElement(e))->flatten();
+			s.parts->collect(e|
+				if e.oclIsKindOf(OCL!CollectionRange) then
+					thisModule.CollectionRange(e)
+				else
+					thisModule.CollectionItem(e)
+				endif)->flatten();
 	}
 	to cb : EMFTVM!CodeBlock (
-		nested <- s.elements,
+		nested <- s.parts->iterate(e; acc : Sequence(OCL!OclExpression) = Sequence{} | 
+				if e.oclIsKindOf(OCL!CollectionRange) then
+					acc->including(e.first)->including(e.last)
+				else
+					acc->including(e.item)
+				endif),
 		code <- Sequence{findtype, new}->union(invokes)),
 	   ln : EMFTVM!LineNumber (
 	   	instructions <- Sequence{findtype, new}->union(invokes)),
@@ -1153,11 +1163,20 @@ abstract rule CollectionExp2 extends OclExpression2 {
 	from s : OCL!CollectionExp in IN
 	using {
 		invokes : Sequence(EMFTVM!Instruction) = 
-			s.elements->collect(e|thisModule.CollectionElement2(e))->flatten();
+			s.parts->collect(e|if e.oclIsKindOf(OCL!CollectionRange) then
+					thisModule.CollectionRange2(e)
+				else
+					thisModule.CollectionItem2(e)
+				endif)->flatten();
 	}
 	to cb2 : EMFTVM!CodeBlock (
-		nested <- s.elements
-			->collect(e | thisModule.resolveTemp(e, 'cb2')),
+		nested <- s.parts->iterate(e; acc : Sequence(OCL!OclExpression) = Sequence{} | 
+				if e.oclIsKindOf(OCL!CollectionRange) then
+					acc->including(thisModule.resolveTemp(e.first, 'cb2'))
+						->including(thisModule.resolveTemp(e.last, 'cb2'))
+				else
+					acc->including(thisModule.resolveTemp(e.item, 'cb2'))
+				endif),
 		code <- Sequence{findtype2, new2}->union(invokes)),
 	   ln2 : EMFTVM!LineNumber (
 	   	instructions <- Sequence{findtype2, new2}->union(invokes)),
@@ -1605,12 +1624,22 @@ rule LambdaCallExpBoth {
 -- lazy rules begin
 -- ======================================================================
 
-lazy rule CollectionElement {
-	from s : OCL!OclExpression
-	to invokeCb : EMFTVM!InvokeCb (codeBlock <- s),							-- [..., coll, element]
+lazy rule CollectionItem {
+	from s : OCL!CollectionItem
+	to invokeCb : EMFTVM!InvokeCb (codeBlock <- s.item),					-- [..., coll, element]
 	   invoke : EMFTVM!Invoke (opname <- 'including', argcount <- 1)		-- [..., coll]
 	do {
 		Sequence{invokeCb, invoke};
+	}
+}
+
+lazy rule CollectionRange {
+	from s : OCL!CollectionRange
+	to invokeCb : EMFTVM!InvokeCb (codeBlock <- s.first),					-- [..., coll, first]
+	   invokeCb2 : EMFTVM!InvokeCb (codeBlock <- s.last),					-- [..., coll, first, last]
+	   invoke : EMFTVM!Invoke (opname <- 'includingRange', argcount <- 2)	-- [..., coll]
+	do {
+		Sequence{invokeCb, invokeCb2, invoke};
 	}
 }
 
@@ -1638,13 +1667,25 @@ lazy rule TuplePart {
 	}
 }
 
-lazy rule CollectionElement2 {
-	from s : OCL!OclExpression
+lazy rule CollectionItem2 {
+	from s : OCL!CollectionItem
 	to invokeCb : EMFTVM!InvokeCb (											-- [..., coll, element]
-		codeBlock <- thisModule.resolveTemp(s, 'cb2')),
+		codeBlock <- thisModule.resolveTemp(s.item, 'cb2')),
 	   invoke : EMFTVM!Invoke (opname <- 'including', argcount <- 1)		-- [..., coll]
 	do {
 		Sequence{invokeCb, invoke};
+	}
+}
+
+lazy rule CollectionRange2 {
+	from s : OCL!CollectionRange
+	to invokeCb : EMFTVM!InvokeCb (											-- [..., coll, first]
+		codeBlock <- thisModule.resolveTemp(s.first, 'cb2')),
+	   invokeCb2 : EMFTVM!InvokeCb (										-- [..., coll, first, last]
+		codeBlock <- thisModule.resolveTemp(s.last, 'cb2')),
+	   invoke : EMFTVM!Invoke (opname <- 'includingRange', argcount <- 2)	-- [..., coll]
+	do {
+		Sequence{invokeCb, invokeCb2, invoke};
 	}
 }
 

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/be.ac.vub.simpleocl/src-gen"
-    modelPluginID="be.ac.vub.simpleocl" modelName="simpleocl" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/be.ac.vub.simpleocl/src-gen" modelPluginID="be.ac.vub.simpleocl"
+    modelName="simpleocl" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" runtimeVersion="2.6">
   <foreignModel>simpleocl.ecore</foreignModel>
   <genPackages prefix="Simpleocl" basePackage="be.ac.vub" disposableProviderFactory="true"
       ecorePackage="simpleocl.ecore#/">
@@ -35,7 +34,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/type"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/ifExp3"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/appliedProperty"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/collection"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/letExp"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/loopExp"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//OclExpression/parentOperation"/>
@@ -67,7 +65,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleocl.ecore#//IntegerExp/integerSymbol"/>
     </genClasses>
     <genClasses image="false" ecoreClass="simpleocl.ecore#//CollectionExp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionExp/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionExp/parts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="simpleocl.ecore#//CollectionPart">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionPart/collection"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleocl.ecore#//CollectionRange">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionRange/first"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionRange/last"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleocl.ecore#//CollectionItem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleocl.ecore#//CollectionItem/item"/>
     </genClasses>
     <genClasses ecoreClass="simpleocl.ecore#//BagExp"/>
     <genClasses ecoreClass="simpleocl.ecore#//OrderedSetExp"/>

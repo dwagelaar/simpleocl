@@ -142,12 +142,6 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
-		if (object instanceof be.ac.vub.simpleocl.BagExp) {
-			result = interprete_be_ac_vub_simpleocl_BagExp((be.ac.vub.simpleocl.BagExp) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
 		if (object instanceof be.ac.vub.simpleocl.OrderedSetExp) {
 			result = interprete_be_ac_vub_simpleocl_OrderedSetExp((be.ac.vub.simpleocl.OrderedSetExp) object, context);
 		}
@@ -178,6 +172,18 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof be.ac.vub.simpleocl.AddOpCallExp) {
+			result = interprete_be_ac_vub_simpleocl_AddOpCallExp((be.ac.vub.simpleocl.AddOpCallExp) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.IntOpCallExp) {
+			result = interprete_be_ac_vub_simpleocl_IntOpCallExp((be.ac.vub.simpleocl.IntOpCallExp) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof be.ac.vub.simpleocl.MulOpCallExp) {
 			result = interprete_be_ac_vub_simpleocl_MulOpCallExp((be.ac.vub.simpleocl.MulOpCallExp) object, context);
 		}
@@ -198,6 +204,30 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		}
 		if (object instanceof be.ac.vub.simpleocl.OclExpression) {
 			result = interprete_be_ac_vub_simpleocl_OclExpression((be.ac.vub.simpleocl.OclExpression) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.CollectionRange) {
+			result = interprete_be_ac_vub_simpleocl_CollectionRange((be.ac.vub.simpleocl.CollectionRange) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.CollectionItem) {
+			result = interprete_be_ac_vub_simpleocl_CollectionItem((be.ac.vub.simpleocl.CollectionItem) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.CollectionPart) {
+			result = interprete_be_ac_vub_simpleocl_CollectionPart((be.ac.vub.simpleocl.CollectionPart) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof be.ac.vub.simpleocl.BagExp) {
+			result = interprete_be_ac_vub_simpleocl_BagExp((be.ac.vub.simpleocl.BagExp) object, context);
 		}
 		if (result != null) {
 			return result;
@@ -322,18 +352,6 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
-		if (object instanceof be.ac.vub.simpleocl.AddOpCallExp) {
-			result = interprete_be_ac_vub_simpleocl_AddOpCallExp((be.ac.vub.simpleocl.AddOpCallExp) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
-		if (object instanceof be.ac.vub.simpleocl.IntOpCallExp) {
-			result = interprete_be_ac_vub_simpleocl_IntOpCallExp((be.ac.vub.simpleocl.IntOpCallExp) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
 		if (object instanceof be.ac.vub.simpleocl.OperatorCallExp) {
 			result = interprete_be_ac_vub_simpleocl_OperatorCallExp((be.ac.vub.simpleocl.OperatorCallExp) object, context);
 		}
@@ -394,6 +412,12 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof be.ac.vub.simpleocl.NumericType) {
+			result = interprete_be_ac_vub_simpleocl_NumericType((be.ac.vub.simpleocl.NumericType) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof be.ac.vub.simpleocl.BagType) {
 			result = interprete_be_ac_vub_simpleocl_BagType((be.ac.vub.simpleocl.BagType) object, context);
 		}
@@ -450,12 +474,6 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 		}
 		if (object instanceof be.ac.vub.simpleocl.BooleanType) {
 			result = interprete_be_ac_vub_simpleocl_BooleanType((be.ac.vub.simpleocl.BooleanType) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
-		if (object instanceof be.ac.vub.simpleocl.NumericType) {
-			result = interprete_be_ac_vub_simpleocl_NumericType((be.ac.vub.simpleocl.NumericType) object, context);
 		}
 		if (result != null) {
 			return result;
@@ -618,6 +636,18 @@ public class AbstractSimpleoclInterpreter<ResultType, ContextType> {
 	}
 	
 	public ResultType interprete_be_ac_vub_simpleocl_CollectionExp(be.ac.vub.simpleocl.CollectionExp collectionExp, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_be_ac_vub_simpleocl_CollectionPart(be.ac.vub.simpleocl.CollectionPart collectionPart, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_be_ac_vub_simpleocl_CollectionRange(be.ac.vub.simpleocl.CollectionRange collectionRange, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_be_ac_vub_simpleocl_CollectionItem(be.ac.vub.simpleocl.CollectionItem collectionItem, ContextType context) {
 		return null;
 	}
 	

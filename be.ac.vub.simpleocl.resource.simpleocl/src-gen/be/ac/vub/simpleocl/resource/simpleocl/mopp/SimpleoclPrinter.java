@@ -128,6 +128,14 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			print_be_ac_vub_simpleocl_IntegerExp((be.ac.vub.simpleocl.IntegerExp) element, globaltab, out);
 			return;
 		}
+		if (element instanceof be.ac.vub.simpleocl.CollectionRange) {
+			print_be_ac_vub_simpleocl_CollectionRange((be.ac.vub.simpleocl.CollectionRange) element, globaltab, out);
+			return;
+		}
+		if (element instanceof be.ac.vub.simpleocl.CollectionItem) {
+			print_be_ac_vub_simpleocl_CollectionItem((be.ac.vub.simpleocl.CollectionItem) element, globaltab, out);
+			return;
+		}
 		if (element instanceof be.ac.vub.simpleocl.BagExp) {
 			print_be_ac_vub_simpleocl_BagExp((be.ac.vub.simpleocl.BagExp) element, globaltab, out);
 			return;
@@ -1341,7 +1349,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1349,8 +1357,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_MODEL_ELEMENT_EXP__LOOP_EXP));
@@ -1444,7 +1450,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LAMBDA_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1452,8 +1458,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LAMBDA_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LAMBDA_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LAMBDA_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LAMBDA_CALL_EXP__LOOP_EXP));
@@ -1587,7 +1591,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.VARIABLE_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1595,8 +1599,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.VARIABLE_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.VARIABLE_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.VARIABLE_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.VARIABLE_EXP__LOOP_EXP));
@@ -1640,7 +1642,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(16);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SUPER_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1648,8 +1650,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SUPER_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SUPER_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SUPER_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SUPER_EXP__LOOP_EXP));
@@ -1681,7 +1681,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(16);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SELF_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1689,8 +1689,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SELF_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SELF_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SELF_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SELF_EXP__LOOP_EXP));
@@ -1722,7 +1720,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(16);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENV_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1730,8 +1728,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENV_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENV_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENV_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENV_EXP__LOOP_EXP));
@@ -1763,7 +1759,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STRING_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1771,8 +1767,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STRING_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STRING_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STRING_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STRING_EXP__LOOP_EXP));
@@ -1816,7 +1810,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BOOLEAN_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1824,8 +1818,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BOOLEAN_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BOOLEAN_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BOOLEAN_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BOOLEAN_EXP__LOOP_EXP));
@@ -1865,7 +1857,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REAL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1873,8 +1865,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REAL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REAL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REAL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REAL_EXP__LOOP_EXP));
@@ -1918,7 +1908,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INTEGER_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1926,8 +1916,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INTEGER_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INTEGER_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INTEGER_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INTEGER_EXP__LOOP_EXP));
@@ -1965,6 +1953,74 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 	}
 	
 	
+	public void print_be_ac_vub_simpleocl_CollectionRange(be.ac.vub.simpleocl.CollectionRange element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(7);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_RANGE__COLLECTION));
+		printCountingMap.put("collection", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_RANGE__FIRST));
+		printCountingMap.put("first", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_RANGE__LAST));
+		printCountingMap.put("last", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("first");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_RANGE__FIRST));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("first", count - 1);
+		}
+		// DEFINITION PART BEGINS (CsString)
+		out.print("..");
+		out.print(" ");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("last");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_RANGE__LAST));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("last", count - 1);
+		}
+	}
+	
+	
+	public void print_be_ac_vub_simpleocl_CollectionItem(be.ac.vub.simpleocl.CollectionItem element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(6);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_ITEM__COLLECTION));
+		printCountingMap.put("collection", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_ITEM__ITEM));
+		printCountingMap.put("item", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("item");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.COLLECTION_ITEM__ITEM));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("item", count - 1);
+		}
+	}
+	
+	
 	public void print_be_ac_vub_simpleocl_BagExp(be.ac.vub.simpleocl.BagExp element, String outertab, java.io.PrintWriter out) {
 		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
@@ -1972,7 +2028,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -1980,8 +2036,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__LOOP_EXP));
@@ -2000,8 +2054,8 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("owningAttribute", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__APPLIED_OPERATOR));
 		printCountingMap.put("appliedOperator", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__ELEMENTS));
-		printCountingMap.put("elements", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__PARTS));
+		printCountingMap.put("parts", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
@@ -2038,9 +2092,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		java.io.PrintWriter out1 = null;
 		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2051,7 +2105,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
@@ -2079,9 +2133,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BAG_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2092,7 +2146,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 	}
 	
@@ -2104,7 +2158,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2112,8 +2166,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__LOOP_EXP));
@@ -2132,8 +2184,8 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("owningAttribute", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__APPLIED_OPERATOR));
 		printCountingMap.put("appliedOperator", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__ELEMENTS));
-		printCountingMap.put("elements", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__PARTS));
+		printCountingMap.put("parts", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
@@ -2170,9 +2222,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		java.io.PrintWriter out1 = null;
 		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2183,7 +2235,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
@@ -2211,9 +2263,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ORDERED_SET_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2224,7 +2276,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 	}
 	
@@ -2236,7 +2288,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2244,8 +2296,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__LOOP_EXP));
@@ -2264,8 +2314,8 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("owningAttribute", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__APPLIED_OPERATOR));
 		printCountingMap.put("appliedOperator", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__ELEMENTS));
-		printCountingMap.put("elements", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__PARTS));
+		printCountingMap.put("parts", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
@@ -2302,9 +2352,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		java.io.PrintWriter out1 = null;
 		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2315,7 +2365,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
@@ -2343,9 +2393,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SEQUENCE_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2356,7 +2406,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 	}
 	
@@ -2368,7 +2418,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2376,8 +2426,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__LOOP_EXP));
@@ -2396,8 +2444,8 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("owningAttribute", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__APPLIED_OPERATOR));
 		printCountingMap.put("appliedOperator", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__ELEMENTS));
-		printCountingMap.put("elements", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__PARTS));
+		printCountingMap.put("parts", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		// print collected hidden tokens
 		java.io.StringWriter sWriter = null;
 		java.io.PrintWriter out1 = null;
@@ -2434,9 +2482,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		java.io.PrintWriter out1 = null;
 		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2447,7 +2495,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 		// DEFINITION PART BEGINS (CompoundDefinition)
 		iterate = true;
@@ -2475,9 +2523,9 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("elements");
+		count = printCountingMap.get("parts");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__ELEMENTS));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.SET_EXP__PARTS));
 			java.util.List<?> list = (java.util.List<?>) o;
 			int index = list.size() - count;
 			if (index >= 0) {
@@ -2488,7 +2536,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("elements", count - 1);
+			printCountingMap.put("parts", count - 1);
 		}
 	}
 	
@@ -2500,7 +2548,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.TUPLE_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2508,8 +2556,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.TUPLE_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.TUPLE_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.TUPLE_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.TUPLE_EXP__LOOP_EXP));
@@ -2728,7 +2774,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MAP_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2736,8 +2782,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MAP_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MAP_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MAP_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MAP_EXP__LOOP_EXP));
@@ -2907,7 +2951,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENUM_LITERAL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -2915,8 +2959,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENUM_LITERAL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENUM_LITERAL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENUM_LITERAL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ENUM_LITERAL_EXP__LOOP_EXP));
@@ -2994,7 +3036,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(16);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_UNDEFINED_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3002,8 +3044,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_UNDEFINED_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_UNDEFINED_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_UNDEFINED_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OCL_UNDEFINED_EXP__LOOP_EXP));
@@ -3036,7 +3076,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LET_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3044,8 +3084,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LET_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LET_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LET_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.LET_EXP__LOOP_EXP));
@@ -3104,7 +3142,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.IF_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3112,8 +3150,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.IF_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.IF_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.IF_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.IF_EXP__LOOP_EXP));
@@ -3189,7 +3225,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(17);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BRACE_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3197,8 +3233,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BRACE_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BRACE_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BRACE_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.BRACE_EXP__LOOP_EXP));
@@ -3246,7 +3280,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OPERATOR_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3254,8 +3288,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OPERATOR_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OPERATOR_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OPERATOR_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.OPERATOR_CALL_EXP__LOOP_EXP));
@@ -3322,7 +3354,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.EQ_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3330,8 +3362,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.EQ_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.EQ_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.EQ_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.EQ_OP_CALL_EXP__LOOP_EXP));
@@ -3430,7 +3460,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REL_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3438,8 +3468,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REL_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REL_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REL_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.REL_OP_CALL_EXP__LOOP_EXP));
@@ -3506,7 +3534,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ADD_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3514,8 +3542,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ADD_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ADD_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ADD_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.ADD_OP_CALL_EXP__LOOP_EXP));
@@ -3582,7 +3608,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INT_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3590,8 +3616,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INT_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INT_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INT_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.INT_OP_CALL_EXP__LOOP_EXP));
@@ -3658,7 +3682,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MUL_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3666,8 +3690,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MUL_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MUL_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MUL_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.MUL_OP_CALL_EXP__LOOP_EXP));
@@ -3734,7 +3756,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(20);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.NOT_OP_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3742,8 +3764,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.NOT_OP_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.NOT_OP_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.NOT_OP_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.NOT_OP_CALL_EXP__LOOP_EXP));
@@ -3801,7 +3821,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STATIC_PROPERTY_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -3809,8 +3829,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STATIC_PROPERTY_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STATIC_PROPERTY_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STATIC_PROPERTY_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.STATIC_PROPERTY_CALL_EXP__LOOP_EXP));
@@ -4081,7 +4099,7 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(19);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(18);
 		Object temp;
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.PROPERTY_CALL_EXP__TYPE));
 		printCountingMap.put("type", temp == null ? 0 : 1);
@@ -4089,8 +4107,6 @@ public class SimpleoclPrinter implements be.ac.vub.simpleocl.resource.simpleocl.
 		printCountingMap.put("ifExp3", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.PROPERTY_CALL_EXP__APPLIED_PROPERTY));
 		printCountingMap.put("appliedProperty", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.PROPERTY_CALL_EXP__COLLECTION));
-		printCountingMap.put("collection", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.PROPERTY_CALL_EXP__LET_EXP));
 		printCountingMap.put("letExp", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(be.ac.vub.simpleocl.SimpleoclPackage.PROPERTY_CALL_EXP__LOOP_EXP));

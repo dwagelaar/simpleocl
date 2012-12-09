@@ -30,6 +30,8 @@ public class SimpleoclSyntaxCoverageInformationProvider {
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getBooleanExp(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getRealExp(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getIntegerExp(),
+			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getCollectionRange(),
+			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getCollectionItem(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getBagExp(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getOrderedSetExp(),
 			be.ac.vub.simpleocl.SimpleoclPackage.eINSTANCE.getSequenceExp(),

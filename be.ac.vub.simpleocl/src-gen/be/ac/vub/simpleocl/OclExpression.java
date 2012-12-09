@@ -18,7 +18,6 @@ package be.ac.vub.simpleocl;
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getType <em>Type</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getIfExp3 <em>If Exp3</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getAppliedProperty <em>Applied Property</em>}</li>
- *   <li>{@link be.ac.vub.simpleocl.OclExpression#getCollection <em>Collection</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getLetExp <em>Let Exp</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getLoopExp <em>Loop Exp</em>}</li>
  *   <li>{@link be.ac.vub.simpleocl.OclExpression#getParentOperation <em>Parent Operation</em>}</li>
@@ -119,34 +118,6 @@ public interface OclExpression extends LocatedElement {
 	 * @generated
 	 */
 	void setAppliedProperty(PropertyCallExp value);
-
-	/**
-	 * Returns the value of the '<em><b>Collection</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link be.ac.vub.simpleocl.CollectionExp#getElements <em>Elements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Collection</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Collection</em>' container reference.
-	 * @see #setCollection(CollectionExp)
-	 * @see be.ac.vub.simpleocl.SimpleoclPackage#getOclExpression_Collection()
-	 * @see be.ac.vub.simpleocl.CollectionExp#getElements
-	 * @model opposite="elements" transient="false" ordered="false"
-	 * @generated
-	 */
-	CollectionExp getCollection();
-
-	/**
-	 * Sets the value of the '{@link be.ac.vub.simpleocl.OclExpression#getCollection <em>Collection</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Collection</em>' container reference.
-	 * @see #getCollection()
-	 * @generated
-	 */
-	void setCollection(CollectionExp value);
 
 	/**
 	 * Returns the value of the '<em><b>Let Exp</b></em>' container reference.

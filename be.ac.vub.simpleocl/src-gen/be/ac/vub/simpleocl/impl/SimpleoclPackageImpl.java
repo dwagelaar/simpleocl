@@ -21,7 +21,10 @@ import be.ac.vub.simpleocl.BooleanExp;
 import be.ac.vub.simpleocl.BooleanType;
 import be.ac.vub.simpleocl.BraceExp;
 import be.ac.vub.simpleocl.CollectionExp;
+import be.ac.vub.simpleocl.CollectionItem;
 import be.ac.vub.simpleocl.CollectionOperationCall;
+import be.ac.vub.simpleocl.CollectionPart;
+import be.ac.vub.simpleocl.CollectionRange;
 import be.ac.vub.simpleocl.CollectionType;
 import be.ac.vub.simpleocl.EnumLiteralExp;
 import be.ac.vub.simpleocl.EnvExp;
@@ -223,6 +226,27 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * @generated
 	 */
 	private EClass collectionExpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionPartEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -944,7 +968,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_Collection() {
+	public EReference getOclExpression_LetExp() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -953,7 +977,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_LetExp() {
+	public EReference getOclExpression_LoopExp() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -962,7 +986,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_LoopExp() {
+	public EReference getOclExpression_ParentOperation() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -971,7 +995,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_ParentOperation() {
+	public EReference getOclExpression_InitializedVariable() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -980,7 +1004,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_InitializedVariable() {
+	public EReference getOclExpression_IfExp2() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -989,7 +1013,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_IfExp2() {
+	public EReference getOclExpression_OwningOperation() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -998,7 +1022,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_OwningOperation() {
+	public EReference getOclExpression_IfExp1() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -1007,7 +1031,7 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_IfExp1() {
+	public EReference getOclExpression_OwningAttribute() {
 		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1016,17 +1040,8 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOclExpression_OwningAttribute() {
-		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOclExpression_AppliedOperator() {
-		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(12);
+		return (EReference)oclExpressionEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1178,8 +1193,71 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCollectionExp_Elements() {
+	public EReference getCollectionExp_Parts() {
 		return (EReference)collectionExpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCollectionPart() {
+		return collectionPartEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionPart_Collection() {
+		return (EReference)collectionPartEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCollectionRange() {
+		return collectionRangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionRange_First() {
+		return (EReference)collectionRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionRange_Last() {
+		return (EReference)collectionRangeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCollectionItem() {
+		return collectionItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionItem_Item() {
+		return (EReference)collectionItemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2602,7 +2680,6 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__TYPE);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__IF_EXP3);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__APPLIED_PROPERTY);
-		createEReference(oclExpressionEClass, OCL_EXPRESSION__COLLECTION);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__LET_EXP);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__LOOP_EXP);
 		createEReference(oclExpressionEClass, OCL_EXPRESSION__PARENT_OPERATION);
@@ -2639,7 +2716,17 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		createEAttribute(integerExpEClass, INTEGER_EXP__INTEGER_SYMBOL);
 
 		collectionExpEClass = createEClass(COLLECTION_EXP);
-		createEReference(collectionExpEClass, COLLECTION_EXP__ELEMENTS);
+		createEReference(collectionExpEClass, COLLECTION_EXP__PARTS);
+
+		collectionPartEClass = createEClass(COLLECTION_PART);
+		createEReference(collectionPartEClass, COLLECTION_PART__COLLECTION);
+
+		collectionRangeEClass = createEClass(COLLECTION_RANGE);
+		createEReference(collectionRangeEClass, COLLECTION_RANGE__FIRST);
+		createEReference(collectionRangeEClass, COLLECTION_RANGE__LAST);
+
+		collectionItemEClass = createEClass(COLLECTION_ITEM);
+		createEReference(collectionItemEClass, COLLECTION_ITEM__ITEM);
 
 		bagExpEClass = createEClass(BAG_EXP);
 
@@ -2905,6 +2992,9 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		realExpEClass.getESuperTypes().add(this.getNumericExp());
 		integerExpEClass.getESuperTypes().add(this.getNumericExp());
 		collectionExpEClass.getESuperTypes().add(this.getOclExpression());
+		collectionPartEClass.getESuperTypes().add(this.getLocatedElement());
+		collectionRangeEClass.getESuperTypes().add(this.getCollectionPart());
+		collectionItemEClass.getESuperTypes().add(this.getCollectionPart());
 		bagExpEClass.getESuperTypes().add(this.getCollectionExp());
 		orderedSetExpEClass.getESuperTypes().add(this.getCollectionExp());
 		sequenceExpEClass.getESuperTypes().add(this.getCollectionExp());
@@ -2996,7 +3086,6 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEReference(getOclExpression_Type(), this.getOclType(), this.getOclType_OclExpression(), "type", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_IfExp3(), this.getIfExp(), this.getIfExp_ElseExpression(), "ifExp3", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_AppliedProperty(), this.getPropertyCallExp(), this.getPropertyCallExp_Source(), "appliedProperty", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getOclExpression_Collection(), this.getCollectionExp(), this.getCollectionExp_Elements(), "collection", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_LetExp(), this.getLetExp(), this.getLetExp_In_(), "letExp", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_LoopExp(), this.getLoopExp(), this.getLoopExp_Body(), "loopExp", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getOclExpression_ParentOperation(), this.getOperationCall(), this.getOperationCall_Arguments(), "parentOperation", null, 0, 1, OclExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -3033,7 +3122,17 @@ public class SimpleoclPackageImpl extends EPackageImpl implements SimpleoclPacka
 		initEAttribute(getIntegerExp_IntegerSymbol(), this.getInteger(), "integerSymbol", null, 1, 1, IntegerExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(collectionExpEClass, CollectionExp.class, "CollectionExp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCollectionExp_Elements(), this.getOclExpression(), this.getOclExpression_Collection(), "elements", null, 0, -1, CollectionExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionExp_Parts(), this.getCollectionPart(), this.getCollectionPart_Collection(), "parts", null, 0, -1, CollectionExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionPartEClass, CollectionPart.class, "CollectionPart", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionPart_Collection(), this.getCollectionExp(), this.getCollectionExp_Parts(), "collection", null, 0, 1, CollectionPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		initEClass(collectionRangeEClass, CollectionRange.class, "CollectionRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionRange_First(), this.getOclExpression(), null, "first", null, 1, 1, CollectionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionRange_Last(), this.getOclExpression(), null, "last", null, 1, 1, CollectionRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionItemEClass, CollectionItem.class, "CollectionItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionItem_Item(), this.getOclExpression(), null, "item", null, 1, 1, CollectionItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bagExpEClass, BagExp.class, "BagExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

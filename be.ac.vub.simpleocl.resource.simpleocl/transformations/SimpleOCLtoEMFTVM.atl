@@ -53,7 +53,13 @@ rule Module {
 	from s : OCL!Module in IN
 	to t : EMFTVM!Module (
 		name <- s.name,
-		sourceName <- s.name + '.simpleocl',
+		sourceName <- 
+			let index : Integer = s.name.lastIndexOf('::') in
+			if index > 0 then
+				s.name.substring(index + 2, s.name.size()) + '.simpleocl'
+			else
+				s.name + '.simpleocl'
+			endif,
 		imports <- s.imports->collect(i | i.name),
 		features <- s.elements->select(e | e.oclIsKindOf(OCL!OclFeatureDefinition)))
 }

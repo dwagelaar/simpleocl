@@ -21,6 +21,7 @@
    <url>
       <update label="%updateSiteName" url="http://simpleocl.eclipselabs.org.codespot.com/git.updatesite"/>
       <discovery label="EMFText update site" url="http://emftext.org/update"/>
+      <discovery label="ATL Integration Build update site" url="https://hudson.eclipse.org/hudson/job/m2m-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository"/>
    </url>
 
    <requires>

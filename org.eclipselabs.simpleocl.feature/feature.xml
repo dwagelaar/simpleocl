@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://soft.vub.ac.be/eclipse/update-3.7"/>
+      <update label="%updateSiteName" url="http://simpleocl.eclipselabs.org.codespot.com/git.updatesite"/>
       <discovery label="EMFText update site" url="http://emftext.org/update"/>
    </url>
 

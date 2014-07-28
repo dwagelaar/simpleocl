@@ -19,6 +19,7 @@ OPTIONS {
 	overrideUIPluginXML = "false";
 	overrideProjectFile = "false";
 	overrideBuildProperties = "false";
+	overrideProposalPostProcessor = "false";
 }
 
 TOKENS {

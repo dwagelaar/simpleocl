@@ -53,7 +53,7 @@ public class StaticOperationCallImpl extends StaticPropertyCallImpl implements S
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String OPERATION_NAME_EDEFAULT = null;
+	protected static final String OPERATION_NAME_EDEFAULT = "StaticOperationCall";
 
 	/**
 	 * The cached value of the '{@link #getOperationName() <em>Operation Name</em>}' attribute.

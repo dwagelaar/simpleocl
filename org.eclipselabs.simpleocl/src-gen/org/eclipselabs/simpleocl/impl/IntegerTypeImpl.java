@@ -39,4 +39,14 @@ public class IntegerTypeImpl extends NumericTypeImpl implements IntegerType {
 		return SimpleoclPackage.Literals.INTEGER_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "Integer";
+	}
+
 } //IntegerTypeImpl

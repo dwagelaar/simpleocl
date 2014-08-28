@@ -56,7 +56,7 @@ public abstract class ModuleElementImpl extends LocatedElementImpl implements Mo
 	 */
 	public Module getModule() {
 		if (eContainerFeatureID() != SimpleoclPackage.MODULE_ELEMENT__MODULE) return null;
-		return (Module)eContainer();
+		return (Module)eInternalContainer();
 	}
 
 	/**

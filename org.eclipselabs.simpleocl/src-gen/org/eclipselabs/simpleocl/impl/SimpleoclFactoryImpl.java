@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipselabs.simpleocl.*;
 import org.eclipselabs.simpleocl.AddOpCallExp;
 import org.eclipselabs.simpleocl.Attribute;
 import org.eclipselabs.simpleocl.BagExp;
@@ -99,7 +100,7 @@ public class SimpleoclFactoryImpl extends EFactoryImpl implements SimpleoclFacto
 	 */
 	public static SimpleoclFactory init() {
 		try {
-			SimpleoclFactory theSimpleoclFactory = (SimpleoclFactory)EPackage.Registry.INSTANCE.getEFactory("http://soft.vub.ac.be/simpleocl/2011/SimpleOCL"); 
+			SimpleoclFactory theSimpleoclFactory = (SimpleoclFactory)EPackage.Registry.INSTANCE.getEFactory(SimpleoclPackage.eNS_URI);
 			if (theSimpleoclFactory != null) {
 				return theSimpleoclFactory;
 			}

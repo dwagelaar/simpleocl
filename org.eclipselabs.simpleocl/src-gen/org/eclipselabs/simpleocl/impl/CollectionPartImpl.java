@@ -52,7 +52,7 @@ public abstract class CollectionPartImpl extends LocatedElementImpl implements C
 	 */
 	public CollectionExp getCollection() {
 		if (eContainerFeatureID() != SimpleoclPackage.COLLECTION_PART__COLLECTION) return null;
-		return (CollectionExp)eContainer();
+		return (CollectionExp)eInternalContainer();
 	}
 
 	/**

@@ -39,4 +39,12 @@ public class OrderedSetTypeImpl extends CollectionTypeImpl implements OrderedSet
 		return SimpleoclPackage.Literals.ORDERED_SET_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getCollectionTypeName() {
+		return "OrderedSet";
+	}
+
 } //OrderedSetTypeImpl

@@ -162,4 +162,14 @@ public abstract class OclModelImpl extends NamedElementImpl implements OclModel 
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return getName();
+	}
+
 } //OclModelImpl

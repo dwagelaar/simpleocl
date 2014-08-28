@@ -207,4 +207,16 @@ public class OclModelElementImpl extends OclTypeImpl implements OclModelElement 
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		final StringBuilder sb = new StringBuilder();
+		sb.append(getModel()).append('!').append(getName());
+		return sb.toString();
+	}
+
 } //OclModelElementImpl

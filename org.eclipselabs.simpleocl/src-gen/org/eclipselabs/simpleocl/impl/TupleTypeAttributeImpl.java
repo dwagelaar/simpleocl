@@ -132,7 +132,7 @@ public class TupleTypeAttributeImpl extends LocatedElementImpl implements TupleT
 	 */
 	public TupleType getTupleType() {
 		if (eContainerFeatureID() != SimpleoclPackage.TUPLE_TYPE_ATTRIBUTE__TUPLE_TYPE) return null;
-		return (TupleType)eContainer();
+		return (TupleType)eInternalContainer();
 	}
 
 	/**
@@ -316,19 +316,15 @@ public class TupleTypeAttributeImpl extends LocatedElementImpl implements TupleT
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
+		final StringBuilder sb = new StringBuilder();
+		sb.append(getName()).append(" : ").append(getType());
+		return sb.toString();
 	}
 
 } //TupleTypeAttributeImpl

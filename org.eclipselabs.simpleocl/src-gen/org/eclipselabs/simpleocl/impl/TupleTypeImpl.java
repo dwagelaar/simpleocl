@@ -162,4 +162,23 @@ public class TupleTypeImpl extends OclTypeImpl implements TupleType {
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Lambda");
+		sb.append('(');
+		boolean first = true;
+		for (TupleTypeAttribute par : getAttributes()) {
+			if (!first) {
+				sb.append(", ");
+			}
+			sb.append(par);
+			first = false;
+		}
+		sb.append(')');
+		return sb.toString();
+	}
+
 } //TupleTypeImpl

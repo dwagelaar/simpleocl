@@ -59,7 +59,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "OclType";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -118,7 +118,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public OclContextDefinition getDefinitions() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__DEFINITIONS) return null;
-		return (OclContextDefinition)eContainer();
+		return (OclContextDefinition)eInternalContainer();
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public OclExpression getOclExpression() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__OCL_EXPRESSION) return null;
-		return (OclExpression)eContainer();
+		return (OclExpression)eInternalContainer();
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public Operation getOperation() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__OPERATION) return null;
-		return (Operation)eContainer();
+		return (Operation)eInternalContainer();
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public MapType getMapType2() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__MAP_TYPE2) return null;
-		return (MapType)eContainer();
+		return (MapType)eInternalContainer();
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public Attribute getAttribute() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__ATTRIBUTE) return null;
-		return (Attribute)eContainer();
+		return (Attribute)eInternalContainer();
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public MapType getMapType() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__MAP_TYPE) return null;
-		return (MapType)eContainer();
+		return (MapType)eInternalContainer();
 	}
 
 	/**
@@ -364,7 +364,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public CollectionType getCollectionTypes() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__COLLECTION_TYPES) return null;
-		return (CollectionType)eContainer();
+		return (CollectionType)eInternalContainer();
 	}
 
 	/**
@@ -405,7 +405,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public TupleTypeAttribute getTupleTypeAttribute() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__TUPLE_TYPE_ATTRIBUTE) return null;
-		return (TupleTypeAttribute)eContainer();
+		return (TupleTypeAttribute)eInternalContainer();
 	}
 
 	/**
@@ -446,7 +446,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public VariableDeclaration getVariableDeclaration() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__VARIABLE_DECLARATION) return null;
-		return (VariableDeclaration)eContainer();
+		return (VariableDeclaration)eInternalContainer();
 	}
 
 	/**
@@ -487,7 +487,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public LambdaType getLambdaReturnType() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__LAMBDA_RETURN_TYPE) return null;
-		return (LambdaType)eContainer();
+		return (LambdaType)eInternalContainer();
 	}
 
 	/**
@@ -528,7 +528,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public LambdaType getLambdaArgType() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__LAMBDA_ARG_TYPE) return null;
-		return (LambdaType)eContainer();
+		return (LambdaType)eInternalContainer();
 	}
 
 	/**
@@ -569,7 +569,7 @@ public class OclTypeImpl extends LocatedElementImpl implements OclType {
 	 */
 	public StaticPropertyCallExp getStaticPropertyCall() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_TYPE__STATIC_PROPERTY_CALL) return null;
-		return (StaticPropertyCallExp)eContainer();
+		return (StaticPropertyCallExp)eInternalContainer();
 	}
 
 	/**

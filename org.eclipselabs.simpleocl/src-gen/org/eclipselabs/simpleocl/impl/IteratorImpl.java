@@ -56,7 +56,7 @@ public class IteratorImpl extends VariableDeclarationImpl implements Iterator {
 	 */
 	public LoopExp getLoopExpr() {
 		if (eContainerFeatureID() != SimpleoclPackage.ITERATOR__LOOP_EXPR) return null;
-		return (LoopExp)eContainer();
+		return (LoopExp)eInternalContainer();
 	}
 
 	/**

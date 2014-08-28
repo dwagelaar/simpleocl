@@ -42,7 +42,7 @@ public interface SimpleoclPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://soft.vub.ac.be/simpleocl/2011/SimpleOCL";
+	String eNS_URI = "http://eclipselabs.org/simpleocl/2013/SimpleOCL";
 
 	/**
 	 * The package namespace name.

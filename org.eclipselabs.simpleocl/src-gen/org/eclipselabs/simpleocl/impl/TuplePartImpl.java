@@ -56,7 +56,7 @@ public class TuplePartImpl extends LocalVariableImpl implements TuplePart {
 	 */
 	public TupleExp getTuple() {
 		if (eContainerFeatureID() != SimpleoclPackage.TUPLE_PART__TUPLE) return null;
-		return (TupleExp)eContainer();
+		return (TupleExp)eInternalContainer();
 	}
 
 	/**

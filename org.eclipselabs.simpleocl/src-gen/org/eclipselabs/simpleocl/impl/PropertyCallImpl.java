@@ -56,7 +56,7 @@ public abstract class PropertyCallImpl extends LocatedElementImpl implements Pro
 	 */
 	public PropertyCallExp getCallExp() {
 		if (eContainerFeatureID() != SimpleoclPackage.PROPERTY_CALL__CALL_EXP) return null;
-		return (PropertyCallExp)eContainer();
+		return (PropertyCallExp)eInternalContainer();
 	}
 
 	/**

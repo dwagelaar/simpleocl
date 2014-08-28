@@ -46,6 +46,7 @@ public interface OperationCall extends PropertyCall {
 
 	/**
 	 * Returns the value of the '<em><b>Operation Name</b></em>' attribute.
+	 * The default value is <code>"OperationCall"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operation Name</em>' attribute isn't clear,
@@ -55,7 +56,7 @@ public interface OperationCall extends PropertyCall {
 	 * @return the value of the '<em>Operation Name</em>' attribute.
 	 * @see #setOperationName(String)
 	 * @see org.eclipselabs.simpleocl.SimpleoclPackage#getOperationCall_OperationName()
-	 * @model unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
+	 * @model default="OperationCall" unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getOperationName();

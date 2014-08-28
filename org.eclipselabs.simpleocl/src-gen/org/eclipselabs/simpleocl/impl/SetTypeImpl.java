@@ -39,4 +39,12 @@ public class SetTypeImpl extends CollectionTypeImpl implements SetType {
 		return SimpleoclPackage.Literals.SET_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getCollectionTypeName() {
+		return "Set";
+	}
+
 } //SetTypeImpl

@@ -39,4 +39,14 @@ public class OclAnyTypeImpl extends OclTypeImpl implements OclAnyType {
 		return SimpleoclPackage.Literals.OCL_ANY_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "OclAny";
+	}
+
 } //OclAnyTypeImpl

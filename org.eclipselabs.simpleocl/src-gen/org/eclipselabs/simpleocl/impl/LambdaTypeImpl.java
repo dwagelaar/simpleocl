@@ -234,4 +234,28 @@ public class LambdaTypeImpl extends OclTypeImpl implements LambdaType {
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		final StringBuilder sb = new StringBuilder("Lambda");
+		sb.append('(');
+		boolean first = true;
+		for (OclType par : getArgumentTypes()) {
+			if (!first) {
+				sb.append(", ");
+			}
+			sb.append(par);
+			first = false;
+		}
+		sb.append(')');
+		if (getReturnType() != null) {
+			sb.append(" : ").append(getReturnType());
+		}
+		return sb.toString();
+	}
+
 } //LambdaTypeImpl

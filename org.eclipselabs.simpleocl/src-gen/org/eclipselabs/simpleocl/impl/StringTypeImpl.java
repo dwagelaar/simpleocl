@@ -39,4 +39,14 @@ public class StringTypeImpl extends PrimitiveImpl implements StringType {
 		return SimpleoclPackage.Literals.STRING_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "String";
+	}
+
 } //StringTypeImpl

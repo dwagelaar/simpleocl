@@ -146,13 +146,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StaticNavigationOrAttributeCall" eSuperTypes="#//StaticPropertyCall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+        lowerBound="1" eType="#//String" defaultValueLiteral="StaticNavigationOrAttributeCall"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StaticOperationCall" eSuperTypes="#//StaticPropertyCall">
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
         eType="#//OclExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" ordered="false"
-        unique="false" lowerBound="1" eType="#//String"/>
+        unique="false" lowerBound="1" eType="#//String" defaultValueLiteral="StaticOperationCall"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyCallExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="calls" lowerBound="1" upperBound="-1"
@@ -166,13 +166,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NavigationOrAttributeCall" eSuperTypes="#//PropertyCall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+        lowerBound="1" eType="#//String" defaultValueLiteral="NavigationOrAttributeCall"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationCall" eSuperTypes="#//PropertyCall">
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
         eType="#//OclExpression" containment="true" eOpposite="#//OclExpression/parentOperation"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" ordered="false"
-        unique="false" lowerBound="1" eType="#//String"/>
+        unique="false" lowerBound="1" eType="#//String" defaultValueLiteral="OperationCall"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperatorCallExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//OclExpression"
@@ -209,7 +209,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IteratorExp" eSuperTypes="#//LoopExp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+        lowerBound="1" eType="#//String" defaultValueLiteral="IteratorExp"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LetExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" ordered="false"
@@ -257,7 +257,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OclType" eSuperTypes="#//LocatedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+        lowerBound="1" eType="#//String" defaultValueLiteral="OclType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" ordered="false"
         eType="#//OclContextDefinition" eOpposite="#//OclContextDefinition/context_"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="oclExpression" ordered="false"
@@ -286,7 +286,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="OclModelElementExp" eSuperTypes="#//OclExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="#//OclModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" unique="false"
-        lowerBound="1" eType="#//String"/>
+        lowerBound="1" eType="#//String" defaultValueLiteral="OclType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Primitive" abstract="true" eSuperTypes="#//OclType"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringType" eSuperTypes="#//Primitive"/>

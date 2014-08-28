@@ -77,7 +77,7 @@ public abstract class OclFeatureImpl extends NamedElementImpl implements OclFeat
 	 */
 	public OclFeatureDefinition getDefinition() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_FEATURE__DEFINITION) return null;
-		return (OclFeatureDefinition)eContainer();
+		return (OclFeatureDefinition)eInternalContainer();
 	}
 
 	/**

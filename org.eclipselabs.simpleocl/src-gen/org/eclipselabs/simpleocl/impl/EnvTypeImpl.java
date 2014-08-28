@@ -39,4 +39,14 @@ public class EnvTypeImpl extends OclTypeImpl implements EnvType {
 		return SimpleoclPackage.Literals.ENV_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "Env";
+	}
+
 } //EnvTypeImpl

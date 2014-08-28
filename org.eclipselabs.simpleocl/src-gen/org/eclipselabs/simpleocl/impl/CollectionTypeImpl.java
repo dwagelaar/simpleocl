@@ -189,4 +189,25 @@ public class CollectionTypeImpl extends OclTypeImpl implements CollectionType {
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		final StringBuilder sb = new StringBuilder(getCollectionTypeName());
+		sb.append("(").append(getElementType()).append(")");
+		return sb.toString();
+	}
+	
+	/**
+	 * Returns this {@link CollectionType}'s type name literal.
+	 * 
+	 * @return this {@link CollectionType}'s type name literal
+	 */
+	protected String getCollectionTypeName() {
+		return "Collection";
+	}
+
 } //CollectionTypeImpl

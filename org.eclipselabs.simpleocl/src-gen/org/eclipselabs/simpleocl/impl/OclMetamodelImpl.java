@@ -216,19 +216,13 @@ public class OclMetamodelImpl extends OclModelImpl implements OclMetamodel {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (uri: ");
-		result.append(uri);
-		result.append(')');
-		return result.toString();
+		return super.toString();
 	}
 
 } //OclMetamodelImpl

@@ -34,7 +34,7 @@ public class NavigationOrAttributeCallImpl extends PropertyCallImpl implements N
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "NavigationOrAttributeCall";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

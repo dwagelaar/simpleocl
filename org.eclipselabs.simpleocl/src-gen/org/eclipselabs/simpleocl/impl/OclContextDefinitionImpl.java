@@ -68,7 +68,7 @@ public class OclContextDefinitionImpl extends LocatedElementImpl implements OclC
 	 */
 	public OclFeatureDefinition getDefinition() {
 		if (eContainerFeatureID() != SimpleoclPackage.OCL_CONTEXT_DEFINITION__DEFINITION) return null;
-		return (OclFeatureDefinition)eContainer();
+		return (OclFeatureDefinition)eInternalContainer();
 	}
 
 	/**

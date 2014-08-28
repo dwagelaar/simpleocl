@@ -39,4 +39,12 @@ public class BagTypeImpl extends CollectionTypeImpl implements BagType {
 		return SimpleoclPackage.Literals.BAG_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getCollectionTypeName() {
+		return "Bag";
+	}
+
 } //BagTypeImpl

@@ -56,7 +56,7 @@ public abstract class StaticPropertyCallImpl extends LocatedElementImpl implemen
 	 */
 	public StaticPropertyCallExp getStaticCallExp() {
 		if (eContainerFeatureID() != SimpleoclPackage.STATIC_PROPERTY_CALL__STATIC_CALL_EXP) return null;
-		return (StaticPropertyCallExp)eContainer();
+		return (StaticPropertyCallExp)eInternalContainer();
 	}
 
 	/**

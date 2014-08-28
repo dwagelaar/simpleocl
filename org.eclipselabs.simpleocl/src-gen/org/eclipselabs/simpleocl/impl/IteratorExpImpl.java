@@ -34,7 +34,7 @@ public class IteratorExpImpl extends LoopExpImpl implements IteratorExp {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "IteratorExp";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

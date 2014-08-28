@@ -259,4 +259,16 @@ public class MapTypeImpl extends OclTypeImpl implements MapType {
 		return super.eIsSet(featureID);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		final StringBuilder sb = new StringBuilder("Map");
+		sb.append("(").append(getKeyType()).append(", ").append(getValueType()).append(")");
+		return sb.toString();
+	}
+
 } //MapTypeImpl

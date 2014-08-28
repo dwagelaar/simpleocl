@@ -39,4 +39,14 @@ public class RealTypeImpl extends NumericTypeImpl implements RealType {
 		return SimpleoclPackage.Literals.REAL_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "Real";
+	}
+
 } //RealTypeImpl

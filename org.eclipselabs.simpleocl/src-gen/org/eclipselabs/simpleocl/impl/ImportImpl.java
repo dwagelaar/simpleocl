@@ -56,7 +56,7 @@ public class ImportImpl extends NamedElementImpl implements Import {
 	 */
 	public Module getModule() {
 		if (eContainerFeatureID() != SimpleoclPackage.IMPORT__MODULE) return null;
-		return (Module)eContainer();
+		return (Module)eInternalContainer();
 	}
 
 	/**

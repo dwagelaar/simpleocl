@@ -26,6 +26,7 @@ package org.eclipselabs.simpleocl;
 public interface IteratorExp extends LoopExp {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>"IteratorExp"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -35,7 +36,7 @@ public interface IteratorExp extends LoopExp {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipselabs.simpleocl.SimpleoclPackage#getIteratorExp_Name()
-	 * @model unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
+	 * @model default="IteratorExp" unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getName();

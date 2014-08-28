@@ -39,4 +39,14 @@ public class BooleanTypeImpl extends PrimitiveImpl implements BooleanType {
 		return SimpleoclPackage.Literals.BOOLEAN_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		return "Boolean";
+	}
+
 } //BooleanTypeImpl

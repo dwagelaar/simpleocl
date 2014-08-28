@@ -39,4 +39,12 @@ public class SequenceTypeImpl extends CollectionTypeImpl implements SequenceType
 		return SimpleoclPackage.Literals.SEQUENCE_TYPE;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getCollectionTypeName() {
+		return "Sequence";
+	}
+
 } //SequenceTypeImpl

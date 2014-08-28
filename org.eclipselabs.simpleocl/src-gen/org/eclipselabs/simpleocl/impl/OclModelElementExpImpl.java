@@ -47,7 +47,7 @@ public class OclModelElementExpImpl extends OclExpressionImpl implements OclMode
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "OclType";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

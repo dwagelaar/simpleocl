@@ -34,7 +34,7 @@ public class StaticNavigationOrAttributeCallImpl extends StaticPropertyCallImpl 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = "StaticNavigationOrAttributeCall";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

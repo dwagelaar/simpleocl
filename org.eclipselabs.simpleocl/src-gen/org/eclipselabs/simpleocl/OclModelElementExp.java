@@ -53,6 +53,7 @@ public interface OclModelElementExp extends OclExpression {
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>"OclType"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -62,7 +63,7 @@ public interface OclModelElementExp extends OclExpression {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipselabs.simpleocl.SimpleoclPackage#getOclModelElementExp_Name()
-	 * @model unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
+	 * @model default="OclType" unique="false" dataType="org.eclipselabs.simpleocl.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getName();

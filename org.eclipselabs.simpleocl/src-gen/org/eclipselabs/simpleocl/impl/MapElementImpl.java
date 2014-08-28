@@ -79,7 +79,7 @@ public class MapElementImpl extends LocatedElementImpl implements MapElement {
 	 */
 	public MapExp getMap() {
 		if (eContainerFeatureID() != SimpleoclPackage.MAP_ELEMENT__MAP) return null;
-		return (MapExp)eContainer();
+		return (MapExp)eInternalContainer();
 	}
 
 	/**

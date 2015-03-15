@@ -1,0 +1,31 @@
+-- Tests the custom OCL collection iterators module.
+-- (C) 2015, Dennis Wagelaar <dwagelaar@gmail.com>
+module testiterators;
+
+import iterators;
+
+static def : main() : Boolean =
+	Env::testJoin() and
+	Env::testMappedBy() and
+	Env::testMappedBySequence();
+
+static def : testJoin() : Boolean =
+	env.modules.getKeys()->join(x, y | x + ', ' + y)
+		.equals('OCL, testiterators, iterators')
+		.debug('testJoin');
+
+static def : testMappedBy() : String =
+	env.modules.getValues()->mappedBy(v | v.name)
+		.equals(env.modules).debug('testMappedBy');
+
+static def : testMappedBySequence() : String =
+	let map : Map(String, OclAny) = env.modules.union(Map{}) in
+	map.getValues()->mappedBySequence(v | v.name)
+		.equals(
+			Map{
+				('OCL', Sequence{map.get('OCL')}),
+				('iterators', Sequence{map.get('iterators')}),
+				('testiterators', Sequence{map.get('testiterators')})
+			}
+		)
+		.debug('testMappedBy');

@@ -1,5 +1,5 @@
 # SimpleOCL
-SimpleOCL is an embeddable OCL implementation for inclusion in transformation languages for the EMF Transformation Virtual Machine (EMFTVM). SimpleOCL is built on top of the Eclipse Modeling Framework (EMF) and EMFText.
+SimpleOCL is an embeddable [OCL](http://www.omg.org/spec/OCL) implementation for inclusion in transformation languages for the EMF Transformation Virtual Machine (EMFTVM). SimpleOCL is built on top of the [Eclipse Modeling Framework (EMF)](http://www.eclipse.org/modeling/emf/) and [EMFText](http://www.emftext.org/).
 
 Below you can find an example of SimpleOCL code:
 
@@ -88,7 +88,7 @@ This code defines a couple of attributes and operations. Note that we've added t
 list->map(x | x*2)
 ```
 
-More examples can be found in iterators.simpleocl.
+More examples can be found in [iterators.simpleocl](https://github.com/dwagelaar/simpleocl/blob/master/org.eclipselabs.simpleocl.tests/test-data/iterators.simpleocl).
 
 To facilitate better integration with Java code, we've also added support for static attributes/operations. These are invoked using the `::` operator instead of the `.` operator. Finally, all attributes/operations without a defined context fall in the `Env` context, which stands for the environment. The environment has a single runtime instance, which can be accessed using the `env` keyword.
 

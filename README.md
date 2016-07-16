@@ -108,5 +108,7 @@ static def : main() : OclAny = ...
 
 EMFTVM includes a separate launch configuration dialog that looks very much like ATL's launch configuration dialog. It can be found via "Run -> Run Configurations...".
 
+![EMFTVM launch configuration dialog](https://wiki.eclipse.org/images/d/d4/Emftvmlaunchconfiguration.png)
+
 ## Links
 * [ATL/EMFTVM documentation on Eclipse.org](http://wiki.eclipse.org/ATL/EMFTVM)

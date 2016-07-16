@@ -97,7 +97,7 @@ SimpleOCL does **not** support OCL's `pre`, `post`, and `inv` declarations. It i
 ## Installation
 To download and install the SimpleOCL Eclipse plugin, install it from the following Eclipse update site:
 
-<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=609072" class="drag" title="Drag to your running Eclipse workspace to install SimpleOCL"><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace to install SimpleOCL" /></a>
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=609072" class="drag" title="Drag to your running Eclipse workspace to install SimpleOCL"><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace to install SimpleOCL" /></a> or https://raw.githubusercontent.com/dwagelaar/simpleocl/master/org.eclipselabs.simpleocl.updatesite/
 
 ## Running SimpleOCL/EMFTVM modules
 Note that SimpleOCL modules don't do anything normally, unless you define a static main operation:

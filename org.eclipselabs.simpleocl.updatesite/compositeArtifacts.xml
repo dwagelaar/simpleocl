@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeArtifactRepository version='1.0.0'?>
+<repository name='&quot;SimpleOCL Update Site&quot;'
+    type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>
+  <properties size='1'>
+    <property name='p2.timestamp' value='1409260494296'/>
+  </properties>
+  <children size='2'>
+    <child location='https://hudson.eclipse.org/hudson/job/m2m-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/'/>
+    <child location='simpleocl'/>
+  </children>
+</repository>

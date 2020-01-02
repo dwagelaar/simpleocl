@@ -6,7 +6,13 @@
  */
 package org.eclipselabs.simpleocl.tests;
 
+import static org.mockito.Mockito.when;
+
+import org.eclipse.emf.common.notify.impl.NotificationChainImpl;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipselabs.simpleocl.LocatedElement;
+import org.eclipselabs.simpleocl.resource.simpleocl.mopp.SimpleoclLocationResource;
+import org.mockito.Mockito;
 
 import junit.framework.TestCase;
 
@@ -26,7 +32,7 @@ import junit.framework.TestCase;
  * @generated
  */
 public abstract class LocatedElementTest extends TestCase {
-
+	
 	/**
 	 * The fixture for this Located Element test case.
 	 * <!-- begin-user-doc -->
@@ -70,12 +76,19 @@ public abstract class LocatedElementTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipselabs.simpleocl.LocatedElement#getLine()
-	 * @generated
 	 */
 	public void testGetLine() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		final LocatedElement locatedElement = getFixture();
+		assertEquals(-1, locatedElement.getLine());
+		
+		final int line = 36;
+		final SimpleoclLocationResource resourceMock = Mockito.mock(SimpleoclLocationResource.class);
+		((InternalEObject)locatedElement).eSetResource(resourceMock, new NotificationChainImpl());
+		when(resourceMock.getLine(locatedElement)).thenReturn(line);
+		
+		final int result = locatedElement.getLine();
+		
+		assertEquals(line, result);
 	}
 
 	/**
@@ -83,12 +96,19 @@ public abstract class LocatedElementTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipselabs.simpleocl.LocatedElement#getColumn()
-	 * @generated
 	 */
 	public void testGetColumn() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		final LocatedElement locatedElement = getFixture();
+		assertEquals(-1, locatedElement.getColumn());
+		
+		final int column = 37;
+		final SimpleoclLocationResource resourceMock = Mockito.mock(SimpleoclLocationResource.class);
+		((InternalEObject)locatedElement).eSetResource(resourceMock, new NotificationChainImpl());
+		when(resourceMock.getColumn(locatedElement)).thenReturn(column);
+		
+		final int result = locatedElement.getColumn();
+		
+		assertEquals(column, result);
 	}
 
 	/**
@@ -96,12 +116,19 @@ public abstract class LocatedElementTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipselabs.simpleocl.LocatedElement#getCharStart()
-	 * @generated
 	 */
 	public void testGetCharStart() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		final LocatedElement locatedElement = getFixture();
+		assertEquals(-1, locatedElement.getCharStart());
+		
+		final int charStart = 38;
+		final SimpleoclLocationResource resourceMock = Mockito.mock(SimpleoclLocationResource.class);
+		((InternalEObject)locatedElement).eSetResource(resourceMock, new NotificationChainImpl());
+		when(resourceMock.getCharStart(locatedElement)).thenReturn(charStart);
+		
+		final int result = locatedElement.getCharStart();
+		
+		assertEquals(charStart, result);
 	}
 
 	/**
@@ -109,12 +136,19 @@ public abstract class LocatedElementTest extends TestCase {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipselabs.simpleocl.LocatedElement#getCharEnd()
-	 * @generated
 	 */
 	public void testGetCharEnd() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		final LocatedElement locatedElement = getFixture();
+		assertEquals(-1, locatedElement.getCharEnd());
+		
+		final int charEnd = 39;
+		final SimpleoclLocationResource resourceMock = Mockito.mock(SimpleoclLocationResource.class);
+		((InternalEObject)locatedElement).eSetResource(resourceMock, new NotificationChainImpl());
+		when(resourceMock.getCharEnd(locatedElement)).thenReturn(charEnd);
+		
+		final int result = locatedElement.getCharEnd();
+		
+		assertEquals(charEnd, result);
 	}
 
 } //LocatedElementTest

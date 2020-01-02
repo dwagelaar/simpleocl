@@ -6,6 +6,8 @@
  */
 package org.eclipselabs.simpleocl.resource.simpleocl.ui;
 
+import org.eclipse.core.runtime.SubMonitor;
+
 /**
  * This class is based on:
  * <i>org.eclipse.gef.examples.ui.pde.internal.wizards.ProjectUnzipperNewWizard</i>
@@ -92,7 +94,7 @@ public class SimpleoclNewProjectWizard extends org.eclipse.jface.wizard.Wizard i
 							
 							if (newProjectZipURL != null) {
 								// Copy plug-in project code
-								extractProject(projectFolderFile, newProjectZipURL, new org.eclipse.core.runtime.SubProgressMonitor(monitor, 100));
+								extractProject(projectFolderFile, newProjectZipURL, SubMonitor.convert(monitor, "Main Task", 100));
 							}
 							
 							if (monitor.isCanceled()) {

@@ -2,7 +2,7 @@
 <feature
       id="org.eclipselabs.simpleocl.feature"
       label="%featureName"
-      version="2.0.2.qualifier"
+      version="2.1.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipselabs.simpleocl">
 
@@ -19,9 +19,10 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://simpleocl.eclipselabs.org.codespot.com/git.updatesite"/>
-      <discovery label="EMFText update site" url="http://emftext.org/update"/>
-      <discovery label="ATL Integration Build update site" url="https://hudson.eclipse.org/hudson/job/m2m-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository"/>
+      <update label="%updateSiteName" url="https://raw.githubusercontent.com/dwagelaar/simpleocl/master/org.eclipselabs.simpleocl.updatesite"/>
+      <discovery label="EMFText update site" url="http://update.emftext.org/release"/>
+      <discovery label="ATL update site" url="https://download.eclipse.org/mmt/atl/updates/releases"/>
+      <discovery label="Eclipse Orbit update site" url="https://download.eclipse.org/tools/orbit/downloads/latest-R"/>
    </url>
 
    <requires>

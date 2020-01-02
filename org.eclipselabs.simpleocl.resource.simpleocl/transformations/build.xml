@@ -1,4 +1,4 @@
-<project name="be.ac.vub.simpleocl.resource.simpleocl/transformations" default="all">
+<project name="org.eclipselabs.simpleocl.resource.simpleocl/transformations" default="all">
 
 	<eclipse.convertPath property="emftvm.path" resourcepath="org.eclipse.m2m.atl.emftvm.compiler/transformations/"/>
 

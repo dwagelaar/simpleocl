@@ -34,7 +34,6 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
-		<nature>be.ac.vub.simpleocl.resource.simpleocl.nature</nature>
 		<nature>org.eclipselabs.simpleocl.resource.simpleocl.nature</nature>
 	</natures>
 </projectDescription>

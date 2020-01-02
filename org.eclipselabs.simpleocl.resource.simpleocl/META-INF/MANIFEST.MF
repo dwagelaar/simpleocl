@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMFText Parser Plugin: SimpleOCL
 Bundle-SymbolicName: org.eclipselabs.simpleocl.resource.simpleocl;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-Vendor: EclipseLabs
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.emf,
@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.m2m.atl.common;visibility:=reexport,
  org.emftext.commons.antlr3_4_0
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipselabs.simpleocl.resource.simpleocl,
  org.eclipselabs.simpleocl.resource.simpleocl.analysis,
  org.eclipselabs.simpleocl.resource.simpleocl.debug,
@@ -28,3 +28,4 @@ Export-Package: org.eclipselabs.simpleocl.resource.simpleocl,
  org.eclipselabs.simpleocl.resource.simpleocl.mopp,
  org.eclipselabs.simpleocl.resource.simpleocl.util
 Bundle-Activator: org.eclipselabs.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin
+Automatic-Module-Name: org.eclipselabs.simpleocl.resource.simpleocl

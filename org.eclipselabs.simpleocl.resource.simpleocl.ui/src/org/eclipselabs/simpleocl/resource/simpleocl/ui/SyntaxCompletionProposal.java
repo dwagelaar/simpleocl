@@ -11,6 +11,7 @@ import java.net.URL;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * General syntax completion proposal class.
@@ -122,8 +123,7 @@ public class SyntaxCompletionProposal {
 			try {
 				final InputStream input = imageURL.openStream();
 				try {
-					image = new Image(SimpleoclUIPlugin.getDefault()
-							.getWorkbench().getDisplay(), input);
+					image = new Image(PlatformUI.getWorkbench().getDisplay(), input);
 				} finally {
 					input.close();
 				}

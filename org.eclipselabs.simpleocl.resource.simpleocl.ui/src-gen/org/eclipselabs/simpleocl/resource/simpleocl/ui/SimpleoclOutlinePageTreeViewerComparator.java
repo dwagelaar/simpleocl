@@ -64,7 +64,7 @@ public class SimpleoclOutlinePageTreeViewerComparator extends org.eclipse.jface.
 		return packageID;
 	}
 	
-	public java.util.Comparator<?> getComparator() {
+	public java.util.Comparator<? super String> getComparator() {
 		return this.comparator;
 	}
 	

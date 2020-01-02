@@ -25,7 +25,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -48,9 +48,6 @@ import org.eclipselabs.simpleocl.resource.simpleocl.ISimpleoclProblem;
 import org.eclipselabs.simpleocl.resource.simpleocl.ISimpleoclTextDiagnostic;
 import org.eclipselabs.simpleocl.resource.simpleocl.SimpleoclEProblemSeverity;
 import org.eclipselabs.simpleocl.resource.simpleocl.SimpleoclEProblemType;
-import org.eclipselabs.simpleocl.resource.simpleocl.mopp.SimpleoclPlugin;
-import org.eclipselabs.simpleocl.resource.simpleocl.mopp.SimpleoclProblem;
-import org.eclipselabs.simpleocl.resource.simpleocl.mopp.SimpleoclResource;
 
 /**
  * Compiles SimpleOCL files to EMFTVM
@@ -167,7 +164,7 @@ public class SimpleoclBuilder implements org.eclipselabs.simpleocl.resource.simp
 					if (ri.getURI().isPlatformResource()) {
 						final IPath riPath = new Path(ri.getURI().toPlatformString(true));
 						final IFile riFile = ResourcesPlugin.getWorkspace().getRoot().getFile(riPath);
-						riFile.setDerived(true, new SubProgressMonitor(monitor, 0));
+						riFile.setDerived(true, SubMonitor.convert(monitor, "Main Task", 0));
 					}
 				}
 			}

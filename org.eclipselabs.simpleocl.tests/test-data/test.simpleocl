@@ -29,7 +29,7 @@ context Collection(OclAny) def : join(f : Lambda(OclAny, OclAny) : OclAny) : Ocl
 	self->iterate(e; acc : OclAny = OclUndefined |
 		if acc.oclIsUndefined() then
 			e
-		else 
+		else
 			f(acc, e)
 		endif
 	);
@@ -43,7 +43,7 @@ context String def : name() : String =
 	else
 		self
 	endif;
-	
+
 context OclAny def : name : String =
 	self.name();
 
@@ -62,13 +62,13 @@ static def : tuple : Tuple(a : String, b : String) =
 		a = 'one',
 		b = 'two'
 	};
-	
+
 static def : tupleType : TupleType(a : String, b : String) =
 	Tuple{
 		a = 'one',
 		b = 'two'
 	};
-	
+
 context Env static def : main() : Set(String) =
 	(36 + 3.5).toString().debug('arithmetic test') +
 	env.allModuleNames->join(x, y | x + ', ' + y).debug('module names') +

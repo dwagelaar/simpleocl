@@ -13,7 +13,7 @@ context Collection(OclAny) def : mappedBy(f : Lambda(OclAny) : OclAny) : Map(Ocl
 -- Example: collection->mappedBySequence(e | e.property)
 context Collection(OclAny) def : mappedBySequence(f : Lambda(OclAny) : OclAny) : Map(OclAny, Sequence(OclAny)) =
 	self->iterate(e; acc : Map(OclAny, Sequence(OclAny)) = Map{} |
-		acc.including(f(e), 
+		acc.including(f(e),
 			let c : Sequence(OclAny) = acc.get(f(e)) in
 			if c.oclIsUndefined() then
 				Sequence{e}
@@ -24,12 +24,12 @@ context Collection(OclAny) def : mappedBySequence(f : Lambda(OclAny) : OclAny) :
 	);
 
 -- Joins the elements of the input collection by applying 'f' to the joined output and each element of the input collection.
--- Example: Sequence{'one', 'two', 'three'}->join(x, y | x + ', ' + y) 
+-- Example: Sequence{'one', 'two', 'three'}->join(x, y | x + ', ' + y)
 context Collection(OclAny) def : join(f : Lambda(OclAny, OclAny) : OclAny) : OclAny =
 	self->iterate(e; acc : OclAny = OclUndefined |
 		if acc.oclIsUndefined() then
 			e
-		else 
+		else
 			f(acc, e)
 		endif
 	);

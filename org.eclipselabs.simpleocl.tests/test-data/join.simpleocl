@@ -4,7 +4,7 @@ context Collection(OclAny) def : join(f : Lambda(OclAny, OclAny) : OclAny) : Ocl
 	self->iterate(e; acc : OclAny = OclUndefined |
 		if acc.oclIsUndefined() then
 			e
-		else 
+		else
 			f(acc, e)
 		endif
 	);

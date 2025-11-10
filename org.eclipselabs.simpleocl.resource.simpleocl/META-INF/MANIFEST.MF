@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.m2m.atl.common;visibility:=reexport,
  org.emftext.commons.antlr3_4_0
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipselabs.simpleocl.resource.simpleocl,
  org.eclipselabs.simpleocl.resource.simpleocl.analysis,
  org.eclipselabs.simpleocl.resource.simpleocl.debug,

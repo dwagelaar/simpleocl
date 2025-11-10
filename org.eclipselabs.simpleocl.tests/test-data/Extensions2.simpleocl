@@ -1,0 +1,33 @@
+module Extensions2;
+
+context Bag(OclAny) def : closure(f : Lambda(OclAny): OclAny) : Bag(OclAny) =
+	let buffer: Bag(OclAny) = self->collect(e | f(e))->reject(e | e.oclIsUndefined())->flatten() in
+	if buffer->isEmpty() then
+		self
+	else
+		self->union(buffer->closure(f))
+	endif;
+
+context Integer def : minusOne : Integer =
+	if self = 0 then
+		OclUndefined
+	else
+		self - 1
+	endif;
+
+context Integer def : minusOnes : Bag(Integer) =
+	if self = 0 then
+		OclUndefined
+	else
+		let this : Integer = self - 1 in
+		Bag{this, this.minusOnes}->reject(e | e.oclIsUndefined())->flatten()
+	endif;
+
+static def : test() : OclAny =
+	Bag{5,4,3,2,1}->closure(e | e.minusOne);
+
+static def : test2() : OclAny =
+	Bag{5,4,3,2,1}->closure(e | e.minusOnes);
+
+static def : main() : OclAny =
+	Sequence{Env::test(), Env::test2()}.debug();

@@ -1,0 +1,23 @@
+module Extensions;
+
+context Bag(OclAny) def : closure(f : Lambda(OclAny): OclAny) : Bag(OclAny) =
+	let buffer: Bag(OclAny) = self->iterate(e; acc: Bag(OclAny) = Bag{} |
+		let result: OclAny = f(e) in
+		if result.oclIsUndefined() then
+			acc
+		else
+			acc->unionOrIncluding(result)
+		endif
+		) in
+
+	if buffer->isEmpty() then
+		self
+	else
+		self->union(buffer->closure(f))
+	endif;
+
+context Bag(OclAny) def : unionOrIncluding(e : OclAny) : Bag(OclAny) =
+	self->including(e);
+
+context Bag(OclAny) def : unionOrIncluding(e : Bag(OclAny)) : Bag(OclAny) =
+	self->union(e);

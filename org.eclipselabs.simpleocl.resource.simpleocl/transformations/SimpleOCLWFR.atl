@@ -1,6 +1,6 @@
 -- @atlcompiler emftvm
--- @path OCL=/be.ac.vub.simpleocl/metamodel/simpleocl.ecore
--- @path Problem=/be.ac.vub.simpleocl/metamodel/problem.ecore
+-- @path OCL=/org.eclipselabs.simpleocl/metamodel/simpleocl.ecore
+-- @path Problem=/org.eclipselabs.simpleocl/metamodel/problem.ecore
 -- SimpleOCL Well-formedness rules.
 -- $Id$
 module SimpleOCLWFR;
@@ -102,7 +102,7 @@ helper context OCL!OclExpression
 			container.getUpD()
 		}->flatten()
 	else if container.oclIsTypeOf(OCL!IteratorExp) then
-		if container.source = self
+		if container.callExp.source = self
 		then
 			Sequence{
 				container.getUpD()
@@ -114,7 +114,7 @@ helper context OCL!OclExpression
 			}->flatten()
 		endif
 	else if container.oclIsTypeOf(OCL!IterateExp) then
-		if container.source = self
+		if container.callExp.source = self
 		then
 			Sequence{
 				container.getUpD()
